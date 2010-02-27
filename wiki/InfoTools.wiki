@@ -10,12 +10,12 @@ Use
 
 sample :
 
-   1. cd workspace/CSDAO.
-   2. mvn clean install => compile & download ".jar".
-   3. mvn eclipse:ecplise => confire environnement (IDE ecplise).
-   4. in ecplise : clic right on one project then properties\libraries\Add Variable\Configure variable\new :
-         1. name : M2_REPO
-         2. Path : /home/olife/.m2/repository/ 
+  # cd workspace/CSDAO.
+  # mvn clean install => compile & download ".jar".
+  # mvn eclipse:ecplise => confire environnement (IDE ecplise).
+  # in ecplise : clic right on one project then properties\libraries\Add Variable\Configure variable\new :
+         # name : M2_REPO
+         # Path : /home/olife/.m2/repository/ 
 
 Serveur Tomcat
 
