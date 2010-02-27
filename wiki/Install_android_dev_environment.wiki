@@ -1,0 +1,9 @@
+- Install the SDK Android
+  -> http://developer.android.com/sdk/index.html
+
+- Install the Eclipse Plugin
+  -> http://developer.android.com/sdk/eclipse-adt.html
+
+- Create a ADV Device
+
+- Create a new Android Project
