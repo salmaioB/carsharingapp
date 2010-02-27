@@ -6,9 +6,7 @@ Maven is soft java :
     * http://www.apache.org/dyn/closer.cgi/maven/binaries/apache-maven-2.2.1-bin.zip.
     * the binary 's name is : mvn. 
 
-Use
-
-sample :
+Use sample :
 
   # cd workspace/CSDAO.
   # mvn clean install => compile & download ".jar".
