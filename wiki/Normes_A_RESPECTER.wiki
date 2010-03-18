@@ -1,0 +1,24 @@
+== Normes JAVA ==
+
+=== Packages ===
+  # Tout en minuscule
+
+=== Classes ===
+Les noms des classes doivent respecter les conventions suivantes:
+  # 1ère lettre en majuscule
+  # 1ère lettre de chaque mot en majuscule
+  # Donner des noms simples et descriptifs
+
+=== Interfaces ===
+Les mêmes conventions que les noms de classes s'appliquent.
+
+=== Variables ===
+  # 1ère lettre en minuscule
+  # 1ère lettre de chaque mot en majuscule
+  # Donner des noms simples et descriptifs
+  # Variable d'une seule lettre (pour un usage local)
+
+=== Constantes ===
+  # Tout en majuscule
+  # Séparer les mots par `'_'`
+  # Donner des noms simples et descriptifs
