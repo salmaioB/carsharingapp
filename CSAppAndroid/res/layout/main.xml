@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout 	xmlns:android="http://schemas.android.com/apk/res/android" 
+				android:id="@+id/main" 
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent" > 
+<!--
+    <com.google.android.maps.mapview
+		android:id="@+id/map" 
+    	android:layout_width="fill_parent" 
+    	android:layout_height="fill_parent" 
+    	android:enabled="true" 
+    	android:clickable="true" 
+    	apikey="replaceOwnKey"
+    />
+-->
+    <TextView  
+    android:id="@+id/myTextView" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello"
+    /><Button android:text="@+id/Button02" android:id="@+id/Button02" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button><Button android:text="@+id/Button01" android:id="@+id/Button01" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello"
+    />
+
+
+</LinearLayout>
