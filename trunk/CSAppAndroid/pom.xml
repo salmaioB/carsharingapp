@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>cs.appandroid</groupId>
+   <artifactId>CSAppAndroid</artifactId>
+   <version>1.0-SNAPSHOT</version>
+   <packaging>android:apk</packaging>
+   <name>android-carsharing</name>
+   <description>Maven Plugins Project for Android</description>
+   <modules>
+      <module>maven-aapt-plugin</module>
+      <module>maven-adb-plugin</module>
+      <module>maven-aidl-plugin</module>       
+      <module>maven-android-core</module>
+      <module>maven-dx-plugin</module>
+      <module>maven-par-plugin</module>       
+   </modules>
+   <dependencies>
+   		<dependency>
+			<groupId>cs.engine</groupId>
+			<artifactId>CSEngine</artifactId>
+ 			<version>1.0-SNAPSHOT</version>
+		</dependency>
+      <dependency>
+         <groupId>org.codehaus.plexus</groupId>
+         <artifactId>plexus-utils</artifactId>
+         <version>1.4.5</version>
+      </dependency>
+      <dependency>
+         <groupId>org.codehaus.plexus</groupId>
+         <artifactId>plexus-container-default</artifactId>
+         <version>1.0-alpha-15</version>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.maven</groupId>
+         <artifactId>maven-plugin-api</artifactId>
+         <version>2.0.6</version>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.maven</groupId>
+         <artifactId>maven-project</artifactId>
+         <version>2.0.6</version>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.maven</groupId>
+         <artifactId>maven-artifact</artifactId>
+         <version>2.0.6</version>
+      </dependency>
+      
+      <dependency>
+      	 <groupId>com.google.android.maps</groupId>
+         <artifactId>maps</artifactId>
+         <version>7_r1</version>
+      </dependency>
+      
+   </dependencies>
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+               <source>1.6</source>
+               <target>1.6</target>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+</project>
