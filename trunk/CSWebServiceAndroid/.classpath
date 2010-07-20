@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry including="**/*.java" kind="src" path="src/main/java"/>
+	<classpathentry kind="var" path="M2_REPO/asm/asm/2.2.3/asm-2.2.3.jar"/>
+	<classpathentry kind="src" path="/CSModel"/>
+	<classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/code/ksoap2-android/ksoap2-android/2.3/ksoap2-android-2.3.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/code/ksoap2-android/ksoap2-base/2.3/ksoap2-base-2.3.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/code/ksoap2-android/ksoap2-j2se/2.3/ksoap2-j2se-2.3.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/microemu/microemu-cldc/2.0.1/microemu-cldc-2.0.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/microemu/microemu-device-large/2.0.1/microemu-device-large-2.0.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/microemu/microemu-javase/2.0.1/microemu-javase-2.0.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/microemu/microemu-midp/2.0.1/microemu-midp-2.0.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/microemu/microemulator/2.0.1/microemulator-2.0.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/olife/Bureau/android-sdk-linux_86/platforms/android-2.0.1/android.jar"/>
+	<classpathentry kind="lib" path="/home/olife/Bureau/midpapi20-2.0.3.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
