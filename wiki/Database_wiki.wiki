@@ -1,0 +1,11 @@
+=Database wiki=
+
+== TODO ==
+
+*  Table Offer_types ? Utile ?
+*  Table de jointure entre customer_accounts et offers ?
+*  Finir table vehicles
+*  Mettre les champs nécessaires à nul
+*  datetime_started et datetime_ended dans offers ?
+*  Rajouter des commentaires dans MySql
+*  Champs concernant la géolocalisation (stockage des coordonnées)
