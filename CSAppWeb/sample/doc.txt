@@ -1,0 +1,10 @@
+/home/olife/workspace/CSAppWebTest/target/
+
+/usr/share/tomcat6/webapps/
+
+/etc/tomcat6/
+
+maven: mvn eclipse:eclipse sysdeo-tomcat:generate
+
+mvn archetype:create -DgroupId=cs.csappweb -DartifactId=CSAppWeb -DarchetypeArtifactId=maven-archetype-webapp
+mvn archetype:create -Dpackagename=cs.csappweb -DgroupId=cs.csappweb -DartifactId=CSAppWeb -DarchetypeArtifactId=maven-archetype-war
