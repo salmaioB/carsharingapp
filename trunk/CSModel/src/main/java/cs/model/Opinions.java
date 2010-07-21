@@ -4,39 +4,50 @@ import java.util.Date;
 
 public class Opinions
 {
-	private Integer id;
+	private Integer idOpinion;
 	private Integer idCustomerAccount;
 	private Integer positiveOrNegative;
 	private String comment;
-	private Date created;
-	public Integer getId() {
-		return id;
+	private Date dateCreated;
+	
+	
+	public Integer getIdOpinion() {
+		return idOpinion;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	
+	public void setIdOpinion(Integer idOpinion) {
+		this.idOpinion = idOpinion;
 	}
+	
 	public Integer getIdCustomerAccount() {
 		return idCustomerAccount;
 	}
+	
 	public void setIdCustomerAccount(Integer idCustomerAccount) {
 		this.idCustomerAccount = idCustomerAccount;
 	}
+	
 	public Integer getPositiveOrNegative() {
 		return positiveOrNegative;
 	}
+	
 	public void setPositiveOrNegative(Integer positiveOrNegative) {
 		this.positiveOrNegative = positiveOrNegative;
 	}
+	
 	public String getComment() {
 		return comment;
 	}
+	
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public Date getCreated() {
-		return created;
+	
+	public Date getDateCreated() {
+		return dateCreated;
 	}
-	public void setCreated(Date created) {
-		this.created = created;
+	
+	public void setCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 }
