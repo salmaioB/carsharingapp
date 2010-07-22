@@ -4,21 +4,24 @@ import java.util.Date;
 
 public class Opinions
 {
-	private Integer idOpinion;
+	private Integer id;
 	private Integer idCustomerAccount;
 	private Integer positiveOrNegative;
 	private String comment;
 	private Date dateCreated;
 	
-	
-	public Integer getIdOpinion() {
-		return idOpinion;
+	public Integer getId() {
+		return id;
 	}
-	
-	public void setIdOpinion(Integer idOpinion) {
-		this.idOpinion = idOpinion;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
 	public Integer getIdCustomerAccount() {
 		return idCustomerAccount;
 	}

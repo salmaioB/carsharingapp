@@ -2,19 +2,18 @@ package cs.model;
 
 public class Translations
 {
-	private Integer idTranslation;
+	private Integer id;
 	private Integer idTranslationValue;
 	private String valueSummary;
 	
-	
-	public Integer getIdTranslation() {
-		return idTranslation;
+	public Integer getId() {
+		return id;
 	}
-	
-	public void setId(Integer idTranslation) {
-		this.idTranslation = idTranslation;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	
+
 	public Integer getIdTranslationValue() {
 		return idTranslationValue;
 	}

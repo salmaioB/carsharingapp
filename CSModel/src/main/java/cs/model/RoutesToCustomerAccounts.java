@@ -2,19 +2,19 @@ package cs.model;
 
 public class RoutesToCustomerAccounts
 {
-	private Integer idRoutesToCustomerAccount;
+	private Integer id;
 	private Integer idRoute;
 	private Integer idCustomerAccount;
+
 	
-	
-	public Integer getIdRoutesToCustomerAccount() {
-		return idRoutesToCustomerAccount;
+	public Integer getId() {
+		return id;
 	}
-	
-	public void setIdRoutesToCustomerAccount(Integer idRoutesToCustomerAccount) {
-		this.idRoutesToCustomerAccount = idRoutesToCustomerAccount;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	
+
 	public Integer getIdRoute() {
 		return idRoute;
 	}

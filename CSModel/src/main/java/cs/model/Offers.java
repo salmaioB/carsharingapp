@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Offers
 {
-	private Integer idOffer;
+	private Integer id;
 	private Integer idOfferType;
 	private Integer idDriver;
 	private String title;
@@ -15,15 +15,18 @@ public class Offers
 	private Date dateStarted;
 	private Date dateEnded;
 	
-	
-	public Integer getIdOffer() {
-		return idOffer;
+	public Integer getId() {
+		return id;
 	}
-	
-	public void setIdOffer(Integer idOffer) {
-		this.idOffer = idOffer;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	
+
+	public void setDateStarted(Date dateStarted) {
+		this.dateStarted = dateStarted;
+	}
+
 	public Integer getIdOfferType() {
 		return idOfferType;
 	}

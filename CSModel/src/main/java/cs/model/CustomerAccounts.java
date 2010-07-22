@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class CustomerAccounts
 {
-	private Integer idCustomerAccount;
+	private Integer id;
 	private String customerLogin;
 	private String customerPassword;
 	private String lastName;
@@ -23,24 +23,21 @@ public class CustomerAccounts
 	private Date datetimeLastConnection;
 	private Date datetimeLastOfferCreated;
 	private Date datetimeLastCarSharing;
-	 
 	
-	public Integer getIdCustomerAccount() {
-		return idCustomerAccount;
+	public Integer getId() {
+		return id;
 	}
-	
-	public void setIdCustomerAccount(Integer idCustomerAccount) {
-		this.idCustomerAccount = idCustomerAccount;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	
 	public String getCustomerLogin() {
 		return customerLogin;
 	}
-	
+
 	public void setCustomerLogin(String customerLogin) {
 		this.customerLogin = customerLogin;
-	}
-	
+	}	
 	public String getCustomerPassword() {
 		return customerPassword;
 	}

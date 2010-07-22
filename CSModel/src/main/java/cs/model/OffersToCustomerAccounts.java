@@ -2,19 +2,18 @@ package cs.model;
 
 public class OffersToCustomerAccounts
 {
-	private Integer idOffersToCustomerAccount;
+	private Integer id;
 	private Integer idOffer;
 	private Integer idCustomerAccount;
 	
-	
-	public Integer getIdOffersToCustomerAccount() {
-		return idOffersToCustomerAccount;
+	public Integer getId() {
+		return id;
 	}
-	
-	public void setIdOffersToCustomerAccount(Integer idOffersToCustomerAccount) {
-		this.idOffersToCustomerAccount = idOffersToCustomerAccount;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	
+
 	public Integer getIdOffer() {
 		return idOffer;
 	}
