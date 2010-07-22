@@ -4,8 +4,8 @@
        "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<!-- Webservice JSON -->
-	<package name="UserWS" extends="json-default">
-		<action name="UserWS" class="cs.webservice.impl.UserWS">
+	<package name="CustomerAccountsWS" extends="json-default">
+		<action name="CustomerAccountsWS" class="cs.webservice.impl.CustomerAccountsWS">
 			<result type="json" />
 		</action>
 	</package>
@@ -24,8 +24,8 @@
 	        <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
         <!-- un exemple d action qui renvoie vers la definition tiles1.page -->
-        <action name="Accueil">
-        	<result type="tiles">accueil.template</result>
+        <action name="Accueil" class="com.appweb.AccueilAction">
+        	<result name="success" type="tiles">accueil.template</result>
         </action>
     </package>
     
