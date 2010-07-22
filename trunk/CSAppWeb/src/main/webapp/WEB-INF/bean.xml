@@ -6,12 +6,11 @@
 	<bean id="SampleDAO" class="cs.dao.dao.SampleSpring" />
 
 	<!-- General  -->
-	<bean name="UserDAO" id="UserDAO" class="cs.dao.dao.UserDAO">
+	<bean name="CustomerAccountsDAO" id="CustomerAccountsDAO" class="cs.dao.dao.CustomerAccountsDAO">
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	
 	<!-- sessionFactory  -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="configLocation">

@@ -5,7 +5,11 @@
 
 <tiles-definitions>
 	<definition name="accueil.template" template="/accueil.jsp">
+		<put-attribute name="head" value="/head.jsp"/>
 		<put-attribute name="header" value="/header.jsp"/>
+		<put-attribute name="menu" value="/menu.jsp"/>
+		<put-attribute name="left" value="/left.jsp"/>
 		<put-attribute name="body" value="/body.jsp" />
+		<put-attribute name="footer" value="/footer.jsp" />
 	</definition>
 </tiles-definitions>
