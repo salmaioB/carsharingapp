@@ -9,14 +9,14 @@
         <id name="id" column="_id_customer_account">
             <generator class="native"/>
         </id>
-        <property name="login" type="string" column="customer_login"/>
+        <property name="customerLogin" type="string" column="customer_login"/>
         <property name="lastName" type="string" column="last_name"/>
-        <property name="password" type="string" column="customer_password"/>
+        <property name="customerPassword" type="string" column="customer_password"/>
         <property name="firstName" type="string" column="first_name"/>
         <property name="emailAddress" type="string" column="email_address"/>
         <property name="phone" type="integer" column="phone"/>
         <property name="mobile" type="integer" column="mobile"/>
-        <property name="type" type="integer" column="customer_type"/>
+        <property name="customerType" type="integer" column="customer_type"/>
         <property name="idVehicule" type="integer" column="_id_vehicule"/>
         <property name="acceptAnimals" type="integer" column="accept_animals"/>
         <property name="acceptRadio" type="integer" column="accept_radio"/>
