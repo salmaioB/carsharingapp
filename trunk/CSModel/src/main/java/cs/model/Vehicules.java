@@ -2,18 +2,17 @@ package cs.model;
 
 public class Vehicules
 {
-	private Integer idVehicle;
+	private Integer id;
 	private String model;
 	
-	
-	public Integer getIdVehicle() {
-		return idVehicle;
+	public Integer getId() {
+		return id;
 	}
-	
-	public void setIdVehicle(Integer idVehicle) {
-		this.idVehicle = idVehicle;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	
+
 	public String getModel() {
 		return model;
 	}

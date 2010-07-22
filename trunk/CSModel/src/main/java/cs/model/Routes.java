@@ -2,7 +2,7 @@ package cs.model;
 
 public class Routes
 {
-	private Integer idRoute;
+	private Integer id;
 	private Integer idOffer;	
 	private Integer idPassenger;
 	private String startingAddress;
@@ -10,16 +10,15 @@ public class Routes
 	private Float price;
 	private Float conversionRateToEuro;
 	private String currencyCode;
+	
+	public Integer getId() {
+		return id;
+	}
 
-	
-	public Integer getIdRoute() {
-		return idRoute;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	
-	public void setIdRoute(Integer idRoute) {
-		this.idRoute = idRoute;
-	}
-	
+
 	public Integer getIdOffer() {
 		return idOffer;
 	}
