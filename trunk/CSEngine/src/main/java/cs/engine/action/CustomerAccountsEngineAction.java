@@ -4,9 +4,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import cs.dao.dao.CustomerAccountsDAO;
-import cs.dao.dao.UserDAO;
 import cs.model.CustomerAccounts;
-import cs.model.User;
 
 public class CustomerAccountsEngineAction
 {
