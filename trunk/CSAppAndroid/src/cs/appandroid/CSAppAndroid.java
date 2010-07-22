@@ -3,7 +3,7 @@ package cs.appandroid;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cs.model.User;
+import cs.model.CustomerAccounts;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +17,7 @@ import android.view.KeyEvent;
 public class CSAppAndroid extends Activity {
 	
 	private static final String TAG = "MainActivity";
-	private static final String URL = "http://10.0.2.2:8888/CSAppWeb/UserWS";
+	private static final String URL = "http://10.0.2.2:8888/CSAppWeb/CustomerAccountsWS";
 	 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -62,17 +62,17 @@ public class CSAppAndroid extends Activity {
 	  JSONObject tmp = ht.SendHttpPost(URL, jsonObjSend,jsonTextView) ;
 	 
 	  String s = "name";
-	  User use = new User();
+	  CustomerAccounts use = new CustomerAccounts();
 
 	  jsonTextView.setText( "interne 9 " + tmp.toString() );
 
 		try {
 			JSONObject ob = tmp.getJSONObject("use");
 
-			use = (User) tmp.get("use");
+			use = (CustomerAccounts) tmp.get("use");
 			
 			//use.setName(ob.getString("name"));
-			jsonTextView.setText( "interne 10 " + use.getName() );
+			jsonTextView.setText( "interne 10 " + use.getCustomerLogin() );
 		} catch (JSONException e) {
 			jsonTextView.setText( "interne 11 " + e);
 			// TODO Auto-generated catch block
