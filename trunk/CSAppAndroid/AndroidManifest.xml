@@ -14,6 +14,7 @@
         </activity>
 
     <activity android:name="AddOffer" android:enabled="true"></activity>
+<activity android:name="MyMessages"></activity>
 </application>
     <uses-sdk android:minSdkVersion="6" />
 	<uses-permission android:name="android.permission.INTERNET" />
