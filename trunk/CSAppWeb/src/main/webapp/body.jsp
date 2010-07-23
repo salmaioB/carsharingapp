@@ -3,6 +3,7 @@
 
 <body>
 	<div id="container"> 
-		BODY	
+		<a href="http://localhost:8888/CSAppWeb/Accueil?type=Offer">Offer</a>
+		<a href="http://localhost:8888/CSAppWeb/Accueil?type=CustomerAccounts">CustomerAccounts</a>
      </div> 
   </body>
