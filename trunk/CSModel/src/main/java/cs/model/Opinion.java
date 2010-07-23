@@ -2,7 +2,7 @@ package cs.model;
 
 import java.util.Date;
 
-public class Opinions
+public class Opinion
 {
 	private Integer id;
 	private Integer idCustomerAccount;

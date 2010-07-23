@@ -2,7 +2,7 @@ package cs.model;
 
 import java.util.Date;
 
-public class Offers
+public class Offer
 {
 	private Integer id;
 	private Integer idOfferType;

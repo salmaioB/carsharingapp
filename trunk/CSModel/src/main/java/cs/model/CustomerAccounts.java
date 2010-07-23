@@ -1,8 +1,9 @@
 package cs.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CustomerAccounts
+public class CustomerAccounts implements Serializable
 {
 	private Integer id;
 	private String customerLogin;

@@ -1,6 +1,6 @@
 package cs.model;
 
-public class Vehicules
+public class Vehicule
 {
 	private Integer id;
 	private String model;

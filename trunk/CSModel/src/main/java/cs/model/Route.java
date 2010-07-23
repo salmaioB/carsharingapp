@@ -1,6 +1,6 @@
 package cs.model;
 
-public class Routes
+public class Route
 {
 	private Integer id;
 	private Integer idOffer;	
