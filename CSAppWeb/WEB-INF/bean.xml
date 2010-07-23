@@ -6,8 +6,13 @@
 -->
 	<bean id="SampleDAO" class="cs.dao.dao.SampleSpring" />
 
-	<!-- General  -->
+	<!-- DAO  -->
 	<bean name="CustomerAccountsDAO" id="CustomerAccountsDAO" class="cs.dao.dao.CustomerAccountsDAO">
+		<property name="mySessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="OfferDAO" id="OfferDAO" class="cs.dao.dao.OfferDAO">
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
