@@ -2,4 +2,8 @@
 <resources>
     <string name="hello">Hello World, CSAppAndroid!</string>
     <string name="app_name">CSAppAndroid</string>
+    <string name="offer_search">Recherche une offre</string>
+    <string name="add_offer">Poster une offre</string>
+    <string name="my_offers">Mes offres</string>
+    <string name="my_messages">Mes messages</string> 
 </resources>
