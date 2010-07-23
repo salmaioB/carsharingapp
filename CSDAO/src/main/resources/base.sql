@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.3deb1ubuntu1.3
+-- version 3.1.2deb1ubuntu0.2
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mer 21 Juillet 2010 à 01:08
--- Version du serveur: 5.0.51
--- Version de PHP: 5.2.4-2ubuntu5.10
+-- Généré le : Ven 23 Juillet 2010 à 16:49
+-- Version du serveur: 5.0.75
+-- Version de PHP: 5.2.6-3ubuntu4.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -35,17 +35,19 @@ CREATE TABLE IF NOT EXISTS `customer_accounts` (
   `accept_smoker` tinyint(1) unsigned NOT NULL,
   `accept_to_discuss` tinyint(1) unsigned NOT NULL,
   `accept_to_make_a_detour` tinyint(1) unsigned NOT NULL,
-  `datetime_registration` datetime NOT NULL,
-  `datetime_last_connection` datetime NOT NULL,
-  `datetime_last_offer_created` datetime NOT NULL,
-  `datetime_last_car_sharing` datetime NOT NULL,
+  `datetime_registration` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `datetime_last_connection` timestamp NULL default '0000-00-00 00:00:00',
+  `datetime_last_offer_created` timestamp NULL default '0000-00-00 00:00:00',
+  `datetime_last_car_sharing` timestamp NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`_id_customer_account`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `customer_accounts`
 --
 
+INSERT INTO `customer_accounts` (`_id_customer_account`, `customer_login`, `customer_password`, `last_name`, `first_name`, `email_address`, `phone`, `mobile`, `customer_type`, `_id_vehicule`, `accept_animals`, `accept_radio`, `accept_smoker`, `accept_to_discuss`, `accept_to_make_a_detour`, `datetime_registration`, `datetime_last_connection`, `datetime_last_offer_created`, `datetime_last_car_sharing`) VALUES
+(1, 'login', 'password', 'lastname', 'firstname', 'email@free.fr', 130937747, 688958079, 0, 0, 0, 0, 0, 0, 0, '2010-07-22 15:07:42', '2010-07-22 00:00:00', '2010-07-23 00:00:00', '2010-07-23 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -54,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `customer_accounts` (
 --
 
 CREATE TABLE IF NOT EXISTS `offers` (
-  `_id_offer` int(11) unsigned NOT NULL,
+  `_id_offer` int(11) unsigned NOT NULL auto_increment,
   `_id_offer_type` int(11) unsigned NOT NULL,
   `_id_driver` int(11) unsigned NOT NULL,
   `title` varchar(40) NOT NULL,
@@ -63,13 +65,16 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `number_of_place_remaining` tinyint(1) unsigned NOT NULL,
   `price_per_passenger` float(4,2) unsigned NOT NULL,
   `datetime_started` datetime NOT NULL,
-  `datetime_ended` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `datetime_ended` datetime NOT NULL,
+  PRIMARY KEY  (`_id_offer`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `offers`
 --
 
+INSERT INTO `offers` (`_id_offer`, `_id_offer_type`, `_id_driver`, `title`, `description`, `number_of_place_initial`, `number_of_place_remaining`, `price_per_passenger`, `datetime_started`, `datetime_ended`) VALUES
+(1, 1, 1, 'title', 'description', 1, 1, 1.00, '2010-07-23 16:48:08', '2010-07-23 16:48:12');
 
 -- --------------------------------------------------------
 
