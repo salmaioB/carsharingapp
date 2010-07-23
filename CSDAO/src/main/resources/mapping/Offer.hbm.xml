@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cs.model">
+    <class name="Offer" table="offers">
+        <id name="id" column="_id_offer">
+            <generator class="native"/>
+        </id>
+        <property name="idOfferType" type="integer" column="_id_offer_type"/>
+        <property name="idDriver" type="integer" column="_id_driver"/>
+        <property name="title" type="string" column="title"/>
+        <property name="description" type="string" column="description"/>
+        <property name="numberOfPlaceInitial" type="integer" column="number_of_place_initial"/>
+        <property name="numberOfPlaceRemaining" type="integer" column="number_of_place_remaining"/>
+        <property name="pricePerPassenger" type="float" column="price_per_passenger"/>
+        <property name="dateStarted" type="timestamp" column="datetime_started"/>
+        <property name="dateEnded" type="timestamp" column="datetime_ended"/>
+     </class>
+</hibernate-mapping>
