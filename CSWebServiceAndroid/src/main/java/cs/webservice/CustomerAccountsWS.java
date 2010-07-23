@@ -44,7 +44,8 @@ public class CustomerAccountsWS
 	  CustomerAccounts use = new CustomerAccounts();
 
 		try {
-			use.setCustomerLogin( jsonObject.getString("customerLogin") );
+			JSONObject tmp = jsonObject.getJSONObject("use");
+			use.setCustomerLogin( tmp.getString("customerLogin") );
 			return use;
 		}
 		catch (JSONException e)
