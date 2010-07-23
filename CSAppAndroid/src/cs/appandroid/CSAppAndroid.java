@@ -47,10 +47,15 @@ public class CSAppAndroid extends Activity
 	 {
 	    public void onClick(int position)
 	    {
-	      if(position == 1)
+	      switch(position)
 	      {
-	       Intent intent = new Intent(CSAppAndroid.this, AddOffer.class);
-		   startActivity(intent);
+	       case 1: Intent intent = new Intent(CSAppAndroid.this, AddOffer.class);
+		           startActivity(intent);
+		           break;
+	       case 3: Intent intent2 = new Intent(CSAppAndroid.this, MyMessages.class);
+                   startActivity(intent2);
+	    	       break;
+	       default: break;
 	      }
 	    }
 	 }
