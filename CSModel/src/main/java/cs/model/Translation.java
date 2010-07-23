@@ -1,6 +1,6 @@
 package cs.model;
 
-public class Translations
+public class Translation
 {
 	private Integer id;
 	private Integer idTranslationValue;
