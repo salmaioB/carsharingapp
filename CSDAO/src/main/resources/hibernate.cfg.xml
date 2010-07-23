@@ -13,6 +13,7 @@
 		
 		<!-- Mapping base -->
 		<mapping resource="mapping/CustomerAccounts.hbm.xml" />
+		<mapping resource="mapping/Offers.hbm.xml" />
 
 	</session-factory>
 </hibernate-configuration>
