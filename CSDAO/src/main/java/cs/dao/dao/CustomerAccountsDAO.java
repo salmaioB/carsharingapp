@@ -9,7 +9,7 @@ import cs.model.CustomerAccounts;
 
 public class CustomerAccountsDAO extends DAO
 {
-	public CustomerAccounts load(Integer id) throws HibernateException
+	public CustomerAccounts load(Integer id)
 	{
 		 //Open session
 		 Session session = HibernateUtil.currentSession();
@@ -23,7 +23,7 @@ public class CustomerAccountsDAO extends DAO
 
 		 return ca;
 	}
-	public Boolean save(CustomerAccounts ca) throws HibernateException
+	public Boolean save(CustomerAccounts ca)
 	{
 		 
 		 Session session = HibernateUtil.currentSession();		   
