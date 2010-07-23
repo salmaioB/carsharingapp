@@ -6,11 +6,11 @@ import org.springframework.core.io.ClassPathResource;
 import cs.dao.dao.CustomerAccountsDAO;
 import cs.model.CustomerAccounts;
 
-public class CustomerAccountsEngineAction
+public class CustomerAccountEngineAction
 {
 	private CustomerAccountsDAO caBean;
 	
-	public CustomerAccountsEngineAction()
+	public CustomerAccountEngineAction()
 	{
 		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
 		caBean = (CustomerAccountsDAO) beanFactory.getBean("CustomerAccountsDAO");
