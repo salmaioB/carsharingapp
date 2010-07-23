@@ -6,15 +6,13 @@
 	
 	<bean id="SampleDAO" class="cs.dao.dao.SampleSpring" />
 	
-	<!-- General  -->
-<!-- 
-	<bean name="UserDAO" id="UserDAO" class="cs.dao.dao.UserDAO">
+	<!-- DAO  -->
+	<bean name="CustomerAccountsDAO" id="CustomerAccountsDAO" class="cs.dao.dao.CustomerAccountsDAO">
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
--->
-	<bean name="CustomerAccountsDAO" id="CustomerAccountsDAO" class="cs.dao.dao.CustomerAccountsDAO">
+	<bean name="OfferDAO" id="OfferDAO" class="cs.dao.dao.OfferDAO">
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
@@ -29,74 +27,4 @@
   			 <value>org.hibernate.cfg.AnnotationConfiguration</value>
 		</property>
 	</bean>
-<!-- 
-	<bean name="UserDAO" class="cs.dao.dao.UserDAO" >
-		<property name="sessionFactory">
-			<ref 
-	<bean name="UserDAO" class="cs.dao.dao.UserDAO" >
-		<property name="sessionFactory">
-			<ref bean="mySessionFactory"/>
-		</property>
-	</bean>
-	
-	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName">
-			<value>com.mysql.jdbc.Driver</value>
-		</property>
-		<property name="url">
-			<value>jdbc:mysql://localhost/spring</value>
-		</property>
-		<property name="username">
-			<value>root</value>
-		</property>
-		<property name="password">
-			<value>olioli</value>
-		</property>
-	</bean>
-	<bean id="mySessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
-		<property name="mappingRessources">
-			<list>
-				<value>userSample.hbm.xml</value>
-			</list>
-		</property>
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">
-					org.hibernate.dialect.MySQLDialect
-				</prop>
-			</props>
-		</property>
-	</bean>bean="mySessionFactory"/>
-		</property>
-	</bean>
-	
-	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName">
-			<value>com.mysql.jdbc.Driver</value>
-		</property>
-		<property name="url">
-			<value>jdbc:mysql://localhost/spring</value>
-		</property>
-		<property name="username">
-			<value>root</value>
-		</property>
-		<property name="password">
-			<value>olioli</value>
-		</property>
-	</bean>
-	<bean id="mySessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
-		<property name="mappingRessources">
-			<list>
-				<value>userSample.hbm.xml</value>
-			</list>
-		</property>
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">
-					org.hibernate.dialect.MySQLDialect
-				</prop>
-			</props>
-		</property>
-	</bean>
-	-->
 </beans>

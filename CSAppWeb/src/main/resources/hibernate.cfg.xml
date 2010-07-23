@@ -12,5 +12,6 @@
 		<property name="connection.password">olioli</property>
 		<!-- Mapping base -->
 		<mapping resource="mapping/CustomerAccounts.hbm.xml"/>
+		<mapping resource="mapping/Offer.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>
