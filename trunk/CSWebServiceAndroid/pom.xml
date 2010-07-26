@@ -16,75 +16,11 @@
 			<scope>test</scope>
 		</dependency>
 
-    <dependency>
-      <groupId>com.google.code.ksoap2-android</groupId>
-      <artifactId>ksoap2-android</artifactId>
-      <version>2.3</version>
-    </dependency>
-<!-- 
-org.microemu:microemu-demo:jar:3.0.0-SNAPSHOT	-
-org.microemu:microemu-device-large:jar:3.0.0-SNAPSHOT	-
-org.microemu:microemu-device-minimum:jar:3.0.0-SNAPSHOT	-
-org.microemu:microemu-jsr-75:jar:3.0.0-SNAPSHOT	-
-org.microemu:microemu-nokiaui:jar:3.0.0-SNAPSHOT	-
-org.microemu:microemu-siemensapi:jar:3.0.0-SNAPSHOT	-
-org.microemu:microemulator:jar:3.0.0-SNAPSHOT
--->
- 	<dependency>
-            <groupId>org.microemu</groupId>
-            <artifactId>microemu-javase</artifactId>
-            <version>2.0.1</version>
-   </dependency>
-   <dependency>
-    <groupId>org.microemu</groupId>
-    <artifactId>midpapi20</artifactId>
-    <version>2.0.3</version>
-</dependency>
-        <!-- 
-        <dependency>
-             <groupId>org.microemu</groupId>
-             <artifactId>midpapi20</artifactId>
-             <version>2.0.2</version>
-        </dependency>
-        -->
-        <dependency>
-            <groupId>org.microemu</groupId>
-            <artifactId>microemulator</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.microemu</groupId>
-            <artifactId>midpapi20</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.microemu</groupId>
-            <artifactId>microemu-device-large</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-
-        <!--<dependency>
-            <groupId>com.openlapi</groupId>
-            <artifactId>openlapi-jsr179</artifactId>
-            <version>0.9.11</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.openlapi</groupId>
-            <artifactId>openlapi</artifactId>
-            <version>0.9.11</version>
-            <scope>provided</scope>
-        </dependency>-->
-
-
 		<dependency>
 			<groupId>cs.model</groupId>
 			<artifactId>CSModel</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
-		
-		
 	</dependencies>
 	<build>
 	<!--
@@ -105,104 +41,6 @@ org.microemu:microemulator:jar:3.0.0-SNAPSHOT
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-
-			<plugin>
-                <groupId>com.pyx4me</groupId>
-                <artifactId>j2me-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>package</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <useWtkLibs>false</useWtkLibs>
-                    <proguardPreverify>true</proguardPreverify>
-                    <proguardInclude>proguard.conf</proguardInclude>
-                    <proguard>true</proguard>
-                    <obfuscate>true</obfuscate>
-                    <jadAttributes>
-                        <MIDlet-Vendor>${project.organization.name}</MIDlet-Vendor>
-                        <Created-By>Sebastien Arbogast</Created-By>
-                        <MIDlet-Permissions>javax.microedition.io.Connector.http</MIDlet-Permissions>
-                        <!--
-                              To ask the platform to optionally grant permissions provided certain API-subsets are available, use:
-                              <MIDlet-Permissions-Opt>javax.wireless.messaging.sms.receive,javax.wireless.messaging.sms.send</MIDlet-Permissions-Opt>
-                              -->
-                    </jadAttributes>
-                    <midlets>
-                        <!-- for each MIDlet entry-point, simply reiterate this section -->
-                        <MIDlet>
-                            <name>MobiMap</name>
-                            <icon>/images/mobimap-48.png</icon>
-                            <class>org.epseelon.mobimap.MobiMapMIDlet</class>
-                        </MIDlet>
-                    </midlets>
-                    <!-- 
-                    <libs>
-                        <lib>${settings.localRepository}/org/microemu/cldcapi11/2.0.2/cldcapi11-2.0.2.jar</lib>
-                        <lib>${settings.localRepository}/org/microemu/midpapi20/2.0.2/midpapi20-2.0.2.jar</lib>
-                    </libs>
-                    -->
-                    <!-- 
-                       <dependencies>
-                        <dependency>
-                            <groupId>org.microemu</groupId>
-                            <artifactId>microemulator</artifactId>
-                            <exclude>true</exclude>
-                            <withTrail>true</withTrail>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.microemu</groupId>
-                            <artifactId>microemu-device-large</artifactId>
-                            <exclude>true</exclude>
-                            <withTrail>true</withTrail>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.microemu</groupId>
-                            <artifactId>midpapi20</artifactId>
-                            <exclude>true</exclude>
-                            <withTrail>true</withTrail>
-                        </dependency>
-                    </dependencies>
-                    -->
-                </configuration>
-            </plugin>
-			
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>googlecode-ksoap2-android</id>
-			<name>googlecode-ksoap2-android</name>
-			<url>http://ksoap2-android.googlecode.com/svn/m2-repo</url>
-		</repository>
-		<repository>
-			<id>apache-snapshots</id>
-			<name>Apache SNAPSHOT Repository</name>
-			<url>http://people.apache.org/repo/m2-snapshot-repository/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>apache-incubating</id>
-			<name>Apache Incubating Repository</name>
-			<url>http://people.apache.org/repo/m2-incubating-repository/</url>
-		</repository>
-		<repository>
-			<id>apache-snapshots</id>
-			<name>Apache SNAPSHOT Repository</name>
-			<url>http://people.apache.org/repo/m2-snapshot-repository/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>apache-incubating</id>
-			<name>Apache Incubating Repository</name>
-			<url>http://people.apache.org/repo/m2-incubating-repository/</url>
-		</repository>
-	</repositories>
 </project>
