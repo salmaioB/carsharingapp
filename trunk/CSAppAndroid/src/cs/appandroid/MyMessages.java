@@ -16,7 +16,6 @@ import android.view.KeyEvent;
 public class MyMessages extends Activity
 {	
 	private static final String TAG = "MyMessages";
-	private static final String URL = "http://10.0.2.2:8888/CSAppWeb/UserWS";
 	 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -33,6 +32,6 @@ public class MyMessages extends Activity
 		CustomerAccountsWS caws = new CustomerAccountsWS();
 		CustomerAccounts ca = caws.getCustomerAccounts(1);
 		
-		jsonTextView.setText("login : "+ ca.getCustomerLogin() );	
+		jsonTextView.setText("login : "+ ca.getCustomerLogin());	
 	}
 }
