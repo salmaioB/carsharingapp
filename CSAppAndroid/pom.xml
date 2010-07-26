@@ -10,6 +10,16 @@
    <description>Maven Plugins Project for Android</description>
    
    <dependencies>
+	   <dependency>
+		   	<groupId>cs.webserviceandroid</groupId>
+			<artifactId>CSWebServiceAndroid</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	   <dependency>
+		   	<groupId>cs.model</groupId>
+			<artifactId>CSModel</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
    		<dependency>
 			<groupId>cs.engine</groupId>
 			<artifactId>CSEngine</artifactId>
