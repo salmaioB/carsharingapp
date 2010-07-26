@@ -16,8 +16,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import org.json.JSONObject;
-import android.util.Log;
-import android.widget.TextView;
 	 
 public class HttpClient
 {
