@@ -12,10 +12,7 @@ import android.widget.GridView;
 public class CSAppAndroid extends Activity
 {	
 	private static final String TAG = "MainActivity";
-	
-	// TO BE DELETED
-	private static final String URL = "http://10.0.2.2:8888/CSAppWeb/CustomerAccountsWS";
-	
+		
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{	
@@ -28,19 +25,6 @@ public class CSAppAndroid extends Activity
         MyCustomGridView mGrid = (MyCustomGridView) findViewById(R.id.my_custom_grid_view);
         mGrid.setListener(new ItemListener());
         mGrid.setAdapter(new HomeMenuAdapter(this));
-        
-//        gridview.setOnClickListener(this);
-        
-//        gridview.setOnClickListener(new View.OnClickListener()
-//        {	
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Log.v(TAG, "Test logger");
-//			}
-//		});
-        
-		//Log.v(TAG, "Test logger");
 	}
 
 	 private class ItemListener implements MyCustomGridView.Listener
@@ -49,11 +33,14 @@ public class CSAppAndroid extends Activity
 	    {
 	      switch(position)
 	      {
-	       case 1: Intent intent = new Intent(CSAppAndroid.this, AddOffer.class);
-		           startActivity(intent);
+	       case 0: Intent intent = new Intent(CSAppAndroid.this, SearchOffers.class);
+	       		   startActivity(intent);
+	       		   break;
+	       case 1: Intent intent2 = new Intent(CSAppAndroid.this, AddOffer.class);
+		           startActivity(intent2);
 		           break;
-	       case 3: Intent intent2 = new Intent(CSAppAndroid.this, MyMessages.class);
-                   startActivity(intent2);
+	       case 3: Intent intent3 = new Intent(CSAppAndroid.this, MyMessages.class);
+                   startActivity(intent3);
 	    	       break;
 	       default: break;
 	      }

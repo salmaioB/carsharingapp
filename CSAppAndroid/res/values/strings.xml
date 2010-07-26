@@ -5,5 +5,6 @@
     <string name="offer_search">Recherche une offre</string>
     <string name="add_offer">Poster une offre</string>
     <string name="my_offers">Mes offres</string>
-    <string name="my_messages">Mes messages</string> 
+    <string name="my_messages">Mes messages</string>
+    <string name="no_items_find">Pas de résultat</string>
 </resources>
