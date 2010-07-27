@@ -4,18 +4,19 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import cs.dao.dao.RouteToCustomerAccountDAO;
-import cs.model.RouteToCustomerAccount;
+import cs.model.RoutesToCustomerAccount;
 
-public class RouteToCustomerAccountEngineAction
+public class RoutesToCustomerAccountEngineAction
 {
 	private RouteToCustomerAccountDAO caBean;
 	
-	public RouteToCustomerAccountEngineAction()
+	public RoutesToCustomerAccountEngineAction()
 	{
 		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
 		caBean = (RouteToCustomerAccountDAO) beanFactory.getBean("RouteToCustomerAccountDAO");
 	}
-	public RouteToCustomerAccount load(Integer id)
+	
+	public RoutesToCustomerAccount load(Integer id)
 	{
 		if(caBean != null)
 		{
