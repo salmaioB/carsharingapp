@@ -9,13 +9,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cs.httpclient.HttpClient;
-import cs.model.CustomerAccounts;
+import cs.model.CustomerAccount;
 
 public class CustomerAccountsWS
 {
-	private static final String URL = "http://10.0.2.2:8888/CSAppWeb/CustomerAccountsWS"; 
+	private static final String URL = "http://10.0.2.2:8080/CSAppWeb/CustomerAccountsWS";
 	
-	public CustomerAccounts getCustomerAccounts(Integer id)
+	public CustomerAccount getCustomerAccounts(Integer id)
 	{
 		// JSON object to hold the information, which is sent to the server	 
 		JSONObject jsonObjSend = new JSONObject();
@@ -41,17 +41,17 @@ public class CustomerAccountsWS
 		
 	  JSONObject jsonObject = ht.SendHttpPost(URL, jsonObjSend, nameValuePairs) ;
 
-	  CustomerAccounts use = new CustomerAccounts();
+	  CustomerAccount customerAccount = new CustomerAccount();
 
 		try {
 			JSONObject tmp = jsonObject.getJSONObject("use");
-			use.setCustomerLogin( tmp.getString("customerLogin") );
-			return use;
+			customerAccount.setCustomerLogin( tmp.getString("customerLogin") );
+			return customerAccount;
 		}
 		catch (JSONException e)
 		{
 			e.printStackTrace();
 		}
-		return use;
+		return customerAccount;
 	}
 }
