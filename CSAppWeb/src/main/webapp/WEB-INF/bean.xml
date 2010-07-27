@@ -16,7 +16,36 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-
+	<bean name="OffersToCustomerAccountsDAO" id="OffersToCustomerAccountsDAO" class="cs.dao.dao.OffersToCustomerAccountsDAO">
+		<property name="mySessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+		<bean name="OpinionDAO" id="OpinionDAO" class="cs.dao.dao.OpinionDAO">
+		<property name="mySessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+		<bean name="RouteDAO" id="RouteDAO" class="cs.dao.dao.RouteDAO">
+		<property name="mySessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+		<bean name="RouteToCustomerAccountDAO" id="RouteToCustomerAccountDAO" class="cs.dao.dao.RouteToCustomerAccountDAO">
+		<property name="mySessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+		<bean name="TranslationDAO" id="TranslationDAO" class="cs.dao.dao.TranslationDAO">
+		<property name="mySessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+		<bean name="TranslationValueDAO" id="TranslationValueDAO" class="cs.dao.dao.TranslationValueDAO">
+		<property name="mySessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 	<!-- sessionFactory  -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="configLocation">
