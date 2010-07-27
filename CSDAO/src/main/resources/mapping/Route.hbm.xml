@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cs.model">
+    <class name="Route" table="routes">
+        <id name="id" column="_id_offer">
+            <generator class="native"/>
+        </id>
+        <property name="idOffer" type="integer" column="_id_offer"/>
+        <property name="idPassenger" type="integer" column="_id_passenger"/>
+        <property name="startingAddress" type="string" column="starting_address"/>
+        <property name="finishingAddress" type="string" column="finishing_address"/>
+        <property name="price" type="float" column="price"/>
+        <property name="conversionRateToEuro" type="float" column="conversion_rate_to_euro"/>
+        <property name="currencyCode" type="string" column="currency_code"/>
+     </class>
+</hibernate-mapping>
