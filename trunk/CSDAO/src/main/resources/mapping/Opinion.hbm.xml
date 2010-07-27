@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cs.model">
+    <class name="Opinion" table="opinions">
+        <id name="id" column="_id_opinion">
+            <generator class="native"/>
+        </id>
+        <property name="idCustomerAccount" type="integer" column="_id_customer_account"/>
+        <property name="positiveOrNegative" type="integer" column="positive_or_negative"/>
+        <property name="comment" type="string" column="comment"/>
+        <property name="dateCreated" type="timestamp" column="datetime_created"/>
+     </class>
+</hibernate-mapping>

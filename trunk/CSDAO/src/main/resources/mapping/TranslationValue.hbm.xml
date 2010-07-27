@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cs.model">
+    <class name="TranslationValue" table="translation_values">
+        <id name="id" column="_id_translation_value">
+            <generator class="native"/>
+        </id>
+        <property name="translationValue" type="string" column="translation_value"/>
+        <property name="languageCode" type="string" column="language_code"/>
+		<property name="countryCode" type="string" column="country_code"/>
+     </class>
+</hibernate-mapping>
