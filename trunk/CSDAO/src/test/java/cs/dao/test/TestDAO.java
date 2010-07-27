@@ -1,7 +1,7 @@
 package cs.dao.test;
 
 import cs.dao.dao.CustomerAccountsDAO;
-import cs.model.CustomerAccounts;
+import cs.model.CustomerAccount;
 import junit.framework.TestCase;
 /*
 public class TestDAO extends TestCase

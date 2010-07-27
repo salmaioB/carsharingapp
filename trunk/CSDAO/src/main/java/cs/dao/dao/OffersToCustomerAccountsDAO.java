@@ -1,11 +1,9 @@
 package cs.dao.dao;
 
 import org.hibernate.Session;
-
 import org.hibernate.Transaction;
-
 import cs.dao.util.HibernateUtil;
-import cs.model.OffersToCustomerAccounts;
+import cs.model.OffersToCustomerAccount;
 import cs.dao.DAO;
 
 public class OffersToCustomerAccountsDAO extends DAO
@@ -17,7 +15,8 @@ public class OffersToCustomerAccountsDAO extends DAO
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.OffersToCustomerAccountsDAO");
 	}
-	public OffersToCustomerAccounts load(Integer id)
+	
+	public OffersToCustomerAccount load(Integer id)
 	{
 		 //Open session
 		 Session session = HibernateUtil.currentSession();
@@ -25,13 +24,14 @@ public class OffersToCustomerAccountsDAO extends DAO
 		 session.beginTransaction();
 
 		 //Load Data objec
-		 OffersToCustomerAccounts of = (OffersToCustomerAccounts) session.load( OffersToCustomerAccounts.class, id );
+		 OffersToCustomerAccount of = (OffersToCustomerAccount)session.load(OffersToCustomerAccount.class, id);
 		 
 		 tx.commit();
 
 		 return of;
 	}
-	public Boolean save(OffersToCustomerAccounts of)
+	
+	public Boolean save(OffersToCustomerAccount offerToCustomerAccount)
 	{
 		 
 		 Session session = HibernateUtil.currentSession();		   
@@ -39,7 +39,7 @@ public class OffersToCustomerAccountsDAO extends DAO
   
 		 session.beginTransaction();
 
-		 session.save(of);
+		 session.save(offerToCustomerAccount);
 
 		 tx.commit();
 		 HibernateUtil.closeSession();

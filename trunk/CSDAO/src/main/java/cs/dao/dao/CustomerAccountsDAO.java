@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import cs.dao.util.HibernateUtil;
-import cs.model.CustomerAccounts;
+import cs.model.CustomerAccount;
 import cs.dao.DAO;
 
 public class CustomerAccountsDAO extends DAO
@@ -17,21 +17,23 @@ public class CustomerAccountsDAO extends DAO
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.CustomerAccountsDAO");
 	}
-	public CustomerAccounts load(Integer id)
+	
+	public CustomerAccount load(Integer id)
 	{
 		 //Open session
 		 Session session = HibernateUtil.currentSession();
 		 Transaction tx = session.beginTransaction();
 		 session.beginTransaction();
 
-		 //Load Data objec
-		 CustomerAccounts ca = (CustomerAccounts) session.load( CustomerAccounts.class, id );
+		 //Load Data object
+		 CustomerAccount ca = (CustomerAccount) session.load(CustomerAccount.class, id);
 		 
 		 tx.commit();
 
 		 return ca;
 	}
-	public Boolean save(CustomerAccounts ca)
+	
+	public Boolean save(CustomerAccount ca)
 	{
 		 
 		 Session session = HibernateUtil.currentSession();		   

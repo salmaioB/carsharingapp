@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import cs.dao.util.HibernateUtil;
-import cs.model.RouteToCustomerAccount;
+import cs.model.RoutesToCustomerAccount;
 
 import cs.dao.DAO;
 
@@ -17,21 +17,22 @@ public class RouteToCustomerAccountDAO extends DAO
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.RouteToCustomerAccountDAO");
 	}
-	public RouteToCustomerAccount load(Integer id)
+	public RoutesToCustomerAccount load(Integer id)
 	{
 		 //Open session
 		 Session session = HibernateUtil.currentSession();
 		 Transaction tx = session.beginTransaction();
 		 session.beginTransaction();
 
-		 //Load Data objec
-		 RouteToCustomerAccount of = (RouteToCustomerAccount) session.load( RouteToCustomerAccount.class, id );
+		 //Load Data object
+		 RoutesToCustomerAccount of = (RoutesToCustomerAccount)session.load(RoutesToCustomerAccount.class, id);
 		 
 		 tx.commit();
 
 		 return of;
 	}
-	public Boolean save(RouteToCustomerAccount of)
+	
+	public Boolean save(RoutesToCustomerAccount routesToCustomerAccount)
 	{
 		 
 		 Session session = HibernateUtil.currentSession();		   
@@ -39,7 +40,7 @@ public class RouteToCustomerAccountDAO extends DAO
   
 		 session.beginTransaction();
 
-		 session.save(of);
+		 session.save(routesToCustomerAccount);
 
 		 tx.commit();
 		 HibernateUtil.closeSession();
