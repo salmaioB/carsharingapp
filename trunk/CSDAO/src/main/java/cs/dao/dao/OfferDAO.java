@@ -9,6 +9,13 @@ import cs.dao.DAO;
 
 public class OfferDAO extends DAO
 {
+	/**
+	 * Constructor by default
+	 */
+	public OfferDAO()
+	{
+		System.out.println("[Spring] load class:cs.dao.dao.OfferDAO");
+	}
 	public Offer load(Integer id)
 	{
 		 //Open session
