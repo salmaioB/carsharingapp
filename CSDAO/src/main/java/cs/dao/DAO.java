@@ -15,11 +15,4 @@ public class DAO
 	public void setMySessionFactory(SessionFactory mySessionFactory) {
 		this.mySessionFactory = mySessionFactory;
 	}
-	/**
-	 * Constructor by default
-	 */
-	public DAO()
-	{
-		System.out.println("construct DAO");
-	}
 }

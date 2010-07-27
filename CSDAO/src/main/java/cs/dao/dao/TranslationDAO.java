@@ -10,6 +10,13 @@ import cs.dao.DAO;
 
 public class TranslationDAO extends DAO
 {
+	/**
+	 * Constructor by default
+	 */
+	public TranslationDAO()
+	{
+		System.out.println("[Spring] load class:cs.dao.dao.TranslationDAO");
+	}
 	public Translation load(Integer id)
 	{
 		 //Open session

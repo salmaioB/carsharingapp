@@ -10,6 +10,13 @@ import cs.dao.DAO;
 
 public class OpinionDAO extends DAO
 {
+	/**
+	 * Constructor by default
+	 */
+	public OpinionDAO()
+	{
+		System.out.println("[Spring] load class:cs.dao.dao.OpinionDAO");
+	}
 	public Opinion load(Integer id)
 	{
 		 //Open session

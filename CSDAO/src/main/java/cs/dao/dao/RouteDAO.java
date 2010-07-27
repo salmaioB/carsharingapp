@@ -10,6 +10,13 @@ import cs.dao.DAO;
 
 public class RouteDAO extends DAO
 {
+	/**
+	 * Constructor by default
+	 */
+	public RouteDAO()
+	{
+		System.out.println("[Spring] load class:cs.dao.dao.RouteDAO");
+	}
 	public Route load(Integer id)
 	{
 		 //Open session

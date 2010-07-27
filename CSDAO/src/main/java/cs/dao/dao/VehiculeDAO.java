@@ -10,6 +10,13 @@ import cs.dao.DAO;
 
 public class VehiculeDAO extends DAO
 {
+	/**
+	 * Constructor by default
+	 */
+	public VehiculeDAO()
+	{
+		System.out.println("[Spring] load class:cs.dao.dao.VehiculeDAO");
+	}
 	public Vehicule load(Integer id)
 	{
 		 //Open session
