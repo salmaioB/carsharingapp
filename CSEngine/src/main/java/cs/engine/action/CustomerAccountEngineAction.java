@@ -4,7 +4,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import cs.dao.dao.CustomerAccountsDAO;
-import cs.model.CustomerAccounts;
+import cs.model.CustomerAccount;
 
 public class CustomerAccountEngineAction
 {
@@ -15,7 +15,8 @@ public class CustomerAccountEngineAction
 		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
 		caBean = (CustomerAccountsDAO) beanFactory.getBean("CustomerAccountsDAO");
 	}
-	public CustomerAccounts load(Integer id)
+	
+	public CustomerAccount load(Integer id)
 	{
 		if(caBean != null)
 		{
