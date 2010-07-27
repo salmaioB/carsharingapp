@@ -20,12 +20,12 @@ public class TranslationValueDAO extends DAO
 	
 	public TranslationValue load(Integer id)
 	{
-		 //Open session
+		 // Open session
 		 Session session = HibernateUtil.currentSession();
 		 Transaction tx = session.beginTransaction();
 		 session.beginTransaction();
 
-		 //Load Data objec
+		 // Load Data object
 		 TranslationValue of = (TranslationValue) session.load( TranslationValue.class, id );
 		 
 		 tx.commit();
