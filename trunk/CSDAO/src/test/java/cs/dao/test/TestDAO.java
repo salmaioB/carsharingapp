@@ -3,7 +3,7 @@ package cs.dao.test;
 import cs.dao.dao.CustomerAccountsDAO;
 import cs.model.CustomerAccounts;
 import junit.framework.TestCase;
-
+/*
 public class TestDAO extends TestCase
 {
 	public void testaddCustomerAccountDAO()
@@ -20,3 +20,4 @@ public class TestDAO extends TestCase
 		System.out.println("save customerAccounts");
 	}
 }
+*/
