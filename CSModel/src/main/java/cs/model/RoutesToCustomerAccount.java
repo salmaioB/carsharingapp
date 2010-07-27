@@ -1,6 +1,6 @@
 package cs.model;
 
-public class RouteToCustomerAccount
+public class RoutesToCustomerAccount
 {
 	private Integer id;
 	private Integer idRoute;
