@@ -1,6 +1,6 @@
 package cs.model;
 
-public class OffersToCustomerAccounts
+public class OffersToCustomerAccount
 {
 	private Integer id;
 	private Integer idOffer;

@@ -3,7 +3,7 @@ package cs.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class CustomerAccounts implements Serializable
+public class CustomerAccount implements Serializable
 {
 	private Integer id;
 	private String customerLogin;
@@ -39,6 +39,7 @@ public class CustomerAccounts implements Serializable
 	public void setCustomerLogin(String customerLogin) {
 		this.customerLogin = customerLogin;
 	}	
+	
 	public String getCustomerPassword() {
 		return customerPassword;
 	}
