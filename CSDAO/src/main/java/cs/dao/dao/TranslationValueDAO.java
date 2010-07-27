@@ -17,6 +17,7 @@ public class TranslationValueDAO extends DAO
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.TranslationValueDAO");
 	}
+	
 	public TranslationValue load(Integer id)
 	{
 		 //Open session
@@ -31,6 +32,7 @@ public class TranslationValueDAO extends DAO
 
 		 return of;
 	}
+	
 	public Boolean save(TranslationValue of)
 	{
 		 
