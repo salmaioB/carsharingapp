@@ -4,12 +4,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import cs.dao.util.HibernateUtil;
-import cs.model.Offer;
+import cs.model.Vehicule;
+
 import cs.dao.DAO;
 
-public class OfferDAO extends DAO
+public class VehiculeDAO extends DAO
 {
-	public Offer load(Integer id)
+	public Vehicule load(Integer id)
 	{
 		 //Open session
 		 Session session = HibernateUtil.currentSession();
@@ -17,13 +18,13 @@ public class OfferDAO extends DAO
 		 session.beginTransaction();
 
 		 //Load Data objec
-		 Offer of = (Offer) session.load( Offer.class, id );
+		 Vehicule of = (Vehicule) session.load( Vehicule.class, id );
 		 
 		 tx.commit();
 
 		 return of;
 	}
-	public Boolean save(Offer of)
+	public Boolean save(Vehicule of)
 	{
 		 
 		 Session session = HibernateUtil.currentSession();		   

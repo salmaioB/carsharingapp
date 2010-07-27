@@ -4,12 +4,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import cs.dao.util.HibernateUtil;
-import cs.model.Offer;
+import cs.model.Opinion;
+
 import cs.dao.DAO;
 
-public class OfferDAO extends DAO
+public class OpinionDAO extends DAO
 {
-	public Offer load(Integer id)
+	public Opinion load(Integer id)
 	{
 		 //Open session
 		 Session session = HibernateUtil.currentSession();
@@ -17,13 +18,13 @@ public class OfferDAO extends DAO
 		 session.beginTransaction();
 
 		 //Load Data objec
-		 Offer of = (Offer) session.load( Offer.class, id );
+		 Opinion of = (Opinion) session.load( Opinion.class, id );
 		 
 		 tx.commit();
 
 		 return of;
 	}
-	public Boolean save(Offer of)
+	public Boolean save(Opinion of)
 	{
 		 
 		 Session session = HibernateUtil.currentSession();		   

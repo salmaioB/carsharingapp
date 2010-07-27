@@ -1,4 +1,4 @@
-package cs.dao.dao;
+package cs.dao;
 
 import org.hibernate.SessionFactory;
 

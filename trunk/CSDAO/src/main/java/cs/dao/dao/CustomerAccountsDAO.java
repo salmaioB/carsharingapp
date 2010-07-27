@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 
 import cs.dao.util.HibernateUtil;
 import cs.model.CustomerAccounts;
+import cs.dao.DAO;
 
 public class CustomerAccountsDAO extends DAO
 {
