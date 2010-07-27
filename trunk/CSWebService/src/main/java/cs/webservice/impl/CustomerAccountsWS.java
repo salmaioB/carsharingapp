@@ -10,46 +10,43 @@ import java.io.OutputStream;
 import com.opensymphony.xwork2.ActionSupport;
 
 import cs.dao.dao.CustomerAccountsDAO;
-import cs.model.CustomerAccounts;
+import cs.model.CustomerAccount;
 
-public class CustomerAccountsWS  extends ActionSupport {
-	/**
-	 * the Object (example User use) component the BeerWS are transmit automaticaly by JSON  
-	 */
-	private CustomerAccounts use;
+public class CustomerAccountsWS  extends ActionSupport
+{
+	private CustomerAccount customerAccount;
 	private Integer id;
 	
 
-	public CustomerAccounts getUse() {
-		return use;
-	}
-	public void setUse(CustomerAccounts use) {
-		this.use = use;
-	}
+	/**
+	 * Getter and Setter
+	 */
 	public Integer getId() {
 		return id;
 	}
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public CustomerAccount getUse() {
+		return customerAccount;
+	}
+	
+	public void setUse(CustomerAccount customerAccount) {
+		this.customerAccount = customerAccount;
+	}
 
-
-
-	//private String /*CustomerAccounts*/ use;
-	/**
-	 * Getteur and Setteur
-	 * @return
-	 */
-
-	public String execute() throws Exception {
+	public String execute() throws Exception
+	{
 		System.out.println("call execute");
 		
 		System.out.println("id : "+id);
 
 		CustomerAccountsDAO cad = new CustomerAccountsDAO();
-		use = cad.load(id);
+		customerAccount = cad.load(id);
 		
-		System.out.println(use.getCustomerLogin());
+		System.out.println(customerAccount.getCustomerLogin());
 		/*
 		CustomerAccounts user = new CustomerAccounts();
 		
