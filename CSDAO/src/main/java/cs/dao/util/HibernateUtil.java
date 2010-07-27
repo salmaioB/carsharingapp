@@ -11,19 +11,24 @@ public class HibernateUtil {
 
 	private static final SessionFactory sessionFactory;
 
-	static {
-		try {
+	static
+	{
+		try
+		{
 			// Crée la SessionFactory
-			sessionFactory =
-				new Configuration().configure().buildSessionFactory();
-	   } catch (HibernateException ex) {
-		   throw new RuntimeException("Problème de configuration : "  + ex.getMessage(), ex);
-	   }
+			sessionFactory = new Configuration().configure().buildSessionFactory();
+		}
+		catch (HibernateException ex)
+		{
+			System.out.println("Exception dans HibernateUtil");
+			throw new RuntimeException("Problème de configuration : "  + ex.getMessage(), ex);
+		}
 	}
 
 	public static final ThreadLocal session = new ThreadLocal();
 
-	public static Session currentSession() throws HibernateException {
+	public static Session currentSession() throws HibernateException
+	{
 		Session s = (Session) session.get();
 		// Ouvre une nouvelle Session, si ce Thread n'en a aucune
 		if (s == null) {
