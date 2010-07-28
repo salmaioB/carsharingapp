@@ -4,7 +4,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="cs.model">
-    <class name="RouteToCustomerAccount" table="routes_to_customer_accounts">
+    <class name="RoutesToCustomerAccount" table="routes_to_customer_accounts">
         <id name="id" column="_id_routes_to_customer_acount">
             <generator class="native"/>
         </id>
