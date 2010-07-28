@@ -31,7 +31,7 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-		<bean name="RouteToCustomerAccountDAO" id="RouteToCustomerAccountDAO" class="cs.dao.dao.RouteToCustomerAccountDAO">
+		<bean name="RoutesToCustomerAccountDAO" id="RoutesToCustomerAccountDAO" class="cs.dao.dao.RoutesToCustomerAccountDAO">
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
