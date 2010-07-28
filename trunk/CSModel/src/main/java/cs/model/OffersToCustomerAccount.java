@@ -1,7 +1,7 @@
 package cs.model;
 
 public class OffersToCustomerAccount
-{
+{ 
 	private Integer id;
 	private Integer idOffer;
 	private Integer idCustomerAccount;
