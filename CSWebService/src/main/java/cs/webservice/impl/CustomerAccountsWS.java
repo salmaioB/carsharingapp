@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import com.opensymphony.xwork2.ActionSupport;
 
 import cs.dao.dao.CustomerAccountDAO;
+import cs.engine.action.CustomerAccountEngineAction;
 import cs.model.CustomerAccount;
 
 public class CustomerAccountsWS  extends ActionSupport
@@ -43,7 +44,8 @@ public class CustomerAccountsWS  extends ActionSupport
 		
 		System.out.println("id : "+id);
 
-		CustomerAccountDAO cad = new CustomerAccountDAO();
+		//CustomerAccountDAO cad = new CustomerAccountDAO();
+		CustomerAccountEngineAction cad = new CustomerAccountEngineAction();
 		customerAccount = cad.load(id);
 		
 		System.out.println(customerAccount.getCustomerLogin());
