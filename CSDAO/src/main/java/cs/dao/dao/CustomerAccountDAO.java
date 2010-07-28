@@ -8,12 +8,12 @@ import cs.dao.util.HibernateUtil;
 import cs.model.CustomerAccount;
 import cs.dao.DAO;
 
-public class CustomerAccountsDAO extends DAO
+public class CustomerAccountDAO extends DAO
 {
 	/**
 	 * Constructor by default
 	 */
-	public CustomerAccountsDAO()
+	public CustomerAccountDAO()
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.CustomerAccountsDAO");
 	}

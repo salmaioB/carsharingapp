@@ -8,12 +8,12 @@ import cs.model.RoutesToCustomerAccount;
 
 import cs.dao.DAO;
 
-public class RouteToCustomerAccountDAO extends DAO
+public class RoutesToCustomerAccountDAO extends DAO
 {
 	/**
 	 * Constructor by default
 	 */
-	public RouteToCustomerAccountDAO()
+	public RoutesToCustomerAccountDAO()
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.RouteToCustomerAccountDAO");
 	}

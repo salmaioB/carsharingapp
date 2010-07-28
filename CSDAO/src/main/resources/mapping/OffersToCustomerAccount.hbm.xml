@@ -4,7 +4,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="cs.model">
-    <class name="OffersToCustomerAccounts" table="offers_to_customer_accounts">
+    <class name="OffersToCustomerAccount" table="offers_to_customer_accounts">
         <id name="id" column="_id_offers_to_customer_account">
             <generator class="native"/>
         </id>
