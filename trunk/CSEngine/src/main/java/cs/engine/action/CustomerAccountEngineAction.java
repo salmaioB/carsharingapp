@@ -13,7 +13,7 @@ public class CustomerAccountEngineAction
 	public CustomerAccountEngineAction()
 	{
 		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
-		caBean = (CustomerAccountDAO) beanFactory.getBean("CustomerAccountsDAO");
+		caBean = (CustomerAccountDAO) beanFactory.getBean("CustomerAccountDAO");
 	}
 	
 	public CustomerAccount load(Integer id)
