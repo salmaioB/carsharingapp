@@ -7,7 +7,7 @@
 	<bean id="SampleDAO" class="cs.dao.dao.SampleSpring" />
 	
 	<!-- DAO  -->
-	<bean name="CustomerAccountsDAO" id="CustomerAccountsDAO" class="cs.dao.dao.CustomerAccountsDAO">
+	<bean name="CustomerAccountDAO" id="CustomerAccountDAO" class="cs.dao.dao.CustomerAccountDAO">
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
