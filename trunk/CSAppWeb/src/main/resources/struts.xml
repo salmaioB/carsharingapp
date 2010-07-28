@@ -10,6 +10,12 @@
 		</action>
 	</package>
 	
+	<package name="OffersWS" extends="json-default">
+		<action name="OffersWS" class="cs.webservice.impl.OffersWS">
+			<result type="json" />
+		</action>
+	</package>
+	
 	<!-- File 's Accueil -->
 	<!--
 	<package name="Accueil" namespace="/" extends="struts-default">
