@@ -6,7 +6,9 @@ public class Route
 	private Integer idOffer;	
 	private Integer idPassenger;
 	private String startingAddress;
+	private String startingCity;
 	private String finishingAddress;
+	private String finishingCity;
 	private Float price;
 	private Float conversionRateToEuro;
 	private String currencyCode;
@@ -42,6 +44,14 @@ public class Route
 	public void setStartingAddress(String startingAddress) {
 		this.startingAddress = startingAddress;
 	}
+	
+	public String getStartingCity() {
+		return startingCity;
+	}
+	
+	public void setStartingCity(String startingCity) {
+		this.startingCity = startingCity;
+	}
 
 	public String getFinishingAddress() {
 		return finishingAddress;
@@ -49,6 +59,14 @@ public class Route
 	
 	public void setFinishingAddress(String finishingAddress) {
 		this.finishingAddress = finishingAddress;
+	}
+	
+	public String getFinishingCity() {
+		return finishingCity;
+	}
+	
+	public void setFinishingCity(String finishingCity) {
+		this.finishingCity = finishingCity;
 	}
 	
 	public Float getPrice() {
