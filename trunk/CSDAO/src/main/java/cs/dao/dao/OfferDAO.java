@@ -57,7 +57,8 @@ public class OfferDAO extends DAO
 	{
      Session session = HibernateUtil.currentSession();
      
-     String SQLQuery = "SELECT * " +
+     /*
+     String SQLQuery = "SELECT title, description " +
 					   "FROM simul_car_sharing.offers o, simul_car_sharing.routes r, simul_car_sharing.offers_to_routes o_to_r " +
 				       "WHERE o_to_r._id_offer=o._id_offer " +
 				       "AND o_to_r._id_route=r._id_route " +
@@ -65,14 +66,19 @@ public class OfferDAO extends DAO
 				       "AND r.starting_city= '" + startingCity + "' " +
 				       "AND r.finishing_address= '" + finishingAddress + "' " +
 				       "AND r.finishing_city= '" + finishingCity + "'";
+     */
+     
+     String SQLQuery = "SELECT * " +
+	   				   "FROM simul_car_sharing.offers";
      
      System.out.println(SQLQuery);
      
      Query query = session.createSQLQuery(SQLQuery);
-     List<Offer> offers = query.list();
+     query.list();
 	 
      HibernateUtil.closeSession();
      
-	 return offers;
+	 //return offers;
+     return null;
 	}
 }

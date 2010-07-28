@@ -5,7 +5,7 @@
 
 <hibernate-mapping package="cs.model">
 
-    <class name="CustomerAccounts" table="customer_accounts">
+    <class name="CustomerAccount" table="customer_accounts">
         <id name="id" column="_id_customer_account">
             <generator class="native"/>
         </id>
