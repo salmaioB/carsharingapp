@@ -15,7 +15,7 @@ public class CustomerAccountDAO extends DAO
 	 */
 	public CustomerAccountDAO()
 	{
-		System.out.println("[Spring] load class:cs.dao.dao.CustomerAccountsDAO");
+		System.out.println("[Spring] load class:cs.dao.dao.CustomerAccountDAO");
 	}
 	
 	public CustomerAccount load(Integer id)
