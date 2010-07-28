@@ -3,17 +3,17 @@ package cs.engine.action;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
-import cs.dao.dao.CustomerAccountsDAO;
+import cs.dao.dao.CustomerAccountDAO;
 import cs.model.CustomerAccount;
 
 public class CustomerAccountEngineAction
 {
-	private CustomerAccountsDAO caBean;
+	private CustomerAccountDAO caBean;
 	
 	public CustomerAccountEngineAction()
 	{
 		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
-		caBean = (CustomerAccountsDAO) beanFactory.getBean("CustomerAccountsDAO");
+		caBean = (CustomerAccountDAO) beanFactory.getBean("CustomerAccountsDAO");
 	}
 	
 	public CustomerAccount load(Integer id)
