@@ -15,11 +15,11 @@ public class TranslationValueEngineAction
 		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
 		caBean = (TranslationValueDAO) beanFactory.getBean("TranslationValueDAO");
 	}
-	public TranslationValue load(Integer id)
+	public String tr_html(Integer id)
 	{
 		if(caBean != null)
 		{
-			return caBean.load(id);
+			return caBean.load(id,"fr");
 		}
 		return null;
 	}
