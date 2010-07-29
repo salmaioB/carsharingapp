@@ -17,4 +17,4 @@
         </div> 
         
 Message : <s:property value="message"/> <br />
-Affiche list : <s:property value="tr.getTr().get(0).getTranslationValue()"/>
+Affiche list : <s:property value="tr.tr_html(1)"/>
