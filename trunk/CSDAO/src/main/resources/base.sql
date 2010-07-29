@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mar 27 Juillet 2010 à 17:17
+-- Généré le : Jeu 29 Juillet 2010 à 13:48
 -- Version du serveur: 5.0.51
 -- Version de PHP: 5.2.6-1+lenny8
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `offers` (
 --
 
 INSERT INTO `offers` (`_id_offer`, `_id_offer_type`, `_id_driver`, `title`, `description`, `number_of_place_initial`, `number_of_place_remaining`, `price_per_passenger`, `datetime_started`, `datetime_ended`) VALUES
-(1, 0, 0, 'Face de moule', 'Teub', 0, 0, 0.00, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(1, 0, 0, 'Face de moule', 'Teub', 0, 0, 0.00, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -105,12 +105,14 @@ CREATE TABLE IF NOT EXISTS `offers_to_routes` (
   `_id_offer` int(11) unsigned NOT NULL,
   `_id_route` int(11) unsigned NOT NULL,
   PRIMARY KEY  (`_id_offers_to_route`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `offers_to_routes`
 --
 
+INSERT INTO `offers_to_routes` (`_id_offers_to_route`, `_id_offer`, `_id_route`) VALUES
+(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -184,7 +186,6 @@ CREATE TABLE IF NOT EXISTS `routes_to_customer_accounts` (
 
 CREATE TABLE IF NOT EXISTS `translations` (
   `_id_translation` int(11) unsigned NOT NULL auto_increment,
-  `_id_translation_value` int(11) unsigned NOT NULL,
   `value_summary` text NOT NULL,
   PRIMARY KEY  (`_id_translation`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -202,6 +203,7 @@ CREATE TABLE IF NOT EXISTS `translations` (
 
 CREATE TABLE IF NOT EXISTS `translation_values` (
   `_id_translation_value` int(11) unsigned NOT NULL auto_increment,
+  `_id_translation` int(11) unsigned NOT NULL,
   `translation_value` text NOT NULL,
   `language_code` char(2) NOT NULL,
   `country_code` char(2) NOT NULL,
