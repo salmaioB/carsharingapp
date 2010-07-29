@@ -3,7 +3,6 @@ package cs.model;
 public class Translation
 {
 	private Integer id;
-	private Integer idTranslationValue;
 	private String valueSummary;
 	
 	public Integer getId() {
@@ -12,14 +11,6 @@ public class Translation
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getIdTranslationValue() {
-		return idTranslationValue;
-	}
-	
-	public void setIdTranslationValue(Integer idTranslationValue) {
-		this.idTranslationValue = idTranslationValue;
 	}
 	
 	public String getValueSummary() {

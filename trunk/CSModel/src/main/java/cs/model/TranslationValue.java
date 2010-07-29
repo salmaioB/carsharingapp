@@ -3,10 +3,17 @@ package cs.model;
 public class TranslationValue
 {
 	private Integer id;
+	private Integer idTranslation;
 	private String translationValue;
 	private String languageCode;
 	private String countryCode;
 
+	public Integer getIdTranslation() {
+		return idTranslation;
+	}
+	public void setIdTranslation(Integer idTranslation) {
+		this.idTranslation = idTranslation;
+	}
 	public Integer getId() {
 		return id;
 	}
