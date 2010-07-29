@@ -30,7 +30,7 @@
 	        <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
         <!-- un exemple d action qui renvoie vers la definition tiles1.page -->
-        <action name="Accueil" class="com.appweb.AccueilAction">
+        <action name="Accueil" class="com.appweb.action.AccueilAction">
         	<result name="success" type="tiles">accueil.template</result>
         </action>
     </package>
