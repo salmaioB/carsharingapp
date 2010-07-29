@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import cs.dao.util.HibernateUtil;
 import cs.model.Offer;
+import cs.model.Route;
 import cs.dao.DAO;
 
 public class OfferDAO extends DAO
@@ -19,6 +20,7 @@ public class OfferDAO extends DAO
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.OfferDAO");
 	}
+	
 	public Offer load(Integer id)
 	{
 		 //Open session
@@ -57,27 +59,25 @@ public class OfferDAO extends DAO
 	{
      Session session = HibernateUtil.currentSession();
      
-     /*
-     String SQLQuery = "SELECT title, description " +
-					   "FROM simul_car_sharing.offers o, simul_car_sharing.routes r, simul_car_sharing.offers_to_routes o_to_r " +
+     String SQLQuery = "SELECT * " +
+					   "FROM offers o, routes r, offers_to_routes o_to_r " +
 				       "WHERE o_to_r._id_offer=o._id_offer " +
 				       "AND o_to_r._id_route=r._id_route " +
 				       "AND r.starting_address= '" + startingAddress + "' " +
 				       "AND r.starting_city= '" + startingCity + "' " +
 				       "AND r.finishing_address= '" + finishingAddress + "' " +
 				       "AND r.finishing_city= '" + finishingCity + "'";
-     */
      
-     String SQLQuery = "FROM Route";
+//     String SQLQuery = "SELECT * " +
+//	   				   "FROM routes";
      
      System.out.println(SQLQuery);
      
-     Query query = session.createQuery(SQLQuery);
-     List list = query.list();
+     Query query = session.createSQLQuery(SQLQuery).addEntity(Offer.class);
+     List<Offer> offers = query.list();
 	 
      HibernateUtil.closeSession();
      
-	 return list;
-     //return null;
+	 return offers;
 	}
 }
