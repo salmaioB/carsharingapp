@@ -2,7 +2,7 @@ package com.appweb.test;
 
 import junit.framework.TestCase;
 import com.opensymphony.xwork2.ActionSupport;
-import com.appweb.AccueilAction;
+import com.appweb.action.AccueilAction;
 
 public class AccueilActionTest extends TestCase
 {
