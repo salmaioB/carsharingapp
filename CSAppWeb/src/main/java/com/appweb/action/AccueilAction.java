@@ -1,19 +1,15 @@
 package com.appweb.action;
 
 import com.appweb.Action;
-import com.opensymphony.xwork2.ActionSupport;
 
 import cs.engine.action.CustomerAccountEngineAction;
 import cs.engine.action.OfferEngineAction;
-import cs.engine.translation.TranslationEngine;
 import cs.model.CustomerAccount;
 import cs.model.Offer;
 
 public class AccueilAction extends Action
 {
-
-	private static final long serialVersionUID = 1L;
-	public static final String MESSAGE = "";
+	private static final long serialVersionUID = -72643051840031655L;
 	private String message;
 	private String type;
 	
@@ -38,6 +34,10 @@ public class AccueilAction extends Action
 		this.message = message;
 	}
 
+	public AccueilAction()
+	{
+		super();
+	}
 	public String execute()
 	{
 		if(getType().equals("CustomerAccounts"))
