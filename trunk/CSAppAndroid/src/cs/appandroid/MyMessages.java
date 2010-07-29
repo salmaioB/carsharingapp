@@ -3,7 +3,7 @@ package cs.appandroid;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cs.model.CustomerAccounts;
+import cs.model.CustomerAccount;
 import cs.webservice.CustomerAccountsWS;
 
 import android.app.Activity;
@@ -30,7 +30,7 @@ public class MyMessages extends Activity
 		
 		//Instanciation du WebService + récupère customer id = 1
 		CustomerAccountsWS caws = new CustomerAccountsWS();
-		CustomerAccounts ca = caws.getCustomerAccounts(1);
+		CustomerAccount ca = caws.getCustomerAccounts(1);
 		
 		jsonTextView.setText("login : "+ ca.getCustomerLogin());	
 	}
