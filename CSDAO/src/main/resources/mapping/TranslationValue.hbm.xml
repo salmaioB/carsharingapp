@@ -8,6 +8,7 @@
         <id name="id" column="_id_translation_value">
             <generator class="native"/>
         </id>
+        <property name="idTranslation" type="integer" column="_id_translation"/>
         <property name="translationValue" type="string" column="translation_value"/>
         <property name="languageCode" type="string" column="language_code"/>
 		<property name="countryCode" type="string" column="country_code"/>

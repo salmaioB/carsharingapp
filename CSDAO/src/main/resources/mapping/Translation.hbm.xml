@@ -8,7 +8,6 @@
         <id name="id" column="_id_offer">
             <generator class="native"/>
         </id>
-        <property name="idTranslationValue" type="integer" column="_id_translation_value"/>
         <property name="valueSummary" type="string" column="value_summary"/>
 
      </class>
