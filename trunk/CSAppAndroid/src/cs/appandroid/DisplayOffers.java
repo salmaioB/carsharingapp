@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import cs.dao.dao.OfferDAO;
 import cs.model.Offer;
 import cs.webservice.OffersWS;
 import android.app.Activity;
