@@ -3,7 +3,7 @@
 
 <body>
 	<div id="container"> 
-		<a href="http://localhost:8888/CSAppWeb/Accueil?type=Offer">Offer</a>
-		<a href="http://localhost:8888/CSAppWeb/Accueil?type=CustomerAccounts">CustomerAccounts</a>
+		<a href="http://<%=cs.define.Define.adresse%>:<%=cs.define.Define.port%>/CSAppWeb/Accueil?type=Offer">Offer</a>
+		<a href="http://<%=cs.define.Define.adresse%>:<%=cs.define.Define.port%>/CSAppWeb/Accueil?type=CustomerAccounts">CustomerAccounts</a>
      </div> 
   </body>
