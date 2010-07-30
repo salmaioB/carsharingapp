@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content">
-  
-<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Teub"></TextView>
-</LinearLayout>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		     android:layout_width="fill_parent"
+		     android:layout_height="fill_parent"
+		     android:stretchColumns="1">
+
+	<TableRow>
+		<TextView android:id="@+id/text"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+			  	  android:text="Adresse de départ"/>
+			  	  
+	    <EditText android:id="@+id/starting_address_edittext"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+				  android:background="@android:drawable/editbox_background"/>
+	</TableRow>
+	
+	<TableRow>			  
+		<TextView android:id="@+id/text"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+			  	  android:text="Ville de départ"/>
+			  	  
+	    <EditText android:id="@+id/starting_address_edittext"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+				  android:background="@android:drawable/editbox_background"/>
+	</TableRow>
+	
+	<TableRow>			  
+		<TextView android:id="@+id/text"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+			  	  android:text="Adresse d'arrivée"/>  
+	    <EditText android:id="@+id/starting_address_edittext"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+				  android:background="@android:drawable/editbox_background"/>
+	</TableRow>
+	
+	<TableRow>			  
+		<TextView android:id="@+id/text"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+			  	  android:text="Ville d'arrivée"/>
+			  	  
+	    <EditText android:id="@+id/starting_address_edittext"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+				  android:background="@android:drawable/editbox_background"/>				  			  
+	</TableRow>
+</TableLayout>
