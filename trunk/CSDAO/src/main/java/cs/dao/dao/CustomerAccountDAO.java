@@ -1,6 +1,9 @@
 package cs.dao.dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -16,6 +19,19 @@ public class CustomerAccountDAO extends DAO
 	public CustomerAccountDAO()
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.CustomerAccountDAO");
+	}
+	
+	public CustomerAccount identification(String login, String password)
+	{
+	     Session session = HibernateUtil.currentSession();
+	     
+	     String SQLQuery = "FROM CustomerAccount where customerLogin ='"+login+"' And customerPassword ='"+password+"'";
+	     
+	     Query query = session.createQuery(SQLQuery);
+	     List list = query.list();
+		 
+	     HibernateUtil.closeSession();
+	     return (CustomerAccount) list.get(0);
 	}
 	
 	public CustomerAccount load(Integer id)
