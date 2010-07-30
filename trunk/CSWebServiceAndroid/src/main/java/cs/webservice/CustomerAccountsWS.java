@@ -10,10 +10,11 @@ import org.json.JSONObject;
 
 import cs.httpclient.HttpClient;
 import cs.model.CustomerAccount;
+import cs.define.Define;
 
 public class CustomerAccountsWS
 {
-	private static final String URL = "http://10.0.2.2:8080/CSAppWeb/CustomerAccountsWS";
+	private static final String URL = "http://10.0.2.2:"+Define.port+"/CSAppWeb/CustomerAccountsWS";
 	
 	public CustomerAccount getCustomerAccounts(Integer id)
 	{
