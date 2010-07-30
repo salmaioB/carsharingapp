@@ -15,10 +15,11 @@ import android.util.Log;
 import cs.httpclient.HttpClient;
 import cs.model.CustomerAccount;
 import cs.model.Offer;
+import cs.define.Define;
 
 public class OffersWS
 {
-	private static final String URL = "http://10.0.2.2:8080/CSAppWeb/OffersWS";
+	private static final String URL = "http://10.0.2.2:"+Define.port+"/CSAppWeb/OffersWS";
 	
 	
 	public List<Offer> getSearchOffers()
