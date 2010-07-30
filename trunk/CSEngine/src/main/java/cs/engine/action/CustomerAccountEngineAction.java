@@ -24,4 +24,12 @@ public class CustomerAccountEngineAction
 		}
 		return null;
 	}
+	public CustomerAccount identification(String login,String password)
+	{
+		if(caBean != null)
+		{
+			return caBean.identification(login,password);
+		}
+		return null;
+	}
 }
