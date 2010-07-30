@@ -15,7 +15,7 @@
 			<result type="json" />
 		</action>
 	</package>
-	
+
 	<!-- File 's Accueil -->
 	<!--
 	<package name="Accueil" namespace="/" extends="struts-default">
@@ -35,4 +35,9 @@
         </action>
     </package>
     
+    <package name="LoginActionAjax" extends="struts-default">
+	    <action name="LoginActionAjax" class="com.appweb.action.ajax.LoginActionAjax">
+			<result name="success">/ajax/ajaxloginsuccess.jsp</result>
+		</action>
+	</package>
 </struts>
