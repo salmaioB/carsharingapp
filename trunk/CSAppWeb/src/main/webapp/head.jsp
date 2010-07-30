@@ -1,7 +1,9 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 
 <head>
+	<sx:head/>
 	<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
 	<script type="text/javascript" src="js/jtabs/jquery.tabs.js"></script>
 	<script type="text/javascript" src="js/jtabs/jquery.history_remote.pack.js"></script>
@@ -16,5 +18,5 @@
 		$(document).ready( function () { 
 			$('#containerLeft').tabs({ fxFade: true, fxSpeed: 'normal' });
 		} ) ;  
-	</script> 
+	</script>
 </head>
