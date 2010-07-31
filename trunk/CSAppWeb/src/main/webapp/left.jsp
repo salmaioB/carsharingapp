@@ -9,12 +9,12 @@
          </ul> 
             <div id="fragment-1"> 
 				<s:div id="loginDiv">
-					<div >
-				    	<s:form action="/LoginActionAjax" >
-							<span style="width: 160px;">Login</span> <input name="username" size="4"/> <br />
+					<div>
+				    	<form method="post" id="login_form">
+							<span style="width: 160px;">Login</span> <input name="username" class="" size="4"/> <br />
 							<span style="width: 160px;">Password</span><input name="password" type="password" size="4"/><br />
-							<sx:submit targets="divToUpdate" notifyTopics="/LoginActionAjax" value="Connection" />			     
-						</s:form>
+							<input type="submit" class="toto"/>		     
+						</form>
 				    </div>
 				</s:div>
             </div> 
