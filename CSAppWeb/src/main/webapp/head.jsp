@@ -5,6 +5,7 @@
 <head>
 	<sx:head/>
 	<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.login.js"></script>	
 	<script type="text/javascript" src="js/jtabs/jquery.tabs.js"></script>
 	<script type="text/javascript" src="js/jtabs/jquery.history_remote.pack.js"></script>
 		
