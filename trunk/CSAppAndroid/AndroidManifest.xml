@@ -18,7 +18,7 @@
 <activity android:name="DisplayOffers"></activity>
 
 <activity android:name="SearchOffers"></activity>
-<activity android:name="CSAppAndroid2"></activity>
+
 <activity android:name="Identification"></activity>
 </application>
     <uses-sdk android:minSdkVersion="6" />
