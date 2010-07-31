@@ -2,7 +2,6 @@ package cs.dao.dao;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,19 +18,6 @@ public class CustomerAccountDAO extends DAO
 	public CustomerAccountDAO()
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.CustomerAccountDAO");
-	}
-	
-	public CustomerAccount identification(String login, String password)
-	{
-	     Session session = HibernateUtil.currentSession();
-	     
-	     String SQLQuery = "FROM CustomerAccount where customerLogin ='"+login+"' And customerPassword ='"+password+"'";
-	     
-	     Query query = session.createQuery(SQLQuery);
-	     List list = query.list();
-		 
-	     HibernateUtil.closeSession();
-	     return (CustomerAccount) list.get(0);
 	}
 	
 	public CustomerAccount load(Integer id)
@@ -63,5 +49,34 @@ public class CustomerAccountDAO extends DAO
 		 HibernateUtil.closeSession();
 
 		 return true;
+	}
+	
+	/**
+	 *  Search a customer account
+	 *  If one customer account is founded -> OK (the customer is returned)
+	 *  Else return NULL
+	 */
+	public CustomerAccount identification(String customerLogin, String customerPassword)
+	{
+	     Session session = HibernateUtil.currentSession();
+	     
+	     String SQLQuery = "SELECT * FROM customer_accounts " + 
+	    	               "WHERE customer_login = '" + customerLogin + "' " + 
+	    	               "AND customer_password = '" + customerPassword + "'";
+	     
+	     Query query = session.createSQLQuery(SQLQuery);
+	     
+	     List customerAccountList = query.list();
+		 
+	     HibernateUtil.closeSession();
+
+	     if(customerAccountList.size() == 1)
+	     { 
+	    	 return (CustomerAccount)customerAccountList.get(0);
+	     }
+	     else
+	     {
+	    	 return null;
+	     }
 	}
 }

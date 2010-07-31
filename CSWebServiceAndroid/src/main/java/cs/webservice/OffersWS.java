@@ -12,9 +12,9 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-import cs.httpclient.HttpClient;
 import cs.model.CustomerAccount;
 import cs.model.Offer;
+import cs.common.HttpClient;
 import cs.define.Define;
 
 public class OffersWS
@@ -25,7 +25,7 @@ public class OffersWS
 	public List<Offer> getSearchOffers()
 	{
 		// JSON object to hold the information, which is sent to the server	 
-		JSONObject jsonObjSend = new JSONObject();
+		JSONObject jsonObjectSend = new JSONObject();
 		
 		try
 		{
@@ -34,19 +34,17 @@ public class OffersWS
 		 header.put("deviceType","Android"); // Device type
 		 header.put("deviceVersion","2.0"); // Device OS version
 		 header.put("language", "es-es"); // Language of the Android client
-		 jsonObjSend.put("header", header);
+		 jsonObjectSend.put("header", header);
 		}
 		catch (JSONException e)
 		{
 		 e.printStackTrace();
 		}
-	
-		HttpClient http = new HttpClient();
 		
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		//nameValuePairs.add(new BasicNameValuePair("id", id.toString()));
 			
-		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjSend, nameValuePairs) ;
+		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, nameValuePairs) ;
 	
 	    List<Offer> offers = new ArrayList<Offer>();
 	    

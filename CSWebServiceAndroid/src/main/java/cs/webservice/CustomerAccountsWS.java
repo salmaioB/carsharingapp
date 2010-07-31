@@ -8,51 +8,76 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cs.httpclient.HttpClient;
+import android.util.Log;
+
 import cs.model.CustomerAccount;
+import cs.common.HttpClient;
 import cs.define.Define;
 
 public class CustomerAccountsWS
 {
+	private JSONObject jsonObjectSend;
+	
 	private static final String URL = "http://10.0.2.2:"+Define.port+"/CSAppWeb/CustomerAccountsWS";
 	
-	public CustomerAccount getCustomerAccounts(Integer id)
+	public CustomerAccountsWS()
 	{
-		// JSON object to hold the information, which is sent to the server	 
-		JSONObject jsonObjSend = new JSONObject();
+		// JSON object to hold the information, which is sent to the server
+		jsonObjectSend = new JSONObject();
 		
-	  try
-	  {
-		   // Add a nested JSONObject (e.g. for header information)
-		   JSONObject header = new JSONObject();
-		   header.put("deviceType","Android"); // Device type
-		   header.put("deviceVersion","2.0"); // Device OS version
-		   header.put("language", "es-es"); // Language of the Android client
-		   jsonObjSend.put("header", header);
-	  }
-	  catch (JSONException e)
-	  {
-		  e.printStackTrace();
-	  }
+		// To construct the jsonObject header
+		HttpClient.constructHeader(jsonObjectSend);
+	}
+	
+	// TO BE DELETED ?
+	public CustomerAccount getCustomerAccounts(Integer id)
+	{ 
+		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		nameValuePairs.add(new BasicNameValuePair("id", id.toString()));
+		
+		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, nameValuePairs);
 
-	  HttpClient  ht = new HttpClient();
+		CustomerAccount customerAccount = new CustomerAccount();
+        
+	    try
+	    {
+	    	JSONObject tmp = jsonObjectReturn.getJSONObject("use");
+	    	customerAccount.setCustomerLogin( tmp.getString("customerLogin") );
+	    	return customerAccount;
+	    }
+	    catch (JSONException e)
+	    {
+	    	e.printStackTrace();
+	    }
 	  
-	  List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-	  nameValuePairs.add(new BasicNameValuePair("id", id.toString()));
+	    return customerAccount;
+	}
+	
+	public CustomerAccount getCustomerAccount(String customerLogin, String customerPassword)
+	{
+		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
+//		paramsToPost.add(new BasicNameValuePair("customerLogin", customerLogin));
+//		paramsToPost.add(new BasicNameValuePair("customerPassword", customerPassword));
 		
-	  JSONObject jsonObject = ht.SendHttpPost(URL, jsonObjSend, nameValuePairs) ;
+		// Contains the jsonObject return by the http request
+		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
 
-	  CustomerAccount customerAccount = new CustomerAccount();
-
-		try {
-			JSONObject tmp = jsonObject.getJSONObject("use");
-			customerAccount.setCustomerLogin( tmp.getString("customerLogin") );
-			return customerAccount;
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-		}
-		return customerAccount;
+		CustomerAccount customerAccount = new CustomerAccount();
+		
+		try
+	    {
+			Log.v("aze", "toto");
+			
+	    	JSONObject tmp = jsonObjectReturn.getJSONObject("customerAccount");
+	    	customerAccount.setCustomerLogin( tmp.getString("customerLogin") );
+	    	
+	    	return customerAccount;
+	    }
+	    catch (JSONException e)
+	    {
+	    	e.printStackTrace();
+	    }
+	    
+	    return customerAccount;
 	}
 }
