@@ -1,22 +1,19 @@
 package cs.webservice.impl;
 
-import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 
 import com.opensymphony.xwork2.ActionSupport;
-
-import cs.dao.dao.CustomerAccountDAO;
 import cs.engine.action.CustomerAccountEngineAction;
 import cs.model.CustomerAccount;
 
 public class CustomerAccountsWS  extends ActionSupport
 {
+	private static final long serialVersionUID = 1L;
+	
 	private CustomerAccount customerAccount;
+	
 	private Integer id;
+	private String customerLogin;
+	private String customerPassword;
 	
 
 	/**
@@ -30,25 +27,47 @@ public class CustomerAccountsWS  extends ActionSupport
 		this.id = id;
 	}
 	
-	public CustomerAccount getUse() {
+	public String getCustomerLogin() {
+		return customerLogin;
+	}
+
+	public void setCustomerLogin(String customerLogin) {
+		this.customerLogin = customerLogin;
+	}
+	
+	public CustomerAccount getCustomerAccount() {
 		return customerAccount;
 	}
 	
-	public void setUse(CustomerAccount customerAccount) {
-		this.customerAccount = customerAccount;
+	public String getCustomerPassword() {
+		return customerPassword;
 	}
 
+	public void setCustomerPassword(String customerPassword) {
+		this.customerPassword = customerPassword;
+	}
+	
+	public void setCustomerAccount(CustomerAccount customerAccount) {
+		this.customerAccount = customerAccount;
+	}
+	
 	public String execute() throws Exception
 	{
 		System.out.println("call execute");
 		
 		System.out.println("id : "+id);
+		System.out.println("customerLogin : " + customerLogin);
+		System.out.println("customerPassword : " + customerPassword);
 
-		//CustomerAccountDAO cad = new CustomerAccountDAO();
-		CustomerAccountEngineAction cad = new CustomerAccountEngineAction();
-		customerAccount = cad.load(id);
+		CustomerAccountEngineAction customerAccountEngine = new CustomerAccountEngineAction();
 		
-		System.out.println(customerAccount.getCustomerLogin());
+		if(id != null)
+			customerAccount = customerAccountEngine.load(id);
+		else
+			customerAccount = customerAccountEngine.identification(customerLogin, customerPassword);
+		
+		//System.out.println(customerAccount.getCustomerLogin());
+		
 		/*
 		CustomerAccounts user = new CustomerAccounts();
 		
@@ -76,6 +95,7 @@ public class CustomerAccountsWS  extends ActionSupport
 		CustomerAccounts user2 = (CustomerAccounts) ois.readObject();
 		System.out.println(oos.toString());
 		*/
+		
 		System.out.println("Fin du call execute");
 		return SUCCESS;
   }
