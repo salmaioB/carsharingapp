@@ -63,5 +63,18 @@ public class CSAppAndroid2 extends TabActivity
 	                                                       	 res.getDrawable(R.drawable.tab_search_offers))
 	                                                         .setContent(intent);
 	    tabHost.addTab(spec);
+	    
+	    /**
+	     * TO BE DELETED
+	     */
+	    
+	    // Create an Intent to launch messages activity for the tab
+	    intent = new Intent().setClass(this, Identification.class);
+	    
+	    // Initialize a TabSpec for each tab and add it to the TabHost
+	    spec = tabHost.newTabSpec("identification").setIndicator("Identification",
+	                                                       	 res.getDrawable(R.drawable.tab_search_offers))
+	                                                         .setContent(intent);
+	    tabHost.addTab(spec);
 	}
 }

@@ -47,7 +47,7 @@
 	              android:orientation="horizontal"
 	              android:gravity="right">
 
-	<Button android:id="@+id/validate_search"
+	<Button android:id="@+id/connection_button"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="right"
