@@ -3,11 +3,15 @@ package cs.appandroid;
 import cs.model.CustomerAccount;
 import cs.webservice.CustomerAccountsWS;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.PopupWindow;
 
 public class Identification extends Activity implements OnClickListener
 {
@@ -33,13 +37,27 @@ public class Identification extends Activity implements OnClickListener
 			CustomerAccount customerAccount = new CustomerAccount();
 			
 			CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
-			customerAccount = customerAccountWS.getCustomerAccount("tata", "test");
+			customerAccount = customerAccountWS.getCustomerAccount("tat", "test");
 			
-			if(!customerAccount.equals(null))
+			if(customerAccount != null)
 			{
+				// Create a new file to set the id customer
+				
 				Log.v("test", "ca marche !!");
 				Log.v("last_name", customerAccount.getLastName());
 				Log.v("first_name", customerAccount.getFirstName());
+			}
+			else
+			{
+				Log.v("test", "ca marche !!");
+				LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			    
+				Log.v("test", "ca marche !!");
+				PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.identification, null, false), 100, 100, true);
+			    
+				Log.v("test", "ca marche !!");
+			    // The code below assumes that the root container has an id called 'main'
+			    pw.showAtLocation(this.findViewById(R.id.toto), Gravity.CENTER, 0, 0); 
 			}
 		}
 	}
