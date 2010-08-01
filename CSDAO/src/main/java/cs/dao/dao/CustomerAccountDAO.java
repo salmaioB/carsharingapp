@@ -64,7 +64,9 @@ public class CustomerAccountDAO extends DAO
 	    	               "WHERE customer_login = '" + customerLogin + "' " + 
 	    	               "AND customer_password = '" + customerPassword + "'";
 	     
-	     Query query = session.createSQLQuery(SQLQuery);
+	     System.out.println(SQLQuery);
+	     
+	     Query query = session.createSQLQuery(SQLQuery).addEntity(CustomerAccount.class);
 	     
 	     List customerAccountList = query.list();
 		 

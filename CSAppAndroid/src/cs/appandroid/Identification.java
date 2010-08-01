@@ -2,9 +2,7 @@ package cs.appandroid;
 
 import cs.model.CustomerAccount;
 import cs.webservice.CustomerAccountsWS;
-import android.R.bool;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,8 +35,12 @@ public class Identification extends Activity implements OnClickListener
 			CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
 			customerAccount = customerAccountWS.getCustomerAccount("tata", "test");
 			
-			if(customerAccount != null)
-				Log.v("test", "ça marche !!");
+			if(!customerAccount.equals(null))
+			{
+				Log.v("test", "ca marche !!");
+				Log.v("last_name", customerAccount.getLastName());
+				Log.v("first_name", customerAccount.getFirstName());
+			}
 		}
 	}
 }
