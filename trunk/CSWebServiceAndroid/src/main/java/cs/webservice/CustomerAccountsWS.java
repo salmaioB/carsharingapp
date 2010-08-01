@@ -93,6 +93,7 @@ public class CustomerAccountsWS
              //customerAccount.setDatetimeLastOfferCreated(jsonObjectCustomerAccount.getString("datetime_last_offer_created"));
              //customerAccount.setDatetimeLastCarSharing(jsonObjectCustomerAccount.getString("datetime_last_car_sharing"));
 			}
+			else customerAccount = null;
 	    }
 	    catch (JSONException e)
 	    {
