@@ -56,8 +56,8 @@ public class CustomerAccountsWS
 	public CustomerAccount getCustomerAccount(String customerLogin, String customerPassword)
 	{
 		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
-//		paramsToPost.add(new BasicNameValuePair("customerLogin", customerLogin));
-//		paramsToPost.add(new BasicNameValuePair("customerPassword", customerPassword));
+		paramsToPost.add(new BasicNameValuePair("customerLogin", customerLogin));
+		paramsToPost.add(new BasicNameValuePair("customerPassword", customerPassword));
 		
 		// Contains the jsonObject return by the http request
 		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
@@ -66,12 +66,33 @@ public class CustomerAccountsWS
 		
 		try
 	    {
-			Log.v("aze", "toto");
+			JSONObject jsonObjectCustomerAccount;
 			
-	    	JSONObject tmp = jsonObjectReturn.getJSONObject("customerAccount");
-	    	customerAccount.setCustomerLogin( tmp.getString("customerLogin") );
-	    	
-	    	return customerAccount;
+			if(!jsonObjectReturn.get("customerAccount").equals(null))
+			{
+			 Log.v("qs", "wwwwwwww");
+				
+	    	 jsonObjectCustomerAccount = jsonObjectReturn.getJSONObject("customerAccount");
+
+			 customerAccount.setCustomerLogin(jsonObjectCustomerAccount.getString("customerLogin"));
+	         customerAccount.setCustomerPassword(jsonObjectCustomerAccount.getString("customerPassword"));
+			 customerAccount.setLastName(jsonObjectCustomerAccount.getString("lastName"));
+			 customerAccount.setFirstName(jsonObjectCustomerAccount.getString("firstName"));
+			 customerAccount.setEmailAddress(jsonObjectCustomerAccount.getString("emailAddress"));
+			 customerAccount.setPhone(jsonObjectCustomerAccount.getInt("phone"));
+			 customerAccount.setMobile(jsonObjectCustomerAccount.getInt("mobile"));
+			 customerAccount.setCustomerType(jsonObjectCustomerAccount.getInt("customerType"));
+			 //customerAccount.setIdVehicule(jsonObjectCustomerAccount.getInt("_id_vehicule"));
+			 customerAccount.setAcceptAnimals(jsonObjectCustomerAccount.getInt("acceptAnimals"));
+             customerAccount.setAcceptRadio(jsonObjectCustomerAccount.getInt("acceptRadio"));
+			 customerAccount.setAcceptSmoker(jsonObjectCustomerAccount.getInt("acceptSmoker"));
+			 customerAccount.setAcceptToDiscuss(jsonObjectCustomerAccount.getInt("acceptToDiscuss"));
+			 customerAccount.setAcceptToMakeADetour(jsonObjectCustomerAccount.getInt("acceptToMakeADetour"));
+             //customerAccount.setDatetimeRegistration(jsonObjectCustomerAccount.getString("datetime_registration"));
+             //customerAccount.setDatetimeLastConnection(jsonObjectCustomerAccount.getString("datetime_last_connection"));
+             //customerAccount.setDatetimeLastOfferCreated(jsonObjectCustomerAccount.getString("datetime_last_offer_created"));
+             //customerAccount.setDatetimeLastCarSharing(jsonObjectCustomerAccount.getString("datetime_last_car_sharing"));
+			}
 	    }
 	    catch (JSONException e)
 	    {
