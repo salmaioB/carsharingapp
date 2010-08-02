@@ -12,7 +12,8 @@
     			  android:gravity="center"
     			  android:text="Covoiturage"/>
   		
-  		<Button android:layout_width="fill_parent"
+  		<Button android:id="@+id/connection_button"
+  		        android:layout_width="fill_parent"
   				android:layout_height="fill_parent"
   				android:gravity="right"
   				android:text="Connexion"/>

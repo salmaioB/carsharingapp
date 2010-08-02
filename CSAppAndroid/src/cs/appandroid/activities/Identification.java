@@ -4,6 +4,7 @@ import cs.model.CustomerAccount;
 import cs.webservice.CustomerAccountsWS;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -46,6 +47,10 @@ public class Identification extends Activity implements OnClickListener
 				Log.v("test", "ca marche !!");
 				Log.v("last_name", customerAccount.getLastName());
 				Log.v("first_name", customerAccount.getFirstName());
+				
+				Intent intent = new Intent().setClass(this, MyProfile.class);
+				//intent.putExtra(name, value);
+				startActivity(intent);
 			}
 			else
 			{
