@@ -1,4 +1,4 @@
-package cs.appandroid;
+package cs.appandroid.activities;
 
 import android.app.TabActivity;
 import android.content.Intent;
@@ -12,7 +12,7 @@ public class CSAppAndroid extends TabActivity
 	public void onCreate(Bundle savedInstanceState)
 	{
 	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.main2);
+	    setContentView(R.layout.main);
 	    
 	    // Resource object to get Drawables
 	    Resources res = getResources();

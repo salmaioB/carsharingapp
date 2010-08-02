@@ -1,4 +1,4 @@
-package cs.appandroid;
+package cs.appandroid.activities;
 
 import android.app.Activity;
 import android.os.Bundle;

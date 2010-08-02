@@ -1,4 +1,4 @@
-package cs.appandroid;
+package cs.appandroid.components;
 
 import android.content.Context;
 import android.util.AttributeSet;

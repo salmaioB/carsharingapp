@@ -1,5 +1,8 @@
-package cs.appandroid;
+package cs.appandroid.activities;
 
+import cs.appandroid.components.HomeMenuAdapter;
+import cs.appandroid.components.MyCustomGridView;
+import cs.appandroid.components.MyCustomGridView.Listener;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +14,7 @@ public class OldCSAppAndroid extends Activity
 	public void onCreate(Bundle savedInstanceState)
 	{	
 		super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.oldmain);
 		
         //GridView gridview = (GridView) findViewById(R.id.gridview);
         //gridview.setAdapter(new HomeMenuAdapter(this));

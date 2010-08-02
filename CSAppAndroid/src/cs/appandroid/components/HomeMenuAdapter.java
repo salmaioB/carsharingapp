@@ -1,5 +1,6 @@
-package cs.appandroid;
+package cs.appandroid.components;
 
+import cs.appandroid.activities.R;
 import android.R.color;
 import android.app.Activity;
 import android.content.Context;

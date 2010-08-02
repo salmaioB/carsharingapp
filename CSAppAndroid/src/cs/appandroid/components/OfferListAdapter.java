@@ -1,8 +1,10 @@
-package cs.appandroid;
+package cs.appandroid.components;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+import cs.appandroid.activities.R;
 import cs.model.Offer;
 import android.content.Context;
 import android.util.Log;

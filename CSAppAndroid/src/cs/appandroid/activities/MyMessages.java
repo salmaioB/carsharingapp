@@ -1,4 +1,4 @@
-package cs.appandroid;
+package cs.appandroid.activities;
 
 import org.json.JSONException;
 import org.json.JSONObject;
