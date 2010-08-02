@@ -1,9 +1,10 @@
-package cs.appandroid;
+package cs.appandroid.activities;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import cs.appandroid.components.OfferListAdapter;
 import cs.model.Offer;
 import cs.webservice.OffersWS;
 import android.app.Activity;

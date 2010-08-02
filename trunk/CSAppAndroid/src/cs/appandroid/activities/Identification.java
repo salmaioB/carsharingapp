@@ -1,4 +1,4 @@
-package cs.appandroid;
+package cs.appandroid.activities;
 
 import cs.model.CustomerAccount;
 import cs.webservice.CustomerAccountsWS;
