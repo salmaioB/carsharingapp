@@ -33,8 +33,6 @@ public class Identification extends Activity implements OnClickListener
 	{
 		if(v == connectionButton)
 		{
-			//bool test = IsLoggedIn();
-			
 			CustomerAccount customerAccount = new CustomerAccount();
 			
 			CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
