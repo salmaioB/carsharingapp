@@ -1,7 +1,5 @@
 package cs.appandroid.activities;
 
-import java.io.IOException;
-
 import cs.appandroid.controller.IdentificationUtilities;
 import android.app.TabActivity;
 import android.content.Intent;
@@ -31,6 +29,11 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    connectionButton = (Button)findViewById(R.id.connection_button);
 	    connectionButton.setOnClickListener(this);
 	    
+	    if(IdentificationUtilities.userIsLogged(getBaseContext()))
+	    	connectionButton.setVisibility(View.INVISIBLE);
+	    else
+	    	connectionButton.setText("Connexion");
+	    
 	    // Resource object to get Drawables
 	    Resources res = getResources();
 	    
@@ -48,9 +51,9 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    intent = new Intent().setClass(this, SearchOffers.class);
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("artists").setIndicator("Artists",
-	                                                      res.getDrawable(R.drawable.tab_search_offers))
-	                                                      .setContent(intent);
+	    spec = tabHost.newTabSpec("searchoffers").setIndicator("Recherche",
+	                                                      	   res.getDrawable(R.drawable.tab_search_offers))
+	                                                      	   .setContent(intent);
 	    
 	    tabHost.addTab(spec);
 	    
@@ -112,18 +115,57 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 		Log.v("az", "azza");
 		
 		if(v == connectionButton)
-		{
-			// Send params to show the identification screen
-			myProfileIntent.putExtra("identification", true);
-			tabHost.setCurrentTab(3);
-			
-			IdentificationUtilities.userIsLogged(getBaseContext());
+		{   
+			if(tabHost.getCurrentTabTag() == "myprofile" && IdentificationUtilities.userIsLogged(getBaseContext()))
+			{
+				IdentificationUtilities.disconnectUser(getBaseContext());
+				tabHost.setCurrentTab(0);
+			}
+			else
+			{
+				// Send params to show the identification screen
+				myProfileIntent.putExtra("identification", true);
+				tabHost.setCurrentTab(3);				
+			}
 		}
 	}
 	
 	@Override
 	public void onTabChanged(String tabId)
 	{
-	    Log.d("re", "OnTabChanged");
+	    Log.d("TabChanged", "OnTabChanged");
+	    	    
+	    if(tabId != "searchoffers")
+	    {
+	    	if(!IdentificationUtilities.userIsLogged(getBaseContext()))
+	    	{
+				tabHost.setCurrentTab(3);
+				connectionButton.setText("Connexion");
+	    	}
+	    	else
+	    	{
+	    		Log.d("user", "User is logged");
+	    		
+	    		if(tabId == "myprofile")
+	    		{					
+					tabHost.setCurrentTab(3);
+	    			
+	    			connectionButton.setText("Déconnexion");
+	    			connectionButton.setVisibility(View.VISIBLE);
+	    		}
+	    		else
+	    			connectionButton.setVisibility(View.INVISIBLE);
+	    	}
+	    }
+	    else
+	    {
+	    	if(IdentificationUtilities.userIsLogged(getBaseContext()))
+	    		connectionButton.setVisibility(View.INVISIBLE);
+	    	else
+	    	{
+	    		connectionButton.setText("Connexion");
+	    		connectionButton.setVisibility(View.VISIBLE);
+	    	}
+	    }
 	}
 }
