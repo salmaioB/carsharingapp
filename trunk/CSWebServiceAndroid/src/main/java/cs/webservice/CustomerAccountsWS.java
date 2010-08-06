@@ -69,11 +69,10 @@ public class CustomerAccountsWS
 			JSONObject jsonObjectCustomerAccount;
 			
 			if(!jsonObjectReturn.get("customerAccount").equals(null))
-			{
-			 Log.v("qs", "wwwwwwww");
-				
+			{				
 	    	 jsonObjectCustomerAccount = jsonObjectReturn.getJSONObject("customerAccount");
-
+	    	 
+	    	 customerAccount.setId(jsonObjectCustomerAccount.getInt("id"));
 			 customerAccount.setCustomerLogin(jsonObjectCustomerAccount.getString("customerLogin"));
 	         customerAccount.setCustomerPassword(jsonObjectCustomerAccount.getString("customerPassword"));
 			 customerAccount.setLastName(jsonObjectCustomerAccount.getString("lastName"));
@@ -101,5 +100,16 @@ public class CustomerAccountsWS
 	    }
 	    
 	    return customerAccount;
+	}
+	
+	public void saveCustomerLocation(Integer idCustomerAccount, double geolocLongitude, double geolocLatitude)
+	{
+		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
+		paramsToPost.add(new BasicNameValuePair("id", idCustomerAccount.toString()));
+		paramsToPost.add(new BasicNameValuePair("geolocLongitude", Double.toString(geolocLongitude)));
+		paramsToPost.add(new BasicNameValuePair("geolocLatitude", Double.toString(geolocLatitude)));
+		
+		// Send the http request
+		HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
 	}
 }

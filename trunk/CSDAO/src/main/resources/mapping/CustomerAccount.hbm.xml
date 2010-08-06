@@ -10,9 +10,11 @@
             <generator class="native"/>
         </id>
         <property name="customerLogin" type="string" column="customer_login"/>
-        <property name="lastName" type="string" column="last_name"/>
         <property name="customerPassword" type="string" column="customer_password"/>
+        <property name="lastName" type="string" column="last_name"/>
         <property name="firstName" type="string" column="first_name"/>
+        <property name="geolocLongitude" type="double" column="geoloc_longitude"/>
+        <property name="geolocLatitude" type="double" column="geoloc_latitude"/>    
         <property name="emailAddress" type="string" column="email_address"/>
         <property name="phone" type="integer" column="phone"/>
         <property name="mobile" type="integer" column="mobile"/>

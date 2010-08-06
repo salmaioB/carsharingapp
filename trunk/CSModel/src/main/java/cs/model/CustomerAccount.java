@@ -12,6 +12,8 @@ public class CustomerAccount implements Serializable
 	private String customerPassword;
 	private String lastName;
 	private String firstName;
+	private Double geolocLongitude;
+	private Double geolocLatitude;
 	private String emailAddress;
 	private Integer phone;
 	private Integer mobile;
@@ -64,6 +66,22 @@ public class CustomerAccount implements Serializable
 	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+	
+	public Double getGeolocLongitude() {
+		return geolocLongitude;
+	}
+	
+	public void setGeolocLongitude(Double geolocLongitude) {
+		this.geolocLongitude = geolocLongitude;
+	}
+	
+	public Double getGeolocLatitude() {
+		return geolocLatitude;
+	}
+	
+	public void setGeolocLatitude(Double geolocLatitude) {
+		this.geolocLatitude = geolocLatitude;
 	}
 	
 	public String getEmailAddress() {

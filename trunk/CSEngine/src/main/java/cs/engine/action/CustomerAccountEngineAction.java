@@ -33,4 +33,12 @@ public class CustomerAccountEngineAction
 		}
 		return null;
 	}
+	
+	public void saveCustomerLocation(Integer idCustomerAccount, double longitude, double latitude)
+	{
+		if(caBean != null)
+		{
+			caBean.saveCustomerLocation(idCustomerAccount, longitude, latitude);
+		}
+	}
 }
