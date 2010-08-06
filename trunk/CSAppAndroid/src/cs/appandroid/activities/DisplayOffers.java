@@ -1,17 +1,14 @@
 package cs.appandroid.activities;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import cs.appandroid.components.OfferListAdapter;
 import cs.model.Offer;
 import cs.webservice.OffersWS;
-import android.app.Activity;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
 
 public class DisplayOffers extends ListActivity
 {
@@ -21,7 +18,6 @@ public class DisplayOffers extends ListActivity
 	private List<Offer> offers = null;
 	
 	private Runnable displayOffersProcess;
-	
 	
 	
 	@Override

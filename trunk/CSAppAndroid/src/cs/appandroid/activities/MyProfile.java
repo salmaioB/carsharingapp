@@ -4,6 +4,7 @@ import cs.appandroid.controller.IdentificationController;
 import cs.model.CustomerAccount;
 import cs.webservice.CustomerAccountsWS;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.app.TabActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,7 +23,9 @@ public class MyProfile extends Activity implements OnClickListener
 	private EditText passwordEditText;
 	private Button validateConnectionButton;	
 	
-    Bundle params;
+    private Runnable identificationProcess;
+    private ProgressDialog identificationProgressDialog;
+	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -45,29 +48,18 @@ public class MyProfile extends Activity implements OnClickListener
 	{
 		if(v == validateConnectionButton)
 		{
-			CustomerAccount customerAccount = new CustomerAccount();
+			identificationProcess = new Runnable()
+			{	
+				@Override
+				public void run()
+				{
+					identificationProcess();
+				}
+			};
 			
-			String userLogin 	= loginEditText.getText().toString();
-			String userPassword = passwordEditText.getText().toString();
-			
-			CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
-			customerAccount = customerAccountWS.getCustomerAccount(userLogin, userPassword);
-			
-			if(customerAccount != null)
-			{
-				Log.v("Customer id", customerAccount.getId().toString());
-				
-				IdentificationController.saveUserIsLogged(getBaseContext(), customerAccount.getId());
-				
-                // To retrieve the tabHost and to set the new current tab
-				TabHost tabHost = ((TabActivity)getParent()).getTabHost();
-				tabHost.setCurrentTab(0);
-			}
-			else
-			{
-				identificationFailedTextView.setText("Votre identifiant ou votre mot de passe est invalide");
-				
-			}
+			Thread thread =  new Thread(null, identificationProcess, "SearchOrderThread");
+		    thread.start();
+		    identificationProgressDialog = ProgressDialog.show(MyProfile.this, "Please wait...", "Identification ...", true);
 		}
 	}
 	
@@ -93,5 +85,32 @@ public class MyProfile extends Activity implements OnClickListener
     		validateConnectionButton = (Button)findViewById(R.id.validate_connection_button);
     	    validateConnectionButton.setOnClickListener(this);
 	    }
+	}
+	
+	public void identificationProcess()
+	{
+		CustomerAccount customerAccount = new CustomerAccount();
+		
+		String userLogin 	= loginEditText.getText().toString();
+		String userPassword = passwordEditText.getText().toString();
+		
+		CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
+		customerAccount = customerAccountWS.getCustomerAccount(userLogin, userPassword);
+		
+		if(customerAccount != null)
+		{
+			Log.v("Customer id", customerAccount.getId().toString());
+			
+			IdentificationController.saveUserIsLogged(getBaseContext(), customerAccount.getId());
+			
+            // To retrieve the tabHost and to set the new current tab
+			TabHost tabHost = ((TabActivity)getParent()).getTabHost();
+			tabHost.setCurrentTab(0);
+		}
+		else
+		{
+			identificationFailedTextView.setText("Votre identifiant ou votre mot de passe est invalide");
+			
+		}
 	}
 }
