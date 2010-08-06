@@ -2,63 +2,43 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:layout_width="fill_parent"
-			  android:layout_height="fill_parent">
- 
- 	<LinearLayout android:layout_width="fill_parent"
- 				  android:layout_height="100px">
- 	
- 	</LinearLayout>
-
-	<TableLayout android:layout_width="fill_parent"
-			     android:layout_height="fill_parent"
-			     android:stretchColumns="1">
+			  android:layout_height="fill_parent"
+			  android:orientation="vertical">
 	
-		<TableRow>
-			<TextView android:id="@+id/text"
-					  android:layout_width="wrap_content"
-					  android:layout_height="wrap_content"
-				  	  android:text="Adresse de départ"/>
-				  	  
-		    <EditText android:id="@+id/starting_address_edittext"
-					  android:layout_width="wrap_content"
-					  android:layout_height="wrap_content"
-					  android:background="@android:drawable/editbox_background"/>
-		</TableRow>
-		
-		<TableRow>			  
-			<TextView android:id="@+id/text"
-					  android:layout_width="wrap_content"
-					  android:layout_height="wrap_content"
-				  	  android:text="Ville de départ"/>
-				  	  
-		    <EditText android:id="@+id/starting_address_edittext"
-					  android:layout_width="wrap_content"
-					  android:layout_height="wrap_content"
-					  android:background="@android:drawable/editbox_background"/>
-		</TableRow>
-		
-		<TableRow>			  
-			<TextView android:id="@+id/text"
-					  android:layout_width="wrap_content"
-					  android:layout_height="wrap_content"
-				  	  android:text="Adresse d'arrivée"/>  
-		    <EditText android:id="@+id/starting_address_edittext"
-					  android:layout_width="wrap_content"
-					  android:layout_height="wrap_content"
-					  android:background="@android:drawable/editbox_background"/>
-		</TableRow>
-		
-		<TableRow>			  
-			<TextView android:id="@+id/text"
-					  android:layout_width="wrap_content"
-					  android:layout_height="wrap_content"
-				  	  android:text="Ville d'arrivée"/>
-				  	  
-		    <EditText android:id="@+id/starting_address_edittext"
-					  android:layout_width="wrap_content"
-					  android:layout_height="wrap_content"
-					  android:background="@android:drawable/editbox_background"/>				  			  
-		</TableRow>
-	</TableLayout>
+	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:gravity="left"
+			  android:text="Ville de départ"/>
+	
+	<EditText android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:background="@android:drawable/editbox_background"/>
+			  
+	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:gravity="left"
+			  android:text="Ville d'arrivée"/>
+			  
+	<EditText android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:background="@android:drawable/editbox_background"/>
+			  
+	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:gravity="left"
+			  android:text="Date du trajet"/>
+			  
+    <Spinner android:id="@+id/spinner"
+        	 android:layout_width="fill_parent"
+             android:layout_height="wrap_content"/>
 
+	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:gravity="left"
+			  android:text="Heure"/>
+			  
+    <Spinner android:id="@+id/spinner"
+        	 android:layout_width="fill_parent"
+             android:layout_height="wrap_content"/>
+			  
 </LinearLayout>

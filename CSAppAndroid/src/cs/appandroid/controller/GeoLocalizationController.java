@@ -3,11 +3,7 @@ package cs.appandroid.controller;
 import cs.appandroid.utilities.GeoLocalizationListener;
 import cs.webservice.CustomerAccountsWS;
 import android.content.Context;
-import android.location.Criteria;
-import android.location.Location;
 import android.location.LocationManager;
-import android.util.Log;
-import android.widget.TextView;
 
 
 public class GeoLocalizationController
@@ -22,7 +18,7 @@ public class GeoLocalizationController
 		objlistener = new GeoLocalizationListener();
 	}
 	
-	public void saveUserLocation(TextView testGeoloc, Context context)
+	public void saveUserLocation(Context context)
 	{
 //		Criteria crit = new Criteria();
 //		crit.setAccuracy(Criteria.ACCURACY_FINE);
