@@ -1,23 +1,32 @@
 package cs.appandroid.activities;
 
-import cs.appandroid.controller.IdentificationUtilities;
+import java.util.Timer;
+
+import cs.appandroid.controller.IdentificationController;
+import cs.appandroid.controller.MyTimerTask;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.TabHost.OnTabChangeListener;
 
 public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabChangeListener
 {	
+	private TextView testGeoloc;
+	
 	private Button connectionButton;
 	private TabHost tabHost;
 	
 	Intent myProfileIntent;
+	
+	Handler myHandler;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -29,7 +38,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    connectionButton = (Button)findViewById(R.id.connection_button);
 	    connectionButton.setOnClickListener(this);
 	    
-	    if(IdentificationUtilities.userIsLogged(getBaseContext()))
+	    if(IdentificationController.userIsLogged(getBaseContext()))
 	    	connectionButton.setVisibility(View.INVISIBLE);
 	    else
 	    	connectionButton.setText("Connexion");
@@ -95,16 +104,20 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    
 	    tabHost.addTab(spec);
 	    
-	    
 	    tabHost.setOnTabChangedListener(this);
 	    
-//	    Log.v("number of tab", Integer.toString(tabHost.getTabWidget().getChildCount()));
-//	    
-//	    for(int i=0; i<tabHost.getTabWidget().getChildCount(); i++)
-//	    {
-//	    	Log.v("tab", Integer.toString(i));
-//	    	tabHost.getTabWidget().getChildAt(i).setOnClickListener(this);
-//	    }
+	    
+	    testGeoloc = (TextView)findViewById(R.id.test_geoloc);
+
+	    myHandler = new Handler();
+	    
+	    // Delay for 5 sec.
+	    int delay = 5000; 
+	    // Repeat every sec.
+	    int period = 10000;
+
+	    Timer timer = new Timer();
+	    timer.scheduleAtFixedRate(new MyTimerTask(myHandler, getBaseContext(), testGeoloc), delay, period);
 	}
 
 	@Override
@@ -116,9 +129,9 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 		
 		if(v == connectionButton)
 		{   
-			if(tabHost.getCurrentTabTag() == "myprofile" && IdentificationUtilities.userIsLogged(getBaseContext()))
+			if(tabHost.getCurrentTabTag() == "myprofile" && IdentificationController.userIsLogged(getBaseContext()))
 			{
-				IdentificationUtilities.disconnectUser(getBaseContext());
+				IdentificationController.disconnectUser(getBaseContext());
 				tabHost.setCurrentTab(0);
 			}
 			else
@@ -137,7 +150,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    	    
 	    if(tabId != "searchoffers")
 	    {
-	    	if(!IdentificationUtilities.userIsLogged(getBaseContext()))
+	    	if(!IdentificationController.userIsLogged(getBaseContext()))
 	    	{
 				tabHost.setCurrentTab(3);
 				connectionButton.setText("Connexion");
@@ -159,7 +172,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    }
 	    else
 	    {
-	    	if(IdentificationUtilities.userIsLogged(getBaseContext()))
+	    	if(IdentificationController.userIsLogged(getBaseContext()))
 	    		connectionButton.setVisibility(View.INVISIBLE);
 	    	else
 	    	{
