@@ -7,7 +7,8 @@
     <LinearLayout android:layout_width="fill_parent"
 		     	  android:layout_height="30dp">
     
-    	<TextView android:layout_width="240dp"
+    	<TextView android:id="@+id/test_geoloc"
+    	 		  android:layout_width="240dp"
     			  android:layout_height="fill_parent"
     			  android:gravity="center"
     			  android:text="Covoiturage"/>

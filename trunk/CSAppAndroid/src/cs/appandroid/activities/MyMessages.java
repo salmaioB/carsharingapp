@@ -1,8 +1,5 @@
 package cs.appandroid.activities;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import cs.model.CustomerAccount;
 import cs.webservice.CustomerAccountsWS;
 
@@ -10,7 +7,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import android.view.KeyEvent;   
 
 
 public class MyMessages extends Activity

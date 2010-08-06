@@ -5,23 +5,33 @@
 			  android:orientation="vertical"
 			  android:layout_gravity="center_horizontal"
 			  android:id="@+id/toto">
+			  
+	<LinearLayout android:layout_width="fill_parent"
+              	  android:layout_height="wrap_content"
+                  android:orientation="horizontal">
+		
+		<TextView android:id="@+id/identification_failed"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"/>
+		
+	</LinearLayout>
   
 	<LinearLayout android:layout_width="fill_parent"
 	              android:layout_height="wrap_content"
 	              android:orientation="horizontal">
 
-	<TextView android:id="@+id/text"
-			  android:layout_width="wrap_content"
-			  android:layout_height="wrap_content"
-			  android:width="150px"
-		  	  android:text="Login"/>
-		  
-
-	<EditText android:id="@+id/starting_address_edittext"
-			  android:layout_width="wrap_content"
-			  android:layout_height="wrap_content"
-			  android:width="100px"
-			  android:background="@android:drawable/editbox_background"/>
+		<TextView android:id="@+id/text"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+				  android:width="150px"
+			  	  android:text="Login"/>
+			  
+	
+		<EditText android:id="@+id/login_edittext"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+				  android:width="100px"
+				  android:background="@android:drawable/editbox_background"/>
 			  
     </LinearLayout>
 
@@ -29,17 +39,17 @@
 	              android:layout_height="wrap_content"
 	              android:orientation="horizontal">
     
-	<TextView android:id="@+id/text2"
-			  android:layout_width="wrap_content"
-			  android:layout_height="wrap_content"
-			  android:width="150px"
-			  android:text="Mot de passe"/>
-
-	<EditText android:id="@+id/finishing_address_edittext"
-			  android:layout_width="wrap_content"
-			  android:layout_height="wrap_content"
-			  android:width="100px"
-			  android:background="@android:drawable/editbox_background"/>
+		<TextView android:id="@+id/text2"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+				  android:width="150px"
+				  android:text="Mot de passe"/>
+	
+		<EditText android:id="@+id/password_edittext"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+				  android:width="100px"
+				  android:background="@android:drawable/editbox_background"/>
 
 	</LinearLayout>
 
@@ -48,11 +58,11 @@
 	              android:orientation="horizontal"
 	              android:gravity="right">
 
-	<Button android:id="@+id/validate_connection_button"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="right"
-			android:text="Se connecter"/>
+		<Button android:id="@+id/validate_connection_button"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="right"
+				android:text="Se connecter"/>
 	
 	</LinearLayout>
 
