@@ -5,17 +5,20 @@ import com.opensymphony.xwork2.ActionSupport;
 import cs.engine.action.CustomerAccountEngineAction;
 import cs.model.CustomerAccount;
 
-public class CustomerAccountsWS  extends ActionSupport
+public class CustomerAccountsWS extends ActionSupport
 {
 	private static final long serialVersionUID = 1L;
 	
-	private CustomerAccount customerAccount;
-	
+	//private String functionToExecute;
+		
 	private Integer id;
 	private String customerLogin;
 	private String customerPassword;
-	
+	private double geolocLongitude;
+	private double geolocLatitude;
 
+	private CustomerAccount customerAccount;
+	
 	/**
 	 * Getter and Setter
 	 */
@@ -35,16 +38,32 @@ public class CustomerAccountsWS  extends ActionSupport
 		this.customerLogin = customerLogin;
 	}
 	
-	public CustomerAccount getCustomerAccount() {
-		return customerAccount;
-	}
-	
 	public String getCustomerPassword() {
 		return customerPassword;
 	}
 
 	public void setCustomerPassword(String customerPassword) {
 		this.customerPassword = customerPassword;
+	}
+	
+	public double getGeolocLongitude() {
+		return geolocLongitude;
+	}
+
+	public void setGeolocLongitude(double geolocLongitude) {
+		this.geolocLongitude = geolocLongitude;
+	}
+
+	public double getGeolocLatitude() {
+		return geolocLatitude;
+	}
+
+	public void setGeolocLatitude(double geolocLatitude) {
+		this.geolocLatitude = geolocLatitude;
+	}
+	
+	public CustomerAccount getCustomerAccount() {
+		return customerAccount;
 	}
 	
 	public void setCustomerAccount(CustomerAccount customerAccount) {
@@ -59,12 +78,23 @@ public class CustomerAccountsWS  extends ActionSupport
 		System.out.println("customerLogin : " + customerLogin);
 		System.out.println("customerPassword : " + customerPassword);
 
-		CustomerAccountEngineAction customerAccountEngine = new CustomerAccountEngineAction();
 		
-		if(id != null)
+		CustomerAccountEngineAction customerAccountEngine = new CustomerAccountEngineAction();
+
+		// Ugly part
+		if(id != null && geolocLongitude != 0)
+		{
+			System.out.println("teub");
+			customerAccountEngine.saveCustomerLocation(id, geolocLongitude, geolocLatitude);
+		}
+		else if(id != null)
+		{
 			customerAccount = customerAccountEngine.load(id);
+		}
 		else
+		{
 			customerAccount = customerAccountEngine.identification(customerLogin, customerPassword);
+		}
 		
 		//System.out.println(customerAccount.getCustomerLogin());
 		

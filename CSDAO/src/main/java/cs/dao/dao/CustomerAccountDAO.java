@@ -73,12 +73,25 @@ public class CustomerAccountDAO extends DAO
 	     HibernateUtil.closeSession();
 
 	     if(customerAccountList.size() == 1)
-	     { 
 	    	 return (CustomerAccount)customerAccountList.get(0);
-	     }
 	     else
-	     {
 	    	 return null;
-	     }
+	}
+	
+	public void saveCustomerLocation(Integer idCustomerAccount, double longitude, double latitude)
+	{
+		Session session = HibernateUtil.currentSession();
+		
+		String SQLQuery = "UPDATE customer_accounts " +
+						  "SET geoloc_longitude=" + Double.toString(longitude) + ", " +
+						  "geoloc_latitude=" + Double.toString(latitude) + " " +
+						  "WHERE _id_customer_account=" + Integer.toString(idCustomerAccount);
+		
+		System.out.println(SQLQuery);
+		
+		Query query = session.createSQLQuery(SQLQuery);
+		query.executeUpdate();
+		
+		HibernateUtil.closeSession();
 	}
 }
