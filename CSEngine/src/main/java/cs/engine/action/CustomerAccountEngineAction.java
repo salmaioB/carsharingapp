@@ -1,5 +1,7 @@
 package cs.engine.action;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
@@ -14,6 +16,31 @@ public class CustomerAccountEngineAction
 	{
 		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
 		caBean = (CustomerAccountDAO) beanFactory.getBean("CustomerAccountDAO");
+	}
+	
+	public Boolean chekup(CustomerAccount ca)
+	{
+		if( !ca.getCustomerLogin().equals("") && !ca.getCustomerPassword().equals("")
+			&& !ca.getEmailAddress().equals("") && !ca.getFirstName().equals("")
+			&& !ca.getLastName().equals("") )
+			return true;
+		else
+			return false;
+	}
+	public Boolean save(CustomerAccount ca)
+	{
+		if(caBean != null)
+		{
+			if(chekup(ca))
+			{
+				ca.setDatetimeRegistration(new Date());
+				ca.setDatetimeLastConnection(new Date());
+				return caBean.save(ca);
+			}
+			else 
+				return false;
+		}
+		return false;
 	}
 	
 	public CustomerAccount load(Integer id)
@@ -33,7 +60,7 @@ public class CustomerAccountEngineAction
 		}
 		return null;
 	}
-	
+		
 	public void saveCustomerLocation(Integer idCustomerAccount, double longitude, double latitude)
 	{
 		if(caBean != null)
