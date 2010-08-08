@@ -102,15 +102,31 @@ public class MyProfile extends Activity implements OnClickListener
 			Log.v("Customer id", customerAccount.getId().toString());
 			
 			IdentificationController.saveUserIsLogged(getBaseContext(), customerAccount.getId());
-			
-            // To retrieve the tabHost and to set the new current tab
-			TabHost tabHost = ((TabActivity)getParent()).getTabHost();
-			tabHost.setCurrentTab(0);
 		}
-		else
-		{
-			identificationFailedTextView.setText("Votre identifiant ou votre mot de passe est invalide");
-			
-		}
+		
+		identificationProcessUpdateUI(customerAccount);
+	}
+	
+	public void identificationProcessUpdateUI(final CustomerAccount customerAccount)
+	{
+		// Drop the Runnable into the UI thread queue
+    	runOnUiThread(new Runnable()
+    	{
+           @Override
+           public void run()
+           {
+           	   // Code execute by UI main thread
+        	   if(customerAccount != null)
+        	   {
+        		   // To retrieve the tabHost and to set the new current tab
+        		   TabHost tabHost = ((TabActivity)getParent()).getTabHost();
+        		   tabHost.setCurrentTab(0);
+        	   }
+        	   else
+        		   identificationFailedTextView.setText("Votre identifiant ou votre mot de passe est invalide");
+        	   
+    		   identificationProgressDialog.dismiss();
+           }
+        });
 	}
 }

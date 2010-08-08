@@ -29,6 +29,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	private Handler geolocalizationHandler;
 	private Timer geolocalizationTimer;
 	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -36,7 +37,111 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 		
 		displayMainScreen();
 	}
-   
+	
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		
+//		Log.v("onResume", "test");
+//		
+//		createGeolocalizationTimer();
+	}
+   	
+	@Override
+	public void onClick(View v)
+	{		
+		if(v == connectionButton)
+		{   
+			if(tabHost.getCurrentTabTag() == "myprofile" && IdentificationController.userIsLogged(getBaseContext()))
+			{
+				IdentificationController.disconnectUser(getBaseContext());
+				
+				tabHost.setCurrentTab(0);
+				
+				//geolocalizationTimer.cancel();
+			}
+			else
+			{				
+				// Send params to show the identification screen
+				myProfileIntent.putExtra("identification", true);
+				tabHost.setCurrentTab(3);				
+			}
+		}
+	}
+	
+	@Override
+	public void onTabChanged(String tabId)
+	{
+	    Log.d("TabChanged", "OnTabChanged");
+	    	    
+	    if(tabId != "searchoffers")
+	    {
+	    	if(!IdentificationController.userIsLogged(getBaseContext()))
+	    	{
+				tabHost.setCurrentTab(3);
+				connectionButton.setText("Connexion");
+	    	}
+	    	else
+	    	{
+	    		Log.d("user", "User is logged");
+	    		
+	    		if(tabId == "myprofile")
+	    		{					
+					tabHost.setCurrentTab(3);
+	    			
+	    			connectionButton.setText("Déconnexion");
+	    			connectionButton.setVisibility(View.VISIBLE);
+	    		}
+	    		else
+	    			connectionButton.setVisibility(View.INVISIBLE);
+	    	}
+	    }
+	    else
+	    {
+	    	if(IdentificationController.userIsLogged(getBaseContext()))
+	    		connectionButton.setVisibility(View.INVISIBLE);
+	    	else
+	    	{
+	    		connectionButton.setText("Connexion");
+	    		connectionButton.setVisibility(View.VISIBLE);
+	    	}
+	    }
+	}
+	
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu)
+	{
+		// Create a MenuInflater to instantiate a xml menu into an object menu
+        MenuInflater inflater = getMenuInflater();
+        
+        // Instantiate the xml menu specified into the object menu
+        inflater.inflate(R.layout.menu, menu);
+ 
+        return true;
+    }
+	
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+    	switch (item.getItemId())
+    	{
+          	case R.id.option:	
+             				  return true;
+          	case R.id.quitter: finish();
+             				   return true;
+    	}
+    	return false;
+    }
+	
+	@Override
+	public void onDestroy()
+	{
+		super.onDestroy();
+		
+		geolocalizationTimer.cancel();
+	}
+    
 	public void displayMainScreen()
 	{
 		setContentView(R.layout.main);
@@ -123,104 +228,18 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	}
 	
 	public void createGeolocalizationTimer()
-	{
+	{   
+		Log.v("geolocalization", "launch");
+		
 		geolocalizationTimer = new Timer();
 		geolocalizationHandler = new Handler();
-	    
-	    int geolocalizationTimerDelay  = 5000;
-	    int geolocalizationTimerPeriod = 10000; 
-	    
-		geolocalizationTimer.schedule(new GeolocalizationTimerTask(geolocalizationHandler, getBaseContext()), geolocalizationTimerDelay, geolocalizationTimerPeriod); 
-	}
-	
-	@Override
-	public void onClick(View v)
-	{		
-		if(v == connectionButton)
-		{   
-			if(tabHost.getCurrentTabTag() == "myprofile" && IdentificationController.userIsLogged(getBaseContext()))
-			{
-				IdentificationController.disconnectUser(getBaseContext());
-				tabHost.setCurrentTab(0);
-			}
-			else
-			{
-				// Send params to show the identification screen
-				myProfileIntent.putExtra("identification", true);
-				tabHost.setCurrentTab(3);				
-			}
-		}
-	}
-	
-	@Override
-	public void onTabChanged(String tabId)
-	{
-	    Log.d("TabChanged", "OnTabChanged");
-	    	    
-	    if(tabId != "searchoffers")
-	    {
-	    	if(!IdentificationController.userIsLogged(getBaseContext()))
-	    	{
-				tabHost.setCurrentTab(3);
-				connectionButton.setText("Connexion");
-	    	}
-	    	else
-	    	{
-	    		Log.d("user", "User is logged");
-	    		
-	    		if(tabId == "myprofile")
-	    		{					
-					tabHost.setCurrentTab(3);
-	    			
-	    			connectionButton.setText("Déconnexion");
-	    			connectionButton.setVisibility(View.VISIBLE);
-	    		}
-	    		else
-	    			connectionButton.setVisibility(View.INVISIBLE);
-	    	}
-	    }
-	    else
-	    {
-	    	if(IdentificationController.userIsLogged(getBaseContext()))
-	    		connectionButton.setVisibility(View.INVISIBLE);
-	    	else
-	    	{
-	    		connectionButton.setText("Connexion");
-	    		connectionButton.setVisibility(View.VISIBLE);
-	    	}
-	    }
-	}
-	
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu)
-	{
-		// Create a MenuInflater to instantiate a xml menu into an object menu
-        MenuInflater inflater = getMenuInflater();
-        
-        // Instantiate the xml menu specified into the object menu
-        inflater.inflate(R.layout.menu, menu);
- 
-        return true;
-    }
-	
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-    	switch (item.getItemId())
-    	{
-          	case R.id.option:	
-             				  return true;
-          	case R.id.quitter: finish();
-             				   return true;
-    	}
-    	return false;
-    }
-	
-	@Override
-	public void onDestroy()
-	{
-		super.onDestroy();
 		
-		geolocalizationTimer.cancel();
+//		if(IdentificationController.userIsLogged(getBaseContext()))
+//		{
+			int geolocalizationTimerDelay  = 5000;
+			int geolocalizationTimerPeriod = 10000; 
+    
+			geolocalizationTimer.schedule(new GeolocalizationTimerTask(geolocalizationHandler, getBaseContext()), geolocalizationTimerDelay, geolocalizationTimerPeriod);
+//		}
 	}
 }

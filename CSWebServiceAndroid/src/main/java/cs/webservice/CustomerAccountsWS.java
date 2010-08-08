@@ -8,8 +8,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import cs.model.CustomerAccount;
 import cs.common.HttpClient;
 import cs.define.Define;
@@ -18,7 +16,7 @@ public class CustomerAccountsWS
 {
 	private JSONObject jsonObjectSend;
 	
-	private static final String URL = "http://10.0.2.2:"+Define.port+"/CSAppWeb/CustomerAccountsWS";
+	private static final String URL = Define.webRootUrl + "CSAppWeb/CustomerAccountsWS";
 	
 	public CustomerAccountsWS()
 	{

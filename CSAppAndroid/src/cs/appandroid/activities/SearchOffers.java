@@ -28,7 +28,7 @@ public class SearchOffers extends Activity implements OnClickListener
 	    validateSearch           = (Button)findViewById(R.id.validate_search);
 	    validateSearch.setOnClickListener(this);
 	}
-
+	
 	@Override
 	public void onClick(View v)
 	{
