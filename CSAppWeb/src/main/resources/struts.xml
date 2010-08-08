@@ -56,6 +56,9 @@
 		<action name="PrintMapPost" class="com.appweb.action.ajax.PrintMapPost">
 			<result name="success">/ajax/printMapPost.jsp</result>
 		</action>
+		<action name="PrintPositionAndroid" class="com.appweb.action.ajax.PrintPositionAndroid">
+			<result name="success">/ajax/printPositionAndroid.jsp</result>
+		</action>
 	</package>
-	
+
 </struts>
