@@ -40,7 +40,7 @@
 Message : <s:property value="message"/> <br />
 Affiche list : <s:property value="tr.tr_html(1)"/>
 
-<a href="http://<%=cs.define.Define.adresse%>:<%=cs.define.Define.port%>/CSAppWeb/Accueil?type=Offer">Offer</a>
-<a href="http://<%=cs.define.Define.adresse%>:<%=cs.define.Define.port%>/CSAppWeb/Accueil?type=CustomerAccounts">CustomerAccounts</a>
+<a href="http://<%=cs.define.Define.address%>:<%=cs.define.Define.port%>/CSAppWeb/Accueil?type=Offer">Offer</a>
+<a href="http://<%=cs.define.Define.address%>:<%=cs.define.Define.port%>/CSAppWeb/Accueil?type=CustomerAccounts">CustomerAccounts</a>
 
     
