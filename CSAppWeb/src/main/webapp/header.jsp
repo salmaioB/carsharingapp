@@ -12,12 +12,12 @@
 	<table>
 		<tr>
 			<td>
-				<a href="http://<%=cs.define.Define.address%>:<%=cs.define.Define.port%>/CSAppWeb/Accueil?langage=fr">
+				<a href="http://<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?langage=fr">
 					<img src="img/flag_FR.jpg" height="60px;"/>
 				</a>
 			</td>
 			<td>
-				<a href="http://<%=cs.define.Define.address%>:<%=cs.define.Define.port%>/CSAppWeb/Accueil?langage=en">
+				<a href="http://<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?langage=en">
 					<img src="img/flag_UK.jpg" height="60px;"/>
 				</a>
 			</td>
