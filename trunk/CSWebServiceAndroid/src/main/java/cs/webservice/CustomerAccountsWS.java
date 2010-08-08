@@ -16,7 +16,7 @@ public class CustomerAccountsWS
 {
 	private JSONObject jsonObjectSend;
 	
-	private static final String URL = Define.webRootUrl + "CSAppWeb/CustomerAccountsWS";
+	private static final String URL = Define.webServiceRootUrl + "CSAppWeb/CustomerAccountsWS";
 	
 	public CustomerAccountsWS()
 	{

@@ -16,7 +16,7 @@ import cs.define.Define;
 
 public class OffersWS
 {
-	private static final String URL = Define.webRootUrl + "CSAppWeb/OffersWS";
+	private static final String URL = Define.webServiceRootUrl + "CSAppWeb/OffersWS";
 	
 	
 	public List<Offer> getSearchOffers()
