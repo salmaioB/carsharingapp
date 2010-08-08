@@ -1,4 +1,23 @@
 
+function initializePosition()
+{
+	
+	var longitude = $('#geolocLongitude').text();
+	var latitude = $('#geolocLatitude').text();
+
+	var centreCarte = new google.maps.LatLng(longitude,latitude);
+	 //OPtion carte
+	 var optionsCarte = {
+				zoom: 13,
+				center: centreCarte,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+
+	//Création de la carte
+	var maCarte = new google.maps.Map(document.getElementById("map"), optionsCarte);
+
+	printPoint(maCarte, longitude, latitude);
+}
 function autoriezdNewPosition(marqueur)
     	{
 	    	marqueur.setDraggable(true);
