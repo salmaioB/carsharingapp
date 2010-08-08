@@ -5,7 +5,9 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import cs.dao.dao.CustomerAccountDAO;
 import cs.engine.translation.TranslationEngine;
+import cs.model.CustomerAccount;
 
 public class Action extends ActionSupport
 {
@@ -13,6 +15,20 @@ public class Action extends ActionSupport
 	private TranslationEngine tr;
 	private Map session;
 	private Map parameters;
+	private CustomerAccount customerAccount;
+	
+	public Boolean isLoging()
+	{
+		if(customerAccount == null)
+			return false;
+		return true;
+	}
+	public CustomerAccount getCustomerAccount() {
+		return customerAccount;
+	}
+	public void setCustomerAccount(CustomerAccount customerAccount) {
+		this.customerAccount = customerAccount;
+	}
 	public Map getParameters() {
 		return parameters;
 	}
@@ -55,6 +71,16 @@ public class Action extends ActionSupport
 		tr = new TranslationEngine();
 		String country = (String) session.get("langage");
 		tr.setCountry(country);
+		
+		//SetL'objet
+		if(getSession().get("customerId") != null)
+		{
+			if(getSession().get("customerId") != "")
+			{
+				CustomerAccountDAO cadao = new CustomerAccountDAO();
+				customerAccount = cadao.load((Integer)getSession().get("customerId")); 
+			}
+	    }
 	}
 	public Map getSession() {
 		return session;
