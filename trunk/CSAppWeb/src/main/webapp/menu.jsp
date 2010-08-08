@@ -1,20 +1,10 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-	<div id="container"> 
- 		<ul> 
-			<li><a href="#fragment-1"><span>Accueil</span></a></li> 
-            <li><a href="#fragment-2"><span>Rechercher</span></a></li> 
-         </ul> 
-            <div id="fragment-1"> 
-		       <h2>
-		      		Accueil
-		    	</h2>
-            </div> 
-            <div id="fragment-2"> 
-               Rechercher
-            </div> 
-        </div> 
-        
-Message : <s:property value="message"/> <br />
-Affiche list : <s:property value="tr.tr_html(1)"/>
+<ul> 
+	<li><a href="#search"><span>Rechercher</span></a></li> 
+    <li><a href="#post"><span>Poster</span></a></li>
+    <li><a href="#profil"><span>Profil</span></a></li>
+    <li><a href="#message"><span>Message</span></a></li> 
+    <li><a href="#trip"><span>Mes trajets</span></a></li>
+</ul> 
