@@ -8,8 +8,10 @@ public class LoginActionAjax extends Action
 {
     private String username;
     private String password;
+    
     public LoginActionAjax()
     {
+		System.out.println("Construct LoginActionAjax");
     }
 	public String getUsername() {
 		return username;
