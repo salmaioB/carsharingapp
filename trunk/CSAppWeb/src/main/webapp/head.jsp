@@ -1,7 +1,11 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<head>
+
+<%@page import="cs.define.Define"%><head>
+	<script type="text/javascript">
+		var WEB_ROOT_URL = <%=Define.webRootUrl %>;
+	</script>
 	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 
 	<script type="text/javascript" src="js/jtabs/jquery.tabs.js"></script>
