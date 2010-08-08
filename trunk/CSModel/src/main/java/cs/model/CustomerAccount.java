@@ -15,6 +15,9 @@ public class CustomerAccount implements Serializable
 	private Double geolocLongitude;
 	private Double geolocLatitude;
 	private String emailAddress;
+	private String address;
+	private String ville;
+	private Integer cp;
 	private Integer phone;
 	private Integer mobile;
 	private Integer customerType;
@@ -28,7 +31,30 @@ public class CustomerAccount implements Serializable
 	private Date datetimeLastConnection;
 	private Date datetimeLastOfferCreated;
 	private Date datetimeLastCarSharing;
-	
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public Integer getCp() {
+		return cp;
+	}
+
+	public void setCp(Integer cp) {
+		this.cp = cp;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -37,6 +63,7 @@ public class CustomerAccount implements Serializable
 		this.id = id;
 	}
 	public String getCustomerLogin() {
+		if(customerLogin == null) customerLogin ="";
 		return customerLogin;
 	}
 
@@ -45,6 +72,7 @@ public class CustomerAccount implements Serializable
 	}	
 	
 	public String getCustomerPassword() {
+		if(customerPassword == null) customerPassword ="";
 		return customerPassword;
 	}
 	
@@ -53,6 +81,7 @@ public class CustomerAccount implements Serializable
 	}
 	
 	public String getLastName() {
+		if(lastName == null) lastName ="";
 		return lastName;
 	}
 	
@@ -61,6 +90,7 @@ public class CustomerAccount implements Serializable
 	}
 	
 	public String getFirstName() {
+		if(firstName == null) firstName ="";
 		return firstName;
 	}
 	
@@ -85,6 +115,7 @@ public class CustomerAccount implements Serializable
 	}
 	
 	public String getEmailAddress() {
+		if(emailAddress == null) emailAddress ="";
 		return emailAddress;
 	}
 	
@@ -131,7 +162,10 @@ public class CustomerAccount implements Serializable
 	public void setAcceptAnimals(Integer acceptAnimals) {
 		this.acceptAnimals = acceptAnimals;
 	}
-	
+	public void setAcceptAnimals(Boolean acceptAnimals) {
+		if(acceptAnimals==false) this.acceptAnimals = 0;
+		else this.acceptAnimals = 1;
+	}
 	public Integer getAcceptRadio() {
 		return acceptRadio;
 	}
@@ -139,7 +173,10 @@ public class CustomerAccount implements Serializable
 	public void setAcceptRadio(Integer acceptRadio) {
 		this.acceptRadio = acceptRadio;
 	}
-	
+	public void setAcceptRadio(Boolean acceptRadio) {
+		if(acceptRadio==false) this.acceptRadio = 0;
+		else this.acceptRadio = 1;
+	}
 	public Integer getAcceptSmoker() {
 		return acceptSmoker;
 	}
@@ -147,7 +184,10 @@ public class CustomerAccount implements Serializable
 	public void setAcceptSmoker(Integer acceptSmoker) {
 		this.acceptSmoker = acceptSmoker;
 	}
-	
+	public void setAcceptSomker(Boolean acceptSmoker) {
+		if(acceptSmoker==false) this.acceptSmoker = 0;
+		else this.acceptSmoker = 1;
+	}
 	public Integer getAcceptToDiscuss() {
 		return acceptToDiscuss;
 	}
@@ -155,7 +195,10 @@ public class CustomerAccount implements Serializable
 	public void setAcceptToDiscuss(Integer acceptToDiscuss) {
 		this.acceptToDiscuss = acceptToDiscuss;
 	}
-	
+	public void setAcceptToDiscuss(Boolean acceptToDiscuss) {
+		if(acceptToDiscuss==false) this.acceptToDiscuss = 0;
+		else this.acceptToDiscuss = 1;
+	}
 	public Integer getAcceptToMakeADetour() {
 		return acceptToMakeADetour;
 	}
@@ -163,7 +206,10 @@ public class CustomerAccount implements Serializable
 	public void setAcceptToMakeADetour(Integer acceptToMakeADetour) {
 		this.acceptToMakeADetour = acceptToMakeADetour;
 	}
-	
+	public void setAcceptToMakeADetour(Boolean acceptToMakeADetour) {
+		if(acceptToMakeADetour==false) this.acceptToMakeADetour = 0;
+		else this.acceptToMakeADetour = 1;
+	}
 	public Date getDatetimeRegistration() {
 		return datetimeRegistration;
 	}
