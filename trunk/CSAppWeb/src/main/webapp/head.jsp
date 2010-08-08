@@ -4,7 +4,7 @@
 
 <%@page import="cs.define.Define"%><head>
 	<script type="text/javascript">
-		var WEB_ROOT_URL = <%=Define.webRootUrl %>;
+		var WEB_ROOT_URL = "<%=Define.webRootUrl %>";
 	</script>
 	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 
