@@ -52,7 +52,7 @@ $(document).ready(function()
                 });
         $('input.checkAddress').click(function()
                 {
-                        var postData = $("input", '#checkaddress_form').serialize();
+                        var postData = $("input", '#checkAddressNext_form').serialize();
                         
                         $.ajax({
                                 method: 'post',
@@ -99,6 +99,24 @@ $(document).ready(function()
 	                                 $('#search').html(data);
 	                                 
 	                                 initializeMapParcours();
+                                }
+                                  });
+                        
+                        return false;
+                });
+        $('input.testAddress').click(function()
+                {
+                        var postData = $("input", '#testAddressAndroid_form').serialize();
+                        
+                        $.ajax({
+                                method: 'post',
+                                url: WEB_ROOT_URL+'CSAppWeb/PrintPositionAndroid',
+                                data: postData,
+                                success: function(data)
+                                {
+		                            $('#profil').html(data);
+		                            
+		                            initializePosition();
                                 }
                                   });
                         
