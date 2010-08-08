@@ -2,7 +2,6 @@ package cs.appandroid.activities;
 
 import cs.appandroid.components.HomeMenuAdapter;
 import cs.appandroid.components.MyCustomGridView;
-import cs.appandroid.components.MyCustomGridView.Listener;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

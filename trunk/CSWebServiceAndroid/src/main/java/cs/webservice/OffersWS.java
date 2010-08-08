@@ -16,7 +16,7 @@ import cs.define.Define;
 
 public class OffersWS
 {
-	private static final String URL = "http://10.0.2.2:"+Define.port+"/CSAppWeb/OffersWS";
+	private static final String URL = Define.webRootUrl + "CSAppWeb/OffersWS";
 	
 	
 	public List<Offer> getSearchOffers()

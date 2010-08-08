@@ -17,11 +17,14 @@ public class GeolocalizationAsyncTask extends AsyncTask<String, Integer, String>
 	
 	protected String doInBackground(String... string)
 	{
-		double geolocLongitude = 2.239;
-		double geolocLatitude  = 3.678;
+		if(IdentificationController.userIsLogged(context))
+		{
+			double geolocLongitude = 2.239;
+			double geolocLatitude  = 3.678;
 		
-		CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
-		customerAccountWS.saveCustomerLocation(IdentificationController.getUserLoggedId(context), geolocLongitude, geolocLatitude);		
+			CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
+			customerAccountWS.saveCustomerLocation(IdentificationController.getUserLoggedId(context), geolocLongitude, geolocLatitude);		
+		}
 		
 		return "teub";
 	}
