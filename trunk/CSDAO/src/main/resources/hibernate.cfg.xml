@@ -11,6 +11,12 @@
 		<property name="connection.username">root</property>
 		<property name="connection.password">olioli</property>
 		<!-- Mapping base -->
+<<<<<<< .mine
+		<mapping resource="mapping/CustomerAccount.hbm.xml" />
+		<mapping resource="mapping/Offer.hbm.xml" />
+		<mapping resource="mapping/Route.hbm.xml" />
+
+=======
 		<mapping resource="mapping/CustomerAccount.hbm.xml"/>
 		<mapping resource="mapping/Offer.hbm.xml"/>
 		<mapping resource="mapping/OffersToCustomerAccount.hbm.xml"/>
@@ -20,5 +26,6 @@
 		<mapping resource="mapping/RoutesToCustomerAccount.hbm.xml"/>
 		<mapping resource="mapping/Translation.hbm.xml"/>
 		<mapping resource="mapping/TranslationValue.hbm.xml"/>	
+>>>>>>> .r127
 	</session-factory>
 </hibernate-configuration>
