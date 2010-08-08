@@ -19,6 +19,9 @@
 	<span style="width: 160px;">accept to make a detour</span><input type="checkbox" name="acceptToDiscuss" size="4"/><br />
 	<input type="submit" class="checkin"/>		     
 </form>
-<form method="POST" id="checkAddressNext">
-	<input type="submit" class="checkAddress" value="Valide la position de l'adresse"/>
+<form method="POST" id="checkAddressNext_form">
+	<input type="submit" class="checkAddress" value="Valider la position de l'adresse"/>
+</form>
+<form method="POST" id="testAddressAndroid_form">
+	<input type="submit" class="testAddress" value="Test la geolocalisation avec votre mobile android" />
 </form>
