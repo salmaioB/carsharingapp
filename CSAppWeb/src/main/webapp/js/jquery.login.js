@@ -7,7 +7,7 @@ $(document).ready(function()
                 
                 $.ajax({
                         method: 'post',
-                        url: 'http://localhost:8888/CSAppWeb/LoginActionAjax',
+                        url: WEB_ROOT_URL+'CSAppWeb/LoginActionAjax',
                         data: postData,
                         success: function(data)
                         {
@@ -24,7 +24,7 @@ $(document).ready(function()
                         
                         $.ajax({
                                 method: 'post',
-                                url: 'http://localhost:8888/CSAppWeb/CheckInAjax',
+                                url: WEB_ROOT_URL+'CSAppWeb/CheckInAjax',
                                 data: postData,
                                 success: function(data)
                                 {
@@ -40,7 +40,7 @@ $(document).ready(function()
                         
                         $.ajax({
                                 method: 'post',
-                                url: 'http://localhost:8888/CSAppWeb/CheckOutAjax',
+                                url: WEB_ROOT_URL+'CSAppWeb/CheckOutAjax',
                                 data: postData,
                                 success: function(data)
                                 {
@@ -56,7 +56,7 @@ $(document).ready(function()
                         
                         $.ajax({
                                 method: 'post',
-                                url: 'http://localhost:8888/CSAppWeb/CheckAddress',
+                                url: WEB_ROOT_URL+'CSAppWeb/CheckAddress',
                                 data: postData,
                                 success: function(data)
                                 {
@@ -74,7 +74,7 @@ $(document).ready(function()
                         
                         $.ajax({
                                 method: 'post',
-                                url: 'http://localhost:8888/CSAppWeb/PrintMapPost',
+                                url: WEB_ROOT_URL+'CSAppWeb/PrintMapPost',
                                 data: postData,
                                 success: function(data)
                                 {
@@ -92,7 +92,7 @@ $(document).ready(function()
                         
                         $.ajax({
                                 method: 'post',
-                                url: 'http://localhost:8888/CSAppWeb/PrintMapSearch',
+                                url: WEB_ROOT_URL+'CSAppWeb/PrintMapSearch',
                                 data: postData,
                                 success: function(data)
                                 {
