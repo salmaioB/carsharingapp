@@ -35,9 +35,27 @@
         </action>
     </package>
     
-    <package name="LoginActionAjax" extends="struts-default">
+    <package name="Ajax" extends="struts-default">
 	    <action name="LoginActionAjax" class="com.appweb.action.ajax.LoginActionAjax">
 			<result name="success">/ajax/ajaxloginsuccess.jsp</result>
+			<result name="error">/ajax/ajaxloginerror.jsp</result>
+		</action>
+		<action name="CheckInAjax" class="com.appweb.action.ajax.CheckInAjax">
+			<result name="success">/ajax/ajaxckeckinerror.jsp</result>
+			<result name="error">/ajax/ajaxckeckinsuccess.jsp</result>
+		</action>
+		<action name="CheckOutAjax" class="com.appweb.action.ajax.CheckOutAjax">
+			<result name="success">/ajax/ajaxloginerror.jsp</result>
+		</action>
+		<action name="CheckAddress" class="com.appweb.action.ajax.CheckAddress">
+			<result name="success">/ajax/checkAddress.jsp</result>
+		</action>
+		<action name="PrintMapSearch" class="com.appweb.action.ajax.PrintMapSearch">
+			<result name="success">/ajax/printMapSearch.jsp</result>
+		</action>
+		<action name="PrintMapPost" class="com.appweb.action.ajax.PrintMapPost">
+			<result name="success">/ajax/printMapPost.jsp</result>
 		</action>
 	</package>
+	
 </struts>
