@@ -59,7 +59,7 @@ public class CustomerAccountsWS
 		
 		// Contains the jsonObject return by the http request
 		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
-
+		
 		CustomerAccount customerAccount = new CustomerAccount();
 		
 		try

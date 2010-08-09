@@ -17,7 +17,7 @@ public class Action extends ActionSupport
 	private Map parameters;
 	private CustomerAccount customerAccount;
 	
-	public Boolean isLoging()
+	public boolean isLoging()
 	{
 		if(customerAccount == null)
 			return false;
