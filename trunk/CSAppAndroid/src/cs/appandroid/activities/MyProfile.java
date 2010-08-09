@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,6 +24,7 @@ public class MyProfile extends Activity implements OnClickListener
 	private EditText passwordEditText;
 	private Button validateConnectionButton;	
 	
+	private Handler identificationHandler;
     private Runnable identificationProcess;
     private ProgressDialog identificationProgressDialog;
 	
@@ -48,6 +50,8 @@ public class MyProfile extends Activity implements OnClickListener
 	{
 		if(v == validateConnectionButton)
 		{
+			//identificationHandler = new Handler();
+			
 			identificationProcess = new Runnable()
 			{	
 				@Override
