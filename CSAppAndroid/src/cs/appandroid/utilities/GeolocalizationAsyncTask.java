@@ -1,26 +1,36 @@
 package cs.appandroid.utilities;
 
 import cs.appandroid.controller.IdentificationController;
+import cs.model.CustomerAccount;
 import cs.webservice.CustomerAccountsWS;
 import android.content.Context;
+import android.location.Criteria;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.util.Log;
 
 public class GeolocalizationAsyncTask extends AsyncTask<String, Integer, String>
 {
 	private Context context;
+	LocationManager objgps;
 	
 	public GeolocalizationAsyncTask(Context context)
 	{
 		this.context = context;
+		this.objgps  = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
 	}
 	
 	protected String doInBackground(String... string)
-	{
+	{		
 		if(IdentificationController.userIsLogged(context))
-		{
-			double geolocLongitude = 2.239;
-			double geolocLatitude  = 3.678;
+		{			
+			Criteria crit = new Criteria();
+			crit.setAccuracy(Criteria.ACCURACY_FINE);
+			String provider = objgps.getBestProvider(crit, true);
+			android.location.Location location = objgps.getLastKnownLocation(provider);
+			
+			double geolocLongitude = location.getLongitude();
+			double geolocLatitude  = location.getLatitude();
 		
 			CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
 			customerAccountWS.saveCustomerLocation(IdentificationController.getUserLoggedId(context), geolocLongitude, geolocLatitude);		
