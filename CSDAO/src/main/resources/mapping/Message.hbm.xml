@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cs.model">
+    <class name="Message" table="message">
+        <id name="id" column="_id_message">
+            <generator class="native"/>
+        </id>
+        <property name="title" type="string" column="title"/>
+        <property name="content" type="string" column="content"/>
+        <property name="idCustomerAccount" type="integer" column="_id_customer_account"/>
+        <property name="read" type="integer" column="read"/>
+     </class>
+</hibernate-mapping>
