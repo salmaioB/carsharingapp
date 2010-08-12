@@ -59,6 +59,9 @@
 		<action name="PrintPositionAndroid" class="com.appweb.action.ajax.PrintPositionAndroid">
 			<result name="success">/ajax/printPositionAndroid.jsp</result>
 		</action>
+		<action name="PostEtape2" class="com.appweb.action.ajax.PostEtape2">
+			<result name="success">/ajax/ajaxposterEtape2.jsp</result>
+		</action>
 	</package>
 
 </struts>
