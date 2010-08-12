@@ -7,11 +7,23 @@ import cs.model.CustomerAccount;
 
 public class PrintMapPost extends Action
 {
-	public PrintMapPost()
-    {
-    	System.out.println("Construct PrintMapPost");
-    }
 
+	private String startPost;
+	private String stopPost;
+	
+	public String getStartPost() {
+		return startPost;
+	}
+	public void setStartPost(String startPost) {
+		this.startPost = startPost;
+	}
+	public String getStopPost() {
+		return stopPost;
+	}
+	public void setStopPost(String stopPost) {
+		this.stopPost = stopPost;
+	}
+	
 
 	public String execute() throws Exception
 	{
