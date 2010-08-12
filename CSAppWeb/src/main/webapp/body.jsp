@@ -6,7 +6,7 @@
 </div> 
 <div class="body" id="post">
 	<s:if test="isLoging()">
-		<s:include value="/ajax/ajaxposter.jsp" />
+		<s:include value="/ajax/ajaxposterEtape1.jsp" />
 	</s:if>
  	<s:else>
     	<div class="corner" >Non identifié</div>
@@ -22,7 +22,7 @@
 </div> 
 <div class="body" id="message"> 
 	<s:if test="isLoging()">
-		Message
+		<s:include value="/ajax/messageCustomer.jsp" />
 	</s:if>
  	<s:else>
     	<div class="corner" >Non identifié</div>
@@ -35,12 +35,11 @@
  	<s:else>
     	<div class="corner" >Non identifié</div>
  	</s:else>
-</div> 
-        
+</div>
+<!--        
 Message : <s:property value="message"/> <br />
 Affiche list : <s:property value="tr.tr_html(1)"/>
 
 <a href="http://<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?type=Offer">Offer</a>
 <a href="http://<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?type=CustomerAccounts">CustomerAccounts</a>
-
-    
+-->

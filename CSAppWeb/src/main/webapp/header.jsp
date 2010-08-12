@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <span style="float:left;">
-	<a href="http://localhost:8888/CSAppWeb/Accueil">
+	<a href="<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil">
 		<img src="http://static.comuto.com/static/images/logo_covoituragefr.gif" />
 	</a>
 </span>
@@ -12,12 +12,12 @@
 	<table>
 		<tr>
 			<td>
-				<a href="http://<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?langage=fr">
+				<a href="<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?langage=fr">
 					<img src="img/flag_FR.jpg" height="60px;"/>
 				</a>
 			</td>
 			<td>
-				<a href="http://<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?langage=en">
+				<a href="<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?langage=en">
 					<img src="img/flag_UK.jpg" height="60px;"/>
 				</a>
 			</td>
