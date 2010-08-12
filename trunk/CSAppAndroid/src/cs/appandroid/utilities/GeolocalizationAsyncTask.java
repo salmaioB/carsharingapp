@@ -1,10 +1,10 @@
 package cs.appandroid.utilities;
 
 import cs.appandroid.controller.IdentificationController;
-import cs.model.CustomerAccount;
 import cs.webservice.CustomerAccountsWS;
 import android.content.Context;
 import android.location.Criteria;
+import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -22,19 +22,19 @@ public class GeolocalizationAsyncTask extends AsyncTask<String, Integer, String>
 	
 	protected String doInBackground(String... string)
 	{		
-		if(IdentificationController.userIsLogged(context))
-		{			
-			Criteria crit = new Criteria();
-			crit.setAccuracy(Criteria.ACCURACY_FINE);
-			String provider = objgps.getBestProvider(crit, true);
-			android.location.Location location = objgps.getLastKnownLocation(provider);
-			
-			double geolocLongitude = location.getLongitude();
-			double geolocLatitude  = location.getLatitude();
-		
-			CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
-			customerAccountWS.saveCustomerLocation(IdentificationController.getUserLoggedId(context), geolocLongitude, geolocLatitude);		
-		}
+//		if(IdentificationController.userIsLogged(context))
+//		{			
+//			Criteria crit = new Criteria();
+//			crit.setAccuracy(Criteria.ACCURACY_FINE);
+//			String provider = objgps.getBestProvider(crit, true);
+//			Location location = objgps.getLastKnownLocation(provider);
+//			
+//			double geolocLongitude = location.getLongitude();
+//			double geolocLatitude  = location.getLatitude();
+//		
+//			CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
+//			customerAccountWS.saveCustomerLocation(IdentificationController.getUserLoggedId(context), geolocLongitude, geolocLatitude);		
+//		}
 		
 		return "teub";
 	}

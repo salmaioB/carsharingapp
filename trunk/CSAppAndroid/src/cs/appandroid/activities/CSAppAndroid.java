@@ -24,6 +24,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	private Button connectionButton;
 	private TabHost tabHost;
 	
+	private Intent addOfferIntent;
 	private Intent myProfileIntent;
 	
 	private Handler geolocalizationHandler;
@@ -74,7 +75,10 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	public void onTabChanged(String tabId)
 	{
 	    Log.d("TabChanged", "OnTabChanged");
-	    	    
+	    
+	    Bundle noParams = null;
+	    addOfferIntent.replaceExtras(noParams);
+	    
 	    if(tabId != "searchoffers")
 	    {
 	    	if(!IdentificationController.userIsLogged(getBaseContext()))
@@ -187,12 +191,12 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    tabHost.addTab(spec);
 	    
 	    // Create an Intent to launch an offer activity for the tab
-	    intent = new Intent().setClass(this, AddOffer.class);
+	    addOfferIntent = new Intent().setClass(this, AddOffer.class);
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("addoffer").setIndicator("Ajouter une offer",
+	    spec = tabHost.newTabSpec("addoffer").setIndicator("Ajouter une offre",
 	                                                       res.getDrawable(R.drawable.tab_search_offers))
-	                                                       .setContent(intent);
+	                                                       .setContent(addOfferIntent);
 	    tabHost.addTab(spec);
 	    
 	    // Create an Intent to launch "routes list" activity for the tab
