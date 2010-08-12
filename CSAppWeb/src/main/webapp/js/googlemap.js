@@ -1,4 +1,20 @@
+var geocoder = null;
+var lon = 0;
+var lat = 0;
 
+function initializeMapEmpty(stringDivMap)
+{
+	var centreCarte = new google.maps.LatLng(47.390293,0.688834);
+	 // OPtion carte
+	 var optionsCarte = {
+				zoom: 4,
+				center: centreCarte,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+
+	// Création de la carte
+	var gMap = new google.maps.Map(document.getElementById(stringDivMap), optionsCarte);
+}
 function initializePosition()
 {
 	
@@ -6,37 +22,62 @@ function initializePosition()
 	var latitude = $('#geolocLatitude').text();
 
 	var centreCarte = new google.maps.LatLng(longitude,latitude);
-	 //OPtion carte
+	 // OPtion carte
 	 var optionsCarte = {
 				zoom: 13,
 				center: centreCarte,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
 
-	//Création de la carte
+	// Création de la carte
 	var maCarte = new google.maps.Map(document.getElementById("map"), optionsCarte);
 
 	printPoint(maCarte, longitude, latitude);
 }
-function autoriezdNewPosition(marqueur)
-    	{
-	    	marqueur.setDraggable(true);
-	        google.maps.event.addListener(marqueur, '0.688834dragend', function(event) {
-	    		//message d'alerte affichant la nouvelle position du marqueur
-	    		alert("La nouvelle coordonnée du marqueur est : "+event.latLng);
-	    	});
-    	}
-	    function printPoint(carte,x,y) {
-	    	//creation du marqueur0.688834
-	    	var marqueur = new google.maps.Marker({
-	    		position: new google.maps.LatLng(x,y),
-	    		map: carte
-	    	});
-	    	//autoriezdNewPosition(marqueur);
-	    }
+
+function autoriezdNewPosition(marker,divInput)
+{
+	marker.setDraggable(true);
+   	/*
+   	google.maps.event.addListener(marqueur, 'dragend', function(event) {
+		// message d'alerte affichant la nouvelle position du marqueur
+   		alert("La nouvelle coordonnée du marqueur est : "+event.latLng);
+   		getAddress(overlay, latlng);
+   	});
+    */
+    google.maps.event.addListener(marker, 'drag', function() {
+        geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+            	//alert(results[0].formatted_address);
+            	divInput.value = results[0].formatted_address; 
+              //$('#address').val(results[0].formatted_address);
+              //$('#latitude').val(marker.getPosition().lat());
+              //$('#longitude').val(marker.getPosition().lng());
+            }
+          }
+        });
+      })
+}
+
+function printPointMove(gMap,x,y,divMap) {
+   	// creation du marqueur0.688834
+   	var marqueur = new google.maps.Marker({
+   		position: new google.maps.LatLng(x,y),
+   		map: gMap
+   	});
+   	autoriezdNewPosition(marqueur,divMap);
+}
+function printPoint(gMap,lat,lon) {
+   	// creation du marqueur0.688834
+   	var marqueur = new google.maps.Marker({
+   		position: new google.maps.LatLng(lat,lon),
+   		map: gMap
+   	});
+}
     
 	    function printParcours(maCarte,tableauLieux) {
-	    	//Affiche parcours
+	    	// Affiche parcours
 	    	var infobulle = new google.maps.InfoWindow();
 	    	var bounds = new google.maps.LatLngBounds();
 	    	for (var i = 0; i < tableauLieux.length; i++) {
@@ -58,16 +99,16 @@ function autoriezdNewPosition(marqueur)
 	    }
   
 	 function initialize() {
-		 //Poistion
+		 // Poistion
 		 var centreCarte = new google.maps.LatLng(47.390293,0.688834);
-		 //OPtion carte
+		 // OPtion carte
 		 var optionsCarte = {
 					zoom: 8,
 					center: centreCarte,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				};
 	
-		//Création de la carte
+		// Création de la carte
 		var maCarte = new google.maps.Map(document.getElementById("map"), optionsCarte);
 		
 		var x = 47.390293;
@@ -75,7 +116,7 @@ function autoriezdNewPosition(marqueur)
 	
 		printPoint(maCarte, x, y);
 				
-		//Tableaux de lieu
+		// Tableaux de lieu
 		var tableauLieux = [
 		        			["Alfa",     47.325371, 1.044195, "Descriptif Alfa"],
 		        			["Bravo",    47.345627, 0.894806, "Descriptif Bravo"],
@@ -92,31 +133,28 @@ function autoriezdNewPosition(marqueur)
 		        			["Novembre", 47.342327, 1.245060, "Descriptif Novembre"]
 		        	];
 	
-		//printParcours(maCarte, tableauLieux);
-		//geoCodeur = new google.maps.Geocoder();
+		// printParcours(maCarte, tableauLieux);
+		// geoCodeur = new google.maps.Geocoder();
 
-		//geoCodeur = new google.maps.Geocoder();
+		// geoCodeur = new google.maps.Geocoder();
 
-		//geocodeAdresse(maCarte,geoCodeur,"13 rue d'hautpoul paris 19") ;
-		//var query = "13 rue d'hautpoul paris 19";
-		//var latlng = parseLatLng(query);
-		//geocode({ 'latLng': latlng });
-		//map = maCarte;
+		// geocodeAdresse(maCarte,geoCodeur,"13 rue d'hautpoul paris 19") ;
+		// var query = "13 rue d'hautpoul paris 19";
+		// var latlng = parseLatLng(query);
+		// geocode({ 'latLng': latlng });
+		// map = maCarte;
 		
-		//geocode(request,maCarte);
+		// geocode(request,maCarte);
 	    }
 	 
 	 
 	 
-	//http://gmaps-samples-v3.googlecode.com/svn/trunk/geocoder/v3-geocoder-tool.html#q%3D13%20rue%20d%27hautpoul%20paris%2019%26country%3Dfr%26language%3Dfr
+	// http://gmaps-samples-v3.googlecode.com/svn/trunk/geocoder/v3-geocoder-tool.html#q%3D13%20rue%20d%27hautpoul%20paris%2019%26country%3Dfr%26language%3Dfr
 
-	 var geocoder = null;
-	 var position = null;
-	 
-	 //function initialize() {
-	//	position = new Array();
-	 //  	geocoder = new google.maps.Geocoder();
-	 //}
+	 // function initialize() {
+	// position = new Array();
+	 // geocoder = new google.maps.Geocoder();
+	 // }
 
 	function submitQuery() {
 		var query = document.getElementById("query").value;
@@ -165,23 +203,22 @@ function autoriezdNewPosition(marqueur)
 
 	function showResults(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
-		      position[0] = results[0].geometry.location.lat();
-		      position[1] = results[0].geometry.location.lng();
+			find = true;
+			alert( results[0].geometry.location.lat() );
+		      lat = results[0].geometry.location.lat();
+		      lon = results[0].geometry.location.lng();
 		}
 	}
 	
-	function parcoursAll(start,stop,maCarte)
+	function parcoursAll(Vstart,Vstop,maCarte)
 	{
-		//pour afficher le parcours
+		// pour afficher le parcours
 		var directionsService = new google.maps.DirectionsService();
 		var directionsDisplay = new google.maps.DirectionsRenderer();
-		//set la map
+		// set la map
 		directionsDisplay.setMap(maCarte);
 		directionsDisplay.setPanel(document.getElementById("road"));
 		
-		var Vstart = $('#start').text();
-		var Vstop = $('#stop').text();
-
 		var requeteItineraire = {
 			origin: Vstart,
 			destination: Vstop,
@@ -194,23 +231,103 @@ function autoriezdNewPosition(marqueur)
 		});	
 	
 	}
+	function initializeMapParcoursPost() {
+		var Vstart = $('#startPost').val();
+		var Vstop = $('#stopPost').val();
+		var map = document.getElementById("mapPost");
 
-	function initializeMapParcours() {
-
-		geocoder = new google.maps.Geocoder();
-		position = new Array();
-		//getPositionByAddress("paris fr") ;
-		 //Poistion
-		 var centreCarte = new google.maps.LatLng(48,1);
-		 //OPtion carte
-		 var optionsCarte = {
-					zoom: 8,
-					center: centreCarte,
-					mapTypeId: google.maps.MapTypeId.ROADMAP
-				};
+		initializeMapParcours(Vstart,Vstop,map);
+	}
+	function initializeMapParcoursSearch() {
+		var Vstart = $('#start').text();
+		var Vstop = $('#stop').text();
+		var divMap = document.getElementById("mapSearch");
+		
+		initializeMapParcours(Vstart,Vstop,divMap);
+	}
 	
-		//Création de la carte
-		var maCarte = new google.maps.Map(document.getElementById("map"), optionsCarte);
+function initializeMapParcours(start,stop,divMap) {
+	geocoder = new google.maps.Geocoder();
+
+	// getPositionByAddress(start) ;
+	// Poistion
+	// alert(position[0],position[1]);
+
+	var centerMap = new google.maps.LatLng(48.0,1.0);
+	// OPtion carte
+	var optionsMap = {
+					zoom: 8,
+					center: centerMap,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	
+	// Création de la carte
+	var gMap = new google.maps.Map(divMap, optionsMap);
 		 
-		parcoursAll("paris","lyon",maCarte);
-	 }
+	parcoursAll(start,stop,gMap);
+}
+
+/*
+ * Affiche une position en fonction d'une adresse dans une map
+ */
+var nameDivMap;
+var nameDivaddress;
+function initinitializePositionByAdress(divAddress,divMap)
+{
+	geocoder = new google.maps.Geocoder();
+	nameDivMap = divMap;
+	nameDivaddress = divAddress;
+	printPositionByAddress($('#'+divAddress).val());
+}
+
+function printPositionByAddress(address) {
+	var query = address;
+	if (/\s*^\-?\d+(\.\d+)?\s*\,\s*\-?\d+(\.\d+)?\s*$/.test(query)) {
+		var latlng = parseLatLng(query);
+		if (latlng == null) {
+	    	document.getElementById("query").value = "";
+	    } else {
+    		geocode({ 'latLng': latlng });
+	    }
+	} else {
+		geocode({ 'address': query });
+	}
+}
+
+function geocode(request) {  
+	var hash = '';
+	hashFragment = '#' + escape(hash);
+	window.location.hash = escape(hash);
+	geocoder.geocode(request, showResultInMap);
+}
+
+function parseLatLng(value) {
+	value.replace('/\s//g');
+	var coords = value.split(',');
+	var lat = parseFloat(coords[0]);
+	var lng = parseFloat(coords[1]);
+	if (isNaN(lat) || isNaN(lng)) {
+		return null;
+	} else {
+		return new google.maps.LatLng(lat, lng);
+	}
+}
+
+function showResultInMap(results, status) {
+	if (status == google.maps.GeocoderStatus.OK) {
+	      lat = results[0].geometry.location.lat();
+	      lon = results[0].geometry.location.lng();
+		  var centreCarte = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+		  
+		  
+		  // OPtion carte
+		  var optionsCarte = {
+		 			zoom: 16,
+		 			center: centreCarte,
+		 			mapTypeId: google.maps.MapTypeId.ROADMAP
+		 		};
+		 // Création de la carte
+		 var maCarte = new google.maps.Map(document.getElementById(nameDivMap), optionsCarte);
+		 printPointMove(maCarte,lat,lon,document.getElementById(nameDivaddress));
+	}
+}
