@@ -6,8 +6,11 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import cs.dao.dao.CustomerAccountDAO;
+import cs.dao.dao.MessageDAO;
+import cs.engine.action.CustomerAccountEngineAction;
 import cs.engine.translation.TranslationEngine;
 import cs.model.CustomerAccount;
+import cs.model.Message;
 
 public class Action extends ActionSupport
 {
@@ -16,7 +19,14 @@ public class Action extends ActionSupport
 	private Map session;
 	private Map parameters;
 	private CustomerAccount customerAccount;
+	private Integer nbMessageNotRead;
 	
+	public Integer getNbMessageNotRead() {
+		return nbMessageNotRead;
+	}
+	public void setNbMessageNotRead(Integer nbMessageNotRead) {
+		this.nbMessageNotRead = nbMessageNotRead;
+	}
 	public boolean isLoging()
 	{
 		if(customerAccount == null)
@@ -72,6 +82,22 @@ public class Action extends ActionSupport
 		String country = (String) session.get("langage");
 		tr.setCountry(country);
 		
+		System.out.println("username");
+		if(parameters.get("username") != null)
+		System.out.println( ((String[])parameters.get("username"))[0] );
+		
+		//Si pas de session déclaré ou si nouveau langugage définit
+		if( parameters.get("username") != null && parameters.get("password") != null )
+		{
+			CustomerAccountEngineAction customerAccountEngine = new  CustomerAccountEngineAction();
+			setCustomerAccount(customerAccountEngine.identification(((String[])parameters.get("username"))[0] ,((String[])parameters.get("password"))[0]  ));
+			
+			if(getCustomerAccount() != null)
+			{
+				getSession().put("customerId",getCustomerAccount().getId()); 
+		    }
+		}
+		
 		//SetL'objet
 		if(getSession().get("customerId") != null)
 		{
@@ -81,6 +107,13 @@ public class Action extends ActionSupport
 				customerAccount = cadao.load((Integer)getSession().get("customerId")); 
 			}
 	    }
+		if(isLoging() )
+		{	
+			//Gestion des messages
+			MessageDAO messageDAO = new MessageDAO();
+			//messageDAO.load(1);
+			setNbMessageNotRead(messageDAO.nbMessageNotRead(customerAccount.getId() ) );
+		}
 	}
 	public Map getSession() {
 		return session;
