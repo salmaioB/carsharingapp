@@ -1,23 +1,6 @@
 $(document).ready(function()
 {
 	//Ajout des évenements ajax
-        $('input.check').click(function()
-        {
-                var postData = $("input", '#login_form').serialize();
-                
-                $.ajax({
-                        method: 'post',
-                        url: WEB_ROOT_URL+'CSAppWeb/LoginActionAjax',
-                        data: postData,
-                        success: function(data)
-                        {
-                         $('#divToLogin').html(data);
-                         $('#containerLeft').html("");
-                        }
-                          });
-                
-                return false;
-        });
         $('input.chekin').click(function()
                 {
                         var postData = $("input", '#checkin_form').serialize();
@@ -78,9 +61,9 @@ $(document).ready(function()
                                 data: postData,
                                 success: function(data)
                                 {
-                                 $('#post').html(data);
+                                 $('#postPrintMap').html(data);
                                  
-                                 initialize();
+                                 initializeMapParcoursPost();
                                 }
                                   });
                         
@@ -98,7 +81,7 @@ $(document).ready(function()
                                 {
 	                                 $('#search').html(data);
 	                                 
-	                                 initializeMapParcours();
+	                                 initializeMapParcoursSearch();
                                 }
                                   });
                         
@@ -119,6 +102,27 @@ $(document).ready(function()
 		                            initializePosition();
                                 }
                                   });
+                        
+                        return false;
+                });
+        $('input.Etape2Post').click(function()
+                {
+                        var postData = $("input", '#post_form').serialize();
+                        
+                        $.ajax({
+                                method: 'post',
+                                url: WEB_ROOT_URL+'CSAppWeb/PostEtape2',
+                                data: postData,
+                                success: function(data)
+                                {
+                        			$('#startPost').attr('disabled', true);
+                        			$('#stopPost').attr('disabled', true);
+                        			$('#nbPassagerPost').attr('disabled', true);
+                        			
+		                            $('#etape2').html(data);
+		                    		$(".corner").corner();
+                                }
+                               });
                         
                         return false;
                 });
