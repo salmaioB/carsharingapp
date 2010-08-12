@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:layout_width="fill_parent"
+			  android:layout_height="fill_parent"
+			  android:orientation="vertical">
+  
+  	<LinearLayout android:layout_width="fill_parent"
+			  	  android:layout_height="wrap_content"
+			  	  android:orientation="vertical">
+
+		<TextView android:id="@+id/starting_address_summary_textview"
+				  android:layout_width="fill_parent"
+				  android:layout_height="wrap_content"
+				  android:gravity="left"/>
+				  
+	    <TextView android:id="@+id/finishing_address_summary_textview"
+				  android:layout_width="fill_parent"
+				  android:layout_height="wrap_content"
+				  android:gravity="left"/>
+				  
+		<TextView android:id="@+id/date_route_summary_textview"
+				  android:layout_width="fill_parent"
+				  android:layout_height="wrap_content"
+				  android:gravity="left"/>
+				  
+	    <TextView android:id="@+id/number_of_passengers_summary_textview"
+				  android:layout_width="fill_parent"
+				  android:layout_height="wrap_content"
+				  android:gravity="left"/>
+			    	
+  	</LinearLayout>
+  	
+  	<LinearLayout android:layout_width="fill_parent"
+			  	  android:layout_height="wrap_content"
+			  	  android:orientation="vertical">
+  	
+  		<TextView android:id="@+id/number_of_passengers_summary_textview"
+				  android:layout_width="fill_parent"
+				  android:layout_height="wrap_content"
+				  android:gravity="left"
+				  android:text="Prix demandé par passager: "/>
+	    
+	    <LinearLayout android:layout_width="fill_parent"
+			  	  android:layout_height="wrap_content"
+			  	  android:orientation="horizontal"
+			  	  android:gravity="center_horizontal">
+	    
+			<Button android:id="@+id/decrement_price_per_passenger_button"
+	  				android:layout_width="wrap_content"
+	  				android:layout_height="wrap_content"
+	  				android:text="-"/>
+	  				
+	  		<TextView android:id="@+id/price_per_passenger_textview"
+				  	  android:layout_width="wrap_content"
+				  	  android:layout_height="wrap_content"/>
+	
+	  		<Button android:id="@+id/increment_price_per_passenger_button"
+	  				android:layout_width="wrap_content"
+	  				android:layout_height="wrap_content"
+	  				android:text="+"/>
+  				
+  		</LinearLayout>
+
+  	</LinearLayout>
+  	
+  	<LinearLayout android:layout_width="fill_parent"
+			  	  android:layout_height="wrap_content"
+			  	  android:orientation="vertical">
+  	
+		<TextView android:id="@+id/comment_textview"
+			  	  android:layout_width="wrap_content"
+			  	  android:layout_height="wrap_content"
+			  	  android:text="Commentaire:"/>
+			 		  	  
+		<EditText android:id="@+id/comment_edittext"
+				  android:layout_width="fill_parent"
+				  android:layout_height="wrap_content"
+				  android:singleLine="false"
+				  android:lines="3"/>
+	
+	</LinearLayout>
+	
+	<Button android:id="@+id/propose_offer_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right"
+			android:text="Proposer une offre"/>
+	
+</LinearLayout>
