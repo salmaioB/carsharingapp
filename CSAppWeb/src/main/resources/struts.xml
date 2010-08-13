@@ -6,19 +6,19 @@
 	<!-- Webservice JSON -->
 	<package name="CustomerAccountsWS" extends="json-default">
 		<action name="CustomerAccountsWS" class="cs.webservice.impl.CustomerAccountsWS">
-			<result type="json" />
+			<result type="json"/>
 		</action>
 	</package>
 	
 	<package name="OffersWS" extends="json-default">
 		<action name="OffersWS" class="cs.webservice.impl.OffersWS">
-			<result type="json" />
+			<result type="json"/>
 		</action>
 	</package>
 	
     <package name="OfferSaveWS" extends="json-default">
 		<action name="OfferSaveWS" class="cs.webservice.impl.OfferSaveWS">
-			<result type="json" />
+			<result type="json"/>
 		</action>
 	</package>
 

@@ -2,6 +2,11 @@ package cs.appandroid.activities;
 
 import java.util.Calendar;
 
+import cs.appandroid.controller.IdentificationController;
+import cs.model.Offer;
+import cs.webservice.OfferSaveWS;
+import cs.webservice.OffersWS;
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -53,9 +58,7 @@ public class AddOffer extends Activity implements OnClickListener
 	private int routeHour;
 	private int routeMinute;
 	
-	private int numberOfPassengers;
-	
-	private int pricePerPassenger;
+	private Offer offer;
 	
 	private static final int DATE_ROUTE_DIALOG_ID = 0;
 	private static final int TIME_ROUTE_DIALOG_ID = 1;
@@ -66,11 +69,13 @@ public class AddOffer extends Activity implements OnClickListener
 	{
 	    super.onCreate(savedInstanceState);
 	    
+	    offer = new Offer();
+	    
 	    // Default number of passengers
-	    numberOfPassengers = 3;
+	    offer.setNumberOfPlaceInitial(3);
 	    
 	    //Default price per passenger
-	    pricePerPassenger = 8;
+	    offer.setPricePerPassenger(8f);
 
 	    displayAddOfferScreen();
 	}
@@ -122,49 +127,53 @@ public class AddOffer extends Activity implements OnClickListener
 			getIntent().putExtra("finishingAddress", finishingAddressEditText.getText().toString());
 			getIntent().putExtra("dateRoute", dateRouteEditText.getText().toString());
 			getIntent().putExtra("timeRoute", timeRouteEditText.getText().toString());
-			getIntent().putExtra("numberOfPassengers", numberOfPassengers);
+			getIntent().putExtra("numberOfPassengers", offer.getNumberOfPlaceInitial());
 			
 			onResume();
 		}
 		else if(v == incrementNumberOfPassengersButton)
 		{
-			if(numberOfPassengers != 6)
+			if(offer.getNumberOfPlaceInitial() != 6f)
 			{
-				numberOfPassengers++;
+				offer.setNumberOfPlaceInitial(offer.getNumberOfPlaceInitial()+1);
 			
-				numberOfPassengersTextView.setText(numberOfPassengers + " pl.");
+				numberOfPassengersTextView.setText(offer.getNumberOfPlaceInitial() + " pl.");
 			}
 		}
 		else if(v == decrementNumberOfPassengersButton)
 		{
-			if(numberOfPassengers != 1)
+			if(offer.getNumberOfPlaceInitial() != 1f)
 			{
-				numberOfPassengers--;
-			
-				numberOfPassengersTextView.setText(numberOfPassengers + " pl.");
-			}
-		}
-		else if(v == decrementPricePerPassengerButton)
-		{
-			if(pricePerPassenger != 1)
-			{
-				pricePerPassenger--;
-			    
-				pricePerPassengerTextview.setText(pricePerPassenger + "€");
+				offer.setNumberOfPlaceInitial(offer.getNumberOfPlaceInitial()-1);
+				
+				numberOfPassengersTextView.setText(offer.getNumberOfPlaceInitial() + " pl.");
 			}
 		}
 		else if(v == incrementPricePerPassengerButton)
-		{	
-			if(pricePerPassenger != 15)
+		{
+			if(offer.getPricePerPassenger() != 1f)
 			{
-				pricePerPassenger++;
+				offer.setPricePerPassenger(offer.getPricePerPassenger()+1);
+			    
+				pricePerPassengerTextview.setText(offer.getPricePerPassenger() + "€");
+			}
+		}
+		else if(v == decrementPricePerPassengerButton)
+		{	
+			if(offer.getPricePerPassenger() != 15f)
+			{
+				offer.setPricePerPassenger(offer.getPricePerPassenger()-1);
 			
-				pricePerPassengerTextview.setText(pricePerPassenger + "€");
+				pricePerPassengerTextview.setText(offer.getPricePerPassenger() + "€");
 			}
 		}
 		else if(v == proposeOfferButton)
 		{
+			// Set an idDriver to the offer
+			offer.setIdDriver(IdentificationController.getUserLoggedId(getBaseContext()));
 			
+			OfferSaveWS offerSaveWS = new OfferSaveWS();
+			offerSaveWS.saveOfferWithRoutes(offer, null);
 		}
 	}
 	
@@ -231,13 +240,13 @@ public class AddOffer extends Activity implements OnClickListener
 		startingAddressSummaryTextView.setText("Départ: " + startingAddress);
 		finishingAddressSummaryTextView.setText("Arrivée: " + finishingAddress);
 		dateRouteSummaryTextView.setText("Date: " + dateRoute);
-		numberOfPassengersSummaryTextView.setText(numberOfPassengers + " places restantes");
+		numberOfPassengersSummaryTextView.setText(offer.getNumberOfPlaceInitial() + " places restantes");
 		
 		decrementPricePerPassengerButton = (Button)findViewById(R.id.decrement_price_per_passenger_button);
 		decrementPricePerPassengerButton.setOnClickListener(this);
 		
 		pricePerPassengerTextview        = (TextView)findViewById(R.id.price_per_passenger_textview);
-		pricePerPassengerTextview.setText(pricePerPassenger + "€");
+		pricePerPassengerTextview.setText(offer.getPricePerPassenger() + "€");
 		
 		incrementPricePerPassengerButton = (Button)findViewById(R.id.increment_price_per_passenger_button);	
 		incrementPricePerPassengerButton.setOnClickListener(this);
