@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,13 +12,24 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import cs.model.Offer;
+import cs.model.Route;
 import cs.common.HttpClient;
 import cs.define.Define;
 
 public class OffersWS
-{
+{	
 	private static final String URL = Define.webServiceRootUrl + "CSAppWeb/OffersWS";
+
+	private JSONObject jsonObjectSend;
 	
+	public OffersWS()
+	{
+		// JSON object to hold the information, which is sent to the server
+		jsonObjectSend = new JSONObject();
+		
+		// To construct the jsonObject header
+		HttpClient.constructHeader(jsonObjectSend);
+	}
 	
 	public List<Offer> getSearchOffers()
 	{
@@ -77,5 +89,17 @@ public class OffersWS
 		}
 		 
 		return offers;
+	 }
+	
+	 public void saveOfferWithRoutes(Offer offer, List<Route> routes)
+	 {
+		 List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
+		 paramsToPost.add(new BasicNameValuePair("idOfferType", String.valueOf(0)));		 
+		 paramsToPost.add(new BasicNameValuePair("idDriver", offer.getIdDriver().toString()));
+		 paramsToPost.add(new BasicNameValuePair("numberOfPassengers", offer.getNumberOfPlaceInitial().toString()));
+		 paramsToPost.add(new BasicNameValuePair("pricePerPassenger", offer.getPricePerPassenger().toString()));
+		 
+		 // Send the http request
+		 HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
 	 }
 }

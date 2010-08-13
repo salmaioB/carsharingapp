@@ -15,19 +15,19 @@ public class OffersWS extends ActionSupport
 	/**
 	 * Getter and setter
 	 */
-	public List<Offer> getOffers(){
+	public List<Offer> getOffers() {
 		return offers;
 	}
  
-	public void setOffers(List<Offer> offers){
+	public void setOffers(List<Offer> offers) {
 		this.offers = offers;
 	}
 
 	public String execute() throws Exception
- 	{
+ 	{		
 	 	OfferDAO offerDAO = new OfferDAO();
 	 	offers = offerDAO.loadSearchOffers("toto", "orleans", "tata", "paris");
-	 
+	    
 	 	return SUCCESS;
  	}
 }
