@@ -1,5 +1,6 @@
 package cs.dao.dao;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -89,6 +90,16 @@ public class OfferDAO extends DAO
 	{
 		// Save an offer
 		save(offer);
+		
+		RouteDAO routeDAO = new RouteDAO();
+		
+		Iterator<Route> i = routes.iterator();
+		while(i.hasNext())
+		{
+		  Route route = i.next();
+		  
+		  routeDAO.save(route);
+		}
 
 		return true;	
 	}

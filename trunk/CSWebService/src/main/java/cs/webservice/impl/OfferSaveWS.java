@@ -13,7 +13,7 @@ public class OfferSaveWS extends ActionSupport
 	private Integer idOfferType;
 	private Integer idDriver;
 	private Integer numberOfPassengers;
-	private Float pricePerPassenger;
+	private float pricePerPassenger;
 	
 		
 	public Integer getIdOfferType() {
@@ -40,11 +40,11 @@ public class OfferSaveWS extends ActionSupport
 		this.numberOfPassengers = numberOfPassengers;
 	}
 
-	public Float getPricePerPassenger() {
+	public float getPricePerPassenger() {
 		return pricePerPassenger;
 	}
 
-	public void setPricePerPassenger(Float pricePerPassenger) {
+	public void setPricePerPassenger(float pricePerPassenger) {
 		this.pricePerPassenger = pricePerPassenger;
 	}
 
@@ -52,7 +52,7 @@ public class OfferSaveWS extends ActionSupport
  	{
 		Offer offer = new Offer();
 		
-		System.out.println(idOfferType.toString());
+		System.out.println("azeazez");
 		
 		offer.setIdOfferType(idOfferType);
 	    offer.setIdDriver(idDriver);
