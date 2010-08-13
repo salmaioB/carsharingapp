@@ -15,6 +15,12 @@
 			<result type="json" />
 		</action>
 	</package>
+	
+    <package name="OfferSaveWS" extends="json-default">
+		<action name="OfferSaveWS" class="cs.webservice.impl.OfferSaveWS">
+			<result type="json" />
+		</action>
+	</package>
 
 	<!-- File 's Accueil -->
 	<!--
