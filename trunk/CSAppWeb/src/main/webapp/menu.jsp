@@ -2,9 +2,9 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <ul> 
-	<li><a href="#search"><span>Rechercher</span></a></li> 
-    <li><a href="#post"><span>Poster</span></a></li>
+	<li><a href="#search"><span><s:property value="tr.tr_html(5)"/></span></a></li> 
+    <li><a href="#post"><span><s:property value="tr.tr_html(6)"/></span></a></li>
     <li><a href="#profil"><span>Profil</span></a></li>
     <li><a href="#message"><span>Message</span></a></li> 
-    <li><a href="#trip"><span>Mes trajets</span></a></li>
+    <li><a href="#trip"><span><s:property value="tr.tr_html(7)"/></span></a></li>
 </ul> 
