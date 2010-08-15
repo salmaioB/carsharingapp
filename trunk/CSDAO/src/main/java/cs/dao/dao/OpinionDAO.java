@@ -17,6 +17,7 @@ public class OpinionDAO extends DAO
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.OpinionDAO");
 	}
+	
 	public Opinion load(Integer id)
 	{
 		 //Open session

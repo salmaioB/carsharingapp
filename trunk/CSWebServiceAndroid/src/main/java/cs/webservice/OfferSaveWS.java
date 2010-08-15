@@ -27,14 +27,20 @@ public class OfferSaveWS
 		HttpClient.constructHeader(jsonObjectSend);
 	}
 	
-	public void saveOfferWithRoutes(Offer offer, List<Route> routes)
+	public void saveOfferWithRoutes(Offer offer, Route route)
 	{
 		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
 		paramsToPost.add(new BasicNameValuePair("idOfferType", String.valueOf(0)));		 
 		paramsToPost.add(new BasicNameValuePair("idDriver", offer.getIdDriver().toString()));
 		paramsToPost.add(new BasicNameValuePair("numberOfPassengers", offer.getNumberOfPlaceInitial().toString()));
 		paramsToPost.add(new BasicNameValuePair("pricePerPassenger", offer.getPricePerPassenger().toString()));
-		 
+
+		//paramsToPost.add(new BasicNameValuePair("startingAddress", route.getStartingAddress().toString()));
+		paramsToPost.add(new BasicNameValuePair("startingCity", route.getStartingCity().toString()));
+		//paramsToPost.add(new BasicNameValuePair("finishingAddress", route.getFinishingAddress().toString()));
+		paramsToPost.add(new BasicNameValuePair("finishingCity", route.getFinishingCity().toString()));		
+		//paramsToPost.add(new BasicNameValuePair("price", route.getPrice().toString()));
+		
 		// Send the http request
 		HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
 	}

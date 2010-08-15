@@ -1,9 +1,13 @@
 package cs.webservice.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import cs.dao.dao.OfferDAO;
 import cs.model.Offer;
+import cs.model.Route;
 
 
 public class OfferSaveWS extends ActionSupport
@@ -14,6 +18,9 @@ public class OfferSaveWS extends ActionSupport
 	private Integer idDriver;
 	private Integer numberOfPassengers;
 	private float pricePerPassenger;
+	
+	private String startingCity;
+	private String finishingCity;
 	
 		
 	public Integer getIdOfferType() {
@@ -48,11 +55,25 @@ public class OfferSaveWS extends ActionSupport
 		this.pricePerPassenger = pricePerPassenger;
 	}
 
+	public String getStartingCity() {
+		return startingCity;
+	}
+
+	public void setStartingCity(String startingCity) {
+		this.startingCity = startingCity;
+	}
+
+	public String getFinishingCity() {
+		return finishingCity;
+	}
+
+	public void setFinishingCity(String finishingCity) {
+		this.finishingCity = finishingCity;
+	}
+	
 	public String execute() throws Exception
  	{
 		Offer offer = new Offer();
-		
-		System.out.println("azeazez");
 		
 		offer.setIdOfferType(idOfferType);
 	    offer.setIdDriver(idDriver);
@@ -62,8 +83,20 @@ public class OfferSaveWS extends ActionSupport
 		offer.setNumberOfPlaceRemaining(numberOfPassengers);
 		offer.setPricePerPassenger(pricePerPassenger);
 		
+		Route route = new Route();
+		route.setStartingAddress("");
+		route.setStartingCity(startingCity);
+		route.setFinishingAddress("");
+		route.setFinishingCity(finishingCity);
+		route.setPrice(0f);
+		route.setConversionRateToEuro(0f);
+		route.setCurrencyCode("");
+		
+		List<Route> routes = new ArrayList<Route>();
+		routes.add(route);
+		
 		OfferDAO offerDAO = new OfferDAO();
-		offerDAO.saveOfferWithRoutes(offer, null);
+		offerDAO.saveOfferWithRoutes(offer, routes);
 		
 	 	return SUCCESS;
  	}
