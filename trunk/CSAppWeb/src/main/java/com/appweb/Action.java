@@ -70,11 +70,16 @@ public class Action extends ActionSupport
 			setLangage( ((String[])parameters.get("langage"))[0] );
 		
 		//Si pas de session déclaré ou si nouveau langugage définit
-		if( session.get("language") == null || !getLangage().equals(""))
+		if( session.get("language") == null || !getLangage().equals("") )
 		{
-			if( getLangage().equals("") )
-				session.put("langage","fr");
-			else
+			if( (String) session.get("langage") == "")
+			{	
+				if( getLangage().equals("") )
+					session.put("langage","fr");
+				else
+					session.put("langage",getLangage());
+			}
+			if(!getLangage().equals(""))
 				session.put("langage",getLangage());
 		}
 		//Initialisation de l'objet de translation avec la langue usuel
@@ -82,19 +87,21 @@ public class Action extends ActionSupport
 		String country = (String) session.get("langage");
 		tr.setCountry(country);
 		
+		/*
 		System.out.println("username");
 		if(parameters.get("username") != null)
 		System.out.println( ((String[])parameters.get("username"))[0] );
-		
+		*/
 		//Si pas de session déclaré ou si nouveau langugage définit
 		if( parameters.get("username") != null && parameters.get("password") != null )
 		{
 			CustomerAccountEngineAction customerAccountEngine = new  CustomerAccountEngineAction();
 			setCustomerAccount(customerAccountEngine.identification(((String[])parameters.get("username"))[0] ,((String[])parameters.get("password"))[0]  ));
-			
+			System.out.println(getCustomerAccount().getCustomerLogin()  );
 			if(getCustomerAccount() != null)
 			{
-				getSession().put("customerId",getCustomerAccount().getId()); 
+				getSession().put("customerId",getCustomerAccount().getId());
+				
 		    }
 		}
 		
@@ -107,6 +114,7 @@ public class Action extends ActionSupport
 				customerAccount = cadao.load((Integer)getSession().get("customerId")); 
 			}
 	    }
+	
 		if(isLoging() )
 		{	
 			//Gestion des messages
