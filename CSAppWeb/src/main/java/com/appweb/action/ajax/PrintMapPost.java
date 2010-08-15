@@ -7,23 +7,21 @@ import cs.model.CustomerAccount;
 
 public class PrintMapPost extends Action
 {
-
-	private String startPost;
-	private String stopPost;
+	private String villeStartPost;
+	private String villeStopPost;
 	
-	public String getStartPost() {
-		return startPost;
+	public String getVilleStartPost() {
+		return villeStartPost;
 	}
-	public void setStartPost(String startPost) {
-		this.startPost = startPost;
+	public void setVilleStartPost(String villeStartPost) {
+		this.villeStartPost = villeStartPost;
 	}
-	public String getStopPost() {
-		return stopPost;
+	public String getVilleStopPost() {
+		return villeStopPost;
 	}
-	public void setStopPost(String stopPost) {
-		this.stopPost = stopPost;
+	public void setVilleStopPost(String villeStopPost) {
+		this.villeStopPost = villeStopPost;
 	}
-	
 
 	public String execute() throws Exception
 	{
