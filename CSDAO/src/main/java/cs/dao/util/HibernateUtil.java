@@ -40,7 +40,7 @@ public class HibernateUtil {
 
 	public static void closeSession() throws HibernateException {
 		Session s = (Session) session.get();
-		session.set(null);
-		if (s != null) s.close();
+		//session.set(null);
+		//if (s != null) s.close();
 	}
 }
