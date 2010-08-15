@@ -72,13 +72,15 @@ public class Action extends ActionSupport
 		//Si pas de session déclaré ou si nouveau langugage définit
 		if( session.get("language") == null || !getLangage().equals("") )
 		{
-			if( (String) session.get("langage") == "")
+			//Si variable de session vide
+			if( session.get("langage") == null || ((String) session.get("langage")).equals("") )
 			{	
 				if( getLangage().equals("") )
 					session.put("langage","fr");
 				else
 					session.put("langage",getLangage());
 			}
+			//Si language choisit
 			if(!getLangage().equals(""))
 				session.put("langage",getLangage());
 		}
