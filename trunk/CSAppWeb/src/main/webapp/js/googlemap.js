@@ -35,38 +35,41 @@ function initializePosition()
 	printPoint(maCarte, longitude, latitude);
 }
 
-function autoriezdNewPosition(marker,divInput)
+function autoriezdNewPosition(marker,divInputAddress,divInputTown)
 {
 	marker.setDraggable(true);
-   	/*
-   	google.maps.event.addListener(marqueur, 'dragend', function(event) {
-		// message d'alerte affichant la nouvelle position du marqueur
-   		alert("La nouvelle coordonnée du marqueur est : "+event.latLng);
-   		getAddress(overlay, latlng);
-   	});
-    */
+
     google.maps.event.addListener(marker, 'drag', function() {
         geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[0]) {
             	//alert(results[0].formatted_address);
-            	divInput.value = results[0].formatted_address; 
+            	divInputAddress.value = results[0].formatted_address;
+ 
+            	//alert(results[0].address_components[0].street_address );
+            	
               //$('#address').val(results[0].formatted_address);
               //$('#latitude').val(marker.getPosition().lat());
               //$('#longitude').val(marker.getPosition().lng());
             }
+            if(results[1])
+            {
+            	//alert("alert 1 ok");
+            	divInputTown.value = results[1].formatted_address;
+            }else
+            	alert("alert 1 ok");
           }
         });
       })
 }
 
-function printPointMove(gMap,x,y,divMap) {
+function printPointMove(gMap,x,y,divAddress,divTown) {
    	// creation du marqueur0.688834
    	var marqueur = new google.maps.Marker({
    		position: new google.maps.LatLng(x,y),
    		map: gMap
    	});
-   	autoriezdNewPosition(marqueur,divMap);
+   	autoriezdNewPosition(marqueur,divAddress,divTown);
 }
 function printPoint(gMap,lat,lon) {
    	// creation du marqueur0.688834
@@ -232,8 +235,8 @@ function printPoint(gMap,lat,lon) {
 	
 	}
 	function initializeMapParcoursPost() {
-		var Vstart = $('#startPost').val();
-		var Vstop = $('#stopPost').val();
+		var Vstart = $('#villeStartPost').text();
+		var Vstop = $('#villeStopPost').text();
 		var map = document.getElementById("mapPost");
 
 		initializeMapParcours(Vstart,Vstop,map);
@@ -272,12 +275,15 @@ function initializeMapParcours(start,stop,divMap) {
  */
 var nameDivMap;
 var nameDivaddress;
-function initinitializePositionByAdress(divAddress,divMap)
+var nameDivTown;
+
+function initinitializePositionByAdress(divAddressVille,divAddress,divMap)
 {
 	geocoder = new google.maps.Geocoder();
 	nameDivMap = divMap;
 	nameDivaddress = divAddress;
-	printPositionByAddress($('#'+divAddress).val());
+	nameDivTown = divAddressVille;
+	printPositionByAddress($('#'+divAddressVille).val()+" "+$('#'+divAddress).val());
 }
 
 function printPositionByAddress(address) {
@@ -328,6 +334,6 @@ function showResultInMap(results, status) {
 		 		};
 		 // Création de la carte
 		 var maCarte = new google.maps.Map(document.getElementById(nameDivMap), optionsCarte);
-		 printPointMove(maCarte,lat,lon,document.getElementById(nameDivaddress));
+		 printPointMove(maCarte,lat,lon,document.getElementById(nameDivaddress),document.getElementById(nameDivTown));
 	}
 }

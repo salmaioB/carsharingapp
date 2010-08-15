@@ -51,24 +51,7 @@ $(document).ready(function()
                         
                         return false;
                 });
-        $('input.Cpost').click(function()
-                {
-                        var postData = $("input", '#post_form').serialize();
-                        
-                        $.ajax({
-                                method: 'post',
-                                url: WEB_ROOT_URL+'CSAppWeb/PrintMapPost',
-                                data: postData,
-                                success: function(data)
-                                {
-                                 $('#postPrintMap').html(data);
-                                 
-                                 initializeMapParcoursPost();
-                                }
-                                  });
-                        
-                        return false;
-                });
+
         $('input.Csearch').click(function()
                 {
                         var postData = $("input", '#search_form').serialize();
@@ -119,11 +102,34 @@ $(document).ready(function()
                         			$('#stopPost').attr('disabled', true);
                         			$('#nbPassagerPost').attr('disabled', true);
                         			
-		                            $('#etape2').html(data);
-		                    		$(".corner").corner();
+		                            $('#etape1').html(data);
+		                    		//$(".corner").corner();
+		                            createEvent();
                                 }
                                });
                         
                         return false;
                 });
+        
+        function createEvent()
+        {
+	        $('input.Etape3Post').click(function()
+	                {
+	                        var postData = $("input", '#post_form').serialize();
+	                        
+	                        $.ajax({
+	                                method: 'post',
+	                                url: WEB_ROOT_URL+'CSAppWeb/PrintMapPost',
+	                                data: postData,
+	                                success: function(data)
+	                                {
+	                                 //$('#postPrintMap').html(data);
+	                        		$('#etape1').html(data);
+	                                 initializeMapParcoursPost();
+	                                }
+	                                  });
+	                        
+	                        return false;
+	                });
+        }
 })
