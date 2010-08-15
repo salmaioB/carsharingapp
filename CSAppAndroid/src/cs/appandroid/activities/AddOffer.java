@@ -1,11 +1,13 @@
 package cs.appandroid.activities;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import cs.appandroid.controller.IdentificationController;
 import cs.model.Offer;
+import cs.model.Route;
 import cs.webservice.OfferSaveWS;
-import cs.webservice.OffersWS;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -24,8 +26,8 @@ import android.widget.TimePicker;
 public class AddOffer extends Activity implements OnClickListener
 {
 	// Components define into step 1
-	private EditText startingAddressEditText;
-	private EditText finishingAddressEditText;
+	private EditText startingCityEditText;
+	private EditText finishingCityEditText;
 	
 	private EditText dateRouteEditText;
 	private Button dateRouteButton;
@@ -59,6 +61,7 @@ public class AddOffer extends Activity implements OnClickListener
 	private int routeMinute;
 	
 	private Offer offer;
+	private Route route;
 	
 	private static final int DATE_ROUTE_DIALOG_ID = 0;
 	private static final int TIME_ROUTE_DIALOG_ID = 1;
@@ -77,6 +80,8 @@ public class AddOffer extends Activity implements OnClickListener
 	    //Default price per passenger
 	    offer.setPricePerPassenger(8f);
 
+	    route = new Route();
+	    
 	    displayAddOfferScreen();
 	}
 	
@@ -118,16 +123,19 @@ public class AddOffer extends Activity implements OnClickListener
 		}
 		else if(v == goToNextStepButton)
 		{
-			String test = startingAddressEditText.getText().toString();
+			String test = startingCityEditText.getText().toString();
 			Log.v("test", test);
 			
 			// To display the addofferstep2 screen
 			getIntent().putExtra("addOfferNextStep", true);
-			getIntent().putExtra("startingAddress", startingAddressEditText.getText().toString());
-			getIntent().putExtra("finishingAddress", finishingAddressEditText.getText().toString());
+			
+			route.setStartingCity(startingCityEditText.getText().toString());
+			route.setFinishingCity(finishingCityEditText.getText().toString());
+			
+//			getIntent().putExtra("startingAddress", startingAddressEditText.getText().toString());
+//			getIntent().putExtra("finishingAddress", finishingAddressEditText.getText().toString());
 			getIntent().putExtra("dateRoute", dateRouteEditText.getText().toString());
 			getIntent().putExtra("timeRoute", timeRouteEditText.getText().toString());
-			getIntent().putExtra("numberOfPassengers", offer.getNumberOfPlaceInitial());
 			
 			onResume();
 		}
@@ -173,7 +181,7 @@ public class AddOffer extends Activity implements OnClickListener
 			offer.setIdDriver(IdentificationController.getUserLoggedId(getBaseContext()));
 			
 			OfferSaveWS offerSaveWS = new OfferSaveWS();
-			offerSaveWS.saveOfferWithRoutes(offer, null);
+			offerSaveWS.saveOfferWithRoutes(offer, route);
 		}
 	}
 	
@@ -198,8 +206,8 @@ public class AddOffer extends Activity implements OnClickListener
 	{
 		setContentView(R.layout.addoffer);
 		
-		startingAddressEditText  = (EditText)findViewById(R.id.starting_address_edittext);
-		finishingAddressEditText = (EditText)findViewById(R.id.finishing_address_edittext);
+		startingCityEditText  = (EditText)findViewById(R.id.starting_city_edittext);
+		finishingCityEditText = (EditText)findViewById(R.id.finishing_city_edittext);
 		
 	    dateRouteEditText = (EditText)findViewById(R.id.date_route_edittext);
 	    dateRouteButton   = (Button)findViewById(R.id.date_route_button);

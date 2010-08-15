@@ -8,7 +8,6 @@
         <id name="id" column="_id_route">
             <generator class="native"/>
         </id>
-        <property name="idPassenger" type="integer" column="_id_passenger"/>
         <property name="startingAddress" type="string" column="starting_address"/>
         <property name="startingCity" type="string" column="starting_city"/>        
         <property name="finishingAddress" type="string" column="finishing_address"/>

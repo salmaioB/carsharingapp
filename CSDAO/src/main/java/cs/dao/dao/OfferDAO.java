@@ -1,5 +1,6 @@
 package cs.dao.dao;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.hibernate.Transaction;
 
 import cs.dao.util.HibernateUtil;
 import cs.model.Offer;
+import cs.model.OffersToRoute;
 import cs.model.Route;
 import cs.dao.DAO;
 
@@ -93,14 +95,35 @@ public class OfferDAO extends DAO
 		
 		RouteDAO routeDAO = new RouteDAO();
 		
-		Iterator<Route> i = routes.iterator();
-		while(i.hasNext())
+		List<Integer> idRoutes = new ArrayList<Integer>();
+		
+		Iterator<Route> iteratorRoutes = routes.iterator();
+		while(iteratorRoutes.hasNext())
 		{
-		  Route route = i.next();
+			Route route = iteratorRoutes.next();
 		  
-		  routeDAO.save(route);
+			routeDAO.save(route);
+			
+			idRoutes.add(route.getId());
 		}
-
-		return true;	
+		
+		
+		// Save the offer and the route into the correspondence table
+		OffersToRoutesDAO offersToRoutesDAO = new OffersToRoutesDAO();
+		
+		OffersToRoute offersToRoute = new OffersToRoute();
+		
+		Iterator<Integer> iteratorIdRoutes = idRoutes.iterator();
+		while(iteratorIdRoutes.hasNext())
+		{
+			Integer idRoute = iteratorIdRoutes.next();
+			
+			offersToRoute.setIdOffer(offer.getId());
+			offersToRoute.setIdRoute(idRoute);
+			
+			offersToRoutesDAO.save(offersToRoute);
+		}
+		
+		return true;
 	}
 }
