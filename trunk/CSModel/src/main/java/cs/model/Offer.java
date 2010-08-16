@@ -2,6 +2,9 @@ package cs.model;
 
 import java.util.Date;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Offer
 {
 	private Integer id;
@@ -14,6 +17,28 @@ public class Offer
 	private Float pricePerPassenger;
 	private Date dateStarted;
 	private Date dateEnded;
+	
+	public Offer()
+	{
+		
+	}
+	
+	public Offer(JSONObject jsonObjectOffer) throws JSONException
+	{
+		id          		   = jsonObjectOffer.getInt("id");
+		idOfferType 		   = jsonObjectOffer.getInt("idOfferType");
+		idDriver    		   = jsonObjectOffer.getInt("idDriver");
+		title       		   = jsonObjectOffer.getString("title");
+		description 	 	   = jsonObjectOffer.getString("description");
+		numberOfPlaceInitial   = jsonObjectOffer.getInt("numberOfPlaceInitial");
+		numberOfPlaceRemaining = jsonObjectOffer.getInt("numberOfPlaceRemaining");
+		
+		// Ugly part
+		pricePerPassenger      = Float.parseFloat(jsonObjectOffer.getString("pricePerPassenger"));
+		
+		//dateStarted            = jsonObjectOffer.getInt("");
+		//dateEnded			   = jsonObjectOffer.getInt("");
+	}
 	
 	public Integer getId() {
 		return id;

@@ -17,6 +17,7 @@ public class RoutesToCustomerAccountDAO extends DAO
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.RouteToCustomerAccountDAO");
 	}
+	
 	public RoutesToCustomerAccount load(Integer id)
 	{
 		 //Open session

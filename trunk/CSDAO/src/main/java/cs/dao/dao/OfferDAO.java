@@ -71,9 +71,6 @@ public class OfferDAO extends DAO
 					       "AND r.finishing_address= '" + finishingAddress + "' " +
 					       "AND r.finishing_city= '" + finishingCity + "'";
 	     
-	//     String SQLQuery = "SELECT * " +
-	//	   				   "FROM routes";
-	     
 	     System.out.println(SQLQuery);
 	     
 	     Query query = session.createSQLQuery(SQLQuery).addEntity(Offer.class);
@@ -82,6 +79,48 @@ public class OfferDAO extends DAO
 	     HibernateUtil.closeSession();
 	     
 		 return offers;
+	}
+	
+	/**
+	 * Function to display the customer offers(routes)
+	 */
+	public List<Offer> loadCustomerOffers(Integer idCustomerAccount)
+	{
+		Session session = HibernateUtil.currentSession();
+		
+		String SQLQuery = "SELECT * " +
+		   		          "FROM offers o, routes r, offers_to_routes o_to_r " +
+		   		          "WHERE o_to_r._id_offer=o._id_offer " +
+		   		          "AND o_to_r._id_route=r._id_route " +
+		   		          "AND o._id_driver=" + idCustomerAccount.toString();
+
+		System.out.println(SQLQuery);
+
+		Query query = session.createSQLQuery(SQLQuery).addEntity(Offer.class);
+		
+		List<Offer> offers = query.list();
+		//offers = query.list();
+		
+		Iterator<Offer> itOffers = offers.iterator();
+		while(itOffers.hasNext())
+		{
+			Offer offer = itOffers.next();
+			System.out.println("Price: " + offer.getPricePerPassenger());
+		}
+		
+		List<Route> routes = query.list();
+		
+		Iterator<Route> itRoutes = routes.iterator();		
+		while(itRoutes.hasNext())
+		{
+			Route route = itRoutes.next();
+			System.out.println("Starting city: " + route.getStartingCity());
+			System.out.println("Finishing city: " + route.getStartingCity());
+		}
+		
+		HibernateUtil.closeSession();
+		
+		return null;
 	}
 	
 	/**

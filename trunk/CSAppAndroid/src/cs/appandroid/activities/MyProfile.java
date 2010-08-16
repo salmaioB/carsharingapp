@@ -6,6 +6,7 @@ import cs.webservice.CustomerAccountsWS;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 public class MyProfile extends Activity implements OnClickListener
 {
+	// Components define into identification screen
 	private TextView identificationFailedTextView;
 	
 	private EditText loginEditText;
@@ -26,13 +28,31 @@ public class MyProfile extends Activity implements OnClickListener
     private Runnable identificationProcess;
     private ProgressDialog identificationProgressDialog;
 	
+    // Components define into myprofile screen
+    private TextView myProfileInfoTextView;
+    
+    private TextView userInfosTextView;
+    private TextView userPreferenceTextView;
+    private TextView userVehiclesTextView;
+    private TextView userMyAlertsTextView;
+    private TextView userPasswordTextView;
+    private TextView userOpinionTextView;
+    
+    // Components deinfe into user general infos screen
+    private EditText userLastNameEditText;
+    private EditText userFirstNameEditText;
+    private EditText userEmailEditText;
+    private EditText userMobileEditText;
+    private EditText userYearOfBirthEditText;
+    private Button validateUserGeneralInfosButton;
+    
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{		
 	    super.onCreate(savedInstanceState);
 	    
-	    displayMyProfile();
+	    displayMyProfileScreen();
 	}
 	
 	@Override
@@ -40,7 +60,7 @@ public class MyProfile extends Activity implements OnClickListener
 	{
 		super.onResume();
 		
-		displayMyProfile();
+		displayMyProfileScreen();
 	}
 
 	@Override
@@ -61,15 +81,48 @@ public class MyProfile extends Activity implements OnClickListener
 		    thread.start();
 		    identificationProgressDialog = ProgressDialog.show(MyProfile.this, "Please wait...", "Identification ...", true);
 		}
+		else if(v == userInfosTextView)
+		{
+			Log.v("userInfos", "clic");
+			
+			setContentView(R.layout.usergeneralinfos);
+			
+		    userLastNameEditText           = (EditText)findViewById(R.id.user_last_name_edittext);
+		    userFirstNameEditText          = (EditText)findViewById(R.id.user_first_name_edittext);
+		    userEmailEditText   		   = (EditText)findViewById(R.id.user_email_edittext);
+		    userMobileEditText  		   = (EditText)findViewById(R.id.user_mobile_edittext);
+		    userYearOfBirthEditText        = (EditText)findViewById(R.id.user_year_of_birth_edittext);
+		    
+		    validateUserGeneralInfosButton = (Button)findViewById(R.id.validate_user_general_infos_button);
+		    validateUserGeneralInfosButton.setOnClickListener(this);
+		}
 	}
 	
-	public void displayMyProfile()
+	public void displayMyProfileScreen()
 	{
 	    if(IdentificationController.userIsLogged(getBaseContext()))
-	    {
-	    	Log.v("My profile", "passe");
-	    	
+	    {	
 	    	setContentView(R.layout.myprofile);
+	    	
+	        myProfileInfoTextView  = (TextView)findViewById(R.id.my_profile_info_textview);
+	        
+	        userInfosTextView      = (TextView)findViewById(R.id.user_infos_textview);
+	        userInfosTextView.setOnClickListener(this);
+	        
+	        userPreferenceTextView = (TextView)findViewById(R.id.user_preferences_textview);
+	        userPreferenceTextView.setOnClickListener(this);
+	        
+	        userVehiclesTextView   = (TextView)findViewById(R.id.user_vehicles_textview);
+	        userVehiclesTextView.setOnClickListener(this);
+	        
+	        userMyAlertsTextView   = (TextView)findViewById(R.id.user_my_alerts_textview);
+	        userMyAlertsTextView.setOnClickListener(this);
+	        
+	        userPasswordTextView   = (TextView)findViewById(R.id.user_password_textview);
+	        userPasswordTextView.setOnClickListener(this);
+	        
+	        userOpinionTextView    = (TextView)findViewById(R.id.user_opinion_textview);
+	        userOpinionTextView.setOnClickListener(this);
     	}
 	    else
 	    {

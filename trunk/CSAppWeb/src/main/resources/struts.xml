@@ -22,6 +22,12 @@
 		</action>
 	</package>
 
+	<package name="CustomerOffersWS" extends="json-default">
+		<action name="CustomerOffersWS" class="cs.webservice.impl.CustomerOffersWS">
+			<result type="json"/>
+		</action>
+	</package>
+
 	<!-- File 's Accueil -->
 	<!--
 	<package name="Accueil" namespace="/" extends="struts-default">

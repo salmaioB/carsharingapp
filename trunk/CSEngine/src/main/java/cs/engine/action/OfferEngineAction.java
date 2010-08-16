@@ -28,6 +28,15 @@ public class OfferEngineAction
 		return null;
 	}
 	
+	public List<Offer> getCustomerOffers(Integer idCustomerAccount)
+	{
+		if(caBean != null)
+		{
+			return caBean.loadCustomerOffers(idCustomerAccount);
+		}
+		return null;
+	}
+	
 	public Boolean saveOfferWithRoutes(Offer offer, List<Route> routes)
 	{
 		if(caBean != null)
