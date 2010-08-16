@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			  android:layout_width="wrap_content"
-			  android:layout_height="wrap_content">
+			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:orientation="vertical">
 			  
-			  
-			  
+	<TextView android:id="@+id/my_profile_info_textview"
+			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"/>
+	
+	<TableLayout android:layout_width="wrap_content"
+  			  	 android:layout_height="wrap_content">
+		<TableRow>
+			<TextView android:id="@+id/user_infos_textview"
+			          android:text="Mes infos générales"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/user_preferences_textview"
+			          android:text="Mes préfèrences"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/user_vehicles_textview"
+			          android:text="Mon véhicule"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/user_my_alerts_textview"
+			          android:text="Mes alertes"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/user_password_textview"
+					  android:text="Mon mot de passe"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/user_opinion_textview"
+					  android:text="Mes avis"/>
+		</TableRow>
+	</TableLayout>
+	
 </LinearLayout>

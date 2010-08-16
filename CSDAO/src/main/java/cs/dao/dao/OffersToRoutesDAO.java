@@ -18,12 +18,12 @@ public class OffersToRoutesDAO
 	
 	public OffersToRoute load(Integer id)
 	{
-		 //Open session
+		 // Open session
 		 Session session = HibernateUtil.currentSession();
 		 Transaction tx = session.beginTransaction();
 		 session.beginTransaction();
 
-		 //Load Data object
+		 // Load data object
 		 OffersToRoute offersToRoute = (OffersToRoute)session.load(OffersToRoute.class, id);
 		 
 		 tx.commit();

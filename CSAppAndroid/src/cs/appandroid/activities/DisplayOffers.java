@@ -26,9 +26,6 @@ public class DisplayOffers extends ListActivity
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.displayoffers);
 	    
-	    //Bundle bun = getIntent().getExtras();
-	    //String test = bun.getString("az");
-	    
 	    offers = new ArrayList<Offer>();
 	    
 	    offerListAdapter = new OfferListAdapter(this, R.layout.offerrow, offers);
