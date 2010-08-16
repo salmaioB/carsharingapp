@@ -3,6 +3,9 @@ package cs.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class CustomerAccount implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -16,8 +19,13 @@ public class CustomerAccount implements Serializable
 	private Double geolocLatitude;
 	private String emailAddress;
 	private String address;
+	
+	// TO RENAME: french fields ?
+	// ville -> country
+	// cp    -> zipcode
 	private String ville;
 	private Integer cp;
+	
 	private Integer phone;
 	private Integer mobile;
 	private Integer customerType;
@@ -32,36 +40,52 @@ public class CustomerAccount implements Serializable
 	private Date datetimeLastOfferCreated;
 	private Date datetimeLastCarSharing;
 
-	public String getVille() {
-		return ville;
+	
+	public CustomerAccount()
+	{
+		
+	}
+	
+	public CustomerAccount(JSONObject jsonObjectCustomerAccount) throws JSONException
+	{
+		id 			  	   		 = jsonObjectCustomerAccount.getInt("id");
+		customerLogin 	   		 = jsonObjectCustomerAccount.getString("customerLogin");
+		customerPassword   		 = jsonObjectCustomerAccount.getString("customerPassword");
+		lastName           		 = jsonObjectCustomerAccount.getString("lastName");
+		firstName          		 = jsonObjectCustomerAccount.getString("firstName");
+		geolocLongitude    		 = jsonObjectCustomerAccount.getDouble("geolocLongitude");
+		geolocLatitude     		 = jsonObjectCustomerAccount.getDouble("geolocLatitude");
+		emailAddress       		 = jsonObjectCustomerAccount.getString("emailAddress");
+		
+		//address            		 = jsonObjectCustomerAccount.getString("");
+		//ville              		 = jsonObjectCustomerAccount.getString("");
+		//cp				   		 = jsonObjectCustomerAccount.getString("");
+		
+		phone     		   		 = jsonObjectCustomerAccount.getInt("phone");
+		mobile 			   		 = jsonObjectCustomerAccount.getInt("mobile");
+		customerType       		 = jsonObjectCustomerAccount.getInt("customerType");
+		idVehicule         		 = jsonObjectCustomerAccount.getInt("idVehicule");
+		acceptAnimals      		 = jsonObjectCustomerAccount.getInt("acceptAnimals");
+		acceptRadio        		 = jsonObjectCustomerAccount.getInt("acceptRadio");
+		acceptSmoker       		 = jsonObjectCustomerAccount.getInt("acceptSmoker");
+		acceptToDiscuss    		 = jsonObjectCustomerAccount.getInt("acceptToDiscuss");
+		acceptToMakeADetour      = jsonObjectCustomerAccount.getInt("acceptToMakeADetour");
+		
+		//datetimeRegistration     = jsonObjectCustomerAccount.getString("");
+		//datetimeLastConnection   = jsonObjectCustomerAccount.getString("");
+		//datetimeLastOfferCreated = jsonObjectCustomerAccount.getString("");
+		//datetimeLastCarSharing   = jsonObjectCustomerAccount.getString("");
 	}
 
-	public void setVille(String ville) {
-		this.ville = ville;
-	}
-
-	public Integer getCp() {
-		return cp;
-	}
-
-	public void setCp(Integer cp) {
-		this.cp = cp;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	public Integer getId() {
 		return id;
 	}
-
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	// Ugly part
 	public String getCustomerLogin() {
 		if(customerLogin == null) customerLogin ="";
 		return customerLogin;
@@ -71,6 +95,7 @@ public class CustomerAccount implements Serializable
 		this.customerLogin = customerLogin;
 	}	
 	
+	// Ugly part
 	public String getCustomerPassword() {
 		if(customerPassword == null) customerPassword ="";
 		return customerPassword;
@@ -80,6 +105,7 @@ public class CustomerAccount implements Serializable
 		this.customerPassword = customerPassword;
 	}
 	
+	// Ugly part
 	public String getLastName() {
 		if(lastName == null) lastName ="";
 		return lastName;
@@ -89,6 +115,7 @@ public class CustomerAccount implements Serializable
 		this.lastName = lastName;
 	}
 	
+	// Ugly part
 	public String getFirstName() {
 		if(firstName == null) firstName ="";
 		return firstName;
@@ -114,13 +141,40 @@ public class CustomerAccount implements Serializable
 		this.geolocLatitude = geolocLatitude;
 	}
 	
+	// Ugly part
 	public String getEmailAddress() {
-		if(emailAddress == null) emailAddress ="";
+		if(emailAddress == null)
+			emailAddress = "";
+		
 		return emailAddress;
 	}
 	
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public Integer getCp() {
+		return cp;
+	}
+
+	public void setCp(Integer cp) {
+		this.cp = cp;
 	}
 	
 	public Integer getPhone() {

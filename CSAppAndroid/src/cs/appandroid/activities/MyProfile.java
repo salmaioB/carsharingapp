@@ -57,7 +57,7 @@ public class MyProfile extends Activity implements OnClickListener
 				}
 			};
 			
-			Thread thread =  new Thread(null, identificationProcess, "SearchOrderThread");
+			Thread thread =  new Thread(null, identificationProcess, "IdentificationThread");
 		    thread.start();
 		    identificationProgressDialog = ProgressDialog.show(MyProfile.this, "Please wait...", "Identification ...", true);
 		}

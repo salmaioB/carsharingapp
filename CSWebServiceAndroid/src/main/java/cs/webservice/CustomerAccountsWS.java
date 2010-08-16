@@ -27,21 +27,25 @@ public class CustomerAccountsWS
 		HttpClient.constructHeader(jsonObjectSend);
 	}
 	
-	// TO BE DELETED ?
-	public CustomerAccount getCustomerAccounts(Integer id)
+	public CustomerAccount getCustomerAccount(Integer id)
 	{ 
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		nameValuePairs.add(new BasicNameValuePair("id", id.toString()));
 		
 		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, nameValuePairs);
 
-		CustomerAccount customerAccount = new CustomerAccount();
+		CustomerAccount customerAccount = null;
         
 	    try
 	    {
-	    	JSONObject tmp = jsonObjectReturn.getJSONObject("use");
-	    	customerAccount.setCustomerLogin( tmp.getString("customerLogin") );
-	    	return customerAccount;
+			JSONObject jsonObjectCustomerAccount;
+			
+			if(!jsonObjectReturn.get("customerAccount").equals(null))
+			{				
+				jsonObjectCustomerAccount = jsonObjectReturn.getJSONObject("customerAccount");
+	    	 
+				customerAccount = new CustomerAccount(jsonObjectCustomerAccount);
+			}
 	    }
 	    catch (JSONException e)
 	    {
@@ -60,7 +64,7 @@ public class CustomerAccountsWS
 		// Contains the jsonObject return by the http request
 		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
 		
-		CustomerAccount customerAccount = new CustomerAccount();
+		CustomerAccount customerAccount = null;
 		
 		try
 	    {
@@ -68,29 +72,10 @@ public class CustomerAccountsWS
 			
 			if(!jsonObjectReturn.get("customerAccount").equals(null))
 			{				
-	    	 jsonObjectCustomerAccount = jsonObjectReturn.getJSONObject("customerAccount");
+				jsonObjectCustomerAccount = jsonObjectReturn.getJSONObject("customerAccount");
 	    	 
-	    	 customerAccount.setId(jsonObjectCustomerAccount.getInt("id"));
-			 customerAccount.setCustomerLogin(jsonObjectCustomerAccount.getString("customerLogin"));
-	         customerAccount.setCustomerPassword(jsonObjectCustomerAccount.getString("customerPassword"));
-			 customerAccount.setLastName(jsonObjectCustomerAccount.getString("lastName"));
-			 customerAccount.setFirstName(jsonObjectCustomerAccount.getString("firstName"));
-			 customerAccount.setEmailAddress(jsonObjectCustomerAccount.getString("emailAddress"));
-			 customerAccount.setPhone(jsonObjectCustomerAccount.getInt("phone"));
-			 customerAccount.setMobile(jsonObjectCustomerAccount.getInt("mobile"));
-			 customerAccount.setCustomerType(jsonObjectCustomerAccount.getInt("customerType"));
-			 //customerAccount.setIdVehicule(jsonObjectCustomerAccount.getInt("_id_vehicule"));
-			 customerAccount.setAcceptAnimals(jsonObjectCustomerAccount.getInt("acceptAnimals"));
-             customerAccount.setAcceptRadio(jsonObjectCustomerAccount.getInt("acceptRadio"));
-			 customerAccount.setAcceptSmoker(jsonObjectCustomerAccount.getInt("acceptSmoker"));
-			 customerAccount.setAcceptToDiscuss(jsonObjectCustomerAccount.getInt("acceptToDiscuss"));
-			 customerAccount.setAcceptToMakeADetour(jsonObjectCustomerAccount.getInt("acceptToMakeADetour"));
-             //customerAccount.setDatetimeRegistration(jsonObjectCustomerAccount.getString("datetime_registration"));
-             //customerAccount.setDatetimeLastConnection(jsonObjectCustomerAccount.getString("datetime_last_connection"));
-             //customerAccount.setDatetimeLastOfferCreated(jsonObjectCustomerAccount.getString("datetime_last_offer_created"));
-             //customerAccount.setDatetimeLastCarSharing(jsonObjectCustomerAccount.getString("datetime_last_car_sharing"));
+				customerAccount = new CustomerAccount(jsonObjectCustomerAccount);
 			}
-			else customerAccount = null;
 	    }
 	    catch (JSONException e)
 	    {

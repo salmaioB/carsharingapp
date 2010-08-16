@@ -26,8 +26,8 @@ public class MyMessages extends Activity
 		
 		//Instanciation du WebService + récupère customer id = 1
 		CustomerAccountsWS caws = new CustomerAccountsWS();
-		CustomerAccount ca = caws.getCustomerAccounts(1);
+		//CustomerAccount ca = caws.getCustomerAccount(1);
 		
-		jsonTextView.setText("login : "+ ca.getCustomerLogin());	
+		//jsonTextView.setText("login : "+ ca.getCustomerLogin());	
 	}
 }

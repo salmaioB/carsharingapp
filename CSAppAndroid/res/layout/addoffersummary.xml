@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:orientation="vertical">
+  
+	<TextView android:id="@+id/added_offer_summary_textview"
+  	  		  android:layout_width="wrap_content"
+  			  android:layout_height="wrap_content"
+  			  android:text="Vous avez proposé le voyage suivant:"/>
+  		
+	<TableLayout android:layout_width="wrap_content"
+  			  	 android:layout_height="wrap_content"
+  			  	 android:paddingTop="8dp">
+		<TableRow>
+	 		<TextView android:id="@+id/user_name_textview"/>
+	     	<TextView android:id="@+id/offer_date_and_time_textview"/>
+	 	</TableRow>
+		<TableRow>
+	 		<TextView android:id="@+id/offer_opinion_textview"/>
+	     	<TextView android:id="@+id/number_of_passengers_summary_step_textview"/>
+	 	</TableRow>
+	 	<TableRow>
+	 		<TextView android:id="@+id/route_summary_textview"/>
+	     	<TextView android:id="@+id/price_per_passenger_summary_textview"/>
+	 	</TableRow>
+  	</TableLayout>
+  	
+	<Button android:id="@+id/_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Voir ce trajet"/>
+
+	<Button android:id="@+id/publish_return_trip_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Publier le trajet retour"/>
+
+	<Button android:id="@+id/show_same_routes_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Voir les trajets similaires"/>
+   
+</LinearLayout>
