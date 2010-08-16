@@ -1,17 +1,18 @@
 package cs.appandroid.activities;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import cs.appandroid.controller.IdentificationController;
+import cs.model.CustomerAccount;
 import cs.model.Offer;
 import cs.model.Route;
+import cs.webservice.CustomerAccountsWS;
 import cs.webservice.OfferSaveWS;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,17 +29,13 @@ public class AddOffer extends Activity implements OnClickListener
 	// Components define into step 1
 	private EditText startingCityEditText;
 	private EditText finishingCityEditText;
-	
 	private EditText dateRouteEditText;
 	private Button dateRouteButton;
-	
 	private EditText timeRouteEditText;
 	private Button timeRouteButton;
-	
 	private Button incrementNumberOfPassengersButton;
 	private TextView numberOfPassengersTextView;
 	private Button decrementNumberOfPassengersButton;
-	
 	private Button goToNextStepButton;
 	
 	
@@ -48,10 +45,17 @@ public class AddOffer extends Activity implements OnClickListener
 	private TextView dateRouteSummaryTextView;
 	private TextView numberOfPassengersSummaryTextView;
 	private Button decrementPricePerPassengerButton;
-	private TextView pricePerPassengerTextview;
+	private TextView pricePerPassengerTextView;
 	private Button incrementPricePerPassengerButton;
 	private Button proposeOfferButton;
 	
+	// Components define into summary step (after save the offer)
+	private TextView userNameTextView;
+	private TextView offerDateAndTimeTextView;
+	private TextView offerOpinionTextView;
+	private TextView numberOfPassengersSummaryStepTextView;
+	private TextView routeSummaryTextView;
+	private TextView pricePerPassengerSummaryTextView;
 	
 	private int routeYear;
 	private int routeMonth;
@@ -66,6 +70,8 @@ public class AddOffer extends Activity implements OnClickListener
 	private static final int DATE_ROUTE_DIALOG_ID = 0;
 	private static final int TIME_ROUTE_DIALOG_ID = 1;
 	 
+	private Runnable addOfferProcess;
+	private ProgressDialog addOfferProgressDialog;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -96,6 +102,8 @@ public class AddOffer extends Activity implements OnClickListener
 		{
 			 if(params.containsKey("addOfferNextStep"))
 				 displayAddOfferNextStepScreen();
+			 else if(params.containsKey("addOfferSummaryStep"))
+				 displayAddOfferSummaryScreen();
 		}
 		else displayAddOfferScreen();
 	}
@@ -103,6 +111,9 @@ public class AddOffer extends Activity implements OnClickListener
 	@Override
 	public void onClick(View v)
 	{
+		Bundle initParams = null;
+		getIntent().replaceExtras(initParams);
+		
 		if(v == dateRouteButton)
 		{
 			// Get the current date
@@ -123,10 +134,7 @@ public class AddOffer extends Activity implements OnClickListener
 		}
 		else if(v == goToNextStepButton)
 		{
-			String test = startingCityEditText.getText().toString();
-			Log.v("test", test);
-			
-			// To display the addofferstep2 screen
+			// To display the "add offer" step2 screen
 			getIntent().putExtra("addOfferNextStep", true);
 			
 			route.setStartingCity(startingCityEditText.getText().toString());
@@ -141,7 +149,7 @@ public class AddOffer extends Activity implements OnClickListener
 		}
 		else if(v == incrementNumberOfPassengersButton)
 		{
-			if(offer.getNumberOfPlaceInitial() != 6f)
+			if(offer.getNumberOfPlaceInitial() != 6)
 			{
 				offer.setNumberOfPlaceInitial(offer.getNumberOfPlaceInitial()+1);
 			
@@ -150,7 +158,7 @@ public class AddOffer extends Activity implements OnClickListener
 		}
 		else if(v == decrementNumberOfPassengersButton)
 		{
-			if(offer.getNumberOfPlaceInitial() != 1f)
+			if(offer.getNumberOfPlaceInitial() != 1)
 			{
 				offer.setNumberOfPlaceInitial(offer.getNumberOfPlaceInitial()-1);
 				
@@ -163,7 +171,7 @@ public class AddOffer extends Activity implements OnClickListener
 			{
 				offer.setPricePerPassenger(offer.getPricePerPassenger()+1);
 			    
-				pricePerPassengerTextview.setText(offer.getPricePerPassenger() + "€");
+				pricePerPassengerTextView.setText(offer.getPricePerPassenger() + "€");
 			}
 		}
 		else if(v == decrementPricePerPassengerButton)
@@ -172,16 +180,23 @@ public class AddOffer extends Activity implements OnClickListener
 			{
 				offer.setPricePerPassenger(offer.getPricePerPassenger()-1);
 			
-				pricePerPassengerTextview.setText(offer.getPricePerPassenger() + "€");
+				pricePerPassengerTextView.setText(offer.getPricePerPassenger() + "€");
 			}
 		}
 		else if(v == proposeOfferButton)
-		{
-			// Set an idDriver to the offer
-			offer.setIdDriver(IdentificationController.getUserLoggedId(getBaseContext()));
-			
-			OfferSaveWS offerSaveWS = new OfferSaveWS();
-			offerSaveWS.saveOfferWithRoutes(offer, route);
+		{	
+			addOfferProcess = new Runnable()
+			{	
+				@Override
+				public void run()
+				{
+					addOfferProcess();
+				}
+			};
+			Thread thread =  new Thread(null, addOfferProcess, "AddOfferThread");
+		    thread.start();
+		    
+		    addOfferProgressDialog = ProgressDialog.show(AddOffer.this, "Please wait...", "Publication de votre offre ...", true);
 		}
 	}
 	
@@ -241,26 +256,88 @@ public class AddOffer extends Activity implements OnClickListener
 		
 		Bundle addOfferFirstScreen = getIntent().getExtras();
 		
-		String startingAddress  = addOfferFirstScreen.getString("startingAddress");
-		String finishingAddress = addOfferFirstScreen.getString("finishingAddress");
 		String dateRoute        = addOfferFirstScreen.getString("dateRoute");
 		
-		startingAddressSummaryTextView.setText("Départ: " + startingAddress);
-		finishingAddressSummaryTextView.setText("Arrivée: " + finishingAddress);
+		startingAddressSummaryTextView.setText("Départ: " + route.getStartingCity());
+		finishingAddressSummaryTextView.setText("Arrivée: " + route.getFinishingCity());
 		dateRouteSummaryTextView.setText("Date: " + dateRoute);
 		numberOfPassengersSummaryTextView.setText(offer.getNumberOfPlaceInitial() + " places restantes");
 		
 		decrementPricePerPassengerButton = (Button)findViewById(R.id.decrement_price_per_passenger_button);
 		decrementPricePerPassengerButton.setOnClickListener(this);
 		
-		pricePerPassengerTextview        = (TextView)findViewById(R.id.price_per_passenger_textview);
-		pricePerPassengerTextview.setText(offer.getPricePerPassenger() + "€");
+		pricePerPassengerTextView        = (TextView)findViewById(R.id.price_per_passenger_textview);
+		pricePerPassengerTextView.setText(offer.getPricePerPassenger() + "€");
 		
 		incrementPricePerPassengerButton = (Button)findViewById(R.id.increment_price_per_passenger_button);	
 		incrementPricePerPassengerButton.setOnClickListener(this);
 		
 		proposeOfferButton = (Button)findViewById(R.id.propose_offer_button);
 		proposeOfferButton.setOnClickListener(this);
+	}
+	
+	public void displayAddOfferSummaryScreen()
+	{
+		setContentView(R.layout.addoffersummary);
+		
+		userNameTextView 		 			  = (TextView)findViewById(R.id.user_name_textview);
+		
+		// Retrieve the id customer account
+		Integer idCustomerAccount = IdentificationController.getUserLoggedId(getBaseContext());
+		
+		CustomerAccountsWS customerAccountsWS = new CustomerAccountsWS();
+		CustomerAccount customerAccount = customerAccountsWS.getCustomerAccount(idCustomerAccount);
+		
+		// Display the user name
+		String userFullName = customerAccount.getFirstName() + " " + customerAccount.getLastName();
+		userNameTextView.setText(userFullName);
+		
+		offerDateAndTimeTextView 			  = (TextView)findViewById(R.id.offer_date_and_time_textview);
+	    offerDateAndTimeTextView.setText("blabla");
+		
+		// Display the offer opinion
+		offerOpinionTextView     		      = (TextView)findViewById(R.id.offer_opinion_textview);		
+		offerOpinionTextView.setText("Pas encore d'avis (to develop)");
+		
+		// Display number of passengers
+		numberOfPassengersSummaryStepTextView = (TextView)findViewById(R.id.number_of_passengers_summary_step_textview);		
+		numberOfPassengersSummaryStepTextView.setText(offer.getNumberOfPlaceInitial() + "pl. restantes");
+		
+		// Display the itinerary
+		routeSummaryTextView				  = (TextView)findViewById(R.id.route_summary_textview);
+		routeSummaryTextView.setText(route.getStartingCity() + " -> " + route.getFinishingCity());
+		
+		// Display the price per passenger
+		pricePerPassengerSummaryTextView	  = (TextView)findViewById(R.id.price_per_passenger_summary_textview);
+		pricePerPassengerSummaryTextView.setText("Prix par pers.: " + offer.getPricePerPassenger().toString());
+	}
+	
+	public void addOfferProcess()
+	{
+		// Set an idDriver to the offer
+		offer.setIdDriver(IdentificationController.getUserLoggedId(getBaseContext()));
+		
+		OfferSaveWS offerSaveWS = new OfferSaveWS();
+		offerSaveWS.saveOfferWithRoutes(offer, route);
+		
+		addOfferProcessUpdateUI();
+	}
+	
+	public void addOfferProcessUpdateUI()
+	{
+		// Drop the Runnable into the UI thread queue
+    	runOnUiThread(new Runnable()
+    	{
+           @Override
+           public void run()
+           {
+        	   addOfferProgressDialog.dismiss();
+        	  
+    		   // To display the "add offer" summary step screen
+       		   getIntent().putExtra("addOfferSummaryStep", true);
+       		   onResume();
+           }
+        });
 	}
 	
 	// The callback received when the user sets the route date in the dialog
