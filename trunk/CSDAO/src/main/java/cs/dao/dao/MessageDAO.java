@@ -62,9 +62,14 @@ public class MessageDAO extends DAO
 		    "WHERE m._id_customer_account = " + idCustomerAccount +
 	        " AND m.read = 0 ";
 	     
-	     System.out.println(sqlQuery);
+	     String hqlQuery = "FROM Message " +
+		    "WHERE idCustomerAccount = " + idCustomerAccount +
+	        " AND read = 0 ";
 	     
-	     Query query = session.createSQLQuery(sqlQuery).addEntity(Message.class);
+	     System.out.println(hqlQuery);
+	     
+	     //Query query = session.createSQLQuery(sqlQuery).addEntity(Message.class);
+	     Query query = session.createQuery(hqlQuery);
 	     count = query.list().size();
 	     
 		HibernateUtil.closeSession();
