@@ -38,13 +38,21 @@ public class MyProfile extends Activity implements OnClickListener
     private TextView userPasswordTextView;
     private TextView userOpinionTextView;
     
-    // Components deinfe into user general infos screen
+    // Components define into user general infos screen
+    private CustomerAccount customerAccount;
+    
     private EditText userLastNameEditText;
     private EditText userFirstNameEditText;
-    private EditText userEmailEditText;
+    private EditText userEmailAddressEditText;
     private EditText userMobileEditText;
     private EditText userYearOfBirthEditText;
     private Button validateUserGeneralInfosButton;
+    
+    private Runnable loadUserGeneralInfosProcess;
+    private ProgressDialog loadUserGeneralInfosProgressDialog;
+    
+    private Runnable saveUserGeneralInfosProcess;
+    private ProgressDialog saveUserGeneralInfosProgressDialog;
     
 	
 	@Override
@@ -83,18 +91,30 @@ public class MyProfile extends Activity implements OnClickListener
 		}
 		else if(v == userInfosTextView)
 		{
-			Log.v("userInfos", "clic");
+			loadUserGeneralInfosProcess = new Runnable()
+			{	
+				@Override
+				public void run()
+				{
+					loadCustomerGeneralInfosProcess();
+				}
+			};
 			
-			setContentView(R.layout.usergeneralinfos);
+			Thread loadUserGeneralInfosThread =  new Thread(null, loadUserGeneralInfosProcess, "LoadUserGeneralInfosThread");
+			loadUserGeneralInfosThread.start();
 			
-		    userLastNameEditText           = (EditText)findViewById(R.id.user_last_name_edittext);
-		    userFirstNameEditText          = (EditText)findViewById(R.id.user_first_name_edittext);
-		    userEmailEditText   		   = (EditText)findViewById(R.id.user_email_edittext);
-		    userMobileEditText  		   = (EditText)findViewById(R.id.user_mobile_edittext);
-		    userYearOfBirthEditText        = (EditText)findViewById(R.id.user_year_of_birth_edittext);
-		    
-		    validateUserGeneralInfosButton = (Button)findViewById(R.id.validate_user_general_infos_button);
-		    validateUserGeneralInfosButton.setOnClickListener(this);
+			loadUserGeneralInfosProgressDialog = ProgressDialog.show(MyProfile.this, "Please wait...", "Récupération de vos informations ...", true);
+		}
+		else if(v == validateUserGeneralInfosButton)
+		{
+			Integer idCustomerAccount = IdentificationController.getUserLoggedId(getBaseContext());
+			String lastName     	  = userLastNameEditText.getText().toString();
+			String firstName    	  = userFirstNameEditText.getText().toString();
+			String emailAddress 	  = userEmailAddressEditText.getText().toString();
+			String mobile       	  = userMobileEditText.getText().toString();
+			
+			CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
+			customerAccountWS.saveCustomerGeneralInfos(idCustomerAccount, lastName, firstName, emailAddress, mobile);	
 		}
 	}
 	
@@ -126,8 +146,6 @@ public class MyProfile extends Activity implements OnClickListener
     	}
 	    else
 	    {
-	    	Log.v("identification", "passe");
-    		
     		setContentView(R.layout.identification);
     		
     	    identificationFailedTextView = (TextView)findViewById(R.id.identification_failed);
@@ -140,27 +158,51 @@ public class MyProfile extends Activity implements OnClickListener
 	    }
 	}
 	
+	public void displayUserGeneralInfosScreen()
+	{
+		setContentView(R.layout.usergeneralinfos);
+		
+        userLastNameEditText           = (EditText)findViewById(R.id.user_last_name_edittext);
+        userLastNameEditText.setText(customerAccount.getLastName());
+    
+        userFirstNameEditText          = (EditText)findViewById(R.id.user_first_name_edittext);
+        userFirstNameEditText.setText(customerAccount.getFirstName());
+    
+        userEmailAddressEditText   		   = (EditText)findViewById(R.id.user_email_edittext);
+        userEmailAddressEditText.setText(customerAccount.getEmailAddress());
+
+        userMobileEditText  		   = (EditText)findViewById(R.id.user_mobile_edittext);
+        userMobileEditText.setText(customerAccount.getMobile());
+    
+        // TO DELETE ?
+        //userYearOfBirthEditText        = (EditText)findViewById(R.id.user_year_of_birth_edittext);
+        //userYearOfBirthEditText.setText(customerAccount.get);
+    
+        validateUserGeneralInfosButton = (Button)findViewById(R.id.validate_user_general_infos_button);
+        validateUserGeneralInfosButton.setOnClickListener(this);
+	}
+	
 	public void identificationProcess()
 	{
-		CustomerAccount customerAccount = new CustomerAccount();
+		CustomerAccount identificationCA = new CustomerAccount();
 		
 		String userLogin 	= loginEditText.getText().toString();
 		String userPassword = passwordEditText.getText().toString();
 		
 		CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
-		customerAccount = customerAccountWS.getCustomerAccount(userLogin, userPassword);
+		identificationCA = customerAccountWS.getCustomerAccount(userLogin, userPassword);
 		
-		if(customerAccount != null)
+		if(identificationCA != null)
 		{
-			Log.v("Customer id", customerAccount.getId().toString());
+			Log.v("Customer id", identificationCA.getId().toString());
 			
-			IdentificationController.saveUserIsLogged(getBaseContext(), customerAccount.getId());
+			IdentificationController.saveUserIsLogged(getBaseContext(), identificationCA.getId());
 		}
 		
-		identificationProcessUpdateUI(customerAccount);
+		identificationProcessUpdateUI(identificationCA);
 	}
 	
-	public void identificationProcessUpdateUI(final CustomerAccount customerAccount)
+	public void identificationProcessUpdateUI(final CustomerAccount identificationCA)
 	{
 		// Drop the Runnable into the UI thread queue
     	runOnUiThread(new Runnable()
@@ -169,7 +211,7 @@ public class MyProfile extends Activity implements OnClickListener
            public void run()
            {
            	   // Code execute by UI main thread
-        	   if(customerAccount != null)
+        	   if(identificationCA != null)
         	   {
         		   // To retrieve the tabHost and to set the new current tab
         		   TabHost tabHost = ((TabActivity)getParent()).getTabHost();
@@ -181,5 +223,34 @@ public class MyProfile extends Activity implements OnClickListener
     		   identificationProgressDialog.dismiss();
            }
         });
+	}
+	
+	public void loadCustomerGeneralInfosProcess()
+	{
+		Integer idCustomerAccount = IdentificationController.getUserLoggedId(getBaseContext());
+		
+		CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
+		customerAccount = customerAccountWS.getCustomerAccount(idCustomerAccount);
+		
+		loadCustomerGeneralInfosProcessUpdateUI();
+	}
+	
+	public void loadCustomerGeneralInfosProcessUpdateUI()
+	{
+		// Drop the Runnable into the UI thread queue
+    	runOnUiThread(new Runnable()
+    	{
+           @Override
+           public void run()
+           {
+        	   // Code execute by UI main thread
+        	   if(customerAccount != null)
+        	   {
+        		   displayUserGeneralInfosScreen();
+        	   }
+        	   
+        	   loadUserGeneralInfosProgressDialog.dismiss();
+           }
+    	});
 	}
 }
