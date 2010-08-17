@@ -35,7 +35,7 @@ public class CustomerAccountEngineAction
 			if(chekup(ca))
 			{
 				ca.setDatetimeRegistration(new Date());
-				ca.setDatetimeLastConnection(new Date());
+				
 				return caBean.save(ca);
 			}
 			else 
