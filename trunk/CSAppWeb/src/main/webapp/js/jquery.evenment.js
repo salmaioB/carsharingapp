@@ -35,7 +35,7 @@ $(document).ready(function()
                 });
         $('input.checkAddress').click(function()
                 {
-                        var postData = $("input", '#checkAddressNext_form').serialize();
+                        var postData = $("input", '#checkaddress_form').serialize();
                         
                         $.ajax({
                                 method: 'post',
@@ -43,7 +43,7 @@ $(document).ready(function()
                                 data: postData,
                                 success: function(data)
                                 {
-                                 $('#profil').html(data);
+                                 $('#divProfilMapAnddroid').html(data);
                                  
                                  initialize();
                                 }
@@ -72,7 +72,7 @@ $(document).ready(function()
                 });
         $('input.testAddress').click(function()
                 {
-                        var postData = $("input", '#testAddressAndroid_form').serialize();
+                        var postData = $("input", '#checkaddress_form').serialize();
                         
                         $.ajax({
                                 method: 'post',
@@ -80,7 +80,7 @@ $(document).ready(function()
                                 data: postData,
                                 success: function(data)
                                 {
-		                            $('#profil').html(data);
+		                            $('#divProfilMapAnddroid').html(data);
 		                            
 		                            initializePosition();
                                 }
