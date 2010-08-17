@@ -9,15 +9,15 @@
         <id name="id" column="_id_customer_account">
             <generator class="native"/>
         </id>
-               <property name="customerLogin" type="string" column="customer_login"/>
+        <property name="customerLogin" type="string" column="customer_login"/>
         <property name="customerPassword" type="string" column="customer_password"/>
         <property name="lastName" type="string" column="last_name"/>
         <property name="firstName" type="string" column="first_name"/>
         <property name="geolocLongitude" type="double" column="geoloc_longitude"/>
         <property name="geolocLatitude" type="double" column="geoloc_latitude"/>    
         <property name="emailAddress" type="string" column="email_address"/>
-        <property name="phone" type="integer" column="phone"/>
-        <property name="mobile" type="integer" column="mobile"/>
+        <property name="phone" type="string" column="phone"/>
+        <property name="mobile" type="string" column="mobile"/>
         <property name="customerType" type="integer" column="customer_type"/>
         <property name="idVehicule" type="integer" column="_id_vehicule"/>
         <property name="acceptAnimals" type="integer" column="accept_animals"/>
@@ -29,6 +29,10 @@
         <property name="datetimeLastConnection" type="timestamp" column="datetime_last_connection"/>
         <property name="datetimeLastOfferCreated" type="timestamp" column="datetime_last_offer_created"/>
         <property name="datetimeLastCarSharing" type="timestamp" column="datetime_last_car_sharing"/>
+        
+        <property name="address" type="string" column="address"/>
+        <property name="ville" type="string" column="ville"/>
+        <property name="cp" type="string" column="cp"/>
      </class>
      
 </hibernate-mapping>
