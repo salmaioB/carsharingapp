@@ -2,6 +2,7 @@ package cs.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.lang.String;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,10 +25,10 @@ public class CustomerAccount implements Serializable
 	// ville -> country
 	// cp    -> zipcode
 	private String ville;
-	private Integer cp;
+	private String cp;
 	
-	private Integer phone;
-	private Integer mobile;
+	private String phone;
+	private String mobile;
 	private Integer customerType;
 	private Integer idVehicule;
 	private Integer acceptAnimals;
@@ -169,27 +170,27 @@ public class CustomerAccount implements Serializable
 		this.ville = ville;
 	}
 
-	public Integer getCp() {
+	public String getCp() {
 		return cp;
 	}
 
-	public void setCp(Integer cp) {
+	public void setCp(String cp) {
 		this.cp = cp;
 	}
 	
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 	
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	
-	public Integer getMobile() {
+	public String getMobile() {
 		return mobile;
 	}
 	
-	public void setMobile(Integer mobile) {
+	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
 	
