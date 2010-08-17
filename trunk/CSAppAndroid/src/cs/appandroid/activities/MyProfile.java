@@ -6,7 +6,6 @@ import cs.webservice.CustomerAccountsWS;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,7 +44,6 @@ public class MyProfile extends Activity implements OnClickListener
     private EditText userFirstNameEditText;
     private EditText userEmailAddressEditText;
     private EditText userMobileEditText;
-    private EditText userYearOfBirthEditText;
     private Button validateUserGeneralInfosButton;
     
     private Runnable loadUserGeneralInfosProcess;
@@ -107,14 +105,19 @@ public class MyProfile extends Activity implements OnClickListener
 		}
 		else if(v == validateUserGeneralInfosButton)
 		{
-			Integer idCustomerAccount = IdentificationController.getUserLoggedId(getBaseContext());
-			String lastName     	  = userLastNameEditText.getText().toString();
-			String firstName    	  = userFirstNameEditText.getText().toString();
-			String emailAddress 	  = userEmailAddressEditText.getText().toString();
-			String mobile       	  = userMobileEditText.getText().toString();
+			saveUserGeneralInfosProcess = new Runnable()
+			{	
+				@Override
+				public void run()
+				{
+					saveCustomerGeneralInfosProcess();
+				}
+			};
 			
-			CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
-			customerAccountWS.saveCustomerGeneralInfos(idCustomerAccount, lastName, firstName, emailAddress, mobile);	
+			Thread saveUserGeneralInfosThread =  new Thread(null, saveUserGeneralInfosProcess, "SaveUserGeneralInfosThread");
+			saveUserGeneralInfosThread.start();
+			
+			saveUserGeneralInfosProgressDialog = ProgressDialog.show(MyProfile.this, "Please wait...", "Sauvegarde de vos informations ...", true);
 		}
 	}
 	
@@ -252,5 +255,22 @@ public class MyProfile extends Activity implements OnClickListener
         	   loadUserGeneralInfosProgressDialog.dismiss();
            }
     	});
+	}
+	
+	public void saveCustomerGeneralInfosProcess()
+	{
+		Integer idCustomerAccount = IdentificationController.getUserLoggedId(getBaseContext());
+		String lastName     	  = userLastNameEditText.getText().toString();
+		String firstName    	  = userFirstNameEditText.getText().toString();
+		String emailAddress 	  = userEmailAddressEditText.getText().toString();
+		String mobile       	  = userMobileEditText.getText().toString();
+		
+		CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
+		customerAccountWS.saveCustomerGeneralInfos(idCustomerAccount, lastName, firstName, emailAddress, mobile);
+	}
+	
+	public void saveCustomerGeneralInfosProcessUpdateUI()
+	{
+		
 	}
 }

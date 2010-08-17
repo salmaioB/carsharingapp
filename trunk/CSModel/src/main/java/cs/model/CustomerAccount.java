@@ -22,10 +22,9 @@ public class CustomerAccount implements Serializable
 	private String address;
 	
 	// TO RENAME: french fields ?
-	// ville -> country
 	// cp    -> zipcode
-	private String ville;
-	private String cp;
+	private String country;
+	private String zipCode;
 	
 	private String phone;
 	private String mobile;
@@ -59,8 +58,8 @@ public class CustomerAccount implements Serializable
 		emailAddress       		 = jsonObjectCustomerAccount.getString("emailAddress");
 		
 		//address            		 = jsonObjectCustomerAccount.getString("");
-		//ville              		 = jsonObjectCustomerAccount.getString("");
-		//cp				   		 = jsonObjectCustomerAccount.getString("");
+		//country              		 = jsonObjectCustomerAccount.getString("");
+		//zipCode				   	 = jsonObjectCustomerAccount.getString("");
 		
 		phone     		   		 = jsonObjectCustomerAccount.getString("phone");
 		mobile 			   		 = jsonObjectCustomerAccount.getString("mobile");
@@ -88,7 +87,7 @@ public class CustomerAccount implements Serializable
 	
 	// Ugly part
 	public String getCustomerLogin() {
-		if(customerLogin == null) customerLogin ="";
+		if(customerLogin == null) customerLogin = "";
 		return customerLogin;
 	}
 
@@ -98,7 +97,7 @@ public class CustomerAccount implements Serializable
 	
 	// Ugly part
 	public String getCustomerPassword() {
-		if(customerPassword == null) customerPassword ="";
+		if(customerPassword == null) customerPassword = "";
 		return customerPassword;
 	}
 	
@@ -162,20 +161,20 @@ public class CustomerAccount implements Serializable
 		this.address = address;
 	}
 	
-	public String getVille() {
-		return ville;
+	public String getCountry() {
+		return country;
 	}
 
-	public void setVille(String ville) {
-		this.ville = ville;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
-	public String getCp() {
-		return cp;
+	public String getZipCode() {
+		return zipCode;
 	}
 
-	public void setCp(String cp) {
-		this.cp = cp;
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 	
 	public String getPhone() {

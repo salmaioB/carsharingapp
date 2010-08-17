@@ -44,16 +44,6 @@
 			  android:layout_height="wrap_content"
 			  android:background="@android:drawable/editbox_background"/>
 			  
-  	<TextView android:layout_width="fill_parent"
-			  android:layout_height="wrap_content"
-			  android:gravity="left"
-			  android:text="Année de naissance:"/>
-			  
-    <EditText android:id="@+id/user_year_of_birth_edittext"
-			  android:layout_width="fill_parent"
-			  android:layout_height="wrap_content"
-			  android:background="@android:drawable/editbox_background"/>
-			  
 	<Button android:id="@+id/validate_user_general_infos_button"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
