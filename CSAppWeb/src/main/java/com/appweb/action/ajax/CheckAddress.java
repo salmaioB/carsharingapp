@@ -14,8 +14,8 @@ public class CheckAddress extends Action
 	private String firstName;
 	private String emailAddress;
 	private String address;
-	private String ville;
-	private Integer cp;
+	private String country;
+	private Integer zipCode;
 	private Integer phone;
 	private Integer mobile;
 	private Boolean acceptAnimals;
@@ -30,17 +30,17 @@ public class CheckAddress extends Action
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getVille() {
-		return ville;
+	public String getCountry() {
+		return country;
 	}
-	public void setVille(String ville) {
-		this.ville = ville;
+	public void setCountry(String country) {
+		this.country = country;
 	}
-	public Integer getCp() {
-		return cp;
+	public Integer getZipCode() {
+		return zipCode;
 	}
-	public void setCp(Integer cp) {
-		this.cp = cp;
+	public void setZipCode(Integer zipCode) {
+		this.zipCode = zipCode;
 	}
 	public Integer getMobile() {
 		return mobile;

@@ -18,6 +18,7 @@ public class Message
 	public void setIdCustomerTransmitter(Integer idCustomerTransmitter) {
 		this.idCustomerTransmitter = idCustomerTransmitter;
 	}
+
 	public Date getDateTime() {
 		return dateTime;
 	}

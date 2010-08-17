@@ -3,9 +3,15 @@
        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
        "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<!-- Webservice JSON -->
+	<!-- WebService JSON -->
 	<package name="CustomerAccountsWS" extends="json-default">
 		<action name="CustomerAccountsWS" class="cs.webservice.impl.CustomerAccountsWS">
+			<result type="json"/>
+		</action>
+	</package>
+	
+	<package name="CustomerAccountSaveGeneralInfosWS" extends="json-default">
+		<action name="CustomerAccountSaveGeneralInfosWS" class="cs.webservice.impl.CustomerAccountSaveGeneralInfosWS">
 			<result type="json"/>
 		</action>
 	</package>

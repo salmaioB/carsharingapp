@@ -13,8 +13,8 @@ public class CheckInAjax extends Action
 	private String firstName;
 	private String emailAddress;
 	private String address;
-	private String ville;
-	private String cp;
+	private String country;
+	private String zipCode;
 	private String phone;
 	private String mobile;
 	private Boolean acceptAnimals;
@@ -29,17 +29,17 @@ public class CheckInAjax extends Action
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getVille() {
-		return ville;
+	public String getCountry() {
+		return country;
 	}
-	public void setVille(String ville) {
-		this.ville = ville;
+	public void setCountry(String country) {
+		this.country = country;
 	}
-	public String getCp() {
-		return cp;
+	public String getZipCode() {
+		return zipCode;
 	}
-	public void setCp(String cp) {
-		this.cp = cp;
+	public void setCp(String zipCode) {
+		this.zipCode = zipCode;
 	}
 	public String getMobile() {
 		return mobile;
@@ -139,8 +139,8 @@ public class CheckInAjax extends Action
 		getCustomerAccount().setEmailAddress(emailAddress);
 		getCustomerAccount().setMobile(mobile);
 		getCustomerAccount().setAddress(address);
-		getCustomerAccount().setVille(ville);
-		getCustomerAccount().setCp(cp);
+		getCustomerAccount().setCountry(country);
+		getCustomerAccount().setZipCode(zipCode);
 		
 		caea.save(getCustomerAccount());
 		return SUCCESS;
