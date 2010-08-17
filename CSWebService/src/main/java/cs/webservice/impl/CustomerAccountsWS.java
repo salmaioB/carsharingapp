@@ -9,8 +9,6 @@ public class CustomerAccountsWS extends ActionSupport
 {
 	private static final long serialVersionUID = 1L;
 	
-	//private String functionToExecute;
-		
 	private Integer id;
 	private String customerLogin;
 	private String customerPassword;

@@ -94,4 +94,21 @@ public class CustomerAccountDAO extends DAO
 		
 		HibernateUtil.closeSession();
 	}
+	
+	public void saveCustomerGeneralsInfos(Integer idCustomerAccount, String lastName, String firstName, String emailAddress, String mobile)
+	{
+		Session session = HibernateUtil.currentSession();
+		
+		Transaction transaction = session.beginTransaction();
+		CustomerAccount customerAccount = (CustomerAccount)session.get(CustomerAccount.class, idCustomerAccount);
+		
+		customerAccount.setLastName(lastName);
+		customerAccount.setFirstName(firstName);
+		customerAccount.setEmailAddress(emailAddress);
+		customerAccount.setMobile(mobile);
+		session.update(customerAccount);
+		
+		transaction.commit();
+		session.close();
+	}
 }

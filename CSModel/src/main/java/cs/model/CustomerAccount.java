@@ -62,8 +62,8 @@ public class CustomerAccount implements Serializable
 		//ville              		 = jsonObjectCustomerAccount.getString("");
 		//cp				   		 = jsonObjectCustomerAccount.getString("");
 		
-		phone     		   		 = jsonObjectCustomerAccount.getInt("phone");
-		mobile 			   		 = jsonObjectCustomerAccount.getInt("mobile");
+		phone     		   		 = jsonObjectCustomerAccount.getString("phone");
+		mobile 			   		 = jsonObjectCustomerAccount.getString("mobile");
 		customerType       		 = jsonObjectCustomerAccount.getInt("customerType");
 		idVehicule         		 = jsonObjectCustomerAccount.getInt("idVehicule");
 		acceptAnimals      		 = jsonObjectCustomerAccount.getInt("acceptAnimals");

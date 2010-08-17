@@ -69,4 +69,14 @@ public class CustomerAccountEngineAction
 			caBean.saveCustomerLocation(idCustomerAccount, longitude, latitude);
 		}
 	}
+	
+	public void saveCustomerGeneralInfos(Integer idCustomerAccount, String lastName, String firstName, String emailAddress, String mobile)
+	{
+		if(caBean != null)
+		{
+			caBean.saveCustomerGeneralsInfos(idCustomerAccount, lastName, firstName, emailAddress, mobile);
+		}
+	}
+//	
+//	public void saveCustomer
 }

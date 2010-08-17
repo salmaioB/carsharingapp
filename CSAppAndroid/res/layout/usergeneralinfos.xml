@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:orientation="vertical">
+  
+  	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:gravity="left"
+			  android:text="Nom:"/>
+	
+	<EditText android:id="@+id/user_last_name_edittext"
+			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:background="@android:drawable/editbox_background"/>
+			  
+  	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:gravity="left"
+			  android:text="Prénom:"/>
+			  
+    <EditText android:id="@+id/user_first_name_edittext"
+			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:background="@android:drawable/editbox_background"/>
+			  
+  	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:gravity="left"
+			  android:text="Email:"/>
+			  
+    <EditText android:id="@+id/user_email_edittext"
+			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:background="@android:drawable/editbox_background"/>
+			  
+  	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:gravity="left"
+			  android:text="Téléphone mobile:"/>
+			  
+    <EditText android:id="@+id/user_mobile_edittext"
+			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:background="@android:drawable/editbox_background"/>
+			  
+  	<TextView android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:gravity="left"
+			  android:text="Année de naissance:"/>
+			  
+    <EditText android:id="@+id/user_year_of_birth_edittext"
+			  android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:background="@android:drawable/editbox_background"/>
+			  
+	<Button android:id="@+id/validate_user_general_infos_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right"
+			android:text="Valider"/>
+ 
+</LinearLayout>
