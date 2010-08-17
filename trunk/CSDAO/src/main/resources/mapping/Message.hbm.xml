@@ -12,5 +12,8 @@
         <property name="content" type="string" column="content"/>
         <property name="idCustomerAccount" type="integer" column="_id_customer_account"/>
         <property name="read" type="integer" column="read"/>
+        <property name="dateTime" type="timestamp" column="dateTime"/>
+        <property name="idCustomerTransmitter" type="integer" column="_id_customer_transmitter"/>
+        
      </class>
 </hibernate-mapping>
