@@ -74,6 +74,9 @@
 		<action name="PostEtape2" class="com.appweb.action.ajax.PostEtape2">
 			<result name="success">/ajax/ajaxposterEtape2.jsp</result>
 		</action>
+		<action name="MessageReceive" class="com.appweb.action.ajax.MessageReceive">
+			<result name="success">/ajax/ajaxsMessageReceive.jsp</result>
+		</action>
 	</package>
 
 </struts>
