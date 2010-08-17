@@ -1,5 +1,7 @@
 package cs.model;
 
+import java.util.Date;
+
 public class Message
 {
 	private Integer id; 
@@ -7,7 +9,21 @@ public class Message
 	private String content;
 	private Integer idCustomerAccount;
 	private Integer read;
+	private Date dateTime;
+	private Integer idCustomerTransmitter;
 	
+	public Integer getIdCustomerTransmitter() {
+		return idCustomerTransmitter;
+	}
+	public void setIdCustomerTransmitter(Integer idCustomerTransmitter) {
+		this.idCustomerTransmitter = idCustomerTransmitter;
+	}
+	public Date getDateTime() {
+		return dateTime;
+	}
+	public void setDateTime(Date dateTime) {
+		this.dateTime = dateTime;
+	}
 	public Integer getId() {
 		return id;
 	}
