@@ -7,7 +7,6 @@ import cs.model.CustomerAccount;
 
 public class CheckInAjax extends Action
 {
-    private CustomerAccount ca;
 	private String customerLogin;
 	private String  customerPassword;
 	private String lastName;
@@ -15,9 +14,9 @@ public class CheckInAjax extends Action
 	private String emailAddress;
 	private String address;
 	private String ville;
-	private Integer cp;
-	private Integer phone;
-	private Integer mobile;
+	private String cp;
+	private String phone;
+	private String mobile;
 	private Boolean acceptAnimals;
 	private Boolean acceptRadio;
 	private Boolean acceptSmoker;
@@ -36,16 +35,16 @@ public class CheckInAjax extends Action
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-	public Integer getCp() {
+	public String getCp() {
 		return cp;
 	}
-	public void setCp(Integer cp) {
+	public void setCp(String cp) {
 		this.cp = cp;
 	}
-	public Integer getMobile() {
+	public String getMobile() {
 		return mobile;
 	}
-	public void setMobile(Integer mobile) {
+	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
     public String getCustomerLogin() {
@@ -78,10 +77,10 @@ public class CheckInAjax extends Action
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public Boolean getAcceptAnimals() {
@@ -114,47 +113,36 @@ public class CheckInAjax extends Action
 	public void setAcceptToMakeADetour(Boolean acceptToMakeADetour) {
 		this.acceptToMakeADetour = acceptToMakeADetour;
 	}
-	public CustomerAccount getCa() {
-		return ca;
-	}
-	public void setCa(CustomerAccount ca) {
-		this.ca = ca;
-	}
 
 
 	public CheckInAjax()
     {
     	System.out.println("Construct Check in");
-    	ca = new CustomerAccount();
     }
 
 
 	public String execute() throws Exception
 	{
 		System.out.println("Check in");
-		/*
-		CustomerAccountEngineAction caea = new CustomerAccountEngineAction();
-		ca.setAcceptAnimals(acceptAnimals);
-		ca.setAcceptRadio(acceptRadio);
-		ca.setAcceptSomker(acceptSmoker);
-		ca.setAcceptToDiscuss(acceptToDiscuss);
-		ca.setAcceptToMakeADetour(acceptToMakeADetour);
-		ca.setCustomerLogin(customerLogin);
-		ca.setCustomerPassword(customerPassword);
-		ca.setPhone(phone);
-		ca.setLastName(lastName);
-		ca.setFirstName(firstName);
-		ca.setEmailAddress(emailAddress);
-		ca.setMobile(mobile);
-		ca.setAddress(address);
-		ca.setVille(ville);
-		ca.setCp(cp);
 		
-		if (caea.save(ca) )
-			return SUCCESS;
-		else
-			return ERROR;
-		*/
+		CustomerAccountEngineAction caea = new CustomerAccountEngineAction();
+		getCustomerAccount().setAcceptAnimals(acceptAnimals);
+		getCustomerAccount().setAcceptRadio(acceptRadio);
+		getCustomerAccount().setAcceptSomker(acceptSmoker);
+		getCustomerAccount().setAcceptToDiscuss(acceptToDiscuss);
+		getCustomerAccount().setAcceptToMakeADetour(acceptToMakeADetour);
+		getCustomerAccount().setCustomerLogin(customerLogin);
+		getCustomerAccount().setCustomerPassword(customerPassword);
+		getCustomerAccount().setPhone(phone);
+		getCustomerAccount().setLastName(lastName);
+		getCustomerAccount().setFirstName(firstName);
+		getCustomerAccount().setEmailAddress(emailAddress);
+		getCustomerAccount().setMobile(mobile);
+		getCustomerAccount().setAddress(address);
+		getCustomerAccount().setVille(ville);
+		getCustomerAccount().setCp(cp);
+		
+		caea.save(getCustomerAccount());
 		return SUCCESS;
 	}
 }
