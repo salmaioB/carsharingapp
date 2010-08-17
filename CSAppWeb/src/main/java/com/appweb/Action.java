@@ -1,5 +1,6 @@
 package com.appweb;
 
+import java.util.Date;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -113,7 +114,11 @@ public class Action extends ActionSupport
 			if(getSession().get("customerId") != "")
 			{
 				CustomerAccountDAO cadao = new CustomerAccountDAO();
-				customerAccount = cadao.load((Integer)getSession().get("customerId")); 
+				customerAccount = cadao.load((Integer)getSession().get("customerId"));
+				customerAccount.setDatetimeLastConnection(new Date());
+				cadao.save(customerAccount);
+				System.out.println("customerAccount.getCp() : " +  customerAccount.getCp() );
+				System.out.println("customerAccount.getAcceptAnimals() : " +  customerAccount.getAcceptAnimals() );
 			}
 	    }
 	
