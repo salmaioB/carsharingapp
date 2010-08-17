@@ -60,6 +60,18 @@
 						initializeMapEmpty('divMapStart');
 						initializeMapEmpty('divMapStop');
 			        }
+					// onglet post == ui.index == 3
+			        if ( ui.index == 3)
+			        {
+			        	$.ajax({
+			                method: 'post',
+			                url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
+			                success: function(data)
+			                {
+			                 $('#receive').html(data);
+			                }
+			                  });
+			        }
 		            return true;
 	       		}
 					
@@ -70,7 +82,8 @@
 			$('#containerLeft').tabs({ fxFade: true, fxSpeed: 'normal' });
 		} ) ;
 		
-		$(document).ready( function () { 
+		$(document).ready( function () {
+			$('#menuMessages').tabs({ fxFade: true, fxSpeed: 'normal' });
 			//$(".corner").corner();
 		} ) ;
 	</script>
@@ -81,10 +94,6 @@
 			$("#accordionMyTrip").accordion({
 				
 			});
-		});
-		//Mes messages
-		$(function() {
-			$("#accordionMessages").accordion();
 		});
 	</script>
 	
