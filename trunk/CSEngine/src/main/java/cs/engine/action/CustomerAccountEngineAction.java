@@ -77,6 +77,12 @@ public class CustomerAccountEngineAction
 			caBean.saveCustomerGeneralsInfos(idCustomerAccount, lastName, firstName, emailAddress, mobile);
 		}
 	}
-//	
-//	public void saveCustomer
+	
+	public void saveCustomerPreferences(Integer idCustomerAccount, Integer acceptAnimals, Integer acceptRadio, Integer acceptSmoker, Integer acceptToDiscuss, Integer acceptToMakeADetour)
+	{
+		if(caBean != null)
+		{
+			caBean.saveCustomerPreferences(idCustomerAccount, acceptAnimals, acceptRadio, acceptSmoker, acceptToDiscuss, acceptToMakeADetour);
+		}	
+	}
 }

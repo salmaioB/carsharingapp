@@ -6,10 +6,12 @@
 			  
 	<TextView android:id="@+id/my_profile_info_textview"
 			  android:layout_width="fill_parent"
-			  android:layout_height="wrap_content"/>
+			  android:layout_height="wrap_content"
+			  android:text="Vos informations sont synchronisées avec votre profil sur Az-covoiturage.fr"/>
 	
 	<TableLayout android:layout_width="wrap_content"
-  			  	 android:layout_height="wrap_content">
+  			  	 android:layout_height="wrap_content"
+  			  	 android:paddingTop="10dp">
 		<TableRow>
 			<TextView android:id="@+id/user_infos_textview"
 			          android:text="Mes infos générales"/>
@@ -21,12 +23,12 @@
 		<TableRow>
 			<TextView android:id="@+id/user_vehicles_textview"
 			          android:text="Mon véhicule"/>
-		</TableRow>
+		</TableRow><!--
 		<TableRow>
 			<TextView android:id="@+id/user_my_alerts_textview"
 			          android:text="Mes alertes"/>
 		</TableRow>
-		<TableRow>
+		--><TableRow>
 			<TextView android:id="@+id/user_password_textview"
 					  android:text="Mon mot de passe"/>
 		</TableRow>

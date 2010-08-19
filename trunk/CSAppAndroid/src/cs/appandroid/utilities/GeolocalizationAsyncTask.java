@@ -1,10 +1,6 @@
 package cs.appandroid.utilities;
 
-import cs.appandroid.controller.IdentificationController;
-import cs.webservice.CustomerAccountsWS;
 import android.content.Context;
-import android.location.Criteria;
-import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.util.Log;

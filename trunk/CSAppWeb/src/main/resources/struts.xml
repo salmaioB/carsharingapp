@@ -15,6 +15,12 @@
 			<result type="json"/>
 		</action>
 	</package>
+
+	<package name="CustomerAccountSavePreferencesWS" extends="json-default">
+		<action name="CustomerAccountSavePreferencesWS" class="cs.webservice.impl.CustomerAccountSavePreferencesWS">
+			<result type="json"/>
+		</action>
+	</package>
 	
 	<package name="OffersWS" extends="json-default">
 		<action name="OffersWS" class="cs.webservice.impl.OffersWS">

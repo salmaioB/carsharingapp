@@ -8,7 +8,6 @@ import org.hibernate.Transaction;
 
 import cs.dao.util.HibernateUtil;
 import cs.model.Message;
-import cs.model.Offer;
 import cs.dao.DAO;
 
 public class MessageDAO extends DAO
@@ -58,13 +57,13 @@ public class MessageDAO extends DAO
 		Integer count = 0;
 	     Session session = HibernateUtil.currentSession();
 	     String sqlQuery = "SELECT * " +
-		    "FROM message m " +
-		    "WHERE m._id_customer_account = " + idCustomerAccount +
-	        " AND m.read = 0 ";
+						   "FROM message m " +
+						   "WHERE m._id_customer_account = " + idCustomerAccount +
+					       " AND m.read = 0 ";
 	     
 	     String hqlQuery = "FROM Message " +
-		    "WHERE idCustomerAccount = " + idCustomerAccount +
-	        " AND read = 0 ";
+						    "WHERE idCustomerAccount = " + idCustomerAccount +
+					        " AND read = 0 ";
 	     
 	     System.out.println(hqlQuery);
 	     
