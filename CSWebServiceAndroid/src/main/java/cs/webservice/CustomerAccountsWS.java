@@ -114,4 +114,20 @@ public class CustomerAccountsWS
 		// Send the http request
 		HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
 	}
+	
+	public void saveCustomerPreferences(Integer idCustomerAccount, Integer acceptAnimals, Integer acceptRadio, Integer acceptSmoker, Integer acceptToDiscuss, Integer acceptToMakeADetour)
+	{
+		String URL = Define.webServiceRootUrl + "CSAppWeb/CustomerAccountSavePreferencesWS";
+		
+		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
+		paramsToPost.add(new BasicNameValuePair("id", idCustomerAccount.toString()));
+		paramsToPost.add(new BasicNameValuePair("acceptAnimals", acceptAnimals.toString()));
+		paramsToPost.add(new BasicNameValuePair("acceptRadio", acceptRadio.toString()));
+		paramsToPost.add(new BasicNameValuePair("acceptSmoker", acceptSmoker.toString()));
+		paramsToPost.add(new BasicNameValuePair("acceptToDiscuss", acceptToDiscuss.toString()));
+		paramsToPost.add(new BasicNameValuePair("acceptToMakeADetour", acceptToMakeADetour.toString()));
+		
+		// Send the http request
+		HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
+	}
 }

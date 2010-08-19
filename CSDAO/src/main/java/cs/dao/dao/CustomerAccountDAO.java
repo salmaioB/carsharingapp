@@ -22,16 +22,18 @@ public class CustomerAccountDAO extends DAO
 	
 	public CustomerAccount load(Integer id)
 	{
-		 //Open session
+		 // Open session
 		 Session session = HibernateUtil.currentSession();
 		 Transaction tx = session.beginTransaction();
 		 session.beginTransaction();
 
-		 //Load Data object
+		 // Load Data object
 		 CustomerAccount ca = (CustomerAccount) session.load(CustomerAccount.class, id);
 		 
 		 tx.commit();
 
+		 HibernateUtil.closeSession();
+		 
 		 return ca;
 	}
 	
@@ -106,9 +108,33 @@ public class CustomerAccountDAO extends DAO
 		customerAccount.setFirstName(firstName);
 		customerAccount.setEmailAddress(emailAddress);
 		customerAccount.setMobile(mobile);
-		session.update(customerAccount);
+		
+		// Ugly part
+		session.save(customerAccount);
+		
+		//session.update(customerAccount);
 		
 		transaction.commit();
-		session.close();
+		HibernateUtil.closeSession();
+	}
+	
+	public void saveCustomerPreferences(Integer idCustomerAccount, Integer acceptAnimals, Integer acceptRadio, Integer acceptSmoker, Integer acceptToDiscuss, Integer acceptToMakeADetour)
+	{
+		Session session = HibernateUtil.currentSession();
+		
+		Transaction transaction = session.beginTransaction();
+		CustomerAccount customerAccount = (CustomerAccount)session.get(CustomerAccount.class, idCustomerAccount);
+	    
+		customerAccount.setAcceptAnimals(acceptAnimals);
+		customerAccount.setAcceptRadio(acceptRadio);
+		customerAccount.setAcceptSmoker(acceptSmoker);
+		customerAccount.setAcceptToDiscuss(acceptToDiscuss);
+		customerAccount.setAcceptToMakeADetour(acceptToMakeADetour);
+		
+		// Ugly part
+		session.save(customerAccount);
+		
+		transaction.commit();
+		HibernateUtil.closeSession();
 	}
 }
