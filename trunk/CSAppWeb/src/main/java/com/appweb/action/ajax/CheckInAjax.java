@@ -1,5 +1,7 @@
 package com.appweb.action.ajax;
 
+import java.util.Date;
+
 import com.appweb.Action;
 
 import cs.engine.action.CustomerAccountEngineAction;
@@ -13,6 +15,8 @@ public class CheckInAjax extends Action
 	private String firstName;
 	private String emailAddress;
 	private String address;
+	// pourquoi coutry? 
+	//country c'est le pays, à la limite city ou town non?
 	private String country;
 	private String zipCode;
 	private String phone;
@@ -29,17 +33,17 @@ public class CheckInAjax extends Action
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getCountry() {
-		return country;
+	public String getVille() {
+		return ville;
 	}
-	public void setCountry(String country) {
-		this.country = country;
+	public void setVille(String ville) {
+		this.ville = ville;
 	}
-	public String getZipCode() {
-		return zipCode;
+	public String getCp() {
+		return cp;
 	}
-	public void setCp(String zipCode) {
-		this.zipCode = zipCode;
+	public void setCp(String cp) {
+		this.cp = cp;
 	}
 	public String getMobile() {
 		return mobile;
@@ -123,26 +127,75 @@ public class CheckInAjax extends Action
 
 	public String execute() throws Exception
 	{
-		System.out.println("Check in");
+		System.out.println("execute Check in");
 		
-		CustomerAccountEngineAction caea = new CustomerAccountEngineAction();
-		getCustomerAccount().setAcceptAnimals(acceptAnimals);
-		getCustomerAccount().setAcceptRadio(acceptRadio);
-		getCustomerAccount().setAcceptSomker(acceptSmoker);
-		getCustomerAccount().setAcceptToDiscuss(acceptToDiscuss);
-		getCustomerAccount().setAcceptToMakeADetour(acceptToMakeADetour);
-		getCustomerAccount().setCustomerLogin(customerLogin);
-		getCustomerAccount().setCustomerPassword(customerPassword);
-		getCustomerAccount().setPhone(phone);
-		getCustomerAccount().setLastName(lastName);
-		getCustomerAccount().setFirstName(firstName);
-		getCustomerAccount().setEmailAddress(emailAddress);
-		getCustomerAccount().setMobile(mobile);
-		getCustomerAccount().setAddress(address);
-		getCustomerAccount().setCountry(country);
-		getCustomerAccount().setZipCode(zipCode);
-		
-		caea.save(getCustomerAccount());
+		if(isLoging())
+		{
+			System.out.println("user logger");
+			System.out.println("customerLogin : " + customerLogin);
+			
+			CustomerAccountEngineAction caea = new CustomerAccountEngineAction();
+			getCustomerAccount().setAcceptAnimals(acceptAnimals);
+			getCustomerAccount().setAcceptRadio(acceptRadio);
+			getCustomerAccount().setAcceptSomker(acceptSmoker);
+			getCustomerAccount().setAcceptToDiscuss(acceptToDiscuss);
+			getCustomerAccount().setAcceptToMakeADetour(acceptToMakeADetour);
+			getCustomerAccount().setCustomerLogin(customerLogin);
+			getCustomerAccount().setCustomerPassword(customerPassword);
+			getCustomerAccount().setPhone(phone);
+			getCustomerAccount().setLastName(lastName);
+			getCustomerAccount().setFirstName(firstName);
+			getCustomerAccount().setEmailAddress(emailAddress);
+			getCustomerAccount().setMobile(mobile);
+			getCustomerAccount().setAddress(address);
+			getCustomerAccount().setVille(ville);
+			getCustomerAccount().setCp(cp);
+			
+			System.out.println("Ville : " + getCustomerAccount().getVille());
+			
+			caea.save(getCustomerAccount());
+		}
+		else
+		{
+			System.out.println("user not logger");
+
+			getCustomerAccount().setCustomerLogin(customerLogin);
+			getCustomerAccount().setCustomerPassword(customerPassword);
+			getCustomerAccount().setEmailAddress(emailAddress);
+			getCustomerAccount().setAcceptAnimals(false);
+			getCustomerAccount().setAcceptRadio(false);
+			getCustomerAccount().setAcceptSomker(false);
+			getCustomerAccount().setAcceptToDiscuss(false);
+			getCustomerAccount().setAcceptToMakeADetour(false);
+			getCustomerAccount().setGeolocLatitude(0.0);
+			getCustomerAccount().setGeolocLongitude(0.0);
+			getCustomerAccount().setIdVehicule(0);
+			getCustomerAccount().setCustomerType(0);
+			getCustomerAccount().setDatetimeLastConnection(null);//new Date());
+			getCustomerAccount().setDatetimeRegistration(null);// new Date() );
+			getCustomerAccount().setDatetimeLastOfferCreated(null);
+			getCustomerAccount().setDatetimeLastCarSharing(null);
+			getCustomerAccount().setAddress("");
+			getCustomerAccount().setCountry(country);
+			getCustomerAccount().setZipCode(zipCode);
+			getCustomerAccount().setPhone("");
+			getCustomerAccount().setMobile("");
+			getCustomerAccount().setLastName("");
+			getCustomerAccount().setFirstName("");
+			
+			CustomerAccount ca = getCustomerAccount();
+
+			System.out.println(ca.getCustomerLogin());
+			System.out.println(ca.getCustomerPassword() );
+			System.out.println(ca.getEmailAddress());
+			
+			CustomerAccountEngineAction caea = new CustomerAccountEngineAction();
+			Boolean b = caea.save( ca ) ;
+			if( b )
+				getSession().put("customerId",getCustomerAccount().getId());					
+			else
+				System.out.println("ERROR : Subscription new customer" + b);
+		}
 		return SUCCESS;
 	}
 }
