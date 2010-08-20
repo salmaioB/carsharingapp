@@ -33,17 +33,17 @@ public class CheckInAjax extends Action
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getVille() {
-		return ville;
+	public String getCountry() {
+		return country;
 	}
-	public void setVille(String ville) {
-		this.ville = ville;
+	public void setVille(String country) {
+		this.country = country;
 	}
-	public String getCp() {
-		return cp;
+	public String getzipCode() {
+		return zipCode;
 	}
-	public void setCp(String cp) {
-		this.cp = cp;
+	public void setCp(String zipCode) {
+		this.zipCode = zipCode;
 	}
 	public String getMobile() {
 		return mobile;
@@ -148,10 +148,10 @@ public class CheckInAjax extends Action
 			getCustomerAccount().setEmailAddress(emailAddress);
 			getCustomerAccount().setMobile(mobile);
 			getCustomerAccount().setAddress(address);
-			getCustomerAccount().setVille(ville);
-			getCustomerAccount().setCp(cp);
+			getCustomerAccount().setCountry(country);
+			getCustomerAccount().setZipCode(zipCode);
 			
-			System.out.println("Ville : " + getCustomerAccount().getVille());
+			System.out.println("Ville : " + getCustomerAccount().getCountry());
 			
 			caea.save(getCustomerAccount());
 		}
