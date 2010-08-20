@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import cs.dao.util.HibernateUtil;
 import cs.model.Message;
+import cs.model.Offer;
 import cs.dao.DAO;
 
 public class MessageDAO extends DAO
@@ -57,13 +58,13 @@ public class MessageDAO extends DAO
 		Integer count = 0;
 	     Session session = HibernateUtil.currentSession();
 	     String sqlQuery = "SELECT * " +
-						   "FROM message m " +
-						   "WHERE m._id_customer_account = " + idCustomerAccount +
-					       " AND m.read = 0 ";
+		    "FROM message m " +
+		    "WHERE m._id_customer_account = " + idCustomerAccount +
+	        " AND m.read = 0 ";
 	     
 	     String hqlQuery = "FROM Message " +
-						    "WHERE idCustomerAccount = " + idCustomerAccount +
-					        " AND read = 0 ";
+		    "WHERE idCustomerAccount = " + idCustomerAccount +
+	        " AND read = 0 ";
 	     
 	     System.out.println(hqlQuery);
 	     
@@ -83,17 +84,16 @@ public class MessageDAO extends DAO
 	{
      Session session = HibernateUtil.currentSession();
      
-     String SQLQuery = "SELECT * " +
-					   "FROM message " +
-				       "WHERE _id_customer_account = " + idCustomerAccount +
-				       " AND read = 0 ";
+     String SQLQuery = "FROM Message " +
+				       "WHERE idCustomerAccount=" + idCustomerAccount.toString() +
+				       " AND read=0 ";
      
      
      System.out.println(SQLQuery);
      
-     Query query = session.createSQLQuery(SQLQuery).addEntity(Message.class);
+     Query query = session.createQuery(SQLQuery);//.addEntity(Message.class);
      List<Message> offers = query.list();
-	 
+	 System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr" );
      HibernateUtil.closeSession();
      
 	 return offers;
