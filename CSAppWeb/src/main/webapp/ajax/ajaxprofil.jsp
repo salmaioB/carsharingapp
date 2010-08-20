@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <div class="corner">
 	<table>
-		<form method="post" id="checkaddress_form">
+		<form method="post" id="checkaddress_form" name="checkaddress_form">
 			<tr>
 				<td>
 					<span style="width: 160px;">Login</span>
@@ -14,9 +14,7 @@
 					<input type="submit" class="checkAddress" value="Valider la position de l'adresse" size="50"/>
 					<br />
 					<input type="submit" class="testAddress" value="<s:property value="tr.tr_html(35)"/>" size="50" />
-					<div id="divProfilMapAnddroid" style="height:400px;">
-					
-					</div>
+					<div id="divProfilMapAnddroid" style="height:400px;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -72,7 +70,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(12)"/></span>
 				</td>
 				<td colspan="2">
-					<input name="address" size="20" value="<s:property value="customerAccount.address" />"/>
+					<input id="address" name="address" size="20" value="<s:property value="customerAccount.address" />"/>
 				</td>
 			</tr>
 			<tr>
@@ -80,7 +78,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(11)"/></span>
 				</td>
 				<td colspan="2">
-					<input name="ville" size="20" value="<s:property value="customerAccount.ville" />"/>
+					<input id="ville" name="ville" size="20" value="<s:property value="customerAccount.ville" />"/>
 				</td>
 			</tr>
 			<tr>
@@ -143,7 +141,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" class="checkin" value="<s:property value="tr.tr_html(36)"/>"/>
+					<input type="submit" class="checkin" value="<s:property value="tr.tr_html(36)"/>" />
 				</td>
 			</tr>  
 		</form>

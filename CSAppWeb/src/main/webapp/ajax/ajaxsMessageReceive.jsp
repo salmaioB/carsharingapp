@@ -1,39 +1,33 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<form>
-	<table>
-		<th colspan="6">Liste message reception</th>
-		
-		<s:iterator value="listMessageReceive" id="listMessageReceive" >
-	    	<tr  style="border: thin solid #6495ed;" >
-	    		<td>
-	    			<s:if test="%{#listMessageReceive.message.read==0}"><b></s:if>
-	    			<s:property value="%{#listMessageReceive.customerAccount.firstName}" />
+<%
+int i=0;
+%>
+<div class="demo">
+	<div>Liste message reception</div>
+		<div id="list2" >
+			<s:iterator value="listMessageReceive" id="listMessageReceive" >
+			<%i++; %>
+			<div id="item2<%=i%>" title="<s:property value="%{#listMessageReceive.message.id}" />"
+				<s:if test="%{#listMessageReceive.message.read==0}"> 
+				style="font-weight:bold;"
+				</s:if>
+			>
+				<div class="title" >
+	    				<s:property value="%{#listMessageReceive.customerAccount.firstName}" />
+		    			<s:property value="%{#listMessageReceive.message.dateTime}" />
+		    			<s:property value="%{#listMessageReceive.message.title}" />
 					<s:if test="%{#listMessageReceive.message.read==0}"></b></s:if>
-	    		</td>
-	    		<td>
-	    			<s:if test="%{#listMessageReceive.message.read==0}"><b></s:if>
-	    			<s:property value="%{#listMessageReceive.message.dateTime}" />
-	    			<s:if test="%{#listMessageReceive.message.read==0}"></b></s:if>
-	    		</td>
-	    		<td>
-	    			<s:if test="%{#listMessageReceive.message.read==0}"><b></s:if>
-	    			<s:property value="%{#listMessageReceive.message.title}" />
-	    			<s:if test="%{#listMessageReceive.message.read==0}"></b></s:if>
-	    		</td>
-	    		<td>
-	    			<s:if test="%{#listMessageReceive.message.read==0}"><b></s:if>
-	    			<input type="submit" value="Lire"/>
-	    			<s:if test="%{#listMessageReceive.message.read==0}"></b></s:if>
-	    		</td>
-	    		<td style="visibility:hidden;">
-	    			<input type="text"  value="<s:property value="%{#listMessageReceive.message.id}" />" />
-	    		</td>
-	    	    <td style="visibility:hidden;">
-	    			<input type="text"  value="<s:property value="%{#listMessageReceive.message.idCustomerTransmitter}" />" />
-	    		</td>
-			</tr>
+				</div>
+				<div class="content" >
+					<s:property value="%{#listMessageReceive.message.content}" /><br />
+					<form>
+						<textarea type="text" style="width:90%; height:100px;"></textarea>
+						<input type="submit" value="envoyer"/>
+					</form>
+				</div>
+			</div>
 	 	</s:iterator>
-	</table>
-</form>
+	 </div>
+ </div>

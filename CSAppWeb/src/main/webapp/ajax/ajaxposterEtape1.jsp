@@ -14,11 +14,8 @@
 						<s:property value="tr.tr_html(17)"/>
 					</td>
 					<td>
-						<select name="role"  id="role" class="selectcl ui-widget select ui-corner-all">
-	           				<option value="">select</option>
-	            			<option value="1">Conducteur</option>
-	            			<option value="2">Passager</option>
-	            		</select>
+						<span style="width:100px;"><s:property value="tr.tr_html(39)"/></span><input type="radio" id="role" name="role" value="1"><br />
+						<span style="width:100px;"><s:property value="tr.tr_html(40)"/></span><input type="radio" id="role" name="role" value="2"> 
 					</td>
 				</tr>
 				<tr>
@@ -34,7 +31,7 @@
 						<s:property value="tr.tr_html(10)"/>
 					</td>
 					<td>
-						<input name="hours" id="hours" type="text" value="02:30" />
+						<input name="hours" id="hours" type="text" value="08:30" />
 					</td>
 				</tr>
 				<tr>
