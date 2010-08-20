@@ -128,7 +128,7 @@ public class Action extends ActionSupport
 				customerAccount = cadao.load((Integer)getSession().get("customerId"));
 				customerAccount.setDatetimeLastConnection(new Date());
 				cadao.save(customerAccount);
-				System.out.println("customerAccount.getCp() : " +  customerAccount.getCp() );
+				System.out.println("customerAccount.getCp() : " +  customerAccount.getZipCode() );
 				System.out.println("customerAccount.getAcceptAnimals() : " +  customerAccount.getAcceptAnimals() );
 			}
 	    }
