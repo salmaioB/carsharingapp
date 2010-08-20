@@ -55,4 +55,9 @@ public class Message
 	public void setRead(Integer read) {
 		this.read = read;
 	}
+	
+	public String toString()
+	{
+		return getId() + ' ' + getTitle() + ' ' + getContent() + ' ' + getIdCustomerAccount() + ' ' + getIdCustomerTransmitter() +' ' + getDateTime() + ' ' +getRead();
+	}
 }
