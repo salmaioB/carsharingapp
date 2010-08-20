@@ -42,7 +42,7 @@ public class CustomerAccountDAO extends DAO
 		 
 		 Session session = HibernateUtil.currentSession();		   
 		 Transaction tx = session.beginTransaction();
-  
+		 tx.begin();
 		 session.beginTransaction();
 
 		 session.save(ca);
