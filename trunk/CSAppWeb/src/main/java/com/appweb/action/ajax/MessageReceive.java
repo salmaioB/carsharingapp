@@ -9,14 +9,13 @@ import cs.dao.dao.CustomerAccountDAO;
 import cs.dao.dao.MessageDAO;
 import cs.engine.action.CustomerAccountEngineAction;
 import cs.engine.action.MessageWithCustomerAccountAction;
+import cs.model.CustomerAccount;
 import cs.model.Message;
 import cs.model.MessageWithCustomerAccount;
 
 public class MessageReceive extends Action
 {
-    private List<MessageWithCustomerAccount> listMessageReceive;	
-
-	
+    private List<MessageWithCustomerAccount> listMessageReceive;
 
 	public List<MessageWithCustomerAccount> getListMessageReceive() {
 		return listMessageReceive;
@@ -38,9 +37,9 @@ public class MessageReceive extends Action
 		MessageWithCustomerAccountAction messageEngine  = new MessageWithCustomerAccountAction();
 		
 		listMessageReceive = new ArrayList<MessageWithCustomerAccount>();
-		listMessageReceive.add( messageEngine.load(1) );
-		listMessageReceive.add( messageEngine.load(2) );
+		listMessageReceive.addAll( messageEngine.loadMessageWithCustomerAccount( getCustomerAccount().getId() ) );
 		
+		System.out.println("Nombre de message : " + listMessageReceive.size() );
 		return SUCCESS;
 	}
 }
