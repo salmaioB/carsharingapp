@@ -21,8 +21,7 @@ public class CustomerAccountEngineAction
 	public Boolean chekup(CustomerAccount ca)
 	{
 		if( !ca.getCustomerLogin().equals("") && !ca.getCustomerPassword().equals("")
-			&& !ca.getEmailAddress().equals("") && !ca.getFirstName().equals("")
-			&& !ca.getLastName().equals("") )
+			&& !ca.getEmailAddress().equals("") )
 			return true;
 		else
 			return false;
