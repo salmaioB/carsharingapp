@@ -1,23 +1,24 @@
 package com.appweb.action.ajax;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.appweb.Action;
-
-import cs.engine.action.CustomerAccountEngineAction;
-import cs.model.CustomerAccount;
 
 public class PostEtape2 extends Action
 {
 	private String villeStartPost;
 	private String villeStopPost;
+	private String addressStartPost;
+	private String addressStopPost;
+	private Integer nbPassagerPost;
 	private String hours;
 	private java.util.Date datepickerPost;
-	private java.util.Date dateHours;
 	private String minutes;
 	private String hour;
 	private String role;
+	
 	
 	public String getRole() {
 		return role;
@@ -25,8 +26,27 @@ public class PostEtape2 extends Action
 	public void setRole(String role) {
 		this.role = role;
 	}
+	public String getAddressStartPost() {
+		return addressStartPost;
+	}
+	public void setAddressStartPost(String addressStartPost) {
+		this.addressStartPost = addressStartPost;
+	}
+	public String getAddressStopPost() {
+		return addressStopPost;
+	}
+	public void setAddressStopPost(String addressStopPost) {
+		this.addressStopPost = addressStopPost;
+	}
+	public Integer getNbPassagerPost() {
+		return nbPassagerPost;
+	}
+	public void setNbPassagerPost(Integer nbPassagerPost) {
+		this.nbPassagerPost = nbPassagerPost;
+	}
+
 	public String getDatepickerPost() {
-		SimpleDateFormat  simpleFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat  simpleFormat = new SimpleDateFormat("MM/dd/yyyy");
 		System.out.println(simpleFormat.format(datepickerPost));	
 		return simpleFormat.format(datepickerPost);
 		//return DateFormat.getDateInstance( DateFormat.MEDIUM ).format( datepickerPost ) ;
@@ -34,12 +54,6 @@ public class PostEtape2 extends Action
 	}
 	public void setDatepickerPost(java.util.Date datepickerPost) {
 		this.datepickerPost = datepickerPost;
-	}
-	public java.util.Date getDateHours() {
-		return dateHours;
-	}
-	public void setDateHours(java.util.Date dateHours) {
-		this.dateHours = dateHours;
 	}
 	public String getHours() {
 		return hours;
@@ -89,6 +103,11 @@ public class PostEtape2 extends Action
 		System.out.println("hours : " + hours);
 		System.out.println("datepickerPost : " + datepickerPost);
 		System.out.println("role : " + role);
+		System.out.println("addressStartPost : " + addressStartPost);
+		System.out.println("addressStopPost : " + addressStopPost);
+		System.out.println("villeStartPost : " + villeStartPost);
+		System.out.println("villeStopPost : " + villeStopPost);
+
 		return SUCCESS;
 	}
 }
