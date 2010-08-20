@@ -21,7 +21,15 @@ public class Action extends ActionSupport
 	private Map parameters;
 	private CustomerAccount customerAccount;
 	private Integer nbMessageNotRead;
+	private String language;
 	
+	public String getLanguage() {
+		if(langage.equals("")) language = "fr";
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
+	}
 	public Integer getNbMessageNotRead() {
 		return nbMessageNotRead;
 	}
@@ -35,6 +43,8 @@ public class Action extends ActionSupport
 		return true;
 	}
 	public CustomerAccount getCustomerAccount() {
+		if(customerAccount==null) 
+			customerAccount = new CustomerAccount();
 		return customerAccount;
 	}
 	public void setCustomerAccount(CustomerAccount customerAccount) {
@@ -88,6 +98,7 @@ public class Action extends ActionSupport
 		//Initialisation de l'objet de translation avec la langue usuel
 		tr = new TranslationEngine();
 		String country = (String) session.get("langage");
+		language=country;
 		tr.setCountry(country);
 		
 		/*
@@ -117,7 +128,7 @@ public class Action extends ActionSupport
 				customerAccount = cadao.load((Integer)getSession().get("customerId"));
 				customerAccount.setDatetimeLastConnection(new Date());
 				cadao.save(customerAccount);
-				System.out.println("customerAccount.getCp() : " +  customerAccount.getZipCode());
+				System.out.println("customerAccount.getCp() : " +  customerAccount.getCp() );
 				System.out.println("customerAccount.getAcceptAnimals() : " +  customerAccount.getAcceptAnimals() );
 			}
 	    }
