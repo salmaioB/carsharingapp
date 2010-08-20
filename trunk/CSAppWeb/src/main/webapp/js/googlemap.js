@@ -235,8 +235,8 @@ function printPoint(gMap,lat,lon) {
 	
 	}
 	function initializeMapParcoursPost() {
-		var Vstart = $('#villeStartPost').text();
-		var Vstop = $('#villeStopPost').text();
+		var Vstart = $('#addressStartPost').val() + ' '+ $('#villeStartPost').val();
+		var Vstop = $('#addressStopPost').val() + ' ' + $('#villeStopPost').val();
 		var map = document.getElementById("mapPost");
 
 		initializeMapParcours(Vstart,Vstop,map);

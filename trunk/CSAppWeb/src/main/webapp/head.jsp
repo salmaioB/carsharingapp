@@ -6,6 +6,7 @@
 	<title>Car sharing</title>
 	<script type="text/javascript">
 		var WEB_ROOT_URL = "<%=Define.webRootUrl %>";
+		var WEB_USE_LANGUAGE = "<s:property value="language"/>";
 	</script>
 	<script type="text/javascript" src="js/jquery-1.4.2.js"></script>
 	
@@ -22,7 +23,7 @@
     <script type="text/javascript" src="js/googleMapAddressByPosition.js"></script>	
     <script type="text/javascript" src="js/googlemap.js"></script>
     
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=<s:property value="language"/>"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.time/jquery.ui.all.js"></script>
 	<script type="text/javascript" src="js/jquery.time/jquery.utils.js"></script>
@@ -36,6 +37,7 @@
 	<link type="text/css" href="css/themes/base/jquery.ui.all.css" rel="stylesheet" >
 	<link type="text/css" href="css/css.css" rel="stylesheet" >
 	<link type="text/css" href="css/ui.timepickr.css" rel="stylesheet" >
+	<link type="text/css" href="css/accordion.css" rel="stylesheet">
 	
 	<style type="text/css">
 		.body{
@@ -69,6 +71,16 @@
 			                success: function(data)
 			                {
 			                 $('#receive').html(data);
+
+
+			 				$.accordian('#list2 > div', '#item22', {
+								titles:'.title',
+								contents:'.content',
+								showSpeed:150,
+								hideSpeed:250
+							});
+							
+			    				
 			                }
 			                  });
 			        }
@@ -116,4 +128,65 @@
 	      $('#hours').timepickr();
 	    });
 	</script>
+	
+		<script type="text/javascript">
+
+			$.accordian = function(items, first, options) {
+
+				var active = first;
+				var running = 0;
+
+				var titles = options && options.titles || '.title';
+				var contents = options && options.contents || '.content';
+				var onClick = options && options.onClick || function(){ updateReadMessage( $(this).attr('title') ); $(this).attr('style',''); };
+				var onShow = options && options.onShow || function(){};
+				var onHide = options && options.onHide || function(){};
+				var showSpeed = options && options.showSpeed || 'slow';
+				var hideSpeed = options && options.hideSpeed || 'fast';
+
+				$(items).not(active).children(contents).hide();
+				$(items).not(active).each(onHide);
+				$(active).each(onShow);
+
+				$(items).children(titles).click(function(e){
+
+					var p = $(contents, this.parentNode);
+					$(this.parentNode).each(onClick);
+
+					if (running || !p.is(":hidden")) return false;
+					running = 2;
+
+					$(active).children(contents).not(':hidden').slideUp(hideSpeed, function(){--running;});
+					p.slideDown(showSpeed, function(){--running;});
+
+					$(active).each(onHide);
+					active = '#' + $(this.parentNode)[0].id;
+					$(active).each(onShow);
+
+					return false;
+				});
+
+			};
+
+			function simpleLog(message) {
+				$('<div>' + message + '</div>').appendTo('#log');
+			}
+
+			$(function(){
+
+				$.accordian('#list1 > div', '#item11');
+
+				$.accordian('#list2 > div', '#item22', {
+					titles:'.mytitle',
+					contents:'.mycontent',
+					onClick:function(){ simpleLog(this.id + ' clicked')},
+					onShow:function(){simpleLog(this.id + ' shown'); $(this).removeClass('off').addClass('on');},
+					onHide:function(){simpleLog(this.id + ' hidden'); $(this).removeClass('on').addClass('off');},
+					showSpeed:250,
+					hideSpeed:550
+				});
+
+			});
+
+		</script>
 </head> 

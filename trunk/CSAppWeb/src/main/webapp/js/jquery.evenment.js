@@ -1,6 +1,37 @@
+function updateReadMessage(idMessage)
+    {          
+        $.ajax({
+                method: 'get',
+                url: WEB_ROOT_URL+'CSAppWeb/UpdateMessageRead?idMessage='+idMessage,
+                success: function(data)
+                {
+                 }
+                });
+        return false;
+    }
+
 $(document).ready(function()
 {
 	//Ajout des évenements ajax
+    $('input.checkin').click(function()
+            {
+                    var postData = $("input", '#checkaddress_form').serialize();
+                    
+                    $.ajax({
+                            method: 'post',
+                            url: WEB_ROOT_URL+'CSAppWeb/CheckInAjax',
+                            data: postData,
+                            success: function(data)
+                            {
+                    			alert(WEB_ROOT_URL+'CSAppWeb/Accueil#profil');
+                    			//Si success redection vers le profil
+                    			 document.location.href=WEB_ROOT_URL+'CSAppWeb/Accueil#profil';
+                            }
+                              });
+                    return false;
+            });
+	//Ajout des évenements ajax
+    /*
         $('input.chekin').click(function()
                 {
                         var postData = $("input", '#checkin_form').serialize();
@@ -17,6 +48,7 @@ $(document).ready(function()
                         
                         return false;
                 });
+                */
         $('input.checkout').click(function()
                 {
                         var postData = $("input", '#checkout_form').serialize();
@@ -29,7 +61,7 @@ $(document).ready(function()
                                 {
                                  $('#divToLogin').html(data);
                                 }
-                                  });
+                               });
                         
                         return false;
                 });
@@ -44,8 +76,7 @@ $(document).ready(function()
                                 success: function(data)
                                 {
                                  $('#divProfilMapAnddroid').html(data);
-                                 
-                                 initialize();
+                                 initinitializePositionByAdress("ville","address","divProfilMapAnddroid");
                                 }
                                   });
                         
@@ -123,9 +154,9 @@ $(document).ready(function()
 	                                data: postData,
 	                                success: function(data)
 	                                {
-	                                 //$('#postPrintMap').html(data);
-	                        		$('#etape1').html(data);
-	                                 initializeMapParcoursPost();
+	                                	//$('#postPrintMap').html(data);
+	                        			$('#etape1').html(data);
+	                        			initializeMapParcoursPost();
 	                                }
 	                                  });
 	                        
