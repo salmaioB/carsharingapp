@@ -1,6 +1,9 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
+<div class="corner">
+	Etape 2
+</div>
 <div class="corner" align="center">
 	<form method="post" id="post_form">
 		<table>
@@ -9,7 +12,7 @@
 					<span style="width: 160px;">Date</span>
 				</td>
 				<td>
-					<input value="<s:property value="datepickerPost" />" readonly="readonly" id="datepickerPost" name="datepickerPost" class="" size="20"/>
+					<input value="<s:property value="datepickerPost" />" readonly="readonly" id="datepickerPost" name="datepickerPost" type="text" size="20"/>
 				</td>
 			</tr>
 			<tr>
@@ -18,6 +21,38 @@
 				</td>
 				<td>
 					<input value="<s:property value="hour" />" readonly="readonly" id="hour" name="hour" class="" size="2" />:<input readonly="readonly" value="<s:property value="minutes" />" id="minutes" name="minutes" size="2" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span style="width: 160px;">role</span>
+				</td>
+				<td>
+					<input value="<s:property value="role" />" readonly="readonly" id="role" name="role" class="" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span style="width: 160px;"><s:property value="tr.tr_html(13)"/></span>
+				</td>
+				<td>
+					<input readonly="readonly" value="<s:property value="nbPassagerPost" />" readonly="readonly" id="nbPassagerPost" name="nbPassagerPost" class="" size="2" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span style="width: 160px;"><s:property value="tr.tr_html(15)"/></span>
+				</td>
+				<td>
+					<input readonly="readonly" value="<s:property value="addressStartPost" />" id="addressStartPost" name="addressStartPost" size="20" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span style="width: 160px;"><s:property value="tr.tr_html(16)"/></span>
+				</td>
+				<td>
+					<input readonly="readonly" value="<s:property value="addressStopPost" />" id="addressStopPost" name="addressStopPost" size="20" />
 				</td>
 			</tr>
 			<tr>
