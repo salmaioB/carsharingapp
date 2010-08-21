@@ -53,7 +53,6 @@ public class CustomerAccountsWS
 	    {
 	    	e.printStackTrace();
 	    }
-	  
 	    return customerAccount;
 	}
 	
@@ -85,7 +84,6 @@ public class CustomerAccountsWS
 	    {
 	    	e.printStackTrace();
 	    }
-	    
 	    return customerAccount;
 	}
 	
