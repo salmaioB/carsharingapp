@@ -23,9 +23,29 @@ public class MessageWithCustomerAccountAction
 
 		return messageWithCustomerAccount;
 	}
-	public List<MessageWithCustomerAccount> loadMessageWithCustomerAccount(Integer idCustomer)
+	
+	public List<MessageWithCustomerAccount> loadMessageWithCustomerAccountSend(Integer idCustomer)
 	{		
-		List<Message> messages = messageDAO.loadSearchMessagesNotRead(idCustomer);
+		List<Message> messages = messageDAO.loadSearchMessagesSend(idCustomer);
+		List<MessageWithCustomerAccount> messageWithCustomerAccounts = new ArrayList<MessageWithCustomerAccount>();
+		
+		for(Message message:messages)
+		{
+			//customer emmetteur
+			CustomerAccount customerAccount = customerAccountDAO.load( message.getIdCustomerTransmitter() );
+			MessageWithCustomerAccount mwca = new MessageWithCustomerAccount();
+			mwca.setCustomerAccount(customerAccount);
+			mwca.setMessage(message);
+			
+			messageWithCustomerAccounts.add(mwca);
+		}
+		
+		return messageWithCustomerAccounts;
+	}
+	
+	public List<MessageWithCustomerAccount> loadMessageWithCustomerAccountReceive(Integer idCustomer)
+	{		
+		List<Message> messages = messageDAO.loadSearchMessagesReceive(idCustomer);
 		List<MessageWithCustomerAccount> messageWithCustomerAccounts = new ArrayList<MessageWithCustomerAccount>();
 		for(Message message:messages)
 		{
@@ -40,6 +60,7 @@ public class MessageWithCustomerAccountAction
 		
 		return messageWithCustomerAccounts;
 	}
+	
 	public MessageWithCustomerAccountAction()
 	{
 		messageWithCustomerAccount = new MessageWithCustomerAccount();
