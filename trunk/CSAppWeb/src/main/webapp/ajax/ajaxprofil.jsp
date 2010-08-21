@@ -14,7 +14,7 @@
 					<input type="submit" class="checkAddress" value="Valider la position de l'adresse" size="50"/>
 					<br />
 					<input type="submit" class="testAddress" value="<s:property value="tr.tr_html(35)"/>" size="50" />
-					<div id="divProfilMapAnddroid" style="height:400px;"></div>
+					<div id="divProfilMapAnddroid" style="height:300px;"></div>
 				</td>
 			</tr>
 			<tr>
