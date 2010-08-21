@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import cs.dao.dao.OfferDAO;
 import cs.engine.action.OfferEngineAction;
 import cs.engine.spring.SpringEngine;
 import cs.model.Offer;

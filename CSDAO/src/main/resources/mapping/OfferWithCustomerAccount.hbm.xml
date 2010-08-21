@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cs.model">
+	<class name="OfferWithCustomerAccount" table="offers">
+        <id name="id" column="_id_offer">
+            <generator class="native"/>
+        </id>
+        <property name="pricePerPassenger" type="float" column="price_per_passenger"/>
+        <property name="numberOfPlaceRemaining" type="integer" column="number_of_place_remaining"/>
+        <property name="datetimeStarted" type="timestamp" column="datetime_started"/>
+        
+        <join table="customer_accounts">
+        	<key column="_id_customer_account"/>  
+        	<property name="lastName" type="string" column="last_name"/>  
+        	<property name="firstName" type="string" column="first_name"/>
+    	</join>
+     </class>
+</hibernate-mapping>

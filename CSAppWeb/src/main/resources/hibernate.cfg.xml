@@ -14,14 +14,16 @@
 		
 		<!-- Mapping base -->
 		<mapping resource="mapping/CustomerAccount.hbm.xml"/>
+		<mapping resource="mapping/Message.hbm.xml"/>
 		<mapping resource="mapping/Offer.hbm.xml"/>
-		<mapping resource="mapping/Route.hbm.xml"/>
 		<mapping resource="mapping/OffersToCustomerAccount.hbm.xml"/>
 		<mapping resource="mapping/OffersToRoute.hbm.xml"/>
-		<mapping resource="mapping/Opinion.hbm.xml"/>
+		<mapping resource="mapping/OfferWithCustomerAccount.hbm.xml"/>
+		<mapping resource="mapping/Opinion.hbm.xml"/>		
+		<mapping resource="mapping/Route.hbm.xml"/>
 		<mapping resource="mapping/RoutesToCustomerAccount.hbm.xml"/>
 		<mapping resource="mapping/Translation.hbm.xml"/>
 		<mapping resource="mapping/TranslationValue.hbm.xml"/>
-		<mapping resource="mapping/Message.hbm.xml"/>	
+			
 	</session-factory>
 </hibernate-configuration>
