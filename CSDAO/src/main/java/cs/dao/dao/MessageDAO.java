@@ -20,20 +20,20 @@ public class MessageDAO extends DAO
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.MessageDAO");
 	}
-	
+
 	public Message load(Integer id)
 	{
-		 //Open session
-		 Session session = HibernateUtil.currentSession();
-		 Transaction tx = session.beginTransaction();
-		 session.beginTransaction();
+		//Open session
+		Session session = HibernateUtil.currentSession();
+		Transaction tx = session.beginTransaction();
+		session.beginTransaction();
 
-		 //Load Data object
-		 Message of = (Message) session.load( Message.class, id );
+		//Load Data object
+		Message of = (Message) session.load( Message.class, id );
 		 
-		 tx.commit();
+		tx.commit();
 
-		 return of;
+		return of;
 	}
 	
 	public Boolean save(Message of)
@@ -42,10 +42,29 @@ public class MessageDAO extends DAO
 		 Transaction tx = session.beginTransaction();
   
 		 session.beginTransaction();
-
-		 session.save(of);
-
+		 //session.save(of);
+		 //session.saveOrUpdate(of);
+		 session.update(of);
 		 tx.commit();
+		
+		 HibernateUtil.closeSession();
+
+		 return true;
+	}
+	public Boolean updateRead(Message of)
+	{
+		 Session session = HibernateUtil.currentSession();		   
+
+		 //String hqlQuery = "Update message " +
+		  //  " set read = " + of.getRead() +
+		  //  " Where _id_message = " + of.getId() ;
+		 
+		 //System.out.println("hqlQuery : " + hqlQuery);
+		 session.save(of);
+		 //
+	     //Query query =  session.createSQLQuery(hqlQuery);
+		 //query.executeUpdate();
+		 
 		 HibernateUtil.closeSession();
 
 		 return true;
@@ -60,18 +79,19 @@ public class MessageDAO extends DAO
 	     String sqlQuery = "SELECT * " +
 		    "FROM message m " +
 		    "WHERE m._id_customer_account = " + idCustomerAccount +
-	        " AND m.read = 0 ";
+	        " AND m.is_read = 0 ";
 	     
 	     String hqlQuery = "FROM Message " +
 		    "WHERE idCustomerAccount = " + idCustomerAccount +
-	        " AND read = 0 ";
+	        " AND isRead = 0 ";
+	     
 	     
 	     System.out.println(hqlQuery);
 	     
 	     //Query query = session.createSQLQuery(sqlQuery).addEntity(Message.class);
 	     Query query = session.createQuery(hqlQuery);
 	     count = query.list().size();
-	     
+
 		HibernateUtil.closeSession();
 		
 		return count;
@@ -80,22 +100,36 @@ public class MessageDAO extends DAO
 	 * Function to search message
 	 * by id idCustomerAccount
 	 */
-	public List<Message> loadSearchMessagesNotRead(Integer idCustomerAccount)
+	public List<Message> loadSearchMessagesReceive(Integer idCustomerAccount)
 	{
      Session session = HibernateUtil.currentSession();
      
      String SQLQuery = "FROM Message " +
-				       "WHERE idCustomerAccount=" + idCustomerAccount.toString() +
-				       " AND read=0 ";
+				       "WHERE idCustomerAccount=" + idCustomerAccount.toString() ;
      
      
      System.out.println(SQLQuery);
      
-     Query query = session.createQuery(SQLQuery);//.addEntity(Message.class);
-     List<Message> offers = query.list();
-	 System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr" );
+     Query query = session.createQuery(SQLQuery);
+     List<Message> messages = query.list();
      HibernateUtil.closeSession();
      
-	 return offers;
+	 return messages;
+	}
+	public List<Message> loadSearchMessagesSend(Integer idCustomerTransmitter)
+	{
+     Session session = HibernateUtil.currentSession();
+     
+     String SQLQuery = "FROM Message " +
+				       "WHERE idCustomerTransmitter=" + idCustomerTransmitter.toString() ;
+     
+     
+     System.out.println(SQLQuery);
+     
+     Query query = session.createQuery(SQLQuery);
+     List<Message> messages = query.list();
+     HibernateUtil.closeSession();
+     
+	 return messages;
 	}
 }
