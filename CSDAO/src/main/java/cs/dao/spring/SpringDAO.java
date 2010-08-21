@@ -19,11 +19,11 @@ import cs.dao.dao.TranslationDAO;
 import cs.dao.dao.TranslationValueDAO;
 import cs.dao.dao.VehiculeDAO;
 
-public class Spring 
+public class SpringDAO 
 {
 	
 	private static ListableBeanFactory bf  = new XmlBeanFactory(new ClassPathResource("bean.xml"));
-	public Spring ()
+	public SpringDAO ()
 	{
 		
 	}
@@ -126,8 +126,8 @@ public class Spring
 	 * getteur
 	 * @return
 	 */
-	public static Spring getSpring()
+	public static SpringDAO getSpring()
 	{
-		return (Spring) bf.getBean("Spring");
+		return (SpringDAO) bf.getBean("SpringDAO");
 	}
 }
