@@ -11,7 +11,6 @@
 		<property name="connection.url">jdbc:mysql://91.121.160.199:3306/simul_car_sharing</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">pirat5</property>
-		<property name="connection.autocommit">true</property> 
 		
 		<!-- Mapping base -->
 		<mapping resource="mapping/CustomerAccount.hbm.xml"/>
