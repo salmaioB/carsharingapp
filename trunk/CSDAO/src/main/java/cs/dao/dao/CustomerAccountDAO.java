@@ -41,12 +41,12 @@ public class CustomerAccountDAO extends DAO
 	{
 		 
 		 Session session = HibernateUtil.currentSession();		   
-		 Transaction tx = session.beginTransaction();
+		 //Transaction tx = session.beginTransaction();
 		 //tx.begin();
 		 //session.beginTransaction();
 
 		 session.update(ca);
-		 tx.commit();
+		 //tx.commit();
 		 
 		 HibernateUtil.closeSession();
 
@@ -99,6 +99,8 @@ public class CustomerAccountDAO extends DAO
 	public void saveCustomerLocation(Integer idCustomerAccount, double longitude, double latitude)
 	{
 		Session session = HibernateUtil.currentSession();
+		Transaction transaction = session.beginTransaction();
+		transaction.begin();
 		
 		String SQLQuery = "UPDATE customer_accounts " +
 						  "SET geoloc_longitude=" + Double.toString(longitude) + ", " +
@@ -110,6 +112,8 @@ public class CustomerAccountDAO extends DAO
 		Query query = session.createSQLQuery(SQLQuery);
 		query.executeUpdate();
 		
+		transaction.commit();
+		
 		HibernateUtil.closeSession();
 	}
 	
@@ -117,7 +121,8 @@ public class CustomerAccountDAO extends DAO
 	{
 		Session session = HibernateUtil.currentSession();
 		
-		//Transaction transaction = session.beginTransaction();
+		Transaction transaction = session.beginTransaction();
+		transaction.begin();
 		CustomerAccount customerAccount = (CustomerAccount)session.get(CustomerAccount.class, idCustomerAccount);
 		
 		customerAccount.setLastName(lastName);
@@ -130,7 +135,7 @@ public class CustomerAccountDAO extends DAO
 		
 		//session.update(customerAccount);
 		
-		//transaction.commit();
+		transaction.commit();
 		HibernateUtil.closeSession();
 	}
 	
