@@ -134,7 +134,50 @@ public class CustomerAccountDAO extends DAO
 		// Ugly part
 		session.save(customerAccount);
 		
+		//session.update(customerAccount);
+		
 		transaction.commit();
 		HibernateUtil.closeSession();
 	}
+	
+	/**
+	 * Function to update the customer password
+	 * 
+	 * Check if the customer give his right current password:
+	 * If OK, the new password is saved (status = 1)
+	 * Else no update (status = 2)
+	 */
+    public Integer saveCustomerNewPassword(Integer idCustomerAccount, String currentPassword, String newPassword)
+    {
+    	Integer saveCustomerNewPasswordStatus = 0;
+    	
+    	Session session = HibernateUtil.currentSession();
+    	
+		Transaction transaction = session.beginTransaction();
+    	
+    	String SQLQuery = "SELECT * FROM customer_accounts " +
+    					  "WHERE _id_customer_account=" + idCustomerAccount.toString() + " " +
+    					  "AND customer_password = '" + currentPassword + "'";
+    	
+    	Query query = session.createSQLQuery(SQLQuery).addEntity(CustomerAccount.class);
+
+    	List customerAccountList = query.list();
+    	
+    	if(!customerAccountList.isEmpty())
+    	{
+    		CustomerAccount customerAccount = (CustomerAccount)customerAccountList.get(0);
+    		
+    		customerAccount.setCustomerPassword(newPassword);
+    		session.save(customerAccount);
+    	   
+    		saveCustomerNewPasswordStatus = 1;
+    	}
+    	else saveCustomerNewPasswordStatus = 2;
+    	
+    	transaction.commit();
+		
+    	HibernateUtil.closeSession();
+
+    	return saveCustomerNewPasswordStatus;
+    }
 }

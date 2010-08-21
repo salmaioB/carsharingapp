@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="cs.appandroid.activities"
-      android:versionCode="1"
-      android:versionName="1.0">
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
+	      package="cs.appandroid.activities"
+	      android:versionCode="1"
+	      android:versionName="1.0">
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
     	<uses-library name="com.google.android.maps"></uses-library>  
         <activity android:label="@string/app_name" android:name="CSAppAndroid">
             <intent-filter>
@@ -12,14 +12,16 @@
             </intent-filter>
         </activity>
 
-    <activity android:name="AddOffer" android:enabled="true"></activity>
-<activity android:name="MyMessages"></activity>
-<activity android:name="DisplayOffers"></activity>
-<activity android:name="SearchOffers"></activity>
-<activity android:name="Identification"></activity>
-<activity android:name="MyProfile"></activity>
-<activity android:name="MyRoutes"></activity>
-</application>
+	    <activity android:name="AddOffer" android:enabled="true"></activity>
+		<activity android:name="MyMessages"></activity>
+		<activity android:name="DisplayOffers"></activity>
+		<activity android:name="SearchOffers"></activity>
+		<activity android:name="Identification"></activity>
+		<activity android:name="MyProfile"></activity>
+		<activity android:name="MyRoutes"></activity>
+		
+	</application>
+
     <uses-sdk android:minSdkVersion="6" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />  

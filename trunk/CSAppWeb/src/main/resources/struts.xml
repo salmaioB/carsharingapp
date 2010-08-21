@@ -22,6 +22,12 @@
 		</action>
 	</package>
 	
+    <package name="CustomerAccountSaveNewPasswordWS" extends="json-default">
+		<action name="CustomerAccountSaveNewPasswordWS" class="cs.webservice.impl.CustomerAccountSaveNewPasswordWS">
+			<result type="json"/>
+		</action>
+	</package>
+	
 	<package name="OffersWS" extends="json-default">
 		<action name="OffersWS" class="cs.webservice.impl.OffersWS">
 			<result type="json"/>

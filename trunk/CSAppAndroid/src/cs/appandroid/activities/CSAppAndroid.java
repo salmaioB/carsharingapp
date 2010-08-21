@@ -184,8 +184,8 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    intent = new Intent().setClass(this, SearchOffers.class);
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("searchoffers").setIndicator("Recherche",
-	                                                      	   res.getDrawable(R.drawable.tab_search_offers))
+	    spec = tabHost.newTabSpec("searchoffers").setIndicator("",
+	                                                      	   res.getDrawable(R.layout.tabsearchoffer))
 	                                                      	   .setContent(intent);
 	    
 	    tabHost.addTab(spec);
@@ -194,8 +194,8 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    addOfferIntent = new Intent().setClass(this, AddOffer.class);
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("addoffer").setIndicator("Ajouter une offre",
-	                                                       res.getDrawable(R.drawable.tab_search_offers))
+	    spec = tabHost.newTabSpec("addoffer").setIndicator("",
+	                                                       res.getDrawable(R.layout.tabaddoffer))
 	                                                       .setContent(addOfferIntent);
 	    tabHost.addTab(spec);
 	    
@@ -203,8 +203,8 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    intent = new Intent().setClass(this, MyRoutes.class);
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("myroutes").setIndicator("Mes trajets",
-	                                                       res.getDrawable(R.drawable.tab_search_offers))
+	    spec = tabHost.newTabSpec("myroutes").setIndicator("",
+	                                                       res.getDrawable(R.layout.tabmyroutes))
 	                                                       .setContent(intent);
 	    tabHost.addTab(spec);
 	    
@@ -212,8 +212,8 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    intent = new Intent().setClass(this, MyMessages.class);
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("mymessages").setIndicator("Mes messages",
-	                                                       	 res.getDrawable(R.drawable.tab_search_offers))
+	    spec = tabHost.newTabSpec("mymessages").setIndicator("",
+	                                                       	 res.getDrawable(R.layout.tabmymessages))
 	                                                         .setContent(intent);
 	    tabHost.addTab(spec);
 	    
@@ -222,8 +222,8 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    myProfileIntent = new Intent().setClass(this, MyProfile.class);
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("myprofile").setIndicator("Mon profil",
-	                                                       	res.getDrawable(R.drawable.tab_search_offers))
+	    spec = tabHost.newTabSpec("myprofile").setIndicator("",
+	                                                       	res.getDrawable(R.layout.tabmyprofile))
 	                                                       	.setContent(myProfileIntent);
 	    
 	    tabHost.addTab(spec);
