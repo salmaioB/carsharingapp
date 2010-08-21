@@ -4,7 +4,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import cs.dao.dao.VehiculeDAO;
-import cs.dao.spring.Spring;
+import cs.dao.spring.SpringDAO;
 import cs.model.Vehicule;
 
 public class VehiculeEngineAction

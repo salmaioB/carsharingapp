@@ -2,20 +2,23 @@ package cs.engine.action;
 
 import java.util.Date;
 
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.ClassPathResource;
-
 import cs.dao.dao.CustomerAccountDAO;
-import cs.dao.spring.Spring;
 import cs.model.CustomerAccount;
 
 public class CustomerAccountEngineAction
 {
 	private CustomerAccountDAO caBean;
 	
+	public CustomerAccountDAO getCaBean() {
+		return caBean;
+	}
+	public void setCaBean(CustomerAccountDAO caBean) {
+		this.caBean = caBean;
+	}
+
 	public CustomerAccountEngineAction()
 	{
-		caBean = Spring.getSpring().getCustomerAccountDAO();
+		//caBean = SpringDAO.getSpring().getCustomerAccountDAO();
 		//XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
 		//caBean = (CustomerAccountDAO) beanFactory.getBean("CustomerAccountDAO");
 	}
@@ -29,6 +32,17 @@ public class CustomerAccountEngineAction
 			return false;
 	}
 	
+	public Boolean update(CustomerAccount ca)
+	{
+		if(caBean != null)
+		{	
+				return caBean.update(ca);
+		}else
+			System.out.println("ERROR : bean null");
+		
+		return false;
+	}
+	
 	public Boolean save(CustomerAccount ca)
 	{
 		if(caBean != null)
@@ -36,12 +50,17 @@ public class CustomerAccountEngineAction
 			if(chekup(ca))
 			{
 				ca.setDatetimeRegistration(new Date());
-				
+				System.out.println("Save du customerAccountEngine : " + ca.getId() );
 				return caBean.save(ca);
 			}
-			else 
+			else {
+				System.out.println("ERROR :  Passe pas le checkup");
 				return false;
+			}
+				
 		}
+		else
+			System.out.println("ERROR : bean null");
 		return false;
 	}
 	
@@ -51,6 +70,8 @@ public class CustomerAccountEngineAction
 		{
 			return caBean.load(id);
 		}
+		else
+			System.out.println("ERROR : bean null");
 		return null;
 	}
 	
@@ -59,7 +80,8 @@ public class CustomerAccountEngineAction
 		if(caBean != null)
 		{
 			return caBean.identification(customerLogin, customerPassword);
-		}
+		}else
+			System.out.println("ERROR : bean null");
 		return null;
 	}
 		
@@ -69,6 +91,8 @@ public class CustomerAccountEngineAction
 		{
 			caBean.saveCustomerLocation(idCustomerAccount, longitude, latitude);
 		}
+		else
+			System.out.println("ERROR : bean null");
 	}
 	
 	public void saveCustomerGeneralInfos(Integer idCustomerAccount, String lastName, String firstName, String emailAddress, String mobile)
@@ -77,6 +101,8 @@ public class CustomerAccountEngineAction
 		{
 			caBean.saveCustomerGeneralsInfos(idCustomerAccount, lastName, firstName, emailAddress, mobile);
 		}
+		else
+			System.out.println("ERROR : bean null");
 	}
 	
 	public void saveCustomerPreferences(Integer idCustomerAccount, Integer acceptAnimals, Integer acceptRadio, Integer acceptSmoker, Integer acceptToDiscuss, Integer acceptToMakeADetour)
@@ -84,7 +110,9 @@ public class CustomerAccountEngineAction
 		if(caBean != null)
 		{
 			caBean.saveCustomerPreferences(idCustomerAccount, acceptAnimals, acceptRadio, acceptSmoker, acceptToDiscuss, acceptToMakeADetour);
-		}	
+		}
+		else
+			System.out.println("ERROR : bean null");
 	}
 	
 	public Integer saveCustomerNewPassword(Integer idCustomerAccount, String currentPassword, String newPassword)
@@ -93,6 +121,8 @@ public class CustomerAccountEngineAction
 		{
 			return caBean.saveCustomerNewPassword(idCustomerAccount, currentPassword, newPassword);
 		}
+		else
+			System.out.println("ERROR : bean null");
 		return null;
 	}
 }
