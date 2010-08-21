@@ -30,7 +30,7 @@ public class UpdateMessageRead extends Action
 		System.out.println("idMessage : "+idMessage);
 		MessageDAO messageDAO = Spring.getSpring().getMessageDAO();
 		Message message = messageDAO.load(idMessage);
-		message.setRead(1);
+		message.setIsRead(1);
 		
 		System.out.println( "id message :" + message.getId().toString() );
 		

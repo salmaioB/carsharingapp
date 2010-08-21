@@ -37,9 +37,9 @@ public class MessageReceive extends Action
 		MessageWithCustomerAccountAction messageEngine  = new MessageWithCustomerAccountAction();
 		
 		listMessageReceive = new ArrayList<MessageWithCustomerAccount>();
-		listMessageReceive.addAll( messageEngine.loadMessageWithCustomerAccount( getCustomerAccount().getId() ) );
+		listMessageReceive.addAll( messageEngine.loadMessageWithCustomerAccountReceive( getCustomerAccount().getId() ) );
 		
-		System.out.println("Nombre de message : " + listMessageReceive.size() );
+		System.out.println("Nombre de message receive : " + listMessageReceive.size() );
 		return SUCCESS;
 	}
 }
