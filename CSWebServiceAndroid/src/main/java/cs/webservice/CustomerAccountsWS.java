@@ -8,6 +8,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import cs.model.CustomerAccount;
 import cs.common.HttpClient;
 import cs.define.Define;
@@ -129,5 +131,30 @@ public class CustomerAccountsWS
 		
 		// Send the http request
 		HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
+	}
+	
+	public int saveCustomerNewPassword(Integer idCustomerAccount, String currentPassword, String newPassword)
+	{
+		String URL = Define.webServiceRootUrl + "CSAppWeb/CustomerAccountSaveNewPasswordWS";
+		
+		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
+		paramsToPost.add(new BasicNameValuePair("idCustomerAccount", idCustomerAccount.toString()));
+		paramsToPost.add(new BasicNameValuePair("currentPassword", currentPassword.toString()));
+		paramsToPost.add(new BasicNameValuePair("newPassword", newPassword.toString()));
+		
+		// Send the http request
+		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
+		
+		try
+		{	
+			if(jsonObjectReturn.length() != 0)
+				return Integer.valueOf(jsonObjectReturn.getInt("saveNewPasswordStatusMessage"));
+	    }
+	    catch (JSONException e)
+	    {
+	    	e.printStackTrace();
+	    }
+		
+		return 0;
 	}
 }

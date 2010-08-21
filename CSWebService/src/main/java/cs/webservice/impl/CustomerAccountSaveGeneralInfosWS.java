@@ -14,7 +14,6 @@ public class CustomerAccountSaveGeneralInfosWS extends ActionSupport
 	private String emailAddress;
 	private String mobile;
 	
-	
 	/**
 	 * Getter and Setter
 	 */
@@ -59,7 +58,7 @@ public class CustomerAccountSaveGeneralInfosWS extends ActionSupport
 	}
 	
 	public String execute() throws Exception
-	{
+	{		
 		CustomerAccountEngineAction customerAccountEngineAction = new CustomerAccountEngineAction();
 		customerAccountEngineAction.saveCustomerGeneralInfos(id, lastName, firstName, emailAddress, mobile);
 		

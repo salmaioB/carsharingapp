@@ -9,6 +9,7 @@ import android.app.TabActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,6 +80,7 @@ public class MyProfile extends Activity implements OnClickListener
     
     
     // Components define into user password screen
+    private TextView alertUserSavePasswordTextView;
     private EditText currentPasswordEditText;
     private EditText newPasswordEditText;
     private EditText newPasswordConfirmationEditText;
@@ -192,7 +194,19 @@ public class MyProfile extends Activity implements OnClickListener
 		}
 		else if(v == validateUserPasswordButton)
 		{
+			saveUserPasswordProcess = new Runnable()
+			{	
+				@Override
+				public void run()
+				{
+					saveCustomerNewPasswordProcess();
+				}
+			};
 			
+			Thread saveUserNewPasswordThread =  new Thread(null, saveUserPasswordProcess, "SaveUserNewPasswordThread");
+			saveUserNewPasswordThread.start();
+			
+			saveUserPasswordProgressDialog = ProgressDialog.show(MyProfile.this, "Please wait...", "Sauvegarde de vos informations ...", true);
 		}
 	}
 	
@@ -200,8 +214,15 @@ public class MyProfile extends Activity implements OnClickListener
 	{
 	    if(IdentificationController.userIsLogged(getBaseContext()))
 	    {	
+//	    	final boolean customTitleSupported = requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+	    	
 	    	setContentView(R.layout.myprofile);
-	    		        
+	    	
+//	    	if(customTitleSupported)
+//	    	{
+//	    		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.titlebar);
+//	        }
+	        
 	        userInfosTextView      = (TextView)findViewById(R.id.user_infos_textview);
 	        userInfosTextView.setOnClickListener(this);
 	        
@@ -343,6 +364,7 @@ public class MyProfile extends Activity implements OnClickListener
 	{
 		setContentView(R.layout.userpassword);
 		
+		alertUserSavePasswordTextView   = (TextView)findViewById(R.id.alert_user_save_password_textview);
 		currentPasswordEditText         = (EditText)findViewById(R.id.current_password_edittext);
 	    newPasswordEditText             = (EditText)findViewById(R.id.new_password_edittext);
 	    newPasswordConfirmationEditText = (EditText)findViewById(R.id.new_password_confirmation_edittext);
@@ -535,6 +557,49 @@ public class MyProfile extends Activity implements OnClickListener
         	   // alert message
         	   
         	   saveUserPreferencesProgressDialog.dismiss();
+           }
+    	});
+	}
+	
+	public void saveCustomerNewPasswordProcess()
+	{
+		Integer idCustomerAccount = IdentificationController.getUserLoggedId(getBaseContext());
+		String currentPassword    = currentPasswordEditText.getText().toString();
+		String newPassword        = newPasswordEditText.getText().toString();
+		
+		CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
+		Integer saveCustomerNewPasswordStatus = customerAccountWS.saveCustomerNewPassword(idCustomerAccount, currentPassword, newPassword);
+	    
+		Log.v("test", saveCustomerNewPasswordStatus.toString());
+	    		
+		saveCustomerNewPasswordProcessUpdateUI(saveCustomerNewPasswordStatus);
+	}
+	
+	public void saveCustomerNewPasswordProcessUpdateUI(final Integer saveCustomerNewPasswordStatus)
+	{
+	    getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.titlebar);
+	    
+ 	    //final Button conn = (Button)findViewById(R.id.connection_button);
+ 	    
+		// Drop the Runnable into the UI thread queue
+    	runOnUiThread(new Runnable()
+    	{
+           @Override
+           public void run()
+           {
+	       	   switch(saveCustomerNewPasswordStatus)
+	    	   {
+	       	   		case 0: Log.v("Error: ", "saveCustomerNewPassword json");
+	       	   		        break;
+	       	   		case 1: //conn.setText("aze");
+	       	   			    alertUserSavePasswordTextView.setText("Votre mot de passe actuel est invalide.");
+	       	   			    break;
+	       	   		case 2: //conn.setText("aze");
+	       	   			    alertUserSavePasswordTextView.setText("Votre mot de passe a bien été mis à jour.");
+	       	   			    break;
+	    	   }
+        	   
+        	   saveUserPasswordProgressDialog.dismiss();
            }
     	});
 	}

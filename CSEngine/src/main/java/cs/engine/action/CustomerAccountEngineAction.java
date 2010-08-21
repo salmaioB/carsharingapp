@@ -86,4 +86,13 @@ public class CustomerAccountEngineAction
 			caBean.saveCustomerPreferences(idCustomerAccount, acceptAnimals, acceptRadio, acceptSmoker, acceptToDiscuss, acceptToMakeADetour);
 		}	
 	}
+	
+	public Integer saveCustomerNewPassword(Integer idCustomerAccount, String currentPassword, String newPassword)
+	{
+		if(caBean != null)
+		{
+			return caBean.saveCustomerNewPassword(idCustomerAccount, currentPassword, newPassword);
+		}
+		return null;
+	}
 }
