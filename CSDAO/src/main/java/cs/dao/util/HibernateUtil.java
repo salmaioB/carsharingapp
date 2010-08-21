@@ -31,6 +31,7 @@ public class HibernateUtil {
 	{
 		Session s = (Session) session.get();
 		// Ouvre une nouvelle Session, si ce Thread n'en a aucune
+		//s = sessionFactory.openSession();
 		if (s == null) {
 			s = sessionFactory.openSession();
 			session.set(s);

@@ -36,18 +36,34 @@ public class CustomerAccountDAO extends DAO
 		 
 		 return ca;
 	}
+
+	public Boolean update(CustomerAccount ca)
+	{
+		 
+		 Session session = HibernateUtil.currentSession();		   
+		 Transaction tx = session.beginTransaction();
+		 //tx.begin();
+		 //session.beginTransaction();
+
+		 session.update(ca);
+		 tx.commit();
+		 
+		 HibernateUtil.closeSession();
+
+		 return true;
+	}
 	
 	public Boolean save(CustomerAccount ca)
 	{
 		 
 		 Session session = HibernateUtil.currentSession();		   
-		 //Transaction tx = session.beginTransaction();
-		 //tx.begin();
+		 Transaction tx = session.beginTransaction();
+		 tx.begin();
 		 //session.beginTransaction();
 
 		 session.save(ca);
-
-		 //tx.commit();
+		 tx.commit();
+		 
 		 HibernateUtil.closeSession();
 
 		 return true;
@@ -153,8 +169,9 @@ public class CustomerAccountDAO extends DAO
     	
     	Session session = HibernateUtil.currentSession();
     	
-		//Transaction transaction = session.beginTransaction();
-    	
+		Transaction transaction = session.beginTransaction();
+		transaction.begin();
+		
     	String SQLQuery = "SELECT * FROM customer_accounts " +
     					  "WHERE _id_customer_account=" + idCustomerAccount.toString() + " " +
     					  "AND customer_password = '" + currentPassword + "'";
@@ -174,7 +191,7 @@ public class CustomerAccountDAO extends DAO
     	}
     	else saveCustomerNewPasswordStatus = 2;
     	
-    	//transaction.commit();
+    	transaction.commit();
 		
     	HibernateUtil.closeSession();
 
