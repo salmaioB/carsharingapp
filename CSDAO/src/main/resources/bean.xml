@@ -6,48 +6,72 @@
 	<bean id="SampleDAO" class="cs.dao.dao.SampleSpring" />
 
 	<!-- DAO  -->
-	<bean name="CustomerAccountDAO" id="CustomerAccountDAO" class="cs.dao.dao.CustomerAccountDAO">
+	<bean name="CustomerAccountDAO" id="CustomerAccountDAO" class="cs.dao.dao.CustomerAccountDAO" scope="singleton"  >
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean name="OfferDAO" id="OfferDAO" class="cs.dao.dao.OfferDAO">
+	<bean name="OfferDAO" id="OfferDAO" class="cs.dao.dao.OfferDAO" scope="singleton" >
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean name="OffersToCustomerAccountsDAO" id="OffersToCustomerAccountsDAO" class="cs.dao.dao.OffersToCustomerAccountsDAO">
+	<bean name="OffersToCustomerAccountsDAO" id="OffersToCustomerAccountsDAO" class="cs.dao.dao.OffersToCustomerAccountsDAO" scope="singleton" >
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-		<bean name="OpinionDAO" id="OpinionDAO" class="cs.dao.dao.OpinionDAO">
+		<bean name="OpinionDAO" id="OpinionDAO" class="cs.dao.dao.OpinionDAO" scope="singleton" >
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-		<bean name="RouteDAO" id="RouteDAO" class="cs.dao.dao.RouteDAO">
+		<bean name="RouteDAO" id="RouteDAO" class="cs.dao.dao.RouteDAO" scope="singleton" >
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-		<bean name="RoutesToCustomerAccountDAO" id="RoutesToCustomerAccountDAO" class="cs.dao.dao.RoutesToCustomerAccountDAO">
+		<bean name="RoutesToCustomerAccountDAO" id="RoutesToCustomerAccountDAO" class="cs.dao.dao.RoutesToCustomerAccountDAO" scope="singleton" >
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-		<bean name="TranslationDAO" id="TranslationDAO" class="cs.dao.dao.TranslationDAO">
+		<bean name="TranslationDAO" id="TranslationDAO" class="cs.dao.dao.TranslationDAO" scope="singleton" >
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-		<bean name="TranslationValueDAO" id="TranslationValueDAO" class="cs.dao.dao.TranslationValueDAO">
+	<bean name="TranslationValueDAO" id="TranslationValueDAO" class="cs.dao.dao.TranslationValueDAO" scope="singleton" >
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean name="MessageDAO" id="MessageDAO" class="cs.dao.dao.MessageDAO" scope="singleton" >
+		<property name="mySessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="OffersToRoutesDAO" id="OffersToRoutesDAO" class="cs.dao.dao.OffersToRoutesDAO" scope="singleton" >
+		<property name="mySessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean name="Spring"  id="Spring" class="cs.dao.spring.Spring" scope="singleton"  >
+		<property name="customerAccountDAO"><ref bean="CustomerAccountDAO" /></property>
+		<property name="offerDAO"><ref bean="OfferDAO" /></property>
+		<property name="offersToCustomerAccountsDAO"><ref bean="OffersToCustomerAccountsDAO" /></property>
+		<property name="opinionDAO"><ref bean="OpinionDAO" /></property>
+		<property name="routeDAO"><ref bean="RouteDAO" /></property>
+		<property name="routesToCustomerAccountDAO"><ref bean="RoutesToCustomerAccountDAO" /></property>
+		<property name="translationDAO"><ref bean="TranslationDAO" /></property>
+		<property name="translationValueDAO"><ref bean="TranslationValueDAO" /></property>
+		<property name="messageDAO"><ref bean="MessageDAO" /></property>
+		<property name="offersToRoutesDAO"><ref bean="OffersToRoutesDAO" /></property>
+	</bean>
+	
 	<!-- sessionFactory  -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" scope="singleton" >
 		<property name="configLocation">
 			<value>classpath:hibernate.cfg.xml</value>
 		</property>
