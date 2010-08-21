@@ -7,6 +7,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import cs.dao.dao.TranslationValueDAO;
+import cs.dao.spring.Spring;
 import cs.model.TranslationValue;
 
 public class TranslationEngine
@@ -36,8 +37,9 @@ public class TranslationEngine
 	 */
 	public TranslationEngine()
 	{
-		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
-		caBean = (TranslationValueDAO) beanFactory.getBean("TranslationValueDAO");
+		//XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
+		//caBean = (TranslationValueDAO) beanFactory.getBean("TranslationValueDAO");
+		caBean = Spring.getSpring().getTranslationValueDAO();
 		tr = caBean.getTranslation();
 		//valeur par défaut
 		country = "fr";
