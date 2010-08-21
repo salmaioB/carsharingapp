@@ -21,6 +21,7 @@ public class CheckOutAjax extends Action
 		System.out.println("Check out");
 		getSession().clear();
 		getSession().remove("customerId");
+		setCustomerAccount(null);
 		return SUCCESS;
 	}
 }
