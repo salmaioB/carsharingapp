@@ -8,8 +8,8 @@ public class Message
 	private String title;
 	private String content;
 	private Integer idCustomerAccount;
-	private Integer read;
-	private Date dateTime;
+	private Integer isRead;
+	private Date dateTimeWrited;
 	private Integer idCustomerTransmitter;
 	
 	public Integer getIdCustomerTransmitter() {
@@ -19,12 +19,7 @@ public class Message
 		this.idCustomerTransmitter = idCustomerTransmitter;
 	}
 
-	public Date getDateTime() {
-		return dateTime;
-	}
-	public void setDateTime(Date dateTime) {
-		this.dateTime = dateTime;
-	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -49,15 +44,21 @@ public class Message
 	public void setIdCustomerAccount(Integer idCustomerAccount) {
 		this.idCustomerAccount = idCustomerAccount;
 	}
-	public Integer getRead() {
-		return read;
-	}
-	public void setRead(Integer read) {
-		this.read = read;
-	}
 	
 	public String toString()
 	{
-		return getId() + ' ' + getTitle() + ' ' + getContent() + ' ' + getIdCustomerAccount() + ' ' + getIdCustomerTransmitter() +' ' + getDateTime() + ' ' +getRead();
+		return getId() + '/' + getTitle() + '/' + getContent() + '/' + getIdCustomerAccount() + ' ' + getIdCustomerTransmitter() +' ' + getDateTimeWrited() + ' ' +getIsRead();
+	}
+	public Integer getIsRead() {
+		return isRead;
+	}
+	public void setIsRead(Integer isRead) {
+		this.isRead = isRead;
+	}
+	public Date getDateTimeWrited() {
+		return dateTimeWrited;
+	}
+	public void setDateTimeWrited(Date dateTimeWrited) {
+		this.dateTimeWrited = dateTimeWrited;
 	}
 }
