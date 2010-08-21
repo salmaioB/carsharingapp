@@ -73,7 +73,7 @@
 			                 $('#receive').html(data);
 
 
-			 				$.accordian('#list2 > div', '#item22', {
+			 				$.accordian('#list2 > div', '#item21', {
 								titles:'.title',
 								contents:'.content',
 								showSpeed:150,
@@ -146,14 +146,19 @@
 
 				$(items).not(active).children(contents).hide();
 				$(items).not(active).each(onHide);
-				$(active).each(onShow);
+				//$(active).each(onShow);
 
+				//$(active).each(onShow);
+				$(active).children(contents).hide();
+				//$(items).children(contents).hide();
+				//$(items).each(onHide);
+				
 				$(items).children(titles).click(function(e){
-
+					
 					var p = $(contents, this.parentNode);
 					$(this.parentNode).each(onClick);
 
-					if (running || !p.is(":hidden")) return false;
+					//if (running || !p.is(":hidden")) return false;
 					running = 2;
 
 					$(active).children(contents).not(':hidden').slideUp(hideSpeed, function(){--running;});

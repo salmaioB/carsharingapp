@@ -16,14 +16,13 @@ $(document).ready(function()
     $('input.checkin').click(function()
             {
                     var postData = $("input", '#checkaddress_form').serialize();
-                    
                     $.ajax({
                             method: 'post',
                             url: WEB_ROOT_URL+'CSAppWeb/CheckInAjax',
                             data: postData,
                             success: function(data)
                             {
-                    			alert(WEB_ROOT_URL+'CSAppWeb/Accueil#profil');
+                    			alert("Profil enregistre");
                     			//Si success redection vers le profil
                     			 document.location.href=WEB_ROOT_URL+'CSAppWeb/Accueil#profil';
                             }
