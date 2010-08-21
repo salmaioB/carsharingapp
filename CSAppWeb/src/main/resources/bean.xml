@@ -5,7 +5,7 @@
 
 	<bean id="SampleDAO" class="cs.dao.dao.SampleSpring" />
 
-	<!-- DAO  -->
+	<!-- Bean DAO  -->
 	<bean name="CustomerAccountDAO" id="CustomerAccountDAO" class="cs.dao.dao.CustomerAccountDAO" scope="singleton"  >
 		<property name="mySessionFactory">
 			<ref bean="sessionFactory" />
@@ -56,8 +56,53 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<!-- Bean Engine -->
+	<bean name="CustomerAccountEngineAction" id="CustomerAccountEngineAction" class="cs.engine.action.CustomerAccountEngineAction" scope="singleton" >
+		<property name="caBean">
+			<ref bean="CustomerAccountDAO" />
+		</property>
+	</bean>
+	<bean name="MessageWithCustomerAccountAction" id="MessageWithCustomerAccountAction" class="cs.engine.action.MessageWithCustomerAccountAction" scope="singleton" >
+		<property name="messageDAO">
+			<ref bean="MessageDAO" />
+		</property>
+		<property name="customerAccountDAO">
+			<ref bean="CustomerAccountDAO" />
+		</property>
+	</bean>
+	<bean name="OfferEngineAction" id="OfferEngineAction" class="cs.engine.action.OfferEngineAction" scope="singleton" >
+		<property name="caBean">
+			<ref bean="OfferDAO" />
+		</property>
+	</bean>
+	<bean name="OpinionEngineAction" id="OpinionEngineAction" class="cs.engine.action.OpinionEngineAction" scope="singleton" >
+		<property name="caBean">
+			<ref bean="OpinionDAO" />
+		</property>
+	</bean>
+	<bean name="TranslationEngineAction" id="TranslationEngineAction" class="cs.engine.action.TranslationEngineAction" scope="singleton" >
+		<property name="caBean">
+			<ref bean="TranslationDAO" />
+		</property>
+	</bean>
+	<bean name="TranslationValueEngineAction" id="TranslationValueEngineAction" class="cs.engine.action.TranslationValueEngineAction" scope="singleton" >
+		<property name="caBean">
+			<ref bean="TranslationValueDAO" />
+		</property>
+	</bean>
 	
-	<bean name="Spring"  id="Spring" class="cs.dao.spring.Spring" scope="singleton"  >
+	<!-- Factory de Engine -->
+	<bean name="SpringEngine"  id="SpringEngine" class="cs.engine.spring.SpringEngine" scope="singleton"  >
+		<property name="customerAccountEngineAction"><ref bean="CustomerAccountEngineAction" /></property>
+		<property name="messageWithCustomerAccountAction"><ref bean="MessageWithCustomerAccountAction" /></property>
+		<property name="offerEngineAction"><ref bean="OfferEngineAction" /></property>
+		<property name="opinionEngineAction"><ref bean="OpinionEngineAction" /></property>
+		<property name="translationEngineAction"><ref bean="TranslationEngineAction" /></property>
+		<property name="translationValueEngineAction"><ref bean="TranslationValueEngineAction" /></property>
+	</bean>
+	
+	<!-- Factory de DAO -->
+	<bean name="SpringDAO"  id="SpringDAO" class="cs.dao.spring.SpringDAO" scope="singleton"  >
 		<property name="customerAccountDAO"><ref bean="CustomerAccountDAO" /></property>
 		<property name="offerDAO"><ref bean="OfferDAO" /></property>
 		<property name="offersToCustomerAccountsDAO"><ref bean="OffersToCustomerAccountsDAO" /></property>
@@ -69,7 +114,7 @@
 		<property name="messageDAO"><ref bean="MessageDAO" /></property>
 		<property name="offersToRoutesDAO"><ref bean="OffersToRoutesDAO" /></property>
 	</bean>
-	
+		
 	<!-- sessionFactory  -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" scope="singleton" >
 		<property name="configLocation">
