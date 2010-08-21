@@ -4,6 +4,7 @@ import com.appweb.Action;
 
 import cs.engine.action.CustomerAccountEngineAction;
 import cs.engine.action.OfferEngineAction;
+import cs.engine.spring.SpringEngine;
 import cs.model.CustomerAccount;
 import cs.model.Offer;
 
@@ -42,7 +43,7 @@ public class AccueilAction extends Action
 	{
 		if(getType().equals("CustomerAccounts"))
 		{
-			CustomerAccountEngineAction u = new CustomerAccountEngineAction();
+			CustomerAccountEngineAction u = SpringEngine.getSpring().getCustomerAccountEngineAction();// new CustomerAccountEngineAction();
 		
 			CustomerAccount use = u.load(new Integer(1));
 			if(use!= null)
@@ -57,7 +58,7 @@ public class AccueilAction extends Action
 		}
 		if(getType().equals("Offer"))
 		{
-			OfferEngineAction u = new OfferEngineAction();
+			OfferEngineAction u = SpringEngine.getSpring().getOfferEngineAction();////new OfferEngineAction();
 		
 			Offer  offer = u.load(new Integer(1));
 			if(offer!= null)

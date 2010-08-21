@@ -8,8 +8,9 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import cs.dao.dao.CustomerAccountDAO;
 import cs.dao.dao.MessageDAO;
-import cs.dao.spring.Spring;
+import cs.dao.spring.SpringDAO;
 import cs.engine.action.CustomerAccountEngineAction;
+import cs.engine.spring.SpringEngine;
 import cs.engine.translation.TranslationEngine;
 import cs.model.CustomerAccount;
 import cs.model.Message;
@@ -110,9 +111,9 @@ public class Action extends ActionSupport
 		//Si pas de session déclaré ou si nouveau langugage définit
 		if( parameters.get("username") != null && parameters.get("password") != null )
 		{
-			CustomerAccountEngineAction customerAccountEngine = new  CustomerAccountEngineAction();
+			CustomerAccountEngineAction customerAccountEngine = SpringEngine.getSpring().getCustomerAccountEngineAction();//new  CustomerAccountEngineAction();
 			setCustomerAccount(customerAccountEngine.identification(((String[])parameters.get("username"))[0] ,((String[])parameters.get("password"))[0]  ));
-			System.out.println(getCustomerAccount().getCustomerLogin()  );
+			System.out.println("getCustomerAccount().getCustomerLogin() : " + getCustomerAccount().getCustomerLogin()  );
 			if(getCustomerAccount() != null)
 			{
 				getSession().put("customerId",getCustomerAccount().getId());
@@ -125,7 +126,7 @@ public class Action extends ActionSupport
 		{
 			if(getSession().get("customerId") != "")
 			{
-				CustomerAccountDAO cadao = Spring.getSpring().getCustomerAccountDAO();//new CustomerAccountDAO();
+				CustomerAccountDAO cadao = SpringDAO.getSpring().getCustomerAccountDAO();//new CustomerAccountDAO();
 				customerAccount = cadao.load((Integer)getSession().get("customerId"));
 				customerAccount.setDatetimeLastConnection(new Date());
 				cadao.save(customerAccount);
@@ -137,7 +138,7 @@ public class Action extends ActionSupport
 		if(isLoging() )
 		{	
 			//Gestion des messages
-			MessageDAO messageDAO = Spring.getSpring().getMessageDAO();//new MessageDAO();
+			MessageDAO messageDAO = SpringDAO.getSpring().getMessageDAO();//new MessageDAO();
 			//messageDAO.load(1);
 			setNbMessageNotRead(messageDAO.nbMessageNotRead(customerAccount.getId() ) );
 		}
