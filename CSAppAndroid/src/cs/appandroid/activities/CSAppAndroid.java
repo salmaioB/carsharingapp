@@ -83,7 +83,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    {
 	    	if(!IdentificationController.userIsLogged(getBaseContext()))
 	    	{
-				tabHost.setCurrentTab(3);
+				tabHost.setCurrentTab(4);
 				connectionButton.setText("Connexion");
 	    	}
 	    	else
@@ -92,7 +92,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    		
 	    		if(tabId == "myprofile")
 	    		{					
-					tabHost.setCurrentTab(4);
+					//tabHost.setCurrentTab(4);
 	    			
 	    			connectionButton.setText("Déconnexion");
 	    			connectionButton.setVisibility(View.VISIBLE);
