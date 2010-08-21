@@ -1,8 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <div class="corner">
-	<table>
-		<form method="post" id="checkaddress_form" name="checkaddress_form">
+	<form method="post" id="checkaddress_form" name="checkaddress_form">
+		<table>	
 			<tr>
 				<td>
 					<span style="width: 160px;">Login</span>
@@ -144,6 +144,6 @@
 					<input type="submit" class="checkin" value="<s:property value="tr.tr_html(36)"/>" />
 				</td>
 			</tr>  
-		</form>
-	</table>
+		</table>
+	</form>
 </div>
