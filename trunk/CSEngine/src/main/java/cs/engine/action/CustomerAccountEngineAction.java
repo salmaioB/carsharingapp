@@ -6,6 +6,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import cs.dao.dao.CustomerAccountDAO;
+import cs.dao.spring.Spring;
 import cs.model.CustomerAccount;
 
 public class CustomerAccountEngineAction
@@ -14,8 +15,9 @@ public class CustomerAccountEngineAction
 	
 	public CustomerAccountEngineAction()
 	{
-		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
-		caBean = (CustomerAccountDAO) beanFactory.getBean("CustomerAccountDAO");
+		caBean = Spring.getSpring().getCustomerAccountDAO();
+		//XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
+		//caBean = (CustomerAccountDAO) beanFactory.getBean("CustomerAccountDAO");
 	}
 	
 	public Boolean chekup(CustomerAccount ca)

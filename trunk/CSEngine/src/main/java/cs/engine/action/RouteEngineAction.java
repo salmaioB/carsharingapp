@@ -4,6 +4,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import cs.dao.dao.RouteDAO;
+import cs.dao.spring.Spring;
 import cs.model.Route;
 
 public class RouteEngineAction
@@ -12,8 +13,9 @@ public class RouteEngineAction
 	
 	public RouteEngineAction()
 	{
-		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
-		caBean = (RouteDAO) beanFactory.getBean("RouteDAO");
+		caBean = Spring.getSpring().getRouteDAO();
+		//XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
+		//caBean = (RouteDAO) beanFactory.getBean("RouteDAO");
 	}
 	public Route load(Integer id)
 	{
