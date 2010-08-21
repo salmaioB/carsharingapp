@@ -48,6 +48,7 @@ $(document).ready(function()
                         return false;
                 });
                 */
+    	/*
         $('input.checkout').click(function()
                 {
                         var postData = $("input", '#checkout_form').serialize();
@@ -64,6 +65,7 @@ $(document).ready(function()
                         
                         return false;
                 });
+        */
         $('input.checkAddress').click(function()
                 {
                         var postData = $("input", '#checkaddress_form').serialize();
