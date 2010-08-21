@@ -3,6 +3,7 @@ package cs.webservice.impl;
 import com.opensymphony.xwork2.ActionSupport;
 
 import cs.engine.action.CustomerAccountEngineAction;
+import cs.engine.spring.SpringEngine;
 
 public class CustomerAccountSaveNewPasswordWS extends ActionSupport
 {
@@ -52,7 +53,7 @@ public class CustomerAccountSaveNewPasswordWS extends ActionSupport
 	
 	public String execute() throws Exception
 	{		
-		CustomerAccountEngineAction customerAccountEngineAction = new CustomerAccountEngineAction();
+		CustomerAccountEngineAction customerAccountEngineAction = SpringEngine.getSpring().getCustomerAccountEngineAction();//new CustomerAccountEngineAction();
 		saveNewPasswordStatusMessage = customerAccountEngineAction.saveCustomerNewPassword(idCustomerAccount, currentPassword, newPassword);
 		
 		return SUCCESS;

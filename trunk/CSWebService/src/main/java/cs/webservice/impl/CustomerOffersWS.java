@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import cs.dao.dao.OfferDAO;
 import cs.engine.action.OfferEngineAction;
+import cs.engine.spring.SpringEngine;
 import cs.model.Offer;
 
 public class CustomerOffersWS extends ActionSupport
@@ -36,7 +37,7 @@ public class CustomerOffersWS extends ActionSupport
 	
 	public String execute() throws Exception
  	{		
-	 	OfferEngineAction offerEngineAction = new OfferEngineAction();
+	 	OfferEngineAction offerEngineAction = SpringEngine.getSpring().getOfferEngineAction();//new OfferEngineAction();
 	 	
 	 	offerEngineAction.getCustomerOffers(1);
 	 	

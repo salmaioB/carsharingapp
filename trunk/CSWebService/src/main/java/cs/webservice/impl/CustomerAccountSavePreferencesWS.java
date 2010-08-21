@@ -3,6 +3,7 @@ package cs.webservice.impl;
 import com.opensymphony.xwork2.ActionSupport;
 
 import cs.engine.action.CustomerAccountEngineAction;
+import cs.engine.spring.SpringEngine;
 
 public class CustomerAccountSavePreferencesWS extends ActionSupport
 {
@@ -68,7 +69,7 @@ public class CustomerAccountSavePreferencesWS extends ActionSupport
 	
 	public String execute() throws Exception
 	{
-		CustomerAccountEngineAction customerAccountEngineAction = new CustomerAccountEngineAction();
+		CustomerAccountEngineAction customerAccountEngineAction = SpringEngine.getSpring().getCustomerAccountEngineAction();//new CustomerAccountEngineAction();
 		customerAccountEngineAction.saveCustomerPreferences(id, acceptAnimals, acceptRadio, acceptSmoker, acceptToDiscuss, acceptToMakeADetour);
 		
 		return SUCCESS;

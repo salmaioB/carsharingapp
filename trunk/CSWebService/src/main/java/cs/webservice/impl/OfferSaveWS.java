@@ -6,6 +6,7 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionSupport;
 
 import cs.dao.dao.OfferDAO;
+import cs.dao.spring.SpringDAO;
 import cs.model.Offer;
 import cs.model.Route;
 
@@ -95,7 +96,7 @@ public class OfferSaveWS extends ActionSupport
 		List<Route> routes = new ArrayList<Route>();
 		routes.add(route);
 		
-		OfferDAO offerDAO = new OfferDAO();
+		OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();//new OfferDAO();
 		offerDAO.saveOfferWithRoutes(offer, routes);
 		
 	 	return SUCCESS;
