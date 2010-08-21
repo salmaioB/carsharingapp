@@ -3,6 +3,7 @@ package cs.webservice.impl;
 import com.opensymphony.xwork2.ActionSupport;
 
 import cs.engine.action.CustomerAccountEngineAction;
+import cs.engine.spring.SpringEngine;
 
 public class CustomerAccountSaveGeneralInfosWS extends ActionSupport
 {
@@ -59,7 +60,7 @@ public class CustomerAccountSaveGeneralInfosWS extends ActionSupport
 	
 	public String execute() throws Exception
 	{		
-		CustomerAccountEngineAction customerAccountEngineAction = new CustomerAccountEngineAction();
+		CustomerAccountEngineAction customerAccountEngineAction = SpringEngine.getSpring().getCustomerAccountEngineAction();//new CustomerAccountEngineAction();
 		customerAccountEngineAction.saveCustomerGeneralInfos(id, lastName, firstName, emailAddress, mobile);
 		
 		return SUCCESS;

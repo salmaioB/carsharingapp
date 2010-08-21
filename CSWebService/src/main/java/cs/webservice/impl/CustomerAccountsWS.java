@@ -3,6 +3,7 @@ package cs.webservice.impl;
 
 import com.opensymphony.xwork2.ActionSupport;
 import cs.engine.action.CustomerAccountEngineAction;
+import cs.engine.spring.SpringEngine;
 import cs.model.CustomerAccount;
 
 public class CustomerAccountsWS extends ActionSupport
@@ -77,22 +78,26 @@ public class CustomerAccountsWS extends ActionSupport
 		System.out.println("customerPassword : " + customerPassword);
 
 		
-		CustomerAccountEngineAction customerAccountEngine = new CustomerAccountEngineAction();
+		CustomerAccountEngineAction customerAccountEngine = SpringEngine.getSpring().getCustomerAccountEngineAction();//new CustomerAccountEngineAction();
 
 		// Ugly part
 		if(id != null && geolocLongitude != 0)
 		{
-			System.out.println("teub");
+			System.out.println("geolocLongitude");
 			customerAccountEngine.saveCustomerLocation(id, geolocLongitude, geolocLatitude);
 		}
 		else if(id != null)
 		{
+			System.out.println("pass by load");
 			customerAccount = customerAccountEngine.load(id);
 		}
 		else
 		{
+			System.out.println("pass by identification");
 			customerAccount = customerAccountEngine.identification(customerLogin, customerPassword);
 		}
+		
+		System.out.println("customerAccount.getFirstName() : " + customerAccount.getFirstName());
 		
 		//System.out.println(customerAccount.getCustomerLogin());
 		

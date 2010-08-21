@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import cs.dao.dao.OfferDAO;
+import cs.dao.spring.SpringDAO;
 import cs.model.Offer;
 
 
@@ -25,7 +26,7 @@ public class OffersWS extends ActionSupport
 
 	public String execute() throws Exception
  	{		
-	 	OfferDAO offerDAO = new OfferDAO();
+	 	OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();//new OfferDAO();
 	 	offers = offerDAO.loadSearchOffers("toto", "orleans", "tata", "paris");
 	    
 	 	return SUCCESS;
