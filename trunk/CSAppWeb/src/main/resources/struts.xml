@@ -57,6 +57,9 @@
         <action name="Accueil" class="com.appweb.action.AccueilAction">
         	<result name="success" type="tiles">accueil.template</result>
         </action>
+        <action name="CheckOutAjax" class="com.appweb.action.ajax.CheckOutAjax">
+			<result name="success" type="tiles">accueil.template</result>
+		</action>
     </package>
     
     <package name="Ajax" extends="struts-default">
@@ -67,9 +70,6 @@
 		<action name="CheckInAjax" class="com.appweb.action.ajax.CheckInAjax">
 			<result name="success">/ajax/ajaxckeckinerror.jsp</result>
 			<result name="error">/ajax/ajaxckeckinsuccess.jsp</result>
-		</action>
-		<action name="CheckOutAjax" class="com.appweb.action.ajax.CheckOutAjax">
-			<result name="success">/ajax/ajaxloginerror.jsp</result>
 		</action>
 		<action name="CheckAddress" class="com.appweb.action.ajax.CheckAddress">
 			<result name="success">/ajax/checkAddress.jsp</result>
