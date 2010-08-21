@@ -10,6 +10,8 @@
 		<property name="connection.url">jdbc:mysql://localhost/simul_car_sharing</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">olioli</property>
+		<property name="connection.autocommit">true</property> 
+		
 		<!-- 
 		<property name="connection.url">jdbc:mysql://sardaukar6085.dyndns.org:3306/simul_car_sharing</property>
 		<property name="connection.username">root</property>
