@@ -3,10 +3,11 @@ package cs.dao.dao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import cs.dao.DAO;
 import cs.dao.util.HibernateUtil;
 import cs.model.OffersToRoute;
 
-public class OffersToRoutesDAO
+public class OffersToRoutesDAO extends DAO
 {
 	/**
 	 * Constructor by default
