@@ -54,7 +54,8 @@ public class MessageDAO extends DAO
 	public Boolean updateRead(Message of)
 	{
 		 Session session = HibernateUtil.currentSession();		   
-
+		 Transaction tx = session.beginTransaction();
+		 
 		 //String hqlQuery = "Update message " +
 		  //  " set read = " + of.getRead() +
 		  //  " Where _id_message = " + of.getId() ;
@@ -64,6 +65,8 @@ public class MessageDAO extends DAO
 		 //
 	     //Query query =  session.createSQLQuery(hqlQuery);
 		 //query.executeUpdate();
+		 
+		 tx.commit();
 		 
 		 HibernateUtil.closeSession();
 

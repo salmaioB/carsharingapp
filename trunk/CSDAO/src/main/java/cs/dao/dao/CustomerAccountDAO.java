@@ -24,14 +24,13 @@ public class CustomerAccountDAO extends DAO
 	{
 		 // Open session
 		 Session session = HibernateUtil.currentSession();
-		 //Transaction tx = session.beginTransaction();
-		 //session.beginTransaction();
+		 Transaction tx = session.beginTransaction();
 
 		 // Load Data object
 		 CustomerAccount ca = (CustomerAccount) session.load(CustomerAccount.class, id);
+		 System.out.println("ca.getFirstName() : " + ca.getFirstName());
+		 tx.commit();
 		 
-		 //tx.commit();
-
 		 HibernateUtil.closeSession();
 		 
 		 return ca;
@@ -41,13 +40,11 @@ public class CustomerAccountDAO extends DAO
 	{
 		 
 		 Session session = HibernateUtil.currentSession();		   
-		 //Transaction tx = session.beginTransaction();
-		 //tx.begin();
-		 //session.beginTransaction();
-
+		 Transaction tx = session.beginTransaction();
+		 System.out.println("update : " + ca.getId());
 		 session.update(ca);
-		 //tx.commit();
-		 
+		 tx.commit();
+
 		 HibernateUtil.closeSession();
 
 		 return true;
@@ -58,12 +55,12 @@ public class CustomerAccountDAO extends DAO
 		 
 		 Session session = HibernateUtil.currentSession();		   
 		 Transaction tx = session.beginTransaction();
-		 tx.begin();
-		 //session.beginTransaction();
-
-		 session.save(ca);
-		 tx.commit();
+		 System.out.println("session.saveOrUpdate : " + ca.getId() );
+		 session.saveOrUpdate(ca);
+		 //session.save(ca);
 		 
+		 tx.commit();
+
 		 HibernateUtil.closeSession();
 
 		 return true;
@@ -89,8 +86,8 @@ public class CustomerAccountDAO extends DAO
 	     List customerAccountList = query.list();
 		 
 	     HibernateUtil.closeSession();
-
-	     if(customerAccountList.size() == 1)
+	     
+	     if(customerAccountList.size() >= 1)
 	    	 return (CustomerAccount)customerAccountList.get(0);
 	     else
 	    	 return null;
@@ -100,7 +97,6 @@ public class CustomerAccountDAO extends DAO
 	{
 		Session session = HibernateUtil.currentSession();
 		Transaction transaction = session.beginTransaction();
-		transaction.begin();
 		
 		String SQLQuery = "UPDATE customer_accounts " +
 						  "SET geoloc_longitude=" + Double.toString(longitude) + ", " +
@@ -122,7 +118,7 @@ public class CustomerAccountDAO extends DAO
 		Session session = HibernateUtil.currentSession();
 		
 		Transaction transaction = session.beginTransaction();
-		transaction.begin();
+		
 		CustomerAccount customerAccount = (CustomerAccount)session.get(CustomerAccount.class, idCustomerAccount);
 		
 		customerAccount.setLastName(lastName);
@@ -134,16 +130,16 @@ public class CustomerAccountDAO extends DAO
 		session.save(customerAccount);
 		
 		//session.update(customerAccount);
-		
 		transaction.commit();
+
 		HibernateUtil.closeSession();
 	}
 	
 	public void saveCustomerPreferences(Integer idCustomerAccount, Integer acceptAnimals, Integer acceptRadio, Integer acceptSmoker, Integer acceptToDiscuss, Integer acceptToMakeADetour)
 	{
 		Session session = HibernateUtil.currentSession();
-		
-		//Transaction transaction = session.beginTransaction();
+		Transaction transaction = session.beginTransaction();
+
 		CustomerAccount customerAccount = (CustomerAccount)session.get(CustomerAccount.class, idCustomerAccount);
 	    
 		customerAccount.setAcceptAnimals(acceptAnimals);
@@ -157,7 +153,8 @@ public class CustomerAccountDAO extends DAO
 		
 		//session.update(customerAccount);
 		
-		//transaction.commit();
+		transaction.commit();
+		
 		HibernateUtil.closeSession();
 	}
 	
@@ -175,7 +172,6 @@ public class CustomerAccountDAO extends DAO
     	Session session = HibernateUtil.currentSession();
     	
 		Transaction transaction = session.beginTransaction();
-		transaction.begin();
 		
     	String SQLQuery = "SELECT * FROM customer_accounts " +
     					  "WHERE _id_customer_account=" + idCustomerAccount.toString() + " " +
@@ -184,6 +180,9 @@ public class CustomerAccountDAO extends DAO
     	Query query = session.createSQLQuery(SQLQuery).addEntity(CustomerAccount.class);
 
     	List customerAccountList = query.list();
+    	
+    	transaction.commit();
+    	HibernateUtil.closeSession();
     	
     	if(!customerAccountList.isEmpty())
     	{
@@ -195,10 +194,6 @@ public class CustomerAccountDAO extends DAO
     		saveCustomerNewPasswordStatus = 1;
     	}
     	else saveCustomerNewPasswordStatus = 2;
-    	
-    	transaction.commit();
-		
-    	HibernateUtil.closeSession();
 
     	return saveCustomerNewPasswordStatus;
     }
