@@ -28,48 +28,56 @@ public class CheckInAjax extends Action
 	private Boolean acceptToMakeADetour;
 	
 	public String getAddress() {
+		if(address == null) address = "";
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
 	}
 	public String getCountry() {
+		if(country==null) country = "";
 		return country;
 	}
 	public void setVille(String country) {
 		this.country = country;
 	}
-	public String getzipCode() {
+	public String getZipCode() {
+		if(zipCode==null) zipCode="";
 		return zipCode;
 	}
-	public void setCp(String zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 	public String getMobile() {
+		if(mobile == null) mobile ="";
 		return mobile;
 	}
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
     public String getCustomerLogin() {
+    	if(customerLogin==null) customerLogin="";
 		return customerLogin;
 	}
 	public void setCustomerLogin(String customerLogin) {
 		this.customerLogin = customerLogin;
 	}
 	public String getCustomerPassword() {
+		if(customerPassword==null)customerPassword="";
 		return customerPassword;
 	}
 	public void setCustomerPassword(String customerPassword) {
 		this.customerPassword = customerPassword;
 	}
 	public String getLastName() {
+		if(lastName==null) lastName="";
 		return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 	public String getFirstName() {
+		if(firstName==null) firstName="";
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
@@ -82,38 +90,45 @@ public class CheckInAjax extends Action
 		this.emailAddress = emailAddress;
 	}
 	public String getPhone() {
+		if(phone==null) phone="";
 		return phone;
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public Boolean getAcceptAnimals() {
+		if(acceptAnimals==null) acceptAnimals =false;
 		return acceptAnimals;
 	}
 	public void setAcceptAnimals(Boolean acceptAnimals) {
 		this.acceptAnimals = acceptAnimals;
 	}
 	public Boolean getAcceptRadio() {
+		if(acceptRadio==null) acceptRadio= false;
 		return acceptRadio;
 	}
 	public void setAcceptRadio(Boolean acceptRadio) {
 		this.acceptRadio = acceptRadio;
 	}
 	public Boolean getAcceptSmoker() {
+		if(acceptSmoker==null) acceptSmoker=false;
 		return acceptSmoker;
 	}
 	public void setAcceptSmoker(Boolean acceptSmoker) {
 		this.acceptSmoker = acceptSmoker;
 	}
 	public Boolean getAcceptToDiscuss() {
+		if(acceptToDiscuss==null) acceptToDiscuss=false;
 		return acceptToDiscuss;
 	}
 	public void setAcceptToDiscuss(Boolean acceptToDiscuss) {
 		this.acceptToDiscuss = acceptToDiscuss;
 	}
 	public Boolean getAcceptToMakeADetour() {
+		if(acceptToMakeADetour==null) acceptToMakeADetour =false;
 		return acceptToMakeADetour;
 	}
+
 	public void setAcceptToMakeADetour(Boolean acceptToMakeADetour) {
 		this.acceptToMakeADetour = acceptToMakeADetour;
 	}
@@ -132,36 +147,55 @@ public class CheckInAjax extends Action
 		if(isLoging())
 		{
 			System.out.println("user logger");
+			System.out.println("lastName : " + lastName);
 			System.out.println("customerLogin : " + customerLogin);
+			System.out.println(acceptAnimals);
+			System.out.println(acceptRadio);
+			System.out.println(acceptSmoker);
+			System.out.println(acceptToDiscuss);
+			System.out.println(acceptToMakeADetour);
+			System.out.println(customerLogin);
+			System.out.println(customerPassword);
+			System.out.println(phone);
+			System.out.println(lastName);
+			System.out.println(firstName);
+			System.out.println(emailAddress);
+			System.out.println(mobile);
+			System.out.println(address);
+			System.out.println(country);
+			System.out.println(zipCode);
 			
 			CustomerAccountEngineAction caea = new CustomerAccountEngineAction();
-			getCustomerAccount().setAcceptAnimals(acceptAnimals);
-			getCustomerAccount().setAcceptRadio(acceptRadio);
-			getCustomerAccount().setAcceptSomker(acceptSmoker);
-			getCustomerAccount().setAcceptToDiscuss(acceptToDiscuss);
-			getCustomerAccount().setAcceptToMakeADetour(acceptToMakeADetour);
-			getCustomerAccount().setCustomerLogin(customerLogin);
-			getCustomerAccount().setCustomerPassword(customerPassword);
-			getCustomerAccount().setPhone(phone);
-			getCustomerAccount().setLastName(lastName);
-			getCustomerAccount().setFirstName(firstName);
-			getCustomerAccount().setEmailAddress(emailAddress);
-			getCustomerAccount().setMobile(mobile);
-			getCustomerAccount().setAddress(address);
-			getCustomerAccount().setCountry(country);
-			getCustomerAccount().setZipCode(zipCode);
+			getCustomerAccount().setAcceptAnimals(getAcceptAnimals());
+			getCustomerAccount().setAcceptRadio(getAcceptRadio());
+			getCustomerAccount().setAcceptSomker(getAcceptSmoker());
+			getCustomerAccount().setAcceptToDiscuss(getAcceptToDiscuss());
+			getCustomerAccount().setAcceptToMakeADetour(getAcceptToMakeADetour());
+			getCustomerAccount().setCustomerLogin(getCustomerLogin());
+			getCustomerAccount().setCustomerPassword(getCustomerPassword());
+			getCustomerAccount().setPhone(getPhone());
+			getCustomerAccount().setLastName(getLastName());
+			getCustomerAccount().setFirstName(getFirstName());
+			getCustomerAccount().setEmailAddress(getEmailAddress());
+			getCustomerAccount().setMobile(getMobile());
+			getCustomerAccount().setAddress(getAddress());
+			getCustomerAccount().setCountry(getCountry());
+			getCustomerAccount().setZipCode(getZipCode());
 			
 			System.out.println("Ville : " + getCustomerAccount().getCountry());
 			
-			caea.save(getCustomerAccount());
+			if(caea.save(getCustomerAccount()))
+				System.out.println("Enregistre");
+			else
+				System.out.println("Error");
 		}
 		else
 		{
-			System.out.println("user not logger");
+			System.out.println("user not logger : " + customerLogin);
 
-			getCustomerAccount().setCustomerLogin(customerLogin);
-			getCustomerAccount().setCustomerPassword(customerPassword);
-			getCustomerAccount().setEmailAddress(emailAddress);
+			getCustomerAccount().setCustomerLogin(getCustomerLogin());
+			getCustomerAccount().setCustomerPassword(getCustomerPassword());
+			getCustomerAccount().setEmailAddress(getEmailAddress());
 			getCustomerAccount().setAcceptAnimals(false);
 			getCustomerAccount().setAcceptRadio(false);
 			getCustomerAccount().setAcceptSomker(false);
@@ -176,8 +210,8 @@ public class CheckInAjax extends Action
 			getCustomerAccount().setDatetimeLastOfferCreated(null);
 			getCustomerAccount().setDatetimeLastCarSharing(null);
 			getCustomerAccount().setAddress("");
-			getCustomerAccount().setCountry(country);
-			getCustomerAccount().setZipCode(zipCode);
+			getCustomerAccount().setCountry("");
+			getCustomerAccount().setZipCode("");
 			getCustomerAccount().setPhone("");
 			getCustomerAccount().setMobile("");
 			getCustomerAccount().setLastName("");
