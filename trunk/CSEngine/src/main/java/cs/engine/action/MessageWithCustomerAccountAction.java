@@ -5,7 +5,7 @@ import java.util.List;
 
 import cs.dao.dao.CustomerAccountDAO;
 import cs.dao.dao.MessageDAO;
-import cs.dao.spring.Spring;
+import cs.dao.spring.SpringDAO;
 import cs.model.CustomerAccount;
 import cs.model.Message;
 import cs.model.MessageWithCustomerAccount;
@@ -15,6 +15,19 @@ public class MessageWithCustomerAccountAction
 	private MessageWithCustomerAccount messageWithCustomerAccount;
 	private MessageDAO messageDAO;
 	private CustomerAccountDAO customerAccountDAO;
+	
+	public MessageDAO getMessageDAO() {
+		return messageDAO;
+	}
+	public void setMessageDAO(MessageDAO messageDAO) {
+		this.messageDAO = messageDAO;
+	}
+	public CustomerAccountDAO getCustomerAccountDAO() {
+		return customerAccountDAO;
+	}
+	public void setCustomerAccountDAO(CustomerAccountDAO customerAccountDAO) {
+		this.customerAccountDAO = customerAccountDAO;
+	}
 	
 	public MessageWithCustomerAccount load(Integer idMessage)
 	{	
@@ -64,7 +77,7 @@ public class MessageWithCustomerAccountAction
 	public MessageWithCustomerAccountAction()
 	{
 		messageWithCustomerAccount = new MessageWithCustomerAccount();
-		messageDAO = Spring.getSpring().getMessageDAO();
-		customerAccountDAO = Spring.getSpring().getCustomerAccountDAO();
+		//messageDAO = SpringDAO.getSpring().getMessageDAO();
+		//customerAccountDAO = SpringDAO.getSpring().getCustomerAccountDAO();
 	}
 }
