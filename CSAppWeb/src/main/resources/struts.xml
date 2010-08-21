@@ -95,6 +95,9 @@
 		<action name="MessageReceive" class="com.appweb.action.ajax.MessageReceive">
 			<result name="success">/ajax/ajaxsMessageReceive.jsp</result>
 		</action>
+		<action name="MessageSend" class="com.appweb.action.ajax.MessageSend">
+			<result name="success">/ajax/ajaxsMessageSend.jsp</result>
+		</action>
 		<action name="UpdateMessageRead" class="com.appweb.action.ajax.UpdateMessageRead">
 			<result name="success">/ajax/ajaxempty.jsp</result>
 		</action>
