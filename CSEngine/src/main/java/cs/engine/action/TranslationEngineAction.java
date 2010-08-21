@@ -4,6 +4,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import cs.dao.dao.TranslationDAO;
+import cs.dao.spring.Spring;
 import cs.model.Translation;
 
 public class TranslationEngineAction
@@ -12,8 +13,9 @@ public class TranslationEngineAction
 	
 	public TranslationEngineAction()
 	{
-		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
-		caBean = (TranslationDAO) beanFactory.getBean("TranslationDAO");
+		caBean = Spring.getSpring().getTranslationDAO();
+		//XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
+		//caBean = (TranslationDAO) beanFactory.getBean("TranslationDAO");
 	}
 	public Translation load(Integer id)
 	{

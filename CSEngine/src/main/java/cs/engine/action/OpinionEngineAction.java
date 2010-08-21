@@ -4,6 +4,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import cs.dao.dao.OpinionDAO;
+import cs.dao.spring.Spring;
 import cs.model.Opinion;
 
 public class OpinionEngineAction
@@ -12,8 +13,9 @@ public class OpinionEngineAction
 	
 	public OpinionEngineAction()
 	{
-		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
-		caBean = (OpinionDAO) beanFactory.getBean("OpinionDAO");
+		caBean = Spring.getSpring().getOpinionDAO();
+		//XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
+		//caBean = (OpinionDAO) beanFactory.getBean("OpinionDAO");
 	}
 	public Opinion load(Integer id)
 	{

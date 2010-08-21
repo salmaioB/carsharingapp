@@ -4,6 +4,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import cs.dao.dao.VehiculeDAO;
+import cs.dao.spring.Spring;
 import cs.model.Vehicule;
 
 public class VehiculeEngineAction
@@ -12,8 +13,9 @@ public class VehiculeEngineAction
 	
 	public VehiculeEngineAction()
 	{
-		XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
-		caBean = (VehiculeDAO) beanFactory.getBean("VehiculeDAO");
+		caBean = null;//Spring.getSpring().getVehiculeDAO();
+		//XmlBeanFactory beanFactory =  new XmlBeanFactory(new ClassPathResource("bean.xml"));
+		//caBean = (VehiculeDAO) beanFactory.getBean("VehiculeDAO");
 	}
 	public Vehicule load(Integer id)
 	{
