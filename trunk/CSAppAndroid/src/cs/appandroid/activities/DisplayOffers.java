@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cs.appandroid.components.OfferListAdapter;
-import cs.model.Offer;
+import cs.model.OfferWithCustomerAccount;
 import cs.webservice.OffersWS;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -15,7 +15,7 @@ public class DisplayOffers extends ListActivity
 	private OfferListAdapter offerListAdapter;
 	private ProgressDialog offerSearchProgressDialog;
 	
-	private List<Offer> offers = null;
+	private List<OfferWithCustomerAccount> offersWithCustomerAccount = null;
 	
 	private Runnable displayOffersProcess;
 	
@@ -26,9 +26,9 @@ public class DisplayOffers extends ListActivity
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.displayoffers);
 	    
-	    offers = new ArrayList<Offer>();
+	    offersWithCustomerAccount = new ArrayList<OfferWithCustomerAccount>();
 	    
-	    offerListAdapter = new OfferListAdapter(this, R.layout.offerrow, offers);
+	    offerListAdapter = new OfferListAdapter(this, R.layout.offerrow, offersWithCustomerAccount);
         setListAdapter(offerListAdapter);
         
         displayOffersProcess = new Runnable()
@@ -50,11 +50,11 @@ public class DisplayOffers extends ListActivity
 		@Override
         public void run()
 		{
-            if(offers != null && offers.size() > 0)
+            if(offersWithCustomerAccount != null && offersWithCustomerAccount.size() > 0)
             {
                 offerListAdapter.notifyDataSetChanged();
-                for(int i=0; i<offers.size(); i++)
-                	offerListAdapter.add(offers.get(i));
+                for(int i=0; i<offersWithCustomerAccount.size(); i++)
+                	offerListAdapter.add(offersWithCustomerAccount.get(i));
             }
             offerSearchProgressDialog.dismiss();
             offerListAdapter.notifyDataSetChanged();
@@ -66,8 +66,11 @@ public class DisplayOffers extends ListActivity
 	 */
 	private void getOffers()
 	{
+		String startingCity  = "Orleans";
+		String finishingCity = "Paris";
+		
 	    OffersWS offersWS = new OffersWS();
-        offers = offersWS.getSearchOffers();
+	    offersWithCustomerAccount = offersWS.getSearchOffers(startingCity, finishingCity);
                 
         runOnUiThread(returnOfferList);
 	}

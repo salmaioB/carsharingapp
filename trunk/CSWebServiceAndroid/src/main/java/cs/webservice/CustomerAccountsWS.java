@@ -8,8 +8,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import cs.model.CustomerAccount;
 import cs.common.HttpClient;
 import cs.define.Define;

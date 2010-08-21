@@ -2,19 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:layout_width="wrap_content"
 			  android:layout_height="wrap_content"
-			  android:orientation="vertical">
-  
-  <TextView android:id="@+id/toptext"
-            android:layout_width="fill_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-            android:gravity="center_vertical"/>
-            
-  <TextView android:layout_width="fill_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1" 
-            android:id="@+id/bottomtext"
-            android:singleLine="true"
-            android:ellipsize="marquee"/>
-
+			  android:orientation="horizontal">
+    
+	<TableLayout android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:stretchColumns="*">
+		<TableRow>
+			<ImageView android:src="@drawable/icon_customer_woman"/>
+			<LinearLayout android:layout_width="wrap_content"
+	             		  android:layout_height="wrap_content"
+	             		  android:orientation="vertical">
+			 	<TextView android:id="@+id/customer_full_name_textview"
+			 			  android:layout_width="wrap_content"
+	             		  android:layout_height="wrap_content"
+			 	          android:text="Arnaud HURET"/>
+			    <TextView android:layout_width="wrap_content"
+	             		  android:layout_height="wrap_content"
+			              android:text="azwww"/>
+			</LinearLayout>
+			<TextView android:text="date"/>
+		</TableRow>
+		<TableRow>
+		    <TextView android:layout_column="2"
+		    		  android:text="to"/>
+			<TextView android:text="t"/>
+			<TextView android:text="toto"/>
+		</TableRow>
+	</TableLayout>
 </LinearLayout>

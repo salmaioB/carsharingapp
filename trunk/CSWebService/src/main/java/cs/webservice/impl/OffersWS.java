@@ -4,30 +4,51 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import cs.dao.dao.OfferDAO;
+import cs.model.OfferWithCustomerAccount;
 import cs.dao.spring.SpringDAO;
-import cs.model.Offer;
 
 
 public class OffersWS extends ActionSupport
 {
 	private static final long serialVersionUID = 1L;
-	private List<Offer> offers;
- 
+	
+	private String startingCity;
+	private String finishingCity;
+
+	private List<OfferWithCustomerAccount> offersWithCustomerAccount;
+
+	
 	/**
 	 * Getter and setter
 	 */
-	public List<Offer> getOffers() {
-		return offers;
+	public String getStartingCity() {
+		return startingCity;
+	}
+
+	public void setStartingCity(String startingCity) {
+		this.startingCity = startingCity;
+	}
+
+	public String getFinishingCity() {
+		return finishingCity;
+	}
+
+	public void setFinishingCity(String finishingCity) {
+		this.finishingCity = finishingCity;
+	}
+	
+	public List<OfferWithCustomerAccount> getOffersWithCustomerAccount() {
+		return offersWithCustomerAccount;
 	}
  
-	public void setOffers(List<Offer> offers) {
-		this.offers = offers;
+	public void setOffersWithCustomerAccount(List<OfferWithCustomerAccount> offersWithCustomerAccount) {
+		this.offersWithCustomerAccount = offersWithCustomerAccount;
 	}
 
 	public String execute() throws Exception
- 	{		
-	 	OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();//new OfferDAO();
-	 	offers = offerDAO.loadSearchOffers("toto", "orleans", "tata", "paris");
+ 	{
+	 	OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();
+	 	offersWithCustomerAccount = offerDAO.loadSearchOffers(startingCity, finishingCity);
 	    
 	 	return SUCCESS;
  	}
