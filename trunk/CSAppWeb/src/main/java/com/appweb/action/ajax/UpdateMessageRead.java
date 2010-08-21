@@ -3,6 +3,7 @@ package com.appweb.action.ajax;
 import com.appweb.Action;
 
 import cs.dao.dao.MessageDAO;
+import cs.dao.spring.Spring;
 import cs.engine.action.CustomerAccountEngineAction;
 import cs.model.Message;
 
@@ -27,7 +28,7 @@ public class UpdateMessageRead extends Action
 	{
 		System.out.println("Execute UpdateMessageRead");
 		System.out.println("idMessage : "+idMessage);
-		MessageDAO messageDAO = new MessageDAO();
+		MessageDAO messageDAO = Spring.getSpring().getMessageDAO();
 		Message message = messageDAO.load(idMessage);
 		message.setRead(1);
 		
