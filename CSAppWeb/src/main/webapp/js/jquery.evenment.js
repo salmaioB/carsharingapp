@@ -24,7 +24,7 @@ $(document).ready(function()
                             {
                     			alert("Profil enregistre");
                     			//Si success redection vers le profil
-                    			 document.location.href=WEB_ROOT_URL+'CSAppWeb/Accueil#profil';
+                    			document.location.href=WEB_ROOT_URL+'CSAppWeb/Accueil#profil';
                             }
                               });
                     return false;

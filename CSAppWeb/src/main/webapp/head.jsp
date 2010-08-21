@@ -65,23 +65,40 @@
 					// onglet post == ui.index == 3
 			        if ( ui.index == 3)
 			        {
+				        //Requete ajax pour récuperer les messages boite de reception
 			        	$.ajax({
 			                method: 'post',
 			                url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
 			                success: function(data)
 			                {
-			                 $('#receive').html(data);
-
-
-			 				$.accordian('#list2 > div', '#item21', {
-								titles:'.title',
-								contents:'.content',
-								showSpeed:150,
-								hideSpeed:250
-							});
-							
-			    				
+				                 $('#receive').html(data);
+	
+								//Execution des accordions
+				 				$.accordian('#list2 > div', '#item21', {
+									titles:'.title',
+									contents:'.content',
+									showSpeed:150,
+									hideSpeed:250
+								});
 			                }
+			        	});
+
+					    //Requete ajax pour récuperer les messages boite de reception
+				        $.ajax({
+				                method: 'post',
+				                url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
+				                success: function(data)
+				                {
+				                 	$('#send').html(data);
+
+									//Execution des accordions
+					 				$.accordian('#list1 > div', '#item11', {
+										titles:'.title',
+										contents:'.content',
+										showSpeed:150,
+										hideSpeed:250
+									});	    				
+			                	}
 			                  });
 			        }
 		            return true;
