@@ -205,8 +205,8 @@ public class CheckInAjax extends Action
 			getCustomerAccount().setGeolocLongitude(0.0);
 			getCustomerAccount().setIdVehicule(0);
 			getCustomerAccount().setCustomerType(0);
-			getCustomerAccount().setDatetimeLastConnection(null);//new Date());
-			getCustomerAccount().setDatetimeRegistration(null);// new Date() );
+			getCustomerAccount().setDatetimeLastConnection(new Date());
+			getCustomerAccount().setDatetimeRegistration(new Date() );
 			getCustomerAccount().setDatetimeLastOfferCreated(null);
 			getCustomerAccount().setDatetimeLastCarSharing(null);
 			getCustomerAccount().setAddress("");

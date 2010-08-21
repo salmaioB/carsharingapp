@@ -32,8 +32,14 @@ public class UpdateMessageRead extends Action
 		Message message = messageDAO.load(idMessage);
 		message.setRead(1);
 		
-		System.out.println( message.toString() );
-		messageDAO.save(message);
+		System.out.println( "id message :" + message.getId().toString() );
+		
+		System.out.println( "Print message :" + message.toString() );
+		if( messageDAO.save(message) )
+			System.out.println("Enbregistrer");
+		else
+			System.out.println("Pas enregistrer");
+		
 		return SUCCESS;
 	}
 }
