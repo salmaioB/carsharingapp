@@ -2,7 +2,8 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 
-<form method="post" id="checkout_form">
+<form method="post" id="checkout_form" action="<%=cs.define.Define.webRootUrl%>CSAppWeb/CheckOutAjax">
+
 	<span >
 		<s:property value="tr.tr_html(2)"/> <s:property value="customerAccount.customerLogin"/>
 	(<s:property value="nbMessageNotRead"/>)
