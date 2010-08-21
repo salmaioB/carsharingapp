@@ -5,6 +5,7 @@ import java.util.Date;
 import com.appweb.Action;
 
 import cs.engine.action.CustomerAccountEngineAction;
+import cs.engine.spring.SpringEngine;
 import cs.model.CustomerAccount;
 
 public class CheckInAjax extends Action
@@ -165,7 +166,7 @@ public class CheckInAjax extends Action
 			System.out.println(country);
 			System.out.println(zipCode);
 			
-			CustomerAccountEngineAction caea = new CustomerAccountEngineAction();
+			CustomerAccountEngineAction caea = SpringEngine.getSpring().getCustomerAccountEngineAction();//new CustomerAccountEngineAction();
 			getCustomerAccount().setAcceptAnimals(getAcceptAnimals());
 			getCustomerAccount().setAcceptRadio(getAcceptRadio());
 			getCustomerAccount().setAcceptSomker(getAcceptSmoker());
