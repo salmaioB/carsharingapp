@@ -1,5 +1,7 @@
 package cs.webservice;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +31,7 @@ public class OffersWS
 		HttpClient.constructHeader(jsonObjectSend);
 	}
 	
-	public List<OfferWithCustomerAccount> getSearchOffers(String startingCity, String finishingCity)
+	public List<OfferWithCustomerAccount> getSearchOffers(String startingCity, String finishingCity) throws ParseException
 	{	
 		String URL = Define.webServiceRootUrl + "CSAppWeb/OffersWS";
 		
@@ -55,11 +57,20 @@ public class OffersWS
 				// Create an offer and set all attributes
 				OfferWithCustomerAccount offerWithCustomerAccount = new OfferWithCustomerAccount();
 				offerWithCustomerAccount.setId(jsonObjectOfferWithCustomerAccount.getInt("id"));
+				offerWithCustomerAccount.setGender(jsonObjectOfferWithCustomerAccount.getInt("gender"));
 				offerWithCustomerAccount.setFirstName(jsonObjectOfferWithCustomerAccount.getString("firstName"));
 				offerWithCustomerAccount.setLastName(jsonObjectOfferWithCustomerAccount.getString("lastName"));
+
+                offerWithCustomerAccount.setStartingCity(jsonObjectOfferWithCustomerAccount.getString("startingCity"));
+                offerWithCustomerAccount.setFinishingCity(jsonObjectOfferWithCustomerAccount.getString("finishingCity"));                
+				
 				offerWithCustomerAccount.setNumberOfPlaceRemaining(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("numberOfPlaceRemaining")));
 				offerWithCustomerAccount.setPricePerPassenger(Float.parseFloat(jsonObjectOfferWithCustomerAccount.getString("pricePerPassenger")));
-                //offerWithCustomerAccount.setDatetimeStarted(jsonObjectOfferWithCustomerAccount.getString("datetimeStarted")));
+
+				Log.v("azeze", jsonObjectOfferWithCustomerAccount.getString("datetimeStarted"));
+				
+//				SimpleDateFormat datetimeStartedFormatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+//				offerWithCustomerAccount.setDatetimeStarted(datetimeStartedFormatter.parse(jsonObjectOfferWithCustomerAccount.getString("datetimeStarted")));
 
 				offersWithCustomerAccount.add(offerWithCustomerAccount);
 			}

@@ -14,6 +14,7 @@ public class CustomerAccount implements Serializable
 	private Integer id;
 	private String customerLogin;
 	private String customerPassword;
+	private Integer gender;
 	private String lastName;
 	private String firstName;
 	private Double geolocLongitude;
@@ -101,6 +102,14 @@ public class CustomerAccount implements Serializable
 	
 	public void setCustomerPassword(String customerPassword) {
 		this.customerPassword = customerPassword;
+	}
+	
+	public Integer getGender() {
+		return gender;
+	}
+	
+	public void setGender(Integer gender) {
+		this.gender = gender;
 	}
 	
 	// Ugly part

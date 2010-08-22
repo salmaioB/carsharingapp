@@ -1,5 +1,6 @@
 package cs.appandroid.activities;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,8 @@ public class DisplayOffers extends ListActivity
 	private OfferListAdapter offerListAdapter;
 	private ProgressDialog offerSearchProgressDialog;
 	
+	private String startingCity  = "Orleans";
+	private String finishingCity = "Paris";
 	private List<OfferWithCustomerAccount> offersWithCustomerAccount = null;
 	
 	private Runnable displayOffersProcess;
@@ -28,7 +31,7 @@ public class DisplayOffers extends ListActivity
 	    
 	    offersWithCustomerAccount = new ArrayList<OfferWithCustomerAccount>();
 	    
-	    offerListAdapter = new OfferListAdapter(this, R.layout.offerrow, offersWithCustomerAccount);
+	    offerListAdapter = new OfferListAdapter(this, R.layout.offerrow, offersWithCustomerAccount, startingCity, finishingCity);
         setListAdapter(offerListAdapter);
         
         displayOffersProcess = new Runnable()
@@ -63,15 +66,18 @@ public class DisplayOffers extends ListActivity
 	
 	/**
 	 * Retrieve offer list
+	 * @throws ParseException 
 	 */
 	private void getOffers()
 	{
-		String startingCity  = "Orleans";
-		String finishingCity = "Paris";
-		
 	    OffersWS offersWS = new OffersWS();
-	    offersWithCustomerAccount = offersWS.getSearchOffers(startingCity, finishingCity);
-                
+	    try {
+			offersWithCustomerAccount = offersWS.getSearchOffers(startingCity, finishingCity);
+		}
+	    catch (ParseException e) {
+			e.printStackTrace();
+		}
+        
         runOnUiThread(returnOfferList);
 	}
 }
