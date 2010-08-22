@@ -88,7 +88,7 @@ public class MessageDAO extends DAO
 		    "WHERE idCustomerAccount = " + idCustomerAccount +
 	        " AND isRead = 0 ";
 	     
-	     
+	     System.out.println("nbMessageNotRead");
 	     System.out.println(hqlQuery);
 	     
 	     //Query query = session.createSQLQuery(sqlQuery).addEntity(Message.class);
@@ -110,7 +110,7 @@ public class MessageDAO extends DAO
      String SQLQuery = "FROM Message " +
 				       "WHERE idCustomerAccount=" + idCustomerAccount.toString() ;
      
-     
+     System.out.println("loadSearchMessagesReceive");
      System.out.println(SQLQuery);
      
      Query query = session.createQuery(SQLQuery);
@@ -126,7 +126,7 @@ public class MessageDAO extends DAO
      String SQLQuery = "FROM Message " +
 				       "WHERE idCustomerTransmitter=" + idCustomerTransmitter.toString() ;
      
-     
+     System.out.println("loadSearchMessagesSend");
      System.out.println(SQLQuery);
      
      Query query = session.createQuery(SQLQuery);
