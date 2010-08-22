@@ -12,6 +12,22 @@ function updateReadMessage(idMessage)
 
 $(document).ready(function()
 {
+	
+	//Ajout des évenements ajax
+    $('input.saveOffer').click(function()
+            {
+                    var postData = $("input", '#saveOffer_form').serialize();
+                    $.ajax({
+                            method: 'post',
+                            url: WEB_ROOT_URL+'CSAppWeb/SaveOffer',
+                            data: postData,
+                            success: function(data)
+                            {
+                    			alert("offre enregistre");
+                            }
+                              });
+                    return false;
+            });
 	//Ajout des évenements ajax
     $('input.checkin').click(function()
             {

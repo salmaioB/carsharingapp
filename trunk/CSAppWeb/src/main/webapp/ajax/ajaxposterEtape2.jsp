@@ -69,6 +69,7 @@
 				</td>
 				<td>
 					<input id="villepassage1Post" name="villepassage1Post" class="" size="20"/>
+					<input id="priceTrip1" name="priceTrip1" size="3" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
 			<tr>
@@ -77,6 +78,7 @@
 				</td>
 				<td>
 					<input id="villepassage2Post" name="villepassage2Post" class="" size="20"/>
+					<input id="priceTrip2" name="priceTrip2" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
 			<tr>
@@ -85,6 +87,7 @@
 				</td>
 				<td>
 					<input id="villepassage3Post" name="villepassage3Post" class="" size="20"/>
+					<input id="priceTrip3" name="priceTrip3" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
 			<tr>
@@ -93,6 +96,7 @@
 				</td>
 				<td>
 					<input id="villepassage4Post" name="villepassage4Post" class="" size="20"/>
+					<input id="priceTrip4" name="priceTrip4" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
 			<tr>
@@ -101,6 +105,7 @@
 				</td>
 				<td>
 					<input id="villepassage5Post" name="villepassage5Post" class="" size="20"/>
+					<input id="priceTrip5" name="priceTrip5" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
 			<tr>
@@ -108,6 +113,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(34)"/> 6</span>
 				</td>
 					<input id="villepassage6Post" name="villepassage6Post" class="" size="20"/>
+					<input id="priceTrip6" name="priceTrip6" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				<td>
 			</tr>
 			<tr>
@@ -116,6 +122,7 @@
 				</td>
 				<td>
 					<input id="villepassage7Post" name="villepassage7Post" class="" size="20"/>
+					<input id="priceTrip7" name="priceTrip7" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
 			<tr>
@@ -124,6 +131,7 @@
 				</td>
 				<td>
 					<input id="villepassage8Post" name="villepassage8Post" class="" size="20"/>
+					<input id="priceTrip8" name="priceTrip8" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
 			<tr>
@@ -132,6 +140,15 @@
 				</td>
 				<td>
 					<input value="<s:property value="villeStopPost" />"  id="villeStopPost" name="villeStopPost" class="" size="20"/>
+					<input id="priceTripStop" name="priceTripStop" size="3" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Prix total
+				</td>
+				<td align="right">
+					<input id="priceTotal" name="priceTotal" size="3" disabled="disabled"/>
 				</td>
 			</tr>
 			<tr>
