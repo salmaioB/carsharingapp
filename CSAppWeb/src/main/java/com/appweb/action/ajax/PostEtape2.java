@@ -19,7 +19,77 @@ public class PostEtape2 extends Action
 	private String hour;
 	private String role;
 	
+	private Integer priceTrip1;
+	private Integer priceTrip2;
+	private Integer priceTrip3;
+	private Integer priceTrip4;
+	private Integer priceTrip5;
+	private Integer priceTrip6;
+	private Integer priceTrip7;
+	private Integer priceTrip8;
+	private Integer priceTripStop;
+	private Integer priceTotal;
 	
+	public Integer getPriceTotal() {
+		return priceTotal;
+	}
+	public void setPriceTotal(Integer priceTotal) {
+		this.priceTotal = priceTotal;
+	}
+	public Integer getPriceTripStop() {
+		return priceTripStop;
+	}
+	public void setPriceTripStop(Integer priceTripStop) {
+		this.priceTripStop = priceTripStop;
+	}
+	public Integer getPriceTrip1() {
+		return priceTrip1;
+	}
+	public void setPriceTrip1(Integer priceTrip1) {
+		this.priceTrip1 = priceTrip1;
+	}
+	public Integer getPriceTrip2() {
+		return priceTrip2;
+	}
+	public void setPriceTrip2(Integer priceTrip2) {
+		this.priceTrip2 = priceTrip2;
+	}
+	public Integer getPriceTrip3() {
+		return priceTrip3;
+	}
+	public void setPriceTrip3(Integer priceTrip3) {
+		this.priceTrip3 = priceTrip3;
+	}
+	public Integer getPriceTrip4() {
+		return priceTrip4;
+	}
+	public void setPriceTrip4(Integer priceTrip4) {
+		this.priceTrip4 = priceTrip4;
+	}
+	public Integer getPriceTrip5() {
+		return priceTrip5;
+	}
+	public void setPriceTrip5(Integer priceTrip5) {
+		this.priceTrip5 = priceTrip5;
+	}
+	public Integer getPriceTrip6() {
+		return priceTrip6;
+	}
+	public void setPriceTrip6(Integer priceTrip6) {
+		this.priceTrip6 = priceTrip6;
+	}
+	public Integer getPriceTrip7() {
+		return priceTrip7;
+	}
+	public void setPriceTrip7(Integer priceTrip7) {
+		this.priceTrip7 = priceTrip7;
+	}
+	public Integer getPriceTrip8() {
+		return priceTrip8;
+	}
+	public void setPriceTrip8(Integer priceTrip8) {
+		this.priceTrip8 = priceTrip8;
+	}
 	public String getRole() {
 		return role;
 	}

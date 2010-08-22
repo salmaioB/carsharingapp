@@ -1,13 +1,17 @@
 package com.appweb.action.ajax;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.appweb.Action;
 
 import cs.engine.action.CustomerAccountEngineAction;
 import cs.model.CustomerAccount;
+import cs.model.Offer;
+import cs.model.Route;
 
-public class PrintMapPost extends Action
+public class SaveOffer extends Action
 {
 	private String villeStartPost;
 	private String villeStopPost;
@@ -37,14 +41,7 @@ public class PrintMapPost extends Action
 	private Integer priceTrip7;
 	private Integer priceTrip8;
 	private Integer priceTripStop;
-	private Integer priceTotal;
 	
-	public Integer getPriceTotal() {
-		return priceTotal;
-	}
-	public void setPriceTotal(Integer priceTotal) {
-		this.priceTotal = priceTotal;
-	}
 	
 	public Integer getPriceTripStop() {
 		return priceTripStop;
@@ -100,7 +97,6 @@ public class PrintMapPost extends Action
 	public void setPriceTrip8(Integer priceTrip8) {
 		this.priceTrip8 = priceTrip8;
 	}
-
 	public String getVillepassage1Post() {
 		if(villepassage1Post==null) villepassage1Post ="";
 		return villepassage1Post;
@@ -214,10 +210,40 @@ public class PrintMapPost extends Action
 		this.villeStopPost = villeStopPost;
 	}
 
+	public List<String> initRoutes()
+	{
+		List<String> routeName = new ArrayList<String> ();
+		if(!villepassage1Post.equals("")) routeName.add(villepassage1Post);
+		if(!villepassage2Post.equals("")) routeName.add(villepassage2Post);
+		if(!villepassage3Post.equals("")) routeName.add(villepassage3Post);
+		if(!villepassage4Post.equals("")) routeName.add(villepassage4Post);
+		if(!villepassage5Post.equals("")) routeName.add(villepassage5Post);
+		if(!villepassage6Post.equals("")) routeName.add(villepassage6Post);
+		if(!villepassage7Post.equals("")) routeName.add(villepassage7Post);
+		if(!villepassage8Post.equals("")) routeName.add(villepassage8Post);
+		return routeName;
+	}
 	public String execute() throws Exception
 	{
-		System.out.println("PrintMapPost");
-		System.out.println("villepassage1Post : " + villepassage1Post);
+		System.out.println("Save Offer");
+		
+		Offer offer = new Offer();
+		offer.setDateStarted(datepickerPost);
+		offer.setIdDriver(1);
+		offer.setIdOfferType(0);
+		offer.setNumberOfPlaceInitial(nbPassagerPost);
+		offer.setTitle("title");
+		//offer.setPricePerPassenger();
+		
+		List<Route> routes = new ArrayList<Route>(); 
+		for(String s:initRoutes())
+		{
+			Route route = new Route();
+			route.setIdOffer(1);
+			//route.setConversionRateToEuro();
+			//route.setFinishingAddress(0)
+			//routes.add()
+		}
 		return SUCCESS;
 	}
 }
