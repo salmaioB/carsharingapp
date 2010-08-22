@@ -9,6 +9,7 @@ import cs.dao.dao.CustomerAccountDAO;
 import cs.dao.dao.MessageDAO;
 import cs.engine.action.CustomerAccountEngineAction;
 import cs.engine.action.MessageWithCustomerAccountAction;
+import cs.engine.spring.SpringEngine;
 import cs.model.CustomerAccount;
 import cs.model.Message;
 import cs.model.MessageWithCustomerAccount;
@@ -26,7 +27,7 @@ public class MessageSend extends Action
 	public String execute() throws Exception
 	{
 		System.out.println("execute MessageSend");
-		MessageWithCustomerAccountAction messageEngine  = new MessageWithCustomerAccountAction();
+		MessageWithCustomerAccountAction messageEngine  = SpringEngine.getSpring().getMessageWithCustomerAccountAction();//new MessageWithCustomerAccountAction();
 		
 		listMessageSend = new ArrayList<MessageWithCustomerAccount>();
 		listMessageSend.addAll( messageEngine.loadMessageWithCustomerAccountSend( getCustomerAccount().getId() ) );
