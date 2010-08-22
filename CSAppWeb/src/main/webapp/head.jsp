@@ -113,19 +113,10 @@
 		
 		$(document).ready( function () {
 			$('#menuMessages').tabs({ fxFade: true, fxSpeed: 'normal' });
+			$('#menuTrip').tabs({ fxFade: true, fxSpeed: 'normal' });
 			//$(".corner").corner();
 		} ) ;
 	</script>
-
-	<script type="text/javascript">
-		//Mes trip
-		$(function() {
-			$("#accordionMyTrip").accordion({
-				
-			});
-		});
-	</script>
-	
 	<script type="text/javascript">
 		//calendrier
 		$(function() {
