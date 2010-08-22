@@ -4,14 +4,17 @@ import java.util.Date;
 
 public class OfferWithCustomerAccount
 {
-	Integer id;
-	String lastName;
-	String firstName;
+	private Integer id;
+	private Integer gender;
+	private String lastName;
+	private String firstName;
 	
-	Integer numberOfPlaceRemaining;
-	Float pricePerPassenger;
+	private String startingCity;
+	private String finishingCity;
+	private Integer numberOfPlaceRemaining;
+	private Float pricePerPassenger;
 
-    Date datetimeStarted;
+    private Date datetimeStarted;
 	
 	
 	public Integer getId() {
@@ -21,7 +24,15 @@ public class OfferWithCustomerAccount
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+    
+	public Integer getGender() {
+		return gender;
+	}
+	
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
+	
 	public String getLastName() {
 		return lastName;
 	}
@@ -36,6 +47,22 @@ public class OfferWithCustomerAccount
 	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+	
+	public String getStartingCity() {
+		return startingCity;
+	}
+
+	public void setStartingCity(String startingCity) {
+		this.startingCity = startingCity;
+	}
+
+	public String getFinishingCity() {
+		return finishingCity;
+	}
+
+	public void setFinishingCity(String finishingCity) {
+		this.finishingCity = finishingCity;
 	}
 	
 	public Float getPricePerPassenger() {

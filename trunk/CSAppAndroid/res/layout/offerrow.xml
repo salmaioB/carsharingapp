@@ -1,32 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			  android:layout_width="wrap_content"
+			  android:layout_width="fill_parent"
 			  android:layout_height="wrap_content"
 			  android:orientation="horizontal">
     
-	<TableLayout android:layout_width="wrap_content"
+	<TableLayout android:layout_width="fill_parent"
 	             android:layout_height="wrap_content"
 	             android:stretchColumns="*">
-		<TableRow>
-			<ImageView android:src="@drawable/icon_customer_woman"/>
+		<TableRow android:layout_width="fill_parent"
+		          android:layout_height="wrap_content">
+			<ImageView android:id="@+id/customer_gender_imageview"
+			           android:layout_width="24dp"
+			           android:layout_height="wrap_content"
+			           android:layout_gravity="center"
+			           android:src="@drawable/icon_customer_man"/>
 			<LinearLayout android:layout_width="wrap_content"
 	             		  android:layout_height="wrap_content"
 	             		  android:orientation="vertical">
 			 	<TextView android:id="@+id/customer_full_name_textview"
 			 			  android:layout_width="wrap_content"
-	             		  android:layout_height="wrap_content"
-			 	          android:text="Arnaud HURET"/>
+	             		  android:layout_height="wrap_content"/>
 			    <TextView android:layout_width="wrap_content"
 	             		  android:layout_height="wrap_content"
-			              android:text="azwww"/>
+			              android:text="avis"/>
 			</LinearLayout>
-			<TextView android:text="date"/>
+			<LinearLayout android:layout_width="fill_parent"
+	             		  android:layout_height="wrap_content"
+	             		  android:orientation="vertical">
+			 	<TextView android:id="@+id/offer_datetime_started_textview"
+			 			  android:layout_width="fill_parent"
+	             		  android:layout_height="wrap_content"
+	             		  android:gravity="right"/>
+			    <TextView android:id="@+id/offer_number_of_place_remaining_textview"
+			              android:layout_width="fill_parent"
+	             		  android:layout_height="wrap_content"
+	             		  android:gravity="right"/>
+			</LinearLayout>
 		</TableRow>
 		<TableRow>
-		    <TextView android:layout_column="2"
-		    		  android:text="to"/>
-			<TextView android:text="t"/>
-			<TextView android:text="toto"/>
+		    <TextView android:id="@+id/customer_driver_infos_textview"
+		              android:layout_gravity="center"/>
+			<TextView android:id="@+id/offer_price_per_passenger_textview"
+			          android:layout_column="2"
+			          android:gravity="right"/>
+		</TableRow>
+		<TableRow android:layout_width="fill_parent"
+		          android:layout_height="wrap_content">
+		    <LinearLayout android:layout_width="fill_parent"
+		                  android:layout_height="wrap_content"
+		                  android:layout_gravity="center"
+		                  android:orientation="vertical">
+		    	<ImageView android:layout_width="fill_parent"
+		                   android:layout_height="wrap_content"
+		    	           android:src="@drawable/icon_car"/>
+		    </LinearLayout>
+		    <LinearLayout android:layout_width="fill_parent"
+		                  android:layout_height="wrap_content"
+		                  android:layout_span="2"
+		                  android:layout_gravity="center_vertical"
+		                  android:orientation="horizontal">
+		    	<TextView android:id="@+id/offer_starting_city_textview"
+		    	          android:layout_width="wrap_content"
+		                  android:layout_height="wrap_content"/>
+		        <ImageView android:layout_width="wrap_content"
+		                   android:layout_height="wrap_content"
+		                   android:paddingLeft="4dp"
+		                   android:paddingRight="4dp"
+		    	           android:src="@drawable/icon_arrow"/>  
+			 	<TextView android:id="@+id/offer_finishing_city_textview"
+			 	          android:layout_width="wrap_content"
+		                  android:layout_height="wrap_content"/>	   
+		    </LinearLayout>
 		</TableRow>
 	</TableLayout>
 </LinearLayout>

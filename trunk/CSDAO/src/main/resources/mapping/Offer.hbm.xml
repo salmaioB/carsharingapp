@@ -17,19 +17,5 @@
         <property name="pricePerPassenger" type="float" column="price_per_passenger"/>
         <property name="dateStarted" type="timestamp" column="datetime_started"/>
         <property name="dateEnded" type="timestamp" column="datetime_ended"/>
-     </class><!--
-     
-     <class name="OfferWithCustomerAccount" table="offers">
-        <id name="id" column="_id_offer">
-            <generator class="native"/>
-        </id>
-        <property name="pricePerPassenger" type="float" column="price_per_passenger"/>
-        
-        <join table="customer_accounts">  
-        	<key column="_id_customer_account"/>  
-        	<property name="lastName" type="string" column="last_name"/>  
-        	<property name="firstName" type="string" column="first_name"/>
-    	</join>
      </class>
-   
---></hibernate-mapping>
+</hibernate-mapping>

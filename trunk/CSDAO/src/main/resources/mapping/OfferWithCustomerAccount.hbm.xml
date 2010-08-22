@@ -7,12 +7,15 @@
         <id name="id" column="_id_offer">
             <generator class="native"/>
         </id>
+        <property name="startingCity" type="string" column="starting_city"/>
+        <property name="finishingCity" type="string" column="finishing_city"/>
         <property name="pricePerPassenger" type="float" column="price_per_passenger"/>
         <property name="numberOfPlaceRemaining" type="integer" column="number_of_place_remaining"/>
         <property name="datetimeStarted" type="timestamp" column="datetime_started"/>
         
         <join table="customer_accounts">
-        	<key column="_id_customer_account"/>  
+        	<key column="_id_customer_account"/>
+        	<property name="gender" type="integer" column="gender"/>
         	<property name="lastName" type="string" column="last_name"/>  
         	<property name="firstName" type="string" column="first_name"/>
     	</join>

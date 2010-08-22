@@ -63,7 +63,7 @@ public class OfferDAO extends DAO
 	{
 	     Session session = HibernateUtil.currentSession();
 	     
-	     String SQLQuery = "SELECT o._id_offer, c.last_name, c.first_name, sum(r.price) as price_per_passenger, o.number_of_place_remaining, o.datetime_started " +
+	     String SQLQuery = "SELECT o._id_offer, r.starting_city, r.finishing_city, c.gender, c.last_name, c.first_name, sum(r.price) as price_per_passenger, o.number_of_place_remaining, o.datetime_started " +
                            "FROM offers o, routes r, offers_to_routes o_to_r, customer_accounts c, " + 
                            "(" + 
                            " SELECT o1._id_offer AS _id_offer, MIN(r1.route_order) as route_order_min, MAX(r1.route_order) as route_order_max " + 

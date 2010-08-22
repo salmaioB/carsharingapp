@@ -9,6 +9,7 @@
         <id name="id" column="_id_customer_account">
             <generator class="native"/>
         </id>
+        <property name="gender" type="integer" column="gender"/>
         <property name="customerLogin" type="string" column="customer_login"/>
         <property name="customerPassword" type="string" column="customer_password"/>
         <property name="lastName" type="string" column="last_name"/>
