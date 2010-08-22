@@ -9,6 +9,7 @@ import cs.dao.dao.CustomerAccountDAO;
 import cs.dao.dao.MessageDAO;
 import cs.engine.action.CustomerAccountEngineAction;
 import cs.engine.action.MessageWithCustomerAccountAction;
+import cs.engine.spring.SpringEngine;
 import cs.model.CustomerAccount;
 import cs.model.Message;
 import cs.model.MessageWithCustomerAccount;
@@ -34,7 +35,7 @@ public class MessageReceive extends Action
 	public String execute() throws Exception
 	{
 		System.out.println("execute MessageReceive");
-		MessageWithCustomerAccountAction messageEngine  = new MessageWithCustomerAccountAction();
+		MessageWithCustomerAccountAction messageEngine  = SpringEngine.getSpring().getMessageWithCustomerAccountAction();//new MessageWithCustomerAccountAction();
 		
 		listMessageReceive = new ArrayList<MessageWithCustomerAccount>();
 		listMessageReceive.addAll( messageEngine.loadMessageWithCustomerAccountReceive( getCustomerAccount().getId() ) );
