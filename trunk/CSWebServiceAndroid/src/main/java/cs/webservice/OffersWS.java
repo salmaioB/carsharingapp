@@ -67,10 +67,9 @@ public class OffersWS
 				offerWithCustomerAccount.setNumberOfPlaceRemaining(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("numberOfPlaceRemaining")));
 				offerWithCustomerAccount.setPricePerPassenger(Float.parseFloat(jsonObjectOfferWithCustomerAccount.getString("pricePerPassenger")));
 
-				Log.v("azeze", jsonObjectOfferWithCustomerAccount.getString("datetimeStarted"));
-				
-//				SimpleDateFormat datetimeStartedFormatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-//				offerWithCustomerAccount.setDatetimeStarted(datetimeStartedFormatter.parse(jsonObjectOfferWithCustomerAccount.getString("datetimeStarted")));
+				// Ugly part
+				SimpleDateFormat datetimeStartedFormatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+				offerWithCustomerAccount.setDatetimeStarted(datetimeStartedFormatter.parse(jsonObjectOfferWithCustomerAccount.getString("datetimeStarted")));
 
 				offersWithCustomerAccount.add(offerWithCustomerAccount);
 			}

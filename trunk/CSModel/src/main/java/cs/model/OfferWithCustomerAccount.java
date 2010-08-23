@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.swing.text.DateFormatter;
 
@@ -87,17 +88,22 @@ public class OfferWithCustomerAccount
         }
 
         /**
-         * Todo modif
-         * Idealement faudrait retourner un objet Date
-         * @return
+         * Ugly part
+         * TODO: Idealement faudrait retourner un objet Date
          */
-        public String getDatetimeStarted() {
-    		//SimpleDateFormat  simpleFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    		//DateFormatter df = new DateFormatter();
-    		//return simpleFormat.format(datetimeStarted);
-            //return DateFormat.getDateInstance( DateFormat.MEDIUM ).format( datetimeStarted ) ;
-        	SimpleDateFormat  simpleFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        	System.out.println( simpleFormat.format(datetimeStarted) );
+        public String getDatetimeStarted()
+        {
+        	SimpleDateFormat simpleFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+        	System.out.println(simpleFormat.format(datetimeStarted));
+        	
+        	return simpleFormat.format(datetimeStarted);
+        }
+        
+        // Ugly part
+        public String getDatetimeStartedToDisplay()
+        {
+        	SimpleDateFormat simpleFormat = new SimpleDateFormat("EEE dd MMM - HH:mm", new Locale("fr"));
+        	
         	return simpleFormat.format(datetimeStarted);
         }
 

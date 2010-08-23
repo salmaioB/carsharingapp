@@ -11,6 +11,7 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
+
 public class DisplayOffers extends ListActivity
 {
 	private OfferListAdapter offerListAdapter;
@@ -28,7 +29,7 @@ public class DisplayOffers extends ListActivity
 	{
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.displayoffers);
-	    
+
 	    offersWithCustomerAccount = new ArrayList<OfferWithCustomerAccount>();
 	    
 	    offerListAdapter = new OfferListAdapter(this, R.layout.offerrow, offersWithCustomerAccount, startingCity, finishingCity);
@@ -39,15 +40,16 @@ public class DisplayOffers extends ListActivity
 			@Override
 			public void run()
 			{
-				getOffers();
+				getOffers();				
 			}
 		};
 		
 		Thread thread =  new Thread(null, displayOffersProcess, "SearchOrderThread");
 	    thread.start();
-	    offerSearchProgressDialog = ProgressDialog.show(DisplayOffers.this, "Please wait...", "Retrieving data ...", true);
+	    
+	    offerSearchProgressDialog = ProgressDialog.show(SearchOffers.searchOffer, "Please wait...", "Display offers...");
 	}
-	
+		
 	private Runnable returnOfferList = new Runnable()
 	{
 		@Override
@@ -59,6 +61,7 @@ public class DisplayOffers extends ListActivity
                 for(int i=0; i<offersWithCustomerAccount.size(); i++)
                 	offerListAdapter.add(offersWithCustomerAccount.get(i));
             }
+            
             offerSearchProgressDialog.dismiss();
             offerListAdapter.notifyDataSetChanged();
         }
