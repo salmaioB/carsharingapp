@@ -30,6 +30,14 @@ public class PostEtape2 extends Action
 	private Integer priceTripStop;
 	private Integer priceTotal;
 	
+	private String description;
+	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public Integer getPriceTotal() {
 		return priceTotal;
 	}

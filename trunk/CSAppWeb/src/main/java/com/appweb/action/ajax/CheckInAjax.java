@@ -27,7 +27,17 @@ public class CheckInAjax extends Action
 	private Boolean acceptSmoker;
 	private Boolean acceptToDiscuss;
 	private Boolean acceptToMakeADetour;
+	private Integer gender;
 	
+	public Integer getGender() {
+		return gender;
+	}
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
 	public String getAddress() {
 		if(address == null) address = "";
 		return address;
@@ -182,6 +192,7 @@ public class CheckInAjax extends Action
 			getCustomerAccount().setAddress(getAddress());
 			getCustomerAccount().setCountry(getCountry());
 			getCustomerAccount().setZipCode(getZipCode());
+			getCustomerAccount().setGender(gender);
 			
 			System.out.println("Ville : " + getCustomerAccount().getCountry());
 			
@@ -194,29 +205,22 @@ public class CheckInAjax extends Action
 		{
 			System.out.println("user not logger : " + customerLogin);
 
+			getCustomerAccount().setAcceptAnimals(getAcceptAnimals());
+			getCustomerAccount().setAcceptRadio(getAcceptRadio());
+			getCustomerAccount().setAcceptSomker(getAcceptSmoker());
+			getCustomerAccount().setAcceptToDiscuss(getAcceptToDiscuss());
+			getCustomerAccount().setAcceptToMakeADetour(getAcceptToMakeADetour());
 			getCustomerAccount().setCustomerLogin(getCustomerLogin());
 			getCustomerAccount().setCustomerPassword(getCustomerPassword());
+			getCustomerAccount().setPhone(getPhone());
+			getCustomerAccount().setLastName(getLastName());
+			getCustomerAccount().setFirstName(getFirstName());
 			getCustomerAccount().setEmailAddress(getEmailAddress());
-			getCustomerAccount().setAcceptAnimals(false);
-			getCustomerAccount().setAcceptRadio(false);
-			getCustomerAccount().setAcceptSomker(false);
-			getCustomerAccount().setAcceptToDiscuss(false);
-			getCustomerAccount().setAcceptToMakeADetour(false);
-			getCustomerAccount().setGeolocLatitude(0.0);
-			getCustomerAccount().setGeolocLongitude(0.0);
-			getCustomerAccount().setIdVehicule(0);
-			getCustomerAccount().setCustomerType(0);
-			getCustomerAccount().setDatetimeLastConnection(new Date());
-			getCustomerAccount().setDatetimeRegistration(new Date() );
-			getCustomerAccount().setDatetimeLastOfferCreated(null);
-			getCustomerAccount().setDatetimeLastCarSharing(null);
-			getCustomerAccount().setAddress("");
-			getCustomerAccount().setCountry("");
-			getCustomerAccount().setZipCode("");
-			getCustomerAccount().setPhone("");
-			getCustomerAccount().setMobile("");
-			getCustomerAccount().setLastName("");
-			getCustomerAccount().setFirstName("");
+			getCustomerAccount().setMobile(getMobile());
+			getCustomerAccount().setAddress(getAddress());
+			getCustomerAccount().setCountry(getCountry());
+			getCustomerAccount().setZipCode(getZipCode());
+			getCustomerAccount().setGender(gender);
 			
 			CustomerAccount ca = getCustomerAccount();
 

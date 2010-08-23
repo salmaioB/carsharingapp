@@ -1,11 +1,8 @@
 package com.appweb.action.ajax;
 
 import java.text.SimpleDateFormat;
-
+import java.util.Date;
 import com.appweb.Action;
-
-import cs.engine.action.CustomerAccountEngineAction;
-import cs.model.CustomerAccount;
 
 public class PrintMapPost extends Action
 {
@@ -17,7 +14,7 @@ public class PrintMapPost extends Action
 	private String addressStartPost;
 	private String addressStopPost;
 	private Integer nbPassagerPost;
-	private java.util.Date datepickerPost;
+	private Date datepickerPost;
 	
 	private String villepassage1Post;
 	private String villepassage2Post;
@@ -39,54 +36,69 @@ public class PrintMapPost extends Action
 	private Integer priceTripStop;
 	private Integer priceTotal;
 	
+	public PrintMapPost()
+	{
+		priceTrip1 = 0;
+		priceTrip2 = 0;
+		priceTrip3 = 0;
+		priceTrip4 = 0;
+		priceTrip5 = 0;
+		priceTrip6 = 0;
+		priceTrip7 = 0;
+		priceTrip8 = 0;
+		priceTripStop = 0;
+		priceTotal = 0;
+	}
+	
 	public Integer getPriceTotal() {
 		return priceTotal;
 	}
 	public void setPriceTotal(Integer priceTotal) {
-		this.priceTotal = priceTotal;
+		if(priceTotal != null) this.priceTotal = priceTotal;
 	}
 	
 	public Integer getPriceTripStop() {
 		return priceTripStop;
 	}
 	public void setPriceTripStop(Integer priceTripStop) {
-		this.priceTripStop = priceTripStop;
+		if(priceTripStop != null)  this.priceTripStop = priceTripStop;
 	}
 	public Integer getPriceTrip1() {
 		return priceTrip1;
 	}
 	public void setPriceTrip1(Integer priceTrip1) {
-		this.priceTrip1 = priceTrip1;
+		if(priceTrip1 != null)  this.priceTrip1 = priceTrip1;
 	}
 	public Integer getPriceTrip2() {
 		return priceTrip2;
 	}
 	public void setPriceTrip2(Integer priceTrip2) {
-		this.priceTrip2 = priceTrip2;
+		if(priceTrip2 != null)  this.priceTrip2 = priceTrip2;
 	}
 	public Integer getPriceTrip3() {
 		return priceTrip3;
 	}
 	public void setPriceTrip3(Integer priceTrip3) {
-		this.priceTrip3 = priceTrip3;
+		if(priceTrip3 != null)  this.priceTrip3 = priceTrip3;
 	}
 	public Integer getPriceTrip4() {
 		return priceTrip4;
 	}
 	public void setPriceTrip4(Integer priceTrip4) {
-		this.priceTrip4 = priceTrip4;
+		if(priceTrip4 != null)  this.priceTrip4 = priceTrip4;
 	}
 	public Integer getPriceTrip5() {
 		return priceTrip5;
 	}
 	public void setPriceTrip5(Integer priceTrip5) {
+		if(priceTrip1 != null)  
 		this.priceTrip5 = priceTrip5;
 	}
 	public Integer getPriceTrip6() {
 		return priceTrip6;
 	}
 	public void setPriceTrip6(Integer priceTrip6) {
-		this.priceTrip6 = priceTrip6;
+		if(priceTrip1 != null)  this.priceTrip6 = priceTrip6;
 	}
 	public Integer getPriceTrip7() {
 		return priceTrip7;
@@ -98,7 +110,7 @@ public class PrintMapPost extends Action
 		return priceTrip8;
 	}
 	public void setPriceTrip8(Integer priceTrip8) {
-		this.priceTrip8 = priceTrip8;
+		if(priceTrip8 != null)  this.priceTrip8 = priceTrip8;
 	}
 
 	public String getVillepassage1Post() {
@@ -158,7 +170,7 @@ public class PrintMapPost extends Action
 		this.villepassage8Post = villepassage8Post;
 	}
 	public String getDatepickerPost() {
-		SimpleDateFormat  simpleFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat  simpleFormat = new SimpleDateFormat("MM/dd/yyyy");
 		System.out.println(simpleFormat.format(datepickerPost));	
 		return simpleFormat.format(datepickerPost);
 	}
@@ -214,10 +226,16 @@ public class PrintMapPost extends Action
 		this.villeStopPost = villeStopPost;
 	}
 
+	public Integer calculPriceTotal()
+	{
+		return priceTrip1 +	priceTrip2 + priceTrip3 + priceTrip4 + priceTrip5 + priceTrip6 + priceTrip7 + priceTrip8 + priceTripStop;
+	}
 	public String execute() throws Exception
 	{
 		System.out.println("PrintMapPost");
 		System.out.println("villepassage1Post : " + villepassage1Post);
+		priceTotal = calculPriceTotal();
+		System.out.println("priceTotal : " + priceTotal);
 		return SUCCESS;
 	}
 }
