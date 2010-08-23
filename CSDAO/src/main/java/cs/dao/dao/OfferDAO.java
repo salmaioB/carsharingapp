@@ -76,13 +76,22 @@ public class OfferDAO extends DAO
                            "  OR r1.finishing_city = '" + finishingCity.toString() + "' " + 
                            " )" + 
                            " GROUP BY o1._id_offer " +
-                           ") as test " + 
+                           ") as routes_min_max " + 
                            "WHERE o._id_offer = test._id_offer " +
                            "AND o._id_driver=c._id_customer_account " + 
                            "AND o._id_offer=o_to_r._id_offer " +
-                           "AND o_to_r._id_route = r._id_route " + 
-                           "AND r.route_order >= test.route_order_min " +
-                           "AND r.route_order <= test.route_order_max " +
+                           "AND o_to_r._id_route = r._id_route " +
+                           "AND " +
+                           "( " +
+                           " routes_min_max.route_order_min != routes_min_max.route_order_max " +
+                           " OR " +
+                           " (" +
+                           "  r.starting_city = '" + startingCity.toString() + "' " +
+                           "  AND r.finishing_city = '" + finishingCity.toString() + "'" +
+                           " )" +
+                           ") " +
+                           "AND r.route_order >= routes_min_max.route_order_min " +
+                           "AND r.route_order <= routes_min_max.route_order_max " +
                            "GROUP BY o._id_offer";
 	     
 	     System.out.println(SQLQuery);
