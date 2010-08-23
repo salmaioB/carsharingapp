@@ -15,5 +15,6 @@
         <property name="price" type="float" column="price"/>
         <property name="conversionRateToEuro" type="float" column="conversion_rate_to_euro"/>
         <property name="currencyCode" type="string" column="currency_code"/>
+        <property name="routeOrder" type="integer" column="route_order"/>
      </class>
 </hibernate-mapping>
