@@ -12,7 +12,16 @@ public class Route
 	private Float price;
 	private Float conversionRateToEuro;
 	private String currencyCode;
+	private Integer routeOrder;
 	
+	public Integer getRouteOrder() {
+		return routeOrder;
+	}
+
+	public void setRouteOrder(Integer routeOrder) {
+		this.routeOrder = routeOrder;
+	}
+
 	public Integer getId() {
 		return id;
 	}
