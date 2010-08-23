@@ -77,7 +77,7 @@ public class OfferDAO extends DAO
                            " )" + 
                            " GROUP BY o1._id_offer " +
                            ") as routes_min_max " + 
-                           "WHERE o._id_offer = test._id_offer " +
+                           "WHERE o._id_offer = routes_min_max._id_offer " +
                            "AND o._id_driver=c._id_customer_account " + 
                            "AND o._id_offer=o_to_r._id_offer " +
                            "AND o_to_r._id_route = r._id_route " +

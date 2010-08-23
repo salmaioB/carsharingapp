@@ -1,8 +1,6 @@
 package cs.appandroid.components;
 
 import java.util.List;
-import java.util.StringTokenizer;
-
 
 import cs.appandroid.activities.R;
 import cs.model.OfferWithCustomerAccount;
@@ -83,8 +81,10 @@ public class OfferListAdapter extends ArrayAdapter<OfferWithCustomerAccount>
 		    
 			String lastName = offerWithCustomerAccount.getLastName().substring(0,1);
 			customerFullNameTextView.setText(offerWithCustomerAccount.getFirstName() + " " + lastName + ".");
-		    
-//			offerDateTimeStartedTextView.setText(offerWithCustomerAccount.getDatetimeStarted().toString());
+			
+			Log.v("date", offerWithCustomerAccount.getDatetimeStarted());
+			
+			offerDateTimeStartedTextView.setText(offerWithCustomerAccount.getDatetimeStartedToDisplay());
 			
 			switch(offerWithCustomerAccount.getNumberOfPlaceRemaining())
 			{

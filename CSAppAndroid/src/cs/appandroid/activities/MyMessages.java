@@ -2,6 +2,7 @@ package cs.appandroid.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Window;
 
 
 public class MyMessages extends Activity
@@ -12,8 +13,8 @@ public class MyMessages extends Activity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.mymessages);
-		
-		
+        
+	    getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.titlebar);
+	    setContentView(R.layout.mymessages);
 	}
 }
