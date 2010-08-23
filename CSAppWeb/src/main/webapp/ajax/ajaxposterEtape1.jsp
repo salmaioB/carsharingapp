@@ -66,6 +66,14 @@
 				</tr>
 				<tr>
 					<td>
+						<span style="width: 160px;">description</span>
+					</td>
+					<td>
+						<textarea id="description" name="description" tyle="width:350px; height:100px;"  ></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<input type="submit" class="Etape2Post" value="Etape 2"/>
 					</td>
 				</tr>
