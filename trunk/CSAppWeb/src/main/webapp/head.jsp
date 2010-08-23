@@ -10,13 +10,16 @@
 	</script>
 	<script type="text/javascript" src="js/jquery-1.4.2.js"></script>
 	
+	<script type="text/javascript" src="js/jquery.ui/jquery.validate.js"></script>
+		
 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.core.js"></script>
 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.widget.js"></script>
-	<script type="text/javascript" src="js/jquery.ui/jquery.ui.accordion.js"></script>
-		
+			
 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.datepicker.js"></script>
-	<script type="text/javascript" src="js/jquery.ui//jquery.ui.tabs.js"></script>
-	<script type="text/javascript" src="js/jquery.ui//jquery-ui-personalized-1.6rc6.js"></script>	
+	<script type="text/javascript" src="js/jquery.ui/jquery.ui.tabs.js"></script>
+	<script type="text/javascript" src="js/jquery.ui/jquery-ui-personalized-1.6rc6.js"></script>
+
+		
 	<script type="text/javascript" src="js/jquery.corner.js"></script>
     <script type="text/javascript" src="js/jquery.evenment.js"></script>
     
@@ -30,7 +33,7 @@
 	<script type="text/javascript" src="js/jquery.time/jquery.strings.js"></script>
 	<script type="text/javascript" src="js/jquery.time/jquery.anchorHandler.js"></script>
 	<script type="text/javascript" src="js/jquery.time/ui.timepickr.js"></script>
-	 	     
+
 	<!--
 	<link type="text/css" href="css/jquery.tabs.css" rel="stylesheet" >
 	-->
@@ -52,6 +55,7 @@
 	</style>
 	<script type="text/javascript">
 		var mapPostInitialize = false;
+		var mapProfilInitialize = false;
 		$(document).ready( function () { 
 			$('#container').tabs({
 		        select: function(e, ui) {
@@ -61,6 +65,13 @@
 			        	mapPostInitialize=true;
 						initializeMapEmpty('divMapStart');
 						initializeMapEmpty('divMapStop');
+			        }
+					// onglet post == ui.index == 3
+			        if ( mapProfilInitialize == false && ui.index == 2)
+			        {
+			        	mapProfilInitialize = true;
+						//Initialisation de la carte du profil
+						initializeMapEmpty('divMapProfil');
 			        }
 					// onglet post == ui.index == 3
 			        if ( ui.index == 3)
@@ -245,9 +256,18 @@
 				if($("#"+price8).val() != ""){
 					 price += parseFloat($("#"+price8).val());
 				}
-
-				cityStop
+				if($("#"+cityStop).val() != ""){
+					 price += parseFloat($("#"+cityStop).val());
+				}
+				
 				$("#"+priceTotal).val( price );
 			}
+		</script>
+		
+		<script type="text/javascript">
+			//Exécution du controle des formulaires
+			$(document).ready(function(){
+				$('#checkaddress_form').validate();
+			});			
 		</script>
 </head> 

@@ -5,21 +5,23 @@
 		<table>	
 			<tr>
 				<td>
-					<span style="width: 160px;">Login</span>
+					<em>*</em><span style="width: 160px;">Login</span>
 				</td>
 				<td>
-					<input id="customerLogin" name="customerLogin" class="" size="20" value="<s:property value="customerAccount.customerLogin" />"/>
+					<input id="customerLogin" name="customerLogin" class="required" size="20" value="<s:property value="customerAccount.customerLogin" />"/>
 				</td>
 				<td rowspan="10" >
 					<input type="submit" class="checkAddress" value="Valider la position de l'adresse" size="50"/>
 					<br />
 					<input type="submit" class="testAddress" value="<s:property value="tr.tr_html(35)"/>" size="50" />
-					<div id="divProfilMapAnddroid" style="height:300px;"></div>
+					<div id="divProfilMapAnddroid" style="height:300px;">
+						<div id="divMapProfil" style="width: 500px; height: 300px"></div>
+					</div>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<span style="width: 160px;"><s:property value="tr.tr_html(29)"/></span>
+					<span style="width: 160px;"><em>*</em><s:property value="tr.tr_html(29)"/></span>
 				</td>
 				<td colspan="2">
 					<input name="customerPassword" type="password" size="20" value="<s:property value="customerAccount.customerPassword" />"/>
@@ -78,7 +80,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(11)"/></span>
 				</td>
 				<td colspan="2">
-					<input id="ville" name="ville" size="20" value="<s:property value="customerAccount.ville" />"/>
+					<input id="ville" name="ville" size="20" value="<s:property value="customerAccount.country" />"/>
 				</td>
 			</tr>
 			<tr>
@@ -86,7 +88,19 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(23)"/></span>
 				</td>
 				<td colspan="2">
-					<input name="cp" size="20" value="<s:property value="customerAccount.cp" />"/>
+					<input id="zipCode" name="zipCode" size="20" value="<s:property value="customerAccount.zipCode" />" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					sexe
+				</td>
+				<td>
+					<span style="border:2px;">
+						<span style="width:100px; position:relative; bottom:4px;"><s:property value="tr.tr_html(42)"/></span><input type="radio" id="gender" name="gender" value="1" <s:if test="customerAccount.gender==1">checked="checked"</s:if> ><img src="img/icon/icon_customer_man.png" width="30"/>
+						<span style="width:100px; position:relative; bottom:4px;">| </span> 
+						<span style="width:100px; position:relative; bottom:4px;"><s:property value="tr.tr_html(43)"/></span><input type="radio" id="gender" name="gender" value="0" <s:if test="customerAccount.gender==0">checked="checked"</s:if>><img src="img/icon/icon_customer_woman.png" width="30"/> 
+					</span>
 				</td>
 			</tr>
 			<tr>

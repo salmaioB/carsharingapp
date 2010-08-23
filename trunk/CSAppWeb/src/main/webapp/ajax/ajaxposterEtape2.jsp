@@ -41,6 +41,14 @@
 			</tr>
 			<tr>
 				<td>
+					<span style="width: 160px;">description</span>
+				</td>
+				<td>
+					<textarea readonly="readonly" id="description" name="description" style="width:350px; height:100px;"  ><s:property value="description"/></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<span style="width: 160px;"><s:property value="tr.tr_html(15)"/></span>
 				</td>
 				<td>
@@ -145,10 +153,10 @@
 			</tr>
 			<tr>
 				<td>
-					Prix total
+					<span style="width: 160px;">Prix total</span>
 				</td>
 				<td align="right">
-					<input id="priceTotal" name="priceTotal" size="3" disabled="disabled"/>
+					<input id="priceTotal" name="priceTotal" size="3" disabled="disabled" />
 				</td>
 			</tr>
 			<tr>
@@ -156,8 +164,8 @@
 					<input type="submit" class="Etape3Post" value="Etape 3" />
 				</td>
 			</tr>
-		</form>
-	</table>
+		</table>
+	</form>
 <br />
 <div id="postPrintMap"></div>
 </div>

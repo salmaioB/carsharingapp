@@ -10,24 +10,28 @@ function updateReadMessage(idMessage)
         return false;
     }
 
+//Ajout des évenements ajax
+function addEvementAjaxToSaveOffer()
+{
+	$('input.saveOffer').click(function()
+	        {
+				alert("saveOffer");
+	                var postData = $("input", '#saveOffer_form').serialize();
+	                alert(postData);
+	                $.ajax({
+	                        method: 'post',
+	                        url: WEB_ROOT_URL+'CSAppWeb/SaveOffer',
+	                        data: postData,
+	                        success: function(data)
+	                        {
+	                			alert("offre enregistre");
+	                        }
+	                          });
+	                return false;
+	        });
+}
 $(document).ready(function()
 {
-	
-	//Ajout des évenements ajax
-    $('input.saveOffer').click(function()
-            {
-                    var postData = $("input", '#saveOffer_form').serialize();
-                    $.ajax({
-                            method: 'post',
-                            url: WEB_ROOT_URL+'CSAppWeb/SaveOffer',
-                            data: postData,
-                            success: function(data)
-                            {
-                    			alert("offre enregistre");
-                            }
-                              });
-                    return false;
-            });
 	//Ajout des évenements ajax
     $('input.checkin').click(function()
             {
@@ -174,6 +178,7 @@ $(document).ready(function()
 	                                	//$('#postPrintMap').html(data);
 	                        			$('#etape1').html(data);
 	                        			initializeMapParcoursPost();
+	                        			addEvementAjaxToSaveOffer();
 	                                }
 	                                  });
 	                        

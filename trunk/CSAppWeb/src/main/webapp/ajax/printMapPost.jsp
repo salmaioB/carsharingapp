@@ -5,7 +5,7 @@
 	Etape 3
 </div>
 
-<form post="POST" class="saveOffer_form">
+<form method="POST" class="saveOffer_form" id="saveOffer_form">
 	<table>
 		<tr>
 			<td>
@@ -21,6 +21,22 @@
 			</td>
 			<td>
 				<input value="<s:property value="hour" />" readonly="readonly" id="hour" name="hour" class="" size="2" />:<input readonly="readonly" value="<s:property value="minutes" />" id="minutes" name="minutes" size="2" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span style="width: 160px;"><s:property value="tr.tr_html(13)"/></span>
+			</td>
+			<td>
+				<input readonly="readonly" value="<s:property value="nbPassagerPost" />" id="nbPassagerPost" name="nbPassagerPost" size="4" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span style="width: 160px;">description</span>
+			</td>
+			<td>
+				<textarea readonly="readonly" id="description" name="description" style="width:350px; height:100px;"  ><s:property value="description"/></textarea>
 			</td>
 		</tr>
 		<tr>
@@ -44,7 +60,7 @@
 				<span style="width: 160px;"><s:property value="tr.tr_html(32)"/></span>
 			</td>
 			<td>
-				<input readonly="readonly"  id="villeStartPost" name="villeStartPost" class="" size="20" value="<s:property value="villeStartPost"/>"/>
+				<input readonly="readonly" id="villeStartPost" name="villeStartPost" class="" size="20" value="<s:property value="villeStartPost"/>"/>
 			</td>
 		</tr>
 		<s:if test="!villepassage1Post.equals('')">
@@ -54,7 +70,7 @@
 				</td>
 				<td>
 					<input value="<s:property value="villepassage1Post" />" readonly="readonly" id="villepassage1Post" name="villepassage1Post" class="" size="20"/>
-					<input value="<s:property value="priceTrip1" />" id="priceTrip1" name="priceTrip1" size="3" disabled="disabled"  />
+					<input value="<s:property value="priceTrip1" />" id="priceTrip1" name="priceTrip1" size="3" readonly="readonly"   />
 				</td>
 			</tr>
 		</s:if>
@@ -65,7 +81,7 @@
 				</td>
 				<td>
 					<input value="<s:property value="villepassage2Post" />" readonly="readonly" id="villepassage2Post" name="villepassage2Post" class="" size="20"/>
-					<input value="<s:property value="priceTrip2" />" id="priceTrip2" name="priceTrip2" size="3" disabled="disabled"  />
+					<input value="<s:property value="priceTrip2" />" id="priceTrip2" name="priceTrip2" size="3" readonly="readonly"   />
 				</td>
 			</tr>
 		</s:if>
@@ -76,7 +92,7 @@
 				</td>
 				<td>
 					<input value="<s:property value="villepassage3Post" />" readonly="readonly" id="villepassage3Post" name="villepassage3Post" class="" size="20"/>
-					<input value="<s:property value="priceTrip3" />" id="priceTrip3" name="priceTrip3" size="3" disabled="disabled"  />
+					<input value="<s:property value="priceTrip3" />" id="priceTrip3" name="priceTrip3" size="3" readonly="readonly"   />
 				</td>
 			</tr>
 		</s:if>
@@ -87,7 +103,7 @@
 				</td>
 				<td>
 					<input value="<s:property value="villepassage4Post" />" readonly="readonly"  id="villepassage4Post" name="villepassage4Post" class="" size="20"/>
-					<input value="<s:property value="priceTrip4" />" id="priceTrip4" name="priceTrip4" size="3" disabled="disabled"  />
+					<input value="<s:property value="priceTrip4" />" id="priceTrip4" name="priceTrip4" size="3" readonly="readonly"   />
 				</td>
 			</tr>
 		</s:if>
@@ -98,7 +114,7 @@
 				</td>
 				<td>
 					<input value="<s:property value="villepassage5Post" />" readonly="readonly" id="villepassage5Post" name="villepassage5Post" class="" size="20"/>
-					<input value="<s:property value="priceTrip5" />" id="priceTrip5" name="priceTrip5" size="3" disabled="disabled"  />
+					<input value="<s:property value="priceTrip5" />" id="priceTrip5" name="priceTrip5" size="3" readonly="readonly"   />
 				</td>
 			</tr>
 		</s:if>
@@ -108,7 +124,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(34)"/> 6</span>
 				</td>
 					<input value="<s:property value="villepassage6Post" />" readonly="readonly"  id="villepassage6Post" name="villepassage6Post" class="" size="20"/>
-					<input value="<s:property value="priceTrip6" />" id="priceTrip6" name="priceTrip6" size="3" disabled="disabled"  />
+					<input value="<s:property value="priceTrip6" />" id="priceTrip6" name="priceTrip6" size="3" readonly="readonly"   />
 				<td>
 			</tr>
 		</s:if>
@@ -119,7 +135,7 @@
 				</td>
 				<td>
 					<input value="<s:property value="villepassage7Post" />" readonly="readonly" id="villepassage7Post" name="villepassage7Post" class="" size="20"/>
-					<input value="<s:property value="priceTrip7" />" id="priceTrip7" name="priceTrip7" size="3" disabled="disabled"  />
+					<input value="<s:property value="priceTrip7" />" id="priceTrip7" name="priceTrip7" size="3" readonly="readonly"   />
 				</td>
 			</tr>
 		</s:if>
@@ -130,7 +146,7 @@
 				</td>
 				<td>
 					<input value="<s:property value="villepassage8Post" />" readonly="readonly" id="villepassage8Post" name="villepassage8Post" class="" size="20"/>
-					<input value="<s:property value="priceTrip8" />" id="priceTrip8" name="priceTrip8" size="3" disabled="disabled"  />
+					<input value="<s:property value="priceTrip8" />" id="priceTrip8" name="priceTrip8" size="3" readonly="readonly"   />
 				</td>
 			</tr>
 		</s:if>
@@ -140,7 +156,7 @@
 			</td>
 			<td>
 				<input readonly="readonly" id="villeStopPost" name="villeStopPost" class="" size="20" value="<s:property value="villeStopPost"/>"/>
-				<input value="<s:property value="priceTripStop" />" id="priceTripStop" name="priceTripStop" size="3" disabled="disabled" />
+				<input value="<s:property value="priceTripStop" />" id="priceTripStop" name="priceTripStop" size="3" readonly="readonly" />
 			</td>
 		</tr>
 		<tr>
@@ -148,7 +164,7 @@
 				Prix total
 			</td>
 			<td align="left">
-				<input value="<s:property value="priceTotal" />" name="priceTotal" id="priceTotal"  size="3" disabled="disabled"/>
+				<input value="<s:property value="priceTotal" />" name="priceTotal" id="priceTotal"  size="3" readonly="readonly" />
 			</td>
 		</tr>
 		<tr>
