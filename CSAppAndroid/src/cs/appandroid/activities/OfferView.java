@@ -20,7 +20,7 @@ import android.widget.TableLayout.LayoutParams;
 
 public class OfferView extends Activity implements OnClickListener
 {
-	private ImageView customerPhotoImageView;
+	//private ImageView customerPhotoImageView;
 	private TextView customerFullNameTextView;
 	private TextView customerDateRegistrationTextView;
 	
@@ -33,6 +33,7 @@ public class OfferView extends Activity implements OnClickListener
 	private Button customerMobileButton;
 	private Button customerSendAMessageButton;
 	
+	OfferWithCustomerAccount offerWithCustomerAccount;
 	private String startingCity;
 	private String finishingCity;
 	private String customerMobile;
@@ -45,8 +46,6 @@ public class OfferView extends Activity implements OnClickListener
 	    
 	    // Retrieve offer data
         Bundle offerViewExtras = getIntent().getExtras();
-        
-        OfferWithCustomerAccount offerWithCustomerAccount = null;
         
         if(offerViewExtras.containsKey("offerWithCustomerAccount"))
         	offerWithCustomerAccount = (OfferWithCustomerAccount)offerViewExtras.getSerializable("offerWithCustomerAccount");	    
@@ -107,12 +106,26 @@ public class OfferView extends Activity implements OnClickListener
 			String toDial = "tel:" + customerMobile.toString();
 			startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(toDial)));
 		}
+		else if(v == customerSendAMessageButton)
+		{
+			Intent intentSendOfferMessageView = new Intent(this, SendOfferMessage.class);	
+			intentSendOfferMessageView.putExtra("offerWithCustomerAccount", offerWithCustomerAccount);
+			intentSendOfferMessageView.putExtra("startingCity", startingCity);
+			intentSendOfferMessageView.putExtra("finishingCity", finishingCity);
+			
+			View sendOfferMessageView = SearchOffersGroup.searchOffersGroup.getLocalActivityManager()
+														   				   .startActivity("Send message offer view",
+														   				   intentSendOfferMessageView.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))  
+														   				   .getDecorView(); 
+			
+			SearchOffersGroup.searchOffersGroup.replaceView(sendOfferMessageView);
+		}
 	}
 	
 	public void getCustomerViewComponents(View customerView)
 	{
 		// Get customer view components
-		customerPhotoImageView               = (ImageView)customerView.findViewById(R.id.customer_photo_imageview);
+		//customerPhotoImageView               = (ImageView)customerView.findViewById(R.id.customer_photo_imageview);
 		customerFullNameTextView             = (TextView)customerView.findViewById(R.id.customer_full_name_textview);
 		customerDateRegistrationTextView     = (TextView)customerView.findViewById(R.id.customer_date_registration_textview);
 		
@@ -143,6 +156,8 @@ public class OfferView extends Activity implements OnClickListener
 			
 			customerMobileButton.setText(offerWithCustomerAccount.getMobile());
 			customerMobileButton.setOnClickListener(this);
+			
+			customerSendAMessageButton.setOnClickListener(this);
 		}
 	}
 }

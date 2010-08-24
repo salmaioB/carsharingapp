@@ -4,7 +4,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="cs.model">
-    <class name="Message" table="message">
+    <class name="Message" table="messages">
         <id name="id" column="_id_message">
             <generator class="native"/>
         </id>
@@ -14,6 +14,5 @@
         <property name="isRead" type="integer" column="is_read"/>
         <property name="dateTimeWrited" type="timestamp" column="dateTime_writed"/>
         <property name="idCustomerTransmitter" type="integer" column="_id_customer_transmitter"/>
-        
-     </class>
+    </class>
 </hibernate-mapping>

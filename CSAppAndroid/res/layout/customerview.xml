@@ -30,7 +30,8 @@
   	 	<TableRow>
   	 		<TextView android:layout_width="wrap_content"
 			  		  android:layout_height="wrap_content"
-			  		  android:text="Préférences"/>
+			  		  android:layout_gravity="center"
+			  		  android:text="Préférences: "/>
   	 			<ImageView android:id="@+id/customer_accept_animals_imageview"
   	 			           android:layout_width="wrap_content"
 			  			   android:layout_height="wrap_content"/>
