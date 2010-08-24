@@ -80,7 +80,7 @@ public class MessageDAO extends DAO
 		Integer count = 0;
 	     Session session = HibernateUtil.currentSession();
 	     String sqlQuery = "SELECT * " +
-		    "FROM message m " +
+		    "FROM messages m " +
 		    "WHERE m._id_customer_account = " + idCustomerAccount +
 	        " AND m.is_read = 0 ";
 	     
