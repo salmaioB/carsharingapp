@@ -9,7 +9,10 @@ import cs.model.OfferWithCustomerAccount;
 import cs.webservice.OffersWS;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ListView;
 
 
 public class DisplayOffers extends ListActivity
@@ -29,11 +32,19 @@ public class DisplayOffers extends ListActivity
 	{
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.displayoffers);
+	    
+	    Bundle displayOffersExtras = getIntent().getExtras();
+	    
+	    if(displayOffersExtras.containsKey("startingCity") && displayOffersExtras.containsKey("finishingCity"))
+	    {
+	    	startingCity  = displayOffersExtras.getString("startingCity");
+	    	finishingCity = displayOffersExtras.getString("finishingCity");
+	    }
 
 	    offersWithCustomerAccount = new ArrayList<OfferWithCustomerAccount>();
 	    
-	    offerListAdapter = new OfferListAdapter(this, R.layout.offerrow, offersWithCustomerAccount, startingCity, finishingCity);
-        setListAdapter(offerListAdapter);
+	    offerListAdapter = new OfferListAdapter(this, R.layout.offerrow, offersWithCustomerAccount, startingCity, finishingCity);	    
+	    setListAdapter(offerListAdapter);
         
         displayOffersProcess = new Runnable()
         {	
@@ -47,7 +58,27 @@ public class DisplayOffers extends ListActivity
 		Thread thread =  new Thread(null, displayOffersProcess, "SearchOrderThread");
 	    thread.start();
 	    
-	    offerSearchProgressDialog = ProgressDialog.show(SearchOffers.searchOffer, "Please wait...", "Display offers...");
+	    offerSearchProgressDialog = ProgressDialog.show(SearchOffersGroup.searchOffersGroup, "Please wait...", "Display offers...");
+	}
+	
+	@Override
+    protected void onListItemClick(ListView l, View v, int position, long id)
+	{
+		super.onListItemClick(l, v, position, id);
+		
+		OfferWithCustomerAccount offerWithCustomerAccount = (OfferWithCustomerAccount)getListAdapter().getItem(position);
+		
+		Intent intentOfferView = new Intent(this, OfferView.class);	
+		intentOfferView.putExtra("offerWithCustomerAccount", offerWithCustomerAccount);
+		intentOfferView.putExtra("startingCity", startingCity);
+		intentOfferView.putExtra("finishingCity", finishingCity);
+		
+		View offerView = SearchOffersGroup.searchOffersGroup.getLocalActivityManager()
+													   		.startActivity("Offer view",
+													   		intentOfferView.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))  
+													   		.getDecorView(); 
+		
+		SearchOffersGroup.searchOffersGroup.replaceView(offerView);
 	}
 		
 	private Runnable returnOfferList = new Runnable()

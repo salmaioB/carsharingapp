@@ -60,7 +60,16 @@ public class OffersWS
 				offerWithCustomerAccount.setGender(jsonObjectOfferWithCustomerAccount.getInt("gender"));
 				offerWithCustomerAccount.setFirstName(jsonObjectOfferWithCustomerAccount.getString("firstName"));
 				offerWithCustomerAccount.setLastName(jsonObjectOfferWithCustomerAccount.getString("lastName"));
-
+				offerWithCustomerAccount.setMobile(jsonObjectOfferWithCustomerAccount.getString("mobile"));
+				offerWithCustomerAccount.setAcceptAnimals(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("acceptAnimals")));
+				offerWithCustomerAccount.setAcceptRadio(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("acceptRadio")));
+				offerWithCustomerAccount.setAcceptSmoker(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("acceptSmoker")));
+				offerWithCustomerAccount.setAcceptToDiscuss(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("acceptToDiscuss")));
+				offerWithCustomerAccount.setAcceptToMakeADetour(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("acceptToMakeADetour")));				
+                
+				SimpleDateFormat datetimeRegistrationFormatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+				offerWithCustomerAccount.setDatetimeRegistration(datetimeRegistrationFormatter.parse(jsonObjectOfferWithCustomerAccount.getString("datetimeRegistration")));
+					
                 offerWithCustomerAccount.setStartingCity(jsonObjectOfferWithCustomerAccount.getString("startingCity"));
                 offerWithCustomerAccount.setFinishingCity(jsonObjectOfferWithCustomerAccount.getString("finishingCity"));                
 				

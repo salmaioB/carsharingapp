@@ -9,7 +9,7 @@
 			  android:layout_height="wrap_content"
 			  android:text="Adresse de départ"/>
 
-	<EditText android:id="@+id/starting_address_edittext"
+	<EditText android:id="@+id/starting_city_edittext"
 			  android:layout_width="fill_parent"
 			  android:layout_height="wrap_content"
 			  android:background="@android:drawable/editbox_background"/>
@@ -19,7 +19,7 @@
 			  android:layout_height="wrap_content"
 			  android:text="Adresse d'arrivée"/>
 	
-	<EditText android:id="@+id/finishing_address_edittext"
+	<EditText android:id="@+id/finishing_city_edittext"
 			  android:layout_width="fill_parent"
 			  android:layout_height="wrap_content"
 			  android:background="@android:drawable/editbox_background"/>

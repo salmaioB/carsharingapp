@@ -8,15 +8,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class SearchOffers extends ActivityGroup implements OnClickListener
+public class SearchOffersGroup extends ActivityGroup implements OnClickListener
 {
-	private EditText startingAddressEditText;
-	private EditText finishingAddressEditText;
+	private EditText startingCityEditText;
+	private EditText finishingCityEditText;
 	private Button validateSearch;
 	    
     private View displayOffersView;
 	
-    public static SearchOffers searchOffer;
+    public static SearchOffersGroup searchOffersGroup;
     
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -24,8 +24,8 @@ public class SearchOffers extends ActivityGroup implements OnClickListener
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.searchoffers);
 	    
-	    startingAddressEditText  = (EditText)findViewById(R.id.starting_address_edittext);
-	    finishingAddressEditText = (EditText)findViewById(R.id.finishing_address_edittext);
+	    startingCityEditText  = (EditText)findViewById(R.id.starting_city_edittext);
+	    finishingCityEditText = (EditText)findViewById(R.id.finishing_city_edittext);
 	    
 	    validateSearch           = (Button)findViewById(R.id.validate_search);
 	    validateSearch.setOnClickListener(this);
@@ -36,12 +36,16 @@ public class SearchOffers extends ActivityGroup implements OnClickListener
 	{
 		if(v == validateSearch)
 		{
-			searchOffer = this;
+			searchOffersGroup = this;
 			
-			Intent intent = new Intent(SearchOffers.this, DisplayOffers.class);
+			Intent intent = new Intent(SearchOffersGroup.this, DisplayOffers.class);
+			intent.putExtra("startingCity", startingCityEditText.getText().toString());
+			intent.putExtra("finishingCity", finishingCityEditText.getText().toString());
 			
 			// Start the root activity within the group and get its view  
-	        displayOffersView = getLocalActivityManager().startActivity("DisplayOffers", intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();  
+	        displayOffersView = getLocalActivityManager().startActivity("DisplayOffers",
+	        		                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+	        		                                     .getDecorView();  
 	              
 	        // Replace the view of this ActivityGroup  
 	        replaceView(displayOffersView);

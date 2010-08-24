@@ -29,7 +29,7 @@ public class OldCSAppAndroid extends Activity
 	    {
 	      switch(position)
 	      {
-	       case 0: Intent intent = new Intent(OldCSAppAndroid.this, SearchOffers.class);
+	       case 0: Intent intent = new Intent(OldCSAppAndroid.this, SearchOffersGroup.class);
 	       		   startActivity(intent);
 	       		   break;
 	       case 1: Intent intent2 = new Intent(OldCSAppAndroid.this, AddOffer.class);
