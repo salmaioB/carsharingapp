@@ -1,113 +1,201 @@
 package cs.model;
 
-import java.text.DateFormat;
-import java.text.ParseException;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.swing.text.DateFormatter;
 
-public class OfferWithCustomerAccount
+public class OfferWithCustomerAccount implements Serializable
 {
-        private Integer id;
-        private Integer gender;
-        private String lastName;
-        private String firstName;
-        
-        private String startingCity;
-        private String finishingCity;
-        private Integer numberOfPlaceRemaining;
-        private Float pricePerPassenger;
+	private static final long serialVersionUID = 1L;
 
-        private Date datetimeStarted;
-        
-        
-        public Integer getId() {
-                return id;
-        }
-        
-        public void setId(Integer id) {
-                this.id = id;
-        }
+	private Integer id;
+    private Integer gender;
+    private String lastName;
+    private String firstName;
+    private String mobile;
+	private Integer acceptAnimals;
+    private Integer acceptRadio;
+	private Integer acceptSmoker;
+    private Integer acceptToDiscuss;
+    private Integer acceptToMakeADetour;
+	private Date datetimeRegistration;
     
-        public Integer getGender() {
-                return gender;
-        }
-        
-        public void setGender(Integer gender) {
-                this.gender = gender;
-        }
-        
-        public String getLastName() {
-                return lastName;
-        }
-        
-        public void setLastName(String lastName) {
-                this.lastName = lastName;
-        }
-        
-        public String getFirstName() {
-                return firstName;
-        }
-        
-        public void setFirstName(String firstName) {
-                this.firstName = firstName;
-        }
-        
-        public String getStartingCity() {
-                return startingCity;
-        }
+    private String startingCity;
+    private String finishingCity;
+    private Integer numberOfPlaceRemaining;
+    private Float pricePerPassenger;
 
-        public void setStartingCity(String startingCity) {
-                this.startingCity = startingCity;
-        }
-
-        public String getFinishingCity() {
-                return finishingCity;
-        }
-
-        public void setFinishingCity(String finishingCity) {
-                this.finishingCity = finishingCity;
-        }
+    private Date datetimeStarted;
         
-        public Float getPricePerPassenger() {
-                return pricePerPassenger;
-        }
-        
-        public void setPricePerPassenger(Float pricePerPassenger) {
-                this.pricePerPassenger = pricePerPassenger;
-        }
+    
+    public Integer getId() {
+            return id;
+    }
+    
+    public void setId(Integer id) {
+            this.id = id;
+    }
 
-        public Integer getNumberOfPlaceRemaining() {
-                return numberOfPlaceRemaining;
-        }
+    public Integer getGender() {
+            return gender;
+    }
+    
+    public void setGender(Integer gender) {
+            this.gender = gender;
+    }
+    
+    public String getLastName() {
+            return lastName;
+    }
+    
+    public void setLastName(String lastName) {
+            this.lastName = lastName;
+    }
+    
+    public String getFirstName() {
+            return firstName;
+    }
+    
+    public void setFirstName(String firstName) {
+            this.firstName = firstName;
+    }
+    
+    public String getMobile() {
+		return mobile;
+	}
 
-        public void setNumberOfPlaceRemaining(Integer numberOfPlaceRemaining) {
-                this.numberOfPlaceRemaining = numberOfPlaceRemaining;
-        }
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+    
+    public Integer getAcceptAnimals() {
+		return acceptAnimals;
+	}
 
-        /**
-         * Ugly part
-         * TODO: Idealement faudrait retourner un objet Date
-         */
-        public String getDatetimeStarted()
-        {
-        	SimpleDateFormat simpleFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-        	System.out.println(simpleFormat.format(datetimeStarted));
-        	
-        	return simpleFormat.format(datetimeStarted);
-        }
-        
-        // Ugly part
-        public String getDatetimeStartedToDisplay()
-        {
-        	SimpleDateFormat simpleFormat = new SimpleDateFormat("EEE dd MMM - HH:mm", new Locale("fr"));
-        	
-        	return simpleFormat.format(datetimeStarted);
-        }
+	public void setAcceptAnimals(Integer acceptAnimals) {
+		this.acceptAnimals = acceptAnimals;
+	}
 
-        public void setDatetimeStarted(Date datetimeStarted) {
-                this.datetimeStarted = datetimeStarted;
-        }
+	public Integer getAcceptRadio() {
+		return acceptRadio;
+	}
+
+	public void setAcceptRadio(Integer acceptRadio) {
+		this.acceptRadio = acceptRadio;
+	}
+
+	public Integer getAcceptSmoker() {
+		return acceptSmoker;
+	}
+
+	public void setAcceptSmoker(Integer acceptSmoker) {
+		this.acceptSmoker = acceptSmoker;
+	}
+
+	public Integer getAcceptToDiscuss() {
+		return acceptToDiscuss;
+	}
+
+	public void setAcceptToDiscuss(Integer acceptToDiscuss) {
+		this.acceptToDiscuss = acceptToDiscuss;
+	}
+
+	public Integer getAcceptToMakeADetour() {
+		return acceptToMakeADetour;
+	}
+
+	public void setAcceptToMakeADetour(Integer acceptToMakeADetour) {
+		this.acceptToMakeADetour = acceptToMakeADetour;
+	}
+    
+//	public Date getDatetimeRegistration() {
+//		return datetimeRegistration;
+//	}
+	
+	/**
+     * Ugly part
+     * TODO: return a date object
+     */
+    public String getDatetimeRegistration()
+    {
+    	SimpleDateFormat simpleFormatDatetimeRegistration = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+    	
+    	return simpleFormatDatetimeRegistration.format(datetimeRegistration);
+	}
+    
+    /**
+     * Ugly part
+     * TO BE DELETED
+     */
+	public String getDatetimeRegistrationToDisplay()
+	{
+		SimpleDateFormat simpleFormatDatetimeRegistration = new SimpleDateFormat("dd MMMM yyyy", new Locale("fr"));
+    	
+    	return simpleFormatDatetimeRegistration.format(datetimeRegistration);
+	}
+
+	public void setDatetimeRegistration(Date datetimeRegistration) {
+		this.datetimeRegistration = datetimeRegistration;
+	}
+	
+    public String getStartingCity() {
+            return startingCity;
+    }
+
+    public void setStartingCity(String startingCity) {
+            this.startingCity = startingCity;
+    }
+
+    public String getFinishingCity() {
+            return finishingCity;
+    }
+
+    public void setFinishingCity(String finishingCity) {
+            this.finishingCity = finishingCity;
+    }
+    
+    public Float getPricePerPassenger() {
+            return pricePerPassenger;
+    }
+    
+    public void setPricePerPassenger(Float pricePerPassenger) {
+            this.pricePerPassenger = pricePerPassenger;
+    }
+
+    public Integer getNumberOfPlaceRemaining() {
+            return numberOfPlaceRemaining;
+    }
+
+    public void setNumberOfPlaceRemaining(Integer numberOfPlaceRemaining) {
+            this.numberOfPlaceRemaining = numberOfPlaceRemaining;
+    }
+
+    /**
+     * Ugly part
+     * TODO: return a date object
+     */
+    public String getDatetimeStarted()
+    {
+    	SimpleDateFormat simpleFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+    	System.out.println(simpleFormat.format(datetimeStarted));
+    	
+    	return simpleFormat.format(datetimeStarted);
+    }
+    
+    /**
+     * Ugly part
+     * TO BE DELETED
+     */
+    public String getDatetimeStartedToDisplay()
+    {
+    	SimpleDateFormat simpleFormat = new SimpleDateFormat("EEE dd MMM - HH:mm", new Locale("fr"));
+    	
+    	return simpleFormat.format(datetimeStarted);
+    }
+
+    public void setDatetimeStarted(Date datetimeStarted) {
+            this.datetimeStarted = datetimeStarted;
+    }
 }

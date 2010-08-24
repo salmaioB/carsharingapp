@@ -15,12 +15,13 @@
 	    <activity android:name="AddOffer" android:enabled="true"></activity>
 		<activity android:name="MyMessages"></activity>
 		<activity android:name="DisplayOffers"></activity>
-		<activity android:name="SearchOffers"></activity>
+		<activity android:name="SearchOffersGroup"></activity>
 		<activity android:name="Identification"></activity>
 		<activity android:name="MyProfile"></activity>
 		<activity android:name="MyRoutes"></activity>
 		
-	</application>
+	<activity android:name="OfferView"></activity>
+</application>
 
     <uses-sdk android:minSdkVersion="6" />
 	<uses-permission android:name="android.permission.INTERNET" />

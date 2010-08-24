@@ -18,6 +18,13 @@
         	<property name="gender" type="integer" column="gender"/>
         	<property name="lastName" type="string" column="last_name"/>  
         	<property name="firstName" type="string" column="first_name"/>
+        	<property name="mobile" type="string" column="mobile"/>
+        	<property name="acceptAnimals" type="integer" column="accept_animals"/>
+        	<property name="acceptRadio" type="integer" column="accept_radio"/>
+        	<property name="acceptSmoker" type="integer" column="accept_smoker"/>
+        	<property name="acceptToDiscuss" type="integer" column="accept_to_discuss"/>
+        	<property name="acceptToMakeADetour" type="integer" column="accept_to_make_a_detour"/>
+        	<property name="datetimeRegistration" type="timestamp" column="datetime_registration"/>    	
     	</join>
      </class>
 </hibernate-mapping>

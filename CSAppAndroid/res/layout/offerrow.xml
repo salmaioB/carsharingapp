@@ -12,17 +12,16 @@
 			<ImageView android:id="@+id/customer_gender_imageview"
 			           android:layout_width="24dp"
 			           android:layout_height="wrap_content"
-			           android:layout_gravity="center"
-			           android:src="@drawable/icon_customer_man"/>
+			           android:layout_gravity="center"/>
 			<LinearLayout android:layout_width="wrap_content"
 	             		  android:layout_height="wrap_content"
 	             		  android:orientation="vertical">
 			 	<TextView android:id="@+id/customer_full_name_textview"
 			 			  android:layout_width="wrap_content"
 	             		  android:layout_height="wrap_content"/>
-			    <TextView android:layout_width="wrap_content"
-	             		  android:layout_height="wrap_content"
-			              android:text="avis"/>
+			    <TextView android:id="@+id/customer_opinion_textview"
+			              android:layout_width="wrap_content"
+	             		  android:layout_height="wrap_content"/>
 			</LinearLayout>
 			<LinearLayout android:layout_width="fill_parent"
 	             		  android:layout_height="wrap_content"
@@ -50,9 +49,9 @@
 		                  android:layout_height="wrap_content"
 		                  android:layout_gravity="center"
 		                  android:orientation="vertical">
-		    	<ImageView android:layout_width="fill_parent"
-		                   android:layout_height="wrap_content"
-		    	           android:src="@drawable/icon_car"/>
+		    	<ImageView android:id="@+id/customer_car_imageview"
+		    	           android:layout_width="fill_parent"
+		                   android:layout_height="wrap_content"/>
 		    </LinearLayout>
 		    <LinearLayout android:layout_width="fill_parent"
 		                  android:layout_height="wrap_content"

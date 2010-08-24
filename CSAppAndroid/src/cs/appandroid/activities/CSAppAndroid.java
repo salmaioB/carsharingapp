@@ -181,7 +181,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    Intent intent;
 	    
 	    // Create an Intent to launch an search offers activity for the tab
-	    intent = new Intent().setClass(this, SearchOffers.class);
+	    intent = new Intent().setClass(this, SearchOffersGroup.class);
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
 	    spec = tabHost.newTabSpec("searchoffers").setIndicator("",
