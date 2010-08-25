@@ -55,7 +55,7 @@ public class DisplayOffers extends ListActivity
 			}
 		};
 		
-		Thread thread =  new Thread(null, displayOffersProcess, "SearchOrderThread");
+		Thread thread =  new Thread(null, displayOffersProcess, "DisplayOfferThread");
 	    thread.start();
 	    
 	    offerSearchProgressDialog = ProgressDialog.show(SearchOffersGroup.searchOffersGroup, "Please wait...", "Display offers...");
@@ -106,7 +106,7 @@ public class DisplayOffers extends ListActivity
 	{
 	    OffersWS offersWS = new OffersWS();
 	    try {
-			offersWithCustomerAccount = offersWS.getSearchOffers(startingCity, finishingCity);
+			offersWithCustomerAccount = offersWS.getSearchOffers(startingCity, finishingCity, null);
 		}
 	    catch (ParseException e) {
 			e.printStackTrace();

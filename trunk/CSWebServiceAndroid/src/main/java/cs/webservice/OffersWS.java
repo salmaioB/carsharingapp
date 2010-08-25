@@ -28,17 +28,24 @@ public class OffersWS
 		HttpClient.constructHeader(jsonObjectSend);
 	}
 	
-	public List<OfferWithCustomerAccount> getSearchOffers(String startingCity, String finishingCity) throws ParseException
+	public List<OfferWithCustomerAccount> getSearchOffers(String startingCity, String finishingCity, Integer idCustomerAccount) throws ParseException
 	{	
 		String URL = Define.webServiceRootUrl + "CSAppWeb/OffersWS";
 		
 		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
-		paramsToPost.add(new BasicNameValuePair("startingCity", startingCity.toString()));
-		paramsToPost.add(new BasicNameValuePair("finishingCity", finishingCity.toString()));
+		
+		if(idCustomerAccount != null)
+			paramsToPost.add(new BasicNameValuePair("idCustomerAccount", idCustomerAccount.toString()));
+		
+		if(startingCity != null)
+			paramsToPost.add(new BasicNameValuePair("startingCity", startingCity.toString()));
+		
+		if(finishingCity != null)
+			paramsToPost.add(new BasicNameValuePair("finishingCity", finishingCity.toString()));
 		
 		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost) ;
 	
-	    List<OfferWithCustomerAccount> offersWithCustomerAccount = new ArrayList<OfferWithCustomerAccount>();
+	    List<OfferWithCustomerAccount> offers = new ArrayList<OfferWithCustomerAccount>();
 	    
 		try
 		{
@@ -48,11 +55,11 @@ public class OffersWS
 			for(int i=0; i<jsonArrayListOffers.length(); i++)
 			{
 				// Retrieve each offer
-				JSONObject jsonObjectOfferWithCustomerAccount = jsonArrayListOffers.getJSONObject(i);
+				JSONObject jsonObjectOffer = jsonArrayListOffers.getJSONObject(i);
 			 
 				// Create an offer and set all attributes
-				OfferWithCustomerAccount offerWithCustomerAccount = new OfferWithCustomerAccount(jsonObjectOfferWithCustomerAccount);
-				offersWithCustomerAccount.add(offerWithCustomerAccount);
+				OfferWithCustomerAccount offer = new OfferWithCustomerAccount(jsonObjectOffer);
+				offers.add(offer);
 			}
 		}
 		catch(JSONException e)
@@ -60,7 +67,7 @@ public class OffersWS
 			e.printStackTrace();
 		}
 		 
-		return offersWithCustomerAccount;
+		return offers;
 	}
 	
 //	public List<Offer> getCustomerOffers(Integer idCustomerAccount)
@@ -72,13 +79,21 @@ public class OffersWS
 //		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost) ;
 //		
 //	    List<Offer> offers = new ArrayList<Offer>();
-
+//
 //	    try
 //		{
-	    	// Retrieve a jsonArray which contains an offer list
-			//JSONArray jsonArrayListOffers = jsonObjectReturn.getJSONArray("offers");
-			
-			
+//	    	// Retrieve a jsonArray which contains an offer list
+//			JSONArray jsonArrayListCustomerOffers = jsonObjectReturn.getJSONArray("customerOffers");
+//		 
+//			for(int i=0; i<jsonArrayListCustomerOffers.length(); i++)
+//			{
+//				// Retrieve each offer
+//				JSONObject jsonObjectCustomerOffer = jsonArrayListCustomerOffers.getJSONObject(i);
+//		 
+//				// Create an offer and set all attributes
+//				OfferWithCustomerAccount offer = new OfferWithCustomerAccount(jsonObjectCustomerOffer);
+//				//offers.add(offer);
+//			}
 //		}
 //	}
 }

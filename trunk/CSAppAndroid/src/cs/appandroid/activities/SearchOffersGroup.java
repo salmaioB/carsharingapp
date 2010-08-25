@@ -18,6 +18,7 @@ public class SearchOffersGroup extends ActivityGroup implements OnClickListener
 	
     public static SearchOffersGroup searchOffersGroup;
     
+    
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{

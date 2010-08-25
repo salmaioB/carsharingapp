@@ -60,41 +60,58 @@ public class OfferDAO extends DAO
 	 * Function to search offers
 	 * with starting address and finishing address
 	 */
-	public List<OfferWithCustomerAccount> loadSearchOffers(String startingCity, String finishingCity)
+	public List<OfferWithCustomerAccount> loadSearchOffers(String startingCity, String finishingCity, Integer idCustomerAccount)
 	{
 	     Session session = HibernateUtil.currentSession();
 	     
-	     String SQLQuery = "SELECT o._id_offer, r.starting_city, r.finishing_city, c._id_customer_account, c.gender, c.last_name, c.first_name, c.mobile, c.accept_animals, c.accept_radio, c.accept_smoker, c.accept_to_discuss, c.accept_to_make_a_detour, c.datetime_registration, sum(r.price) as price_per_passenger, o.number_of_place_remaining, o.datetime_started " +
-                           "FROM offers o, routes r, offers_to_routes o_to_r, customer_accounts c, " + 
-                           "(" + 
-                           " SELECT o1._id_offer AS _id_offer, MIN(r1.route_order) as route_order_min, MAX(r1.route_order) as route_order_max " + 
-                           " FROM offers o1, routes r1, offers_to_routes o_to_r1 " + 
-                           " WHERE o1._id_offer = o_to_r1._id_offer " + 
-                           " AND o_to_r1._id_route = r1._id_route " + 
-                           " AND " +
-                           " (" + 
-                           "  r1.starting_city = '" + startingCity.toString() + "' " +
-                           "  OR r1.finishing_city = '" + finishingCity.toString() + "' " + 
-                           " )" + 
-                           " GROUP BY o1._id_offer " +
-                           ") as routes_min_max " + 
-                           "WHERE o._id_offer = routes_min_max._id_offer " +
-                           "AND o._id_driver=c._id_customer_account " + 
-                           "AND o._id_offer=o_to_r._id_offer " +
-                           "AND o_to_r._id_route = r._id_route " +
-                           "AND " +
-                           "( " +
-                           " routes_min_max.route_order_min != routes_min_max.route_order_max " +
-                           " OR " +
-                           " (" +
-                           "  r.starting_city = '" + startingCity.toString() + "' " +
-                           "  AND r.finishing_city = '" + finishingCity.toString() + "'" +
-                           " )" +
-                           ") " +
-                           "AND r.route_order >= routes_min_max.route_order_min " +
-                           "AND r.route_order <= routes_min_max.route_order_max " +
-                           "GROUP BY o._id_offer";
+	     String SQLQuery = "SELECT o._id_offer, o.starting_city, o.finishing_city, c._id_customer_account, c.gender, c.last_name, c.first_name, c.mobile, c.accept_animals, c.accept_radio, c.accept_smoker, c.accept_to_discuss, c.accept_to_make_a_detour, c.datetime_registration, sum(r.price) as price_per_passenger, o.number_of_place_remaining, o.datetime_started " +
+                           "FROM offers o, routes r, offers_to_routes o_to_r, customer_accounts c, offers_to_customer_accounts o_to_c ";
 	     
+	     if(startingCity != null && finishingCity!= null)
+	     {
+	    	 SQLQuery += ", (" + 
+                         " SELECT o1._id_offer AS _id_offer, MIN(r1.route_order) as route_order_min, MAX(r1.route_order) as route_order_max " + 
+                         " FROM offers o1, routes r1, offers_to_routes o_to_r1 " + 
+                         " WHERE o1._id_offer = o_to_r1._id_offer " + 
+                         " AND o_to_r1._id_route = r1._id_route " + 
+                         " AND " +
+                         " (" + 
+                         "  r1.starting_city = '" + startingCity.toString() + "' " +
+                         "  OR r1.finishing_city = '" + finishingCity.toString() + "' " + 
+                         " )" + 
+                         " GROUP BY o1._id_offer " +
+                         ") as routes_min_max ";
+	     }
+	     
+	     //o._id_driver=c._id_customer_account 
+	     
+	     SQLQuery += "WHERE o._id_offer=o_to_r._id_offer " +
+         			 "AND o_to_r._id_route=r._id_route " +
+	                 "AND o._id_offer=o_to_c._id_offer " + 
+    	 			 "AND o_to_c._id_customer_account=c._id_customer_account " +
+    	 			 "AND o_to_c.is_offer_creator=1 ";
+	    	 
+    	 if(idCustomerAccount != null)
+    		 SQLQuery += "AND c._id_customer_account=" + idCustomerAccount.toString() + " ";
+	     
+	     if(startingCity != null && finishingCity!= null)
+	     {
+	    	 SQLQuery += "AND o._id_offer=routes_min_max._id_offer " + 
+	    		         "AND " +
+         			 	 "( " +
+         			 	 " routes_min_max.route_order_min != routes_min_max.route_order_max " +
+         			 	 " OR " +
+         			 	 " (" +
+         			 	 "  r.starting_city = '" + startingCity.toString() + "' " +
+         			 	 "  AND r.finishing_city = '" + finishingCity.toString() + "'" +
+         			 	 " )" +
+         			 	 ") " +
+				         "AND r.route_order >= routes_min_max.route_order_min " +
+				         "AND r.route_order <= routes_min_max.route_order_max ";
+	     }
+	     
+	     SQLQuery += "GROUP BY o._id_offer";
+         
 	     System.out.println(SQLQuery);
 	     
 	     Query query = session.createSQLQuery(SQLQuery).addEntity(OfferWithCustomerAccount.class);

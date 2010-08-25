@@ -5,7 +5,10 @@ public class OffersToCustomerAccount
 	private Integer id;
 	private Integer idOffer;
 	private Integer idCustomerAccount;
+	private Integer isDriver;
+	private Integer isOfferCreator;
 	
+
 	public Integer getId() {
 		return id;
 	}
@@ -28,5 +31,21 @@ public class OffersToCustomerAccount
 	
 	public void setIdCustomerAccount(Integer idCustomerAccount) {
 		this.idCustomerAccount = idCustomerAccount;
+	}
+	
+	public Integer getIsDriver() {
+		return isDriver;
+	}
+
+	public void setIsDriver(Integer isDriver) {
+		this.isDriver = isDriver;
+	}
+	
+	public Integer getIsOfferCreator() {
+		return isOfferCreator;
+	}
+
+	public void setIsOfferCreator(Integer isOfferCreator) {
+		this.isOfferCreator = isOfferCreator;
 	}
 }

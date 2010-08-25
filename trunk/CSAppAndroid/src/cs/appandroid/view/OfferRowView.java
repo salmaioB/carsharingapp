@@ -67,9 +67,17 @@ public class OfferRowView
 			}
 			
 			offerPricePerPassengerTextView.setText("Prix par pers.: " + offerWithCustomerAccount.getPricePerPassenger().toString() + "€");
-        
-            offerStartingCityTextView.setText(startingCity);
-            offerFinishingCityTextView.setText(finishingCity);
+            
+			if(startingCity != null && finishingCity != null)
+			{
+				offerStartingCityTextView.setText(startingCity);
+				offerFinishingCityTextView.setText(finishingCity);
+			}
+			else
+			{
+				offerStartingCityTextView.setText(offerWithCustomerAccount.getStartingCity());
+				offerFinishingCityTextView.setText(offerWithCustomerAccount.getFinishingCity());
+			}
         }
 	}
 }

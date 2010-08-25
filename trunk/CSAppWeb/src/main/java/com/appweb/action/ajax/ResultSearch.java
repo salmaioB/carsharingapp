@@ -26,8 +26,8 @@ public class ResultSearch extends Action
    List<OfferWithCustomerAccount> owca;
    
 	public List<OfferWithCustomerAccount> getOwca() {
-	return owca;
-}
+		return owca;
+	}
 
 public void setOwca(List<OfferWithCustomerAccount> owca) {
 	this.owca = owca;
@@ -72,7 +72,7 @@ public void setOwca(List<OfferWithCustomerAccount> owca) {
 		System.out.println("getAddressStart() : " + getAddressStart());
 		System.out.println("getAddressStop() : " + getAddressStop());
 		
-		owca = offerDAO.loadSearchOffers(getAddressStart(), getAddressStop() );
+		owca = offerDAO.loadSearchOffers(getAddressStart(), getAddressStop(), null);
 		System.out.println("owca.get(0).getAcceptAnimals() : " + owca.get(0).getCustomerAccount().getAcceptAnimals());
 		System.out.println("owca.get(0).getGender() : " + owca.get(0).getCustomerAccount().getGender());
 		return SUCCESS;
