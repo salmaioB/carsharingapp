@@ -42,11 +42,10 @@ public class MessageDAO extends DAO
 		 Transaction tx = session.beginTransaction();
   
 		 session.beginTransaction();
-		 //session.save(of);
-		 //session.saveOrUpdate(of);
-		 session.update(of);
-		 tx.commit();
-		
+		 
+		 session.saveOrUpdate(of);
+
+		 tx.commit();		
 		 HibernateUtil.closeSession();
 
 		 return true;
