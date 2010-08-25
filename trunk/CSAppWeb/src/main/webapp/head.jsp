@@ -11,29 +11,32 @@
 	<script type="text/javascript" src="js/jquery-1.4.2.js"></script>
 	
 	<script type="text/javascript" src="js/jquery.ui/jquery.validate.js"></script>
-		
+	
 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.core.js"></script>
 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.widget.js"></script>
-			
+
+ 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.accordion.js"></script>
+ 	
 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.datepicker.js"></script>
 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.tabs.js"></script>
-	<script type="text/javascript" src="js/jquery.ui/jquery-ui-personalized-1.6rc6.js"></script>
-
-		
+	 	
 	<script type="text/javascript" src="js/jquery.corner.js"></script>
-    <script type="text/javascript" src="js/jquery.evenment.js"></script>
-    
-    <script type="text/javascript" src="js/googleMapAddressByPosition.js"></script>	
-    <script type="text/javascript" src="js/googlemap.js"></script>
+	
+   <script type="text/javascript" src="js/jquery.evenment.js"></script>
+
+	<script type="text/javascript" src="js/googleMapAddressByPosition.js"></script>	
+	<script type="text/javascript" src="js/googlemap.js"></script>
     
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=<s:property value="language"/>"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.js"></script>
+
 	<script type="text/javascript" src="js/jquery.time/jquery.ui.all.js"></script>
 	<script type="text/javascript" src="js/jquery.time/jquery.utils.js"></script>
 	<script type="text/javascript" src="js/jquery.time/jquery.strings.js"></script>
 	<script type="text/javascript" src="js/jquery.time/jquery.anchorHandler.js"></script>
 	<script type="text/javascript" src="js/jquery.time/ui.timepickr.js"></script>
-
+ 
+ 	<script type="text/javascript" src="js/js.accordion.js"></script>
+ 
 	<!--
 	<link type="text/css" href="css/jquery.tabs.css" rel="stylesheet" >
 	-->
@@ -50,10 +53,12 @@
 			height:100%;
 		}
 		.corner {
-			background-color:#AAAAAA;
+			background-color:#DDE8E6;
 		}
 	</style>
+	
 	<script type="text/javascript">
+	
 		var mapPostInitialize = false;
 		var mapProfilInitialize = false;
 		$(document).ready( function () { 
@@ -91,6 +96,8 @@
 									showSpeed:150,
 									hideSpeed:250
 								});
+								//Ajoute les évement ajax au message recu
+				 				ajaxSendResponse();
 			                }
 			        	});
 
@@ -125,7 +132,7 @@
 		$(document).ready( function () {
 			$('#menuMessages').tabs({ fxFade: true, fxSpeed: 'normal' });
 			$('#menuTrip').tabs({ fxFade: true, fxSpeed: 'normal' });
-			//$(".corner").corner();
+			$(".corner").corner();
 		} ) ;
 	</script>
 	<script type="text/javascript">
@@ -147,72 +154,6 @@
 	      $('#hours').timepickr();
 	    });
 	</script>
-	
-		<script type="text/javascript">
-
-			$.accordian = function(items, first, options) {
-
-				var active = first;
-				var running = 0;
-
-				var titles = options && options.titles || '.title';
-				var contents = options && options.contents || '.content';
-				var onClick = options && options.onClick || function(){ updateReadMessage( $(this).attr('title') ); $(this).attr('style',''); };
-				var onShow = options && options.onShow || function(){};
-				var onHide = options && options.onHide || function(){};
-				var showSpeed = options && options.showSpeed || 'slow';
-				var hideSpeed = options && options.hideSpeed || 'fast';
-
-				$(items).not(active).children(contents).hide();
-				$(items).not(active).each(onHide);
-				//$(active).each(onShow);
-
-				//$(active).each(onShow);
-				$(active).children(contents).hide();
-				//$(items).children(contents).hide();
-				//$(items).each(onHide);
-				
-				$(items).children(titles).click(function(e){
-					
-					var p = $(contents, this.parentNode);
-					$(this.parentNode).each(onClick);
-
-					//if (running || !p.is(":hidden")) return false;
-					running = 2;
-
-					$(active).children(contents).not(':hidden').slideUp(hideSpeed, function(){--running;});
-					p.slideDown(showSpeed, function(){--running;});
-
-					$(active).each(onHide);
-					active = '#' + $(this.parentNode)[0].id;
-					$(active).each(onShow);
-
-					return false;
-				});
-
-			};
-
-			function simpleLog(message) {
-				$('<div>' + message + '</div>').appendTo('#log');
-			}
-
-			$(function(){
-
-				$.accordian('#list1 > div', '#item11');
-
-				$.accordian('#list2 > div', '#item22', {
-					titles:'.mytitle',
-					contents:'.mycontent',
-					onClick:function(){ simpleLog(this.id + ' clicked')},
-					onShow:function(){simpleLog(this.id + ' shown'); $(this).removeClass('off').addClass('on');},
-					onHide:function(){simpleLog(this.id + ' hidden'); $(this).removeClass('on').addClass('off');},
-					showSpeed:250,
-					hideSpeed:550
-				});
-
-			});
-
-		</script>
 		<script type="text/javascript">
 			function calculPrice(price1,price2,price3,price4,price5,price6,price7,price8,priceTotal,cityStop)
 			{
@@ -263,12 +204,25 @@
 				$("#"+priceTotal).val( price );
 			}
 		</script>
-		
 		<script type="text/javascript">
 			//Exécution du controle des formulaires
 			$(document).ready(function(){
-				if($('#checkaddress_form') == null) alert('#checkaddress_form');
-				$('#checkaddress_form').validate();
-			});			
-		</script>
+				$('#checkaddress_form').validate({
+					submitHandler: function(form) {
+						//alert("form.submit()");
+						//form.submit();
+						ajaxCheckInAjax();
+					}
+				}
+				);
+			});		
+	</script>
+	<style type="text/css">
+		label { width: 10em; float: left; }
+		label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+		p { clear: both; }
+		.submit { margin-left: 12em; }
+		em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+	</style>
+	
 </head> 

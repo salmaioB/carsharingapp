@@ -10,6 +10,20 @@ function updateReadMessage(idMessage)
         return false;
     }
 
+function ajaxSendResponse(i)
+{
+	var postData = $("input", '#form_sendResponse'+i).serialize();
+    $.ajax({
+    	method: 'post',
+        url: WEB_ROOT_URL+'CSAppWeb/MessageWriteResponse',
+        data: postData,
+        success: function(data)
+        {
+        	alert("Message envoye");
+        }
+   });
+   return false;
+}
 //Ajout des évenements ajax
 function addEvementAjaxToSaveOffer()
 {
@@ -30,9 +44,26 @@ function addEvementAjaxToSaveOffer()
 	                return false;
 	        });
 }
+//Ajout des évenements ajax
+function ajaxCheckInAjax()
+{
+	var postData = $("input", '#checkaddress_form').serialize();
+    $.ajax({
+            method: 'post',
+            url: WEB_ROOT_URL+'CSAppWeb/CheckInAjax',
+            data: postData,
+            success: function(data)
+            {
+    			alert("Profil enregistre");
+    			//Si success redection vers le profil
+    			document.location.href=WEB_ROOT_URL+'CSAppWeb/Accueil#profil';
+            }
+              });
+    return false;
+}
 $(document).ready(function()
 {
-	//Ajout des évenements ajax
+	/*
     $('input.checkin').click(function()
             {
                     var postData = $("input", '#checkaddress_form').serialize();
@@ -49,44 +80,9 @@ $(document).ready(function()
                               });
                     return false;
             });
-	//Ajout des évenements ajax
-    /*
-        $('input.chekin').click(function()
-                {
-                        var postData = $("input", '#checkin_form').serialize();
-                        
-                        $.ajax({
-                                method: 'post',
-                                url: WEB_ROOT_URL+'CSAppWeb/CheckInAjax',
-                                data: postData,
-                                success: function(data)
-                                {
-                                 $('#divToLogin').html(data);
-                                }
-                                  });
-                        
-                        return false;
-                });
-                */
-    	/*
-        $('input.checkout').click(function()
-                {
-                        var postData = $("input", '#checkout_form').serialize();
-                        
-                        $.ajax({
-                                method: 'post',
-                                url: WEB_ROOT_URL+'CSAppWeb/CheckOutAjax',
-                                data: postData,
-                                success: function(data)
-                                {
-                                 $('#divToLogin').html(data);
-                                }
-                               });
-                        
-                        return false;
-                });
-        */
-        $('input.checkAddress').click(function()
+      */
+
+      $('input.checkAddress').click(function()
                 {
                         var postData = $("input", '#checkaddress_form').serialize();
                         
