@@ -1,6 +1,7 @@
 package cs.engine.action;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import cs.dao.dao.CustomerAccountDAO;
@@ -73,11 +74,20 @@ public class MessageWithCustomerAccountAction
 		
 		return messageWithCustomerAccounts;
 	}
-	
+	public void sendMessageResponse(String title,String content, Integer idMessageOrigine)
+	{
+		Message message = messageDAO.load(idMessageOrigine);
+		Message messageSend = new Message();
+		messageSend.setContent(content);
+		messageSend.setTitle(title);
+		messageSend.setDateTimeWrited(new Date());
+		messageSend.setIdCustomerAccount(message.getIdCustomerTransmitter());
+		messageSend.setIdCustomerTransmitter( message.getIdCustomerAccount() );
+		messageSend.setIsRead(0);
+		messageDAO.save(messageSend);
+	}
 	public MessageWithCustomerAccountAction()
 	{
 		messageWithCustomerAccount = new MessageWithCustomerAccount();
-		//messageDAO = SpringDAO.getSpring().getMessageDAO();
-		//customerAccountDAO = SpringDAO.getSpring().getCustomerAccountDAO();
 	}
 }
