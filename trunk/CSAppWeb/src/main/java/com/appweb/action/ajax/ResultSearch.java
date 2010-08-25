@@ -73,8 +73,8 @@ public void setOwca(List<OfferWithCustomerAccount> owca) {
 		System.out.println("getAddressStop() : " + getAddressStop());
 		
 		owca = offerDAO.loadSearchOffers(getAddressStart(), getAddressStop() );
-		System.out.println("owca.get(0).getAcceptAnimals() : " + owca.get(0).getAcceptAnimals() );
-		System.out.println("owca.get(0).getGender() : " + owca.get(0).getGender() );
+		System.out.println("owca.get(0).getAcceptAnimals() : " + owca.get(0).getCustomerAccount().getAcceptAnimals());
+		System.out.println("owca.get(0).getGender() : " + owca.get(0).getCustomerAccount().getGender());
 		return SUCCESS;
 	}
 }
