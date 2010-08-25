@@ -40,11 +40,10 @@ public class MessageWriteResponse extends Action
 		MessageWithCustomerAccountAction messageEngine  = SpringEngine.getSpring().getMessageWithCustomerAccountAction();//new MessageWithCustomerAccountAction();
 		StringBuilder title = new StringBuilder();
 		title.append("RE : ");
-		System.out.println("11111111111111111111");
 		title.append( messageEngine.load(idMessage).getMessage().getTitle() );
-		System.out.println("222222222222222222222 : " + title);
+
 		messageEngine.sendMessageResponse(title.toString(), getContent(), getIdMessage());
-		System.out.println("333333333333333333333");
+
 		return SUCCESS;
 	}
 }
