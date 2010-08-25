@@ -17,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+
 public class MyProfile extends Activity implements OnClickListener
 {
     private CustomerAccount customerAccount;
@@ -26,7 +27,7 @@ public class MyProfile extends Activity implements OnClickListener
 	
 	private EditText loginEditText;
 	private EditText passwordEditText;
-	private Button validateConnectionButton;	
+	private Button validateConnectionButton;
 	
     private Runnable identificationProcess;
     private ProgressDialog identificationProgressDialog;

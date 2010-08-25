@@ -12,6 +12,8 @@ public class Offer
 	private Integer idDriver;
 	private String title;
 	private String description;
+	private String startingCity;
+	private String finishingCity;
 	private Integer numberOfPlaceInitial;
 	private Integer numberOfPlaceRemaining;
 	private Float pricePerPassenger;
@@ -82,6 +84,22 @@ public class Offer
 	
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getStartingCity() {
+		return startingCity;
+	}
+
+	public void setStartingCity(String startingCity) {
+		this.startingCity = startingCity;
+	}
+
+	public String getFinishingCity() {
+		return finishingCity;
+	}
+
+	public void setFinishingCity(String finishingCity) {
+		this.finishingCity = finishingCity;
 	}
 	
 	public Integer getNumberOfPlaceInitial() {

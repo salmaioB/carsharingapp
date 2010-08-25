@@ -15,26 +15,14 @@ public class OfferWithCustomerAccount implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-//  private Integer gender;
-//  private String lastName;
-//  private String firstName;
-//  private String mobile;
-//	private Integer acceptAnimals;
-//  private Integer acceptRadio;
-//	private Integer acceptSmoker;
-//  private Integer acceptToDiscuss;
-//  private Integer acceptToMakeADetour;
-//	private Date datetimeRegistration;
-	
-	private CustomerAccount customerAccount;
-    
 	private String startingCity;
-    private String finishingCity;
+	private String finishingCity;
     private Integer numberOfPlaceRemaining;
     private Float pricePerPassenger;
-
     private Date datetimeStarted;
         
+	private CustomerAccount customerAccount;
+    
     
     public OfferWithCustomerAccount()
     {

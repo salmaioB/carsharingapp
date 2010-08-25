@@ -12,6 +12,7 @@ public class OffersWS extends ActionSupport
 {
 	private static final long serialVersionUID = 1L;
 	
+	private Integer idCustomerAccount;
 	private String startingCity;
 	private String finishingCity;
 
@@ -21,6 +22,14 @@ public class OffersWS extends ActionSupport
 	/**
 	 * Getter and setter
 	 */
+	public Integer getIdCustomerAccount() {
+		return idCustomerAccount;
+	}
+
+	public void setIdCustomerAccount(Integer idCustomerAccount) {
+		this.idCustomerAccount = idCustomerAccount;
+	}
+	
 	public String getStartingCity() {
 		return startingCity;
 	}
@@ -48,7 +57,7 @@ public class OffersWS extends ActionSupport
 	public String execute() throws Exception
  	{
 	 	OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();
-	 	offersWithCustomerAccount = offerDAO.loadSearchOffers(startingCity, finishingCity);
+	 	offersWithCustomerAccount = offerDAO.loadSearchOffers(startingCity, finishingCity, idCustomerAccount);
 	    
 	 	return SUCCESS;
  	}
