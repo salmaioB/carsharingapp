@@ -56,8 +56,8 @@ public class CustomerAccountDAO extends DAO
 		 Session session = HibernateUtil.currentSession();		   
 		 Transaction tx = session.beginTransaction();
 		 System.out.println("session.saveOrUpdate : " + ca.getId() );
+		 
 		 session.saveOrUpdate(ca);
-		 //session.save(ca);
 		 
 		 tx.commit();
 
