@@ -1,3 +1,21 @@
+function printTrip(idTrip)
+{
+    var postData = null;
+    
+    $.ajax({
+            method: 'get',
+            url: WEB_ROOT_URL+'CSAppWeb/PrintMapSearch?idTrip='+idTrip,
+            data: postData,
+            success: function(data)
+            {
+                 $('#resultSearch').html(data);
+                 
+                 initializeMapParcoursSearch();
+            }
+              });
+    
+    return false;
+}
 function updateReadMessage(idMessage)
     {          
         $.ajax({
@@ -82,6 +100,23 @@ $(document).ready(function()
             });
       */
 
+	$('input.Csearch').click(function()
+            {
+                    var postData = $("input", '#search_form').serialize();
+                    
+                    $.ajax({
+                            method: 'post',
+                            url: WEB_ROOT_URL+'CSAppWeb/ResultSearch',
+                            data: postData,
+                            success: function(data)
+                            {
+                             $('#resultSearch').html(data);
+                            }
+                              });
+                    
+                    return false;
+            });
+
       $('input.checkAddress').click(function()
                 {
                         var postData = $("input", '#checkaddress_form').serialize();
@@ -99,7 +134,7 @@ $(document).ready(function()
                         
                         return false;
                 });
-
+      	/*
         $('input.Csearch').click(function()
                 {
                         var postData = $("input", '#search_form').serialize();
@@ -118,6 +153,7 @@ $(document).ready(function()
                         
                         return false;
                 });
+        */
         $('input.testAddress').click(function()
                 {
                         var postData = $("input", '#checkaddress_form').serialize();
