@@ -267,6 +267,7 @@
 		<script type="text/javascript">
 			//Exécution du controle des formulaires
 			$(document).ready(function(){
+				if($('#checkaddress_form') == null) alert('#checkaddress_form');
 				$('#checkaddress_form').validate();
 			});			
 		</script>
