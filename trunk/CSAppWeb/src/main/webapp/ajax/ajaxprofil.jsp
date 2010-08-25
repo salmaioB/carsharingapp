@@ -24,31 +24,31 @@
 					<span style="width: 160px;"><em>*</em><s:property value="tr.tr_html(29)"/></span>
 				</td>
 				<td colspan="2">
-					<input name="customerPassword" type="password" size="20" value="<s:property value="customerAccount.customerPassword" />"/>
+					<input class="required"  name="customerPassword" type="password" size="20" value="<s:property value="customerAccount.customerPassword" />"/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<span style="width: 160px;"><s:property value="tr.tr_html(18)"/></span>
+					<span style="width: 160px;"><em>*</em><s:property value="tr.tr_html(18)"/></span>
 				</td>
 				<td colspan="2">
-					<input name="lastName"  size="20" value="<s:property value="customerAccount.lastName" />"/>
+					<input class="required" name="lastName"  size="20" value="<s:property value="customerAccount.lastName" />"/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<span style="width: 160px;"><s:property value="tr.tr_html(19)"/></span>
+					<span style="width: 160px;"><em>*</em><s:property value="tr.tr_html(19)"/></span>
 				</td>
 				<td colspan="2">
-					<input name="firstName" size="20" value="<s:property value="customerAccount.firstName" />"/>
+					<input class="required" name="firstName" size="20" value="<s:property value="customerAccount.firstName" />"/>
 				</td>	
 			</tr>
 			<tr>
 				<td>
-					<span style="width: 160px;"><s:property value="tr.tr_html(20)"/></span>
+					<span style="width: 160px;"><em>*</em><s:property value="tr.tr_html(20)"/></span>
 				</td>
 				<td colspan="2">
-					<input name="emailAddress" size="20" value="<s:property value="customerAccount.emailAddress" />"/>
+					<input class="required email" name="emailAddress" size="20" value="<s:property value="customerAccount.emailAddress" />"/>
 				</td>
 			</tr>
 			<tr>
@@ -56,7 +56,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(21)"/></span>
 				</td>
 				<td colspan="2">
-					<input name="phone" size="20" value="<s:property value="customerAccount.phone" />"/>
+					<input class="number" name="phone" size="20" value="<s:property value="customerAccount.phone" />"/>
 				</td>
 			</tr>
 			<tr>
@@ -64,7 +64,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(22)"/></span>
 				</td>
 				<td colspan="2">
-					<input name="mobile" size="20" value="<s:property value="customerAccount.mobile" />"/>
+					<input class="number" name="mobile" size="20" value="<s:property value="customerAccount.mobile" />"/>
 				</td>
 			</tr>
 			<tr>
@@ -88,7 +88,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(23)"/></span>
 				</td>
 				<td colspan="2">
-					<input id="zipCode" name="zipCode" size="20" value="<s:property value="customerAccount.zipCode" />" />
+					<input class="number" id="zipCode" name="zipCode" size="20" value="<s:property value="customerAccount.zipCode" />" />
 				</td>
 			</tr>
 			<tr>
@@ -155,7 +155,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" class="checkin" value="<s:property value="tr.tr_html(36)"/>" />
+					<input type="submit" class="checkin submit" value="<s:property value="tr.tr_html(36)"/>" />
 				</td>
 			</tr>  
 		</table>
