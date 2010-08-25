@@ -104,6 +104,9 @@
 		<action name="SaveOffer" class="com.appweb.action.ajax.SaveOffer">
 			<result name="success">/ajax/ajaxempty.jsp</result>
 		</action>
+		<action name="MessageWriteResponse" class="com.appweb.action.ajax.MessageWriteResponse">
+			<result name="success">/ajax/ajaxempty.jsp</result>
+		</action>
 	</package>
 
 </struts>
