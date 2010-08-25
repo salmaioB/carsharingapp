@@ -20,9 +20,10 @@ int i=0;
 				</div>
 				<div class="content" >
 					<s:property value="%{#listMessageReceive.message.content}" /><br />
-					<form>
-						<textarea type="text" style="width:90%; height:100px;"></textarea>
-						<input type="submit" value="envoyer"/>
+					<form id="form_sendResponse<s:property value="%{#listMessageReceive.message.id}" />">
+						<input id="idMessage" name="idMessage" style="display:none;" type="text" value="<s:property value="%{#listMessageReceive.message.id}" />" />
+						<textarea name="content" id="content" style="width:90%; height:100px;"></textarea>
+						<input type="button" value="envoyer" class="sendResponse" onclick="ajaxSendResponse(<s:property value="%{#listMessageReceive.message.id}" />)"/>
 					</form>
 				</div>
 			</div>
