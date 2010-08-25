@@ -36,21 +36,21 @@ public class OfferRowView
 		offerFinishingCityTextView          = (TextView)offerRowView.findViewById(R.id.offer_finishing_city_textview);
 		
 		if(offerWithCustomerAccount != null)
-        {			
+        {
 			// Display offer infos into components
-			if(offerWithCustomerAccount.getGender() == 0)
+			if(offerWithCustomerAccount.getCustomerAccount().getGender() == 0)
 			{
 				customerGenderImageView.setImageResource(R.drawable.icon_customer_woman);
 				customerDriverInfosTextView.setText("Conductrice");
 			}
-			else if(offerWithCustomerAccount.getGender() == 1)
+			else if(offerWithCustomerAccount.getCustomerAccount().getGender() == 1)
 			{
 				customerGenderImageView.setImageResource(R.drawable.icon_customer_man);
 				customerDriverInfosTextView.setText("Conducteur");
 			}
 		    
-			String lastName = offerWithCustomerAccount.getLastName().substring(0,1);
-			customerFullNameTextView.setText(offerWithCustomerAccount.getFirstName() + " " + lastName + ".");
+			String lastName = offerWithCustomerAccount.getCustomerAccount().getLastName().substring(0,1);
+			customerFullNameTextView.setText(offerWithCustomerAccount.getCustomerAccount().getFirstName() + " " + lastName + ".");
 			
 			customerOpinionTextView.setText("avis");
 			

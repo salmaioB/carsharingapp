@@ -45,6 +45,12 @@
 			<result type="json"/>
 		</action>
 	</package>
+	
+	<package name="MessageSaveWS" extends="json-default">
+		<action name="MessageSaveWS" class="cs.webservice.impl.MessageSaveWS">
+			<result type="json"/>
+		</action>
+	</package>
 
 	<!-- File 's Accueil -->
 	<!--

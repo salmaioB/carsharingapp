@@ -1,19 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry including="**/*.java" kind="src" path="src/main/java"/>
-	<classpathentry kind="var" path="M2_REPO/asm/asm/2.2.3/asm-2.2.3.jar"/>
-	<classpathentry kind="src" path="/CSModel"/>
-	<classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/google/code/ksoap2-android/ksoap2-android/2.3/ksoap2-android-2.3.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/google/code/ksoap2-android/ksoap2-base/2.3/ksoap2-base-2.3.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/google/code/ksoap2-android/ksoap2-j2se/2.3/ksoap2-j2se-2.3.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/microemu/microemu-cldc/2.0.1/microemu-cldc-2.0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/microemu/microemu-device-large/2.0.1/microemu-device-large-2.0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/microemu/microemu-javase/2.0.1/microemu-javase-2.0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/microemu/microemu-midp/2.0.1/microemu-midp-2.0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/microemu/microemulator/2.0.1/microemulator-2.0.1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/olife/Bureau/android-sdk-linux_86/platforms/android-2.0.1/android.jar"/>
-	<classpathentry kind="lib" path="/home/olife/Bureau/midpapi20-2.0.3.jar"/>
-	<classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/android/android/2.1_r1/android-2.1_r1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.3/commons-codec-1.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+  <classpathentry kind="src" path="/CSModel"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.0-alpha4/httpclient-4.0-alpha4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpcore/4.0-beta1/httpcore-4.0-beta1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/json/json/20090211/json-20090211.jar"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/khronos/opengl-api/gl1.1-android-2.1_r1/opengl-api-gl1.1-android-2.1_r1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xerces/xmlParserAPIs/2.6.2/xmlParserAPIs-2.6.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xpp3/xpp3/1.1.4c/xpp3-1.1.4c.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 </classpath>
