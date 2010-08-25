@@ -1,7 +1,10 @@
 package cs.appandroid.activities;
 
+import cs.appandroid.controller.IdentificationController;
 import cs.appandroid.view.OfferRowView;
+import cs.model.Message;
 import cs.model.OfferWithCustomerAccount;
+import cs.webservice.MessageSaveWS;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -17,6 +20,7 @@ import android.widget.TableLayout.LayoutParams;
 
 public class SendOfferMessage extends Activity implements OnClickListener
 {
+	private EditText messageEditText;
 	private Button sendAMessageButton;
 	
 	private OfferWithCustomerAccount offerWithCustomerAccount;
@@ -55,7 +59,7 @@ public class SendOfferMessage extends Activity implements OnClickListener
         sendOfferMessageViewLayout.addView(offerView);
         
         // Display the message EditText
-        EditText messageEditText = new EditText(this);
+        messageEditText = new EditText(this);
         messageEditText.setGravity(Gravity.TOP);
         messageEditText.setLines(5);
         
@@ -80,8 +84,14 @@ public class SendOfferMessage extends Activity implements OnClickListener
 	{
 		if(v == sendAMessageButton)
 		{
+			Message message = new Message();
+			message.setContent(messageEditText.getText().toString());
+			message.setIdCustomerAccount(offerWithCustomerAccount.getCustomerAccount().getId());
+			message.setIdCustomerTransmitter(IdentificationController.getUserLoggedId(getBaseContext()));
+			message.setIsRead(0);
 			
-			
+			MessageSaveWS messageSaveWS = new MessageSaveWS();
+			messageSaveWS.saveMessage(message);
 		}
 	}
 }

@@ -1,9 +1,7 @@
 package cs.model;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.lang.String;
 
 import org.json.JSONException;
@@ -49,28 +47,63 @@ public class CustomerAccount implements Serializable
 	
 	public CustomerAccount(JSONObject jsonObjectCustomerAccount) throws JSONException
 	{
-		id 			  	   		 = jsonObjectCustomerAccount.getInt("id");
-		customerLogin 	   		 = jsonObjectCustomerAccount.getString("customerLogin");
-		customerPassword   		 = jsonObjectCustomerAccount.getString("customerPassword");
-		lastName           		 = jsonObjectCustomerAccount.getString("lastName");
-		firstName          		 = jsonObjectCustomerAccount.getString("firstName");
-		geolocLongitude    		 = jsonObjectCustomerAccount.getDouble("geolocLongitude");
-		geolocLatitude     		 = jsonObjectCustomerAccount.getDouble("geolocLatitude");
-		emailAddress       		 = jsonObjectCustomerAccount.getString("emailAddress");
+		if(!jsonObjectCustomerAccount.isNull("id"))
+			id 			  	   		 = jsonObjectCustomerAccount.getInt("id");
+		
+		if(!jsonObjectCustomerAccount.isNull("gender"))
+			gender                   = jsonObjectCustomerAccount.getInt("gender");
+		
+		if(!jsonObjectCustomerAccount.isNull("customerLogin"))
+			customerLogin 	   		 = jsonObjectCustomerAccount.getString("customerLogin");
+		
+		if(!jsonObjectCustomerAccount.isNull("customerPassword"))
+			customerPassword   		 = jsonObjectCustomerAccount.getString("customerPassword");
+		
+		if(!jsonObjectCustomerAccount.isNull("lastName"))
+			lastName           		 = jsonObjectCustomerAccount.getString("lastName");
+		
+		if(!jsonObjectCustomerAccount.isNull("firstName"))
+			firstName          		 = jsonObjectCustomerAccount.getString("firstName");
+		
+		if(!jsonObjectCustomerAccount.isNull("geolocLongitude"))
+			geolocLongitude    	 = jsonObjectCustomerAccount.getDouble("geolocLongitude");
+		
+		if(!jsonObjectCustomerAccount.isNull("geolocLatitude"))
+			geolocLatitude     		 = jsonObjectCustomerAccount.getDouble("geolocLatitude");
+		
+		if(!jsonObjectCustomerAccount.isNull("emailAddress"))
+			emailAddress       		 = jsonObjectCustomerAccount.getString("emailAddress");
 		
 		//address            		 = jsonObjectCustomerAccount.getString("");
 		//country              		 = jsonObjectCustomerAccount.getString("");
 		//zipCode				   	 = jsonObjectCustomerAccount.getString("");
 		
-		phone     		   		 = jsonObjectCustomerAccount.getString("phone");
-		mobile 			   		 = jsonObjectCustomerAccount.getString("mobile");
-		customerType       		 = jsonObjectCustomerAccount.getInt("customerType");
-		idVehicule         		 = jsonObjectCustomerAccount.getInt("idVehicule");
-		acceptAnimals      		 = jsonObjectCustomerAccount.getInt("acceptAnimals");
-		acceptRadio        		 = jsonObjectCustomerAccount.getInt("acceptRadio");
-		acceptSmoker       		 = jsonObjectCustomerAccount.getInt("acceptSmoker");
-		acceptToDiscuss    		 = jsonObjectCustomerAccount.getInt("acceptToDiscuss");
-		acceptToMakeADetour      = jsonObjectCustomerAccount.getInt("acceptToMakeADetour");
+		if(!jsonObjectCustomerAccount.isNull("phone"))
+			phone     		   		 = jsonObjectCustomerAccount.getString("phone");
+		
+		if(!jsonObjectCustomerAccount.isNull("mobile"))
+			mobile 			   		 = jsonObjectCustomerAccount.getString("mobile");
+		
+		if(!jsonObjectCustomerAccount.isNull("customerType"))
+			customerType       		 = jsonObjectCustomerAccount.getInt("customerType");
+		
+		if(!jsonObjectCustomerAccount.isNull("idVehicule"))
+			idVehicule         		 = jsonObjectCustomerAccount.getInt("idVehicule");
+		
+		if(!jsonObjectCustomerAccount.isNull("acceptAnimals"))
+			acceptAnimals      		 = jsonObjectCustomerAccount.getInt("acceptAnimals");
+		
+		if(!jsonObjectCustomerAccount.isNull("acceptRadio"))
+			acceptRadio        		 = jsonObjectCustomerAccount.getInt("acceptRadio");
+		
+		if(!jsonObjectCustomerAccount.isNull("acceptSmoker"))
+			acceptSmoker       		 = jsonObjectCustomerAccount.getInt("acceptSmoker");
+		
+		if(!jsonObjectCustomerAccount.isNull("acceptToDiscuss"))
+			acceptToDiscuss    		 = jsonObjectCustomerAccount.getInt("acceptToDiscuss");
+		
+		if(!jsonObjectCustomerAccount.isNull("acceptToDiscuss"))
+			acceptToMakeADetour      = jsonObjectCustomerAccount.getInt("acceptToMakeADetour");
 		
 		//datetimeRegistration     = jsonObjectCustomerAccount.getString("");
 		//datetimeLastConnection   = jsonObjectCustomerAccount.getString("");

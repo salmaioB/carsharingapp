@@ -8,7 +8,6 @@ import org.hibernate.Transaction;
 
 import cs.dao.util.HibernateUtil;
 import cs.model.Message;
-import cs.model.Offer;
 import cs.dao.DAO;
 
 public class MessageDAO extends DAO

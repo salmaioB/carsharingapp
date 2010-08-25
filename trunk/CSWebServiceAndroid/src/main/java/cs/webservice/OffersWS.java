@@ -1,9 +1,7 @@
 package cs.webservice;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -12,11 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import cs.model.OfferWithCustomerAccount;
 import cs.common.HttpClient;
 import cs.define.Define;
+
 
 public class OffersWS
 {
@@ -47,7 +44,6 @@ public class OffersWS
 		{
 			// Retrieve a jsonArray which contains an offer list
 			JSONArray jsonArrayListOffers = jsonObjectReturn.getJSONArray("offersWithCustomerAccount");
-			Log.v("taille", Integer.toString(jsonArrayListOffers.length()));
 		 
 			for(int i=0; i<jsonArrayListOffers.length(); i++)
 			{
@@ -55,31 +51,7 @@ public class OffersWS
 				JSONObject jsonObjectOfferWithCustomerAccount = jsonArrayListOffers.getJSONObject(i);
 			 
 				// Create an offer and set all attributes
-				OfferWithCustomerAccount offerWithCustomerAccount = new OfferWithCustomerAccount();
-				offerWithCustomerAccount.setId(jsonObjectOfferWithCustomerAccount.getInt("id"));
-				offerWithCustomerAccount.setGender(jsonObjectOfferWithCustomerAccount.getInt("gender"));
-				offerWithCustomerAccount.setFirstName(jsonObjectOfferWithCustomerAccount.getString("firstName"));
-				offerWithCustomerAccount.setLastName(jsonObjectOfferWithCustomerAccount.getString("lastName"));
-				offerWithCustomerAccount.setMobile(jsonObjectOfferWithCustomerAccount.getString("mobile"));
-				offerWithCustomerAccount.setAcceptAnimals(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("acceptAnimals")));
-				offerWithCustomerAccount.setAcceptRadio(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("acceptRadio")));
-				offerWithCustomerAccount.setAcceptSmoker(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("acceptSmoker")));
-				offerWithCustomerAccount.setAcceptToDiscuss(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("acceptToDiscuss")));
-				offerWithCustomerAccount.setAcceptToMakeADetour(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("acceptToMakeADetour")));				
-                
-				SimpleDateFormat datetimeRegistrationFormatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-				offerWithCustomerAccount.setDatetimeRegistration(datetimeRegistrationFormatter.parse(jsonObjectOfferWithCustomerAccount.getString("datetimeRegistration")));
-					
-                offerWithCustomerAccount.setStartingCity(jsonObjectOfferWithCustomerAccount.getString("startingCity"));
-                offerWithCustomerAccount.setFinishingCity(jsonObjectOfferWithCustomerAccount.getString("finishingCity"));                
-				
-				offerWithCustomerAccount.setNumberOfPlaceRemaining(Integer.valueOf(jsonObjectOfferWithCustomerAccount.getInt("numberOfPlaceRemaining")));
-				offerWithCustomerAccount.setPricePerPassenger(Float.parseFloat(jsonObjectOfferWithCustomerAccount.getString("pricePerPassenger")));
-
-				// Ugly part
-				SimpleDateFormat datetimeStartedFormatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-				offerWithCustomerAccount.setDatetimeStarted(datetimeStartedFormatter.parse(jsonObjectOfferWithCustomerAccount.getString("datetimeStarted")));
-
+				OfferWithCustomerAccount offerWithCustomerAccount = new OfferWithCustomerAccount(jsonObjectOfferWithCustomerAccount);
 				offersWithCustomerAccount.add(offerWithCustomerAccount);
 			}
 		}

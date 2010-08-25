@@ -13,8 +13,8 @@
         <property name="numberOfPlaceRemaining" type="integer" column="number_of_place_remaining"/>
         <property name="datetimeStarted" type="timestamp" column="datetime_started"/>
         
-        <join table="customer_accounts">
-        	<key column="_id_customer_account"/>
+        <component name="CustomerAccount" class="CustomerAccount">
+        	<property name="id" type="integer" column="_id_customer_account"/>
         	<property name="gender" type="integer" column="gender"/>
         	<property name="lastName" type="string" column="last_name"/>  
         	<property name="firstName" type="string" column="first_name"/>
@@ -25,6 +25,6 @@
         	<property name="acceptToDiscuss" type="integer" column="accept_to_discuss"/>
         	<property name="acceptToMakeADetour" type="integer" column="accept_to_make_a_detour"/>
         	<property name="datetimeRegistration" type="timestamp" column="datetime_registration"/>    	
-    	</join>
+    	</component>
      </class>
 </hibernate-mapping>

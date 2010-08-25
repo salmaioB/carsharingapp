@@ -143,10 +143,10 @@ public class OfferView extends Activity implements OnClickListener
 	{
 		if(offerWithCustomerAccount != null)
 		{
-			customerMobile = offerWithCustomerAccount.getMobile();
+			customerMobile = offerWithCustomerAccount.getCustomerAccount().getMobile();
 			
-			customerFullNameTextView.setText("Nom: " + offerWithCustomerAccount.getFirstName() + " " + offerWithCustomerAccount.getLastName());
-			customerDateRegistrationTextView.setText("Inscription: " + offerWithCustomerAccount.getDatetimeRegistrationToDisplay());
+			customerFullNameTextView.setText("Nom: " + offerWithCustomerAccount.getCustomerAccount().getFirstName() + " " + offerWithCustomerAccount.getCustomerAccount().getLastName());
+			//customerDateRegistrationTextView.setText("Inscription: " + offerWithCustomerAccount.getCustomerAccount().getDatetimeRegistrationToDisplay());
 
 			customerAcceptAnimalsImageView.setImageResource(R.drawable.accept_animals_green);
 			customerAcceptRadioImageView.setImageResource(R.drawable.accept_radio_red);
@@ -154,7 +154,7 @@ public class OfferView extends Activity implements OnClickListener
 			customerAcceptToDiscussImageView.setImageResource(R.drawable.accept_to_discuss_green);
 			customerAcceptToMakeADetourImageView.setImageResource(R.drawable.accept_to_make_a_detour_red);
 			
-			customerMobileButton.setText(offerWithCustomerAccount.getMobile());
+			customerMobileButton.setText(offerWithCustomerAccount.getCustomerAccount().getMobile());
 			customerMobileButton.setOnClickListener(this);
 			
 			customerSendAMessageButton.setOnClickListener(this);
