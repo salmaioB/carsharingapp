@@ -214,15 +214,8 @@ public class MyProfile extends Activity implements OnClickListener
 	public void displayMyProfileScreen()
 	{
 	    if(IdentificationController.userIsLogged(getBaseContext()))
-	    {	
-//	    	final boolean customTitleSupported = requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-	    	
+	    {
 	    	setContentView(R.layout.myprofile);
-	    	
-//	    	if(customTitleSupported)
-//	    	{
-//	    		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.titlebar);
-//	        }
 	        
 	        userInfosTextView      = (TextView)findViewById(R.id.user_infos_textview);
 	        userInfosTextView.setOnClickListener(this);

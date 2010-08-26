@@ -49,6 +49,7 @@ public class MessageDAO extends DAO
 
 		 return true;
 	}
+	
 	public Boolean updateRead(Message of)
 	{
 		 Session session = HibernateUtil.currentSession();		   
@@ -70,6 +71,7 @@ public class MessageDAO extends DAO
 
 		 return true;
 	}
+	
 	/**
 	 * Function count the number of message for a customer
 	 */
@@ -78,13 +80,13 @@ public class MessageDAO extends DAO
 		Integer count = 0;
 	     Session session = HibernateUtil.currentSession();
 	     String sqlQuery = "SELECT * " +
-		    "FROM messages m " +
-		    "WHERE m._id_customer_account = " + idCustomerAccount +
-	        " AND m.is_read = 0 ";
+		    			   "FROM messages m " +
+		    			   "WHERE m._id_customer_account = " + idCustomerAccount +
+		    			   " AND m.is_read = 0 ";
 	     
 	     String hqlQuery = "FROM Message " +
-		    "WHERE idCustomerAccount = " + idCustomerAccount +
-	        " AND isRead = 0 ";
+		    			   "WHERE idCustomerAccount = " + idCustomerAccount +
+		    			   " AND isRead = 0 ";
 	     
 	     System.out.println("nbMessageNotRead");
 	     System.out.println(hqlQuery);
@@ -97,6 +99,7 @@ public class MessageDAO extends DAO
 		
 		return count;
 	}
+	
 	/**
 	 * Function to search message
 	 * by id idCustomerAccount
@@ -117,20 +120,21 @@ public class MessageDAO extends DAO
      
 	 return messages;
 	}
+	
 	public List<Message> loadSearchMessagesSend(Integer idCustomerTransmitter)
 	{
-     Session session = HibernateUtil.currentSession();
-     
-     String SQLQuery = "FROM Message " +
-				       "WHERE idCustomerTransmitter=" + idCustomerTransmitter.toString() ;
-     
-     System.out.println("loadSearchMessagesSend");
-     System.out.println(SQLQuery);
-     
-     Query query = session.createQuery(SQLQuery);
-     List<Message> messages = query.list();
-     HibernateUtil.closeSession();
-     
-	 return messages;
+	     Session session = HibernateUtil.currentSession();
+	     
+	     String SQLQuery = "FROM Message " +
+					       "WHERE idCustomerTransmitter=" + idCustomerTransmitter.toString() ;
+	     
+	     System.out.println("loadSearchMessagesSend");
+	     System.out.println(SQLQuery);
+	     
+	     Query query = session.createQuery(SQLQuery);
+	     List<Message> messages = query.list();
+	     HibernateUtil.closeSession();
+	     
+		 return messages;
 	}
 }

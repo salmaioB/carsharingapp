@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 import cs.dao.util.HibernateUtil;
 import cs.model.Offer;
 import cs.model.OfferWithCustomerAccount;
+import cs.model.CustomerOfferWithMessageAndCustomerAccount;
 import cs.model.OffersToRoute;
 import cs.model.Route;
 import cs.dao.DAO;
@@ -28,7 +29,7 @@ public class OfferDAO extends DAO
 	
 	public Offer load(Integer id)
 	{
-		 //Open session
+		 // Open session
 		 Session session = HibernateUtil.currentSession();
 		 Transaction tx = session.beginTransaction();
 		 session.beginTransaction();
@@ -121,45 +122,37 @@ public class OfferDAO extends DAO
 	}
 	
 	/**
-	 * Function to display the customer offers(routes)
+	 * Function to display offer list
+	 * which contain customer message send
+	 * 
+	 * Use on Android
 	 */
-	public List<Offer> loadCustomerOffers(Integer idCustomerAccount)
+	public List<CustomerOfferWithMessageAndCustomerAccount> loadOfferWithCustomerMessageReceive(Integer idCustomerAccount)
 	{
 		Session session = HibernateUtil.currentSession();
 		
-		String SQLQuery = "SELECT * " +
-		   		          "FROM offers o, routes r, offers_to_routes o_to_r " +
-		   		          "WHERE o_to_r._id_offer=o._id_offer " +
-		   		          "AND o_to_r._id_route=r._id_route " +
-		   		          "AND o._id_driver=" + idCustomerAccount.toString();
-
-		System.out.println(SQLQuery);
-
-		Query query = session.createSQLQuery(SQLQuery).addEntity(Offer.class);
+		String sqlQuery = "SELECT count(*) as number_of_message, o._id_offer, c.last_name, c.first_name, o.starting_city, o.finishing_city " +
+						  "FROM offers o, customer_accounts c, messages m, " +
+						  "(" +
+						  " SELECT o1._id_offer " +
+						  " FROM offers o1, customer_accounts c1, offers_to_customer_accounts o_to_c1 " +
+						  " WHERE c1._id_customer_account=" + idCustomerAccount.toString() + " " +
+						  " AND o_to_c1._id_customer_account=c1._id_customer_account " + 
+						  " AND o1._id_offer=o_to_c1._id_offer " +
+						  " AND o_to_c1.is_offer_creator=1" +
+						  ") as myoffers " +
+						  "WHERE myoffers._id_offer=o._id_offer " +
+						  "AND o._id_offer=m._id_offer " +
+						  "AND m._id_customer_transmitter!=" + idCustomerAccount.toString() + " " +
+						  "AND m._id_customer_transmitter=c._id_customer_account " +
+						  "GROUP BY o._id_offer, m._id_customer_transmitter";
 		
-		List<Offer> offers = query.list();
-		//offers = query.list();
-		
-		Iterator<Offer> itOffers = offers.iterator();
-		while(itOffers.hasNext())
-		{
-			Offer offer = itOffers.next();
-			System.out.println("Price: " + offer.getPricePerPassenger());
-		}
-		
-		List<Route> routes = query.list();
-		
-		Iterator<Route> itRoutes = routes.iterator();		
-		while(itRoutes.hasNext())
-		{
-			Route route = itRoutes.next();
-			System.out.println("Starting city: " + route.getStartingCity());
-			System.out.println("Finishing city: " + route.getStartingCity());
-		}
+		Query query = session.createSQLQuery(sqlQuery).addEntity(CustomerOfferWithMessageAndCustomerAccount.class);
+	    List<CustomerOfferWithMessageAndCustomerAccount> customerMessagesWithOffer = query.list();
 		
 		HibernateUtil.closeSession();
 		
-		return null;
+		return customerMessagesWithOffer;
 	}
 	
 	/**

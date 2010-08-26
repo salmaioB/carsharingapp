@@ -20,8 +20,8 @@ public class DisplayOffers extends ListActivity
 	private OfferListAdapter offerListAdapter;
 	private ProgressDialog offerSearchProgressDialog;
 	
-	private String startingCity  = "Orleans";
-	private String finishingCity = "Paris";
+	private String startingCity;
+	private String finishingCity;
 	private List<OfferWithCustomerAccount> offersWithCustomerAccount = null;
 	
 	private Runnable displayOffersProcess;

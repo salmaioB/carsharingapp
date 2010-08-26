@@ -27,16 +27,30 @@ public class Offer
 	
 	public Offer(JSONObject jsonObjectOffer) throws JSONException
 	{
-		id          		   = jsonObjectOffer.getInt("id");
-		idOfferType 		   = jsonObjectOffer.getInt("idOfferType");
-		idDriver    		   = jsonObjectOffer.getInt("idDriver");
-		title       		   = jsonObjectOffer.getString("title");
-		description 	 	   = jsonObjectOffer.getString("description");
-		numberOfPlaceInitial   = jsonObjectOffer.getInt("numberOfPlaceInitial");
+		if(!jsonObjectOffer.isNull("id"))
+			id          		   = jsonObjectOffer.getInt("id");
+		
+		if(!jsonObjectOffer.isNull("idOfferType"))
+			idOfferType 		   = jsonObjectOffer.getInt("idOfferType");
+		
+		if(!jsonObjectOffer.isNull("idDriver"))
+			idDriver    		   = jsonObjectOffer.getInt("idDriver");
+		
+		if(!jsonObjectOffer.isNull("title"))
+			title       		   = jsonObjectOffer.getString("title");
+		
+		if(!jsonObjectOffer.isNull("description"))
+			description 	 	   = jsonObjectOffer.getString("description");
+		
+		if(!jsonObjectOffer.isNull("numberOfPlaceInitial"))
+			numberOfPlaceInitial   = jsonObjectOffer.getInt("numberOfPlaceInitial");
+		
+		if(!jsonObjectOffer.isNull("numberOfPlaceRemaining"))
 		numberOfPlaceRemaining = jsonObjectOffer.getInt("numberOfPlaceRemaining");
 		
 		// Ugly part
-		pricePerPassenger      = Float.parseFloat(jsonObjectOffer.getString("pricePerPassenger"));
+		if(!jsonObjectOffer.isNull("pricePerPassenger"))
+			pricePerPassenger      = Float.parseFloat(jsonObjectOffer.getString("pricePerPassenger"));
 		
 		//dateStarted            = jsonObjectOffer.getInt("");
 		//dateEnded			   = jsonObjectOffer.getInt("");

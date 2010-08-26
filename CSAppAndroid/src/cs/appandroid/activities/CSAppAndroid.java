@@ -209,7 +209,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    tabHost.addTab(spec);
 	    
 	    // Create an Intent to launch messages activity for the tab
-	    intent = new Intent().setClass(this, MyMessages.class);
+	    intent = new Intent().setClass(this, MyMessagesGroup.class);
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
 	    spec = tabHost.newTabSpec("mymessages").setIndicator("",

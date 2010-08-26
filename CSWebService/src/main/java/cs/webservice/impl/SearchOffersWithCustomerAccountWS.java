@@ -8,7 +8,7 @@ import cs.model.OfferWithCustomerAccount;
 import cs.dao.spring.SpringDAO;
 
 
-public class OffersWS extends ActionSupport
+public class SearchOffersWithCustomerAccountWS extends ActionSupport
 {
 	private static final long serialVersionUID = 1L;
 	

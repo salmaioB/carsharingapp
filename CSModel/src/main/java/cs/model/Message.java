@@ -2,6 +2,9 @@ package cs.model;
 
 import java.util.Date;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Message
 {
 	private Integer id;
@@ -13,6 +16,36 @@ public class Message
 	private Date dateTimeWrited;
 	private Integer idCustomerTransmitter;
 	
+	
+	public Message()
+	{
+		
+	}
+	
+	public Message(JSONObject jsonObjectMessage) throws JSONException
+	{
+		if(!jsonObjectMessage.isNull("id"))
+			id      		  = jsonObjectMessage.getInt("id");
+		
+		if(!jsonObjectMessage.isNull("idOffer"))
+			idOffer			  = jsonObjectMessage.getInt("idOffer");
+		
+		if(!jsonObjectMessage.isNull("title"))
+			title			  = jsonObjectMessage.getString("title");
+		
+		if(!jsonObjectMessage.isNull("content"))
+			content 		  = jsonObjectMessage.getString("content");
+		
+		if(!jsonObjectMessage.isNull("idCustomerAccount"))
+			idCustomerAccount = jsonObjectMessage.getInt("idCustomerAccount");
+		
+		if(!jsonObjectMessage.isNull("isRead"))
+			isRead			  = jsonObjectMessage.getInt("isRead");
+		//dateTimeWrited    = jsonObjectMessage.get
+		
+		if(!jsonObjectMessage.isNull("idCustomerTransmitter"))
+			idCustomerAccount = jsonObjectMessage.getInt("idCustomerTransmitter");
+	}
 	
 	public Integer getId() {
 		return id;

@@ -28,8 +28,8 @@
 		</action>
 	</package>
 	
-	<package name="OffersWS" extends="json-default">
-		<action name="OffersWS" class="cs.webservice.impl.OffersWS">
+	<package name="SearchOffersWithCustomerAccountWS" extends="json-default">
+		<action name="SearchOffersWithCustomerAccountWS" class="cs.webservice.impl.SearchOffersWithCustomerAccountWS">
 			<result type="json"/>
 		</action>
 	</package>
@@ -40,8 +40,8 @@
 		</action>
 	</package>
 
-	<package name="CustomerOffersWS" extends="json-default">
-		<action name="CustomerOffersWS" class="cs.webservice.impl.CustomerOffersWS">
+	<package name="CustomerOffersWithMessageAndCustomerAccountWS" extends="json-default">
+		<action name="CustomerOffersWithMessageAndCustomerAccountWS" class="cs.webservice.impl.CustomerOffersWithMessageAndCustomerAccountWS">
 			<result type="json"/>
 		</action>
 	</package>

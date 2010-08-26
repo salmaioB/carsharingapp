@@ -23,6 +23,7 @@
 	<activity android:name="OfferView"></activity>
 <activity android:name="SendOfferMessage"></activity>
 <activity android:name="MyRoutesGroup"></activity>
+<activity android:name="MyMessagesGroup"></activity>
 </application>
 
     <uses-sdk android:minSdkVersion="6" />
