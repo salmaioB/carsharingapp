@@ -11,5 +11,6 @@
         <property name="idOffer" type="integer" column="_id_offer"/>
         <property name="idCustomerAccount" type="integer" column="_id_customer_account"/>
         <property name="isDriver" type="integer" column="is_driver"/>
+        <property name="isOfferCreator" type="integer" column="is_offer_creator"/>
      </class>
 </hibernate-mapping>
