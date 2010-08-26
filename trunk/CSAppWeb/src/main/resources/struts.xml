@@ -115,12 +115,19 @@
 		</action>
 		<action name="ResultSearch" class="com.appweb.action.ajax.ResultSearch">
 			<result name="success">/ajax/ajaxresultsearch.jsp</result>
+			<result name="error">/ajax/ajaxerrorsearch.jsp</result>
 		</action>
 		<action name="MyPostOffer" class="com.appweb.action.ajax.MyPostOffer">
 			<result name="success">/ajax/ajaxresultsearch.jsp</result>
+			<result name="error">/ajax/ajaxerrorsearch.jsp</result>
 		</action>
 		<action name="MyPostAgree" class="com.appweb.action.ajax.MyPostAgree">
 			<result name="success">/ajax/ajaxresultsearch.jsp</result>
+			<result name="error">/ajax/ajaxerrorsearch.jsp</result>
+		</action>
+		<action name="RequestParticipateTrip" class="com.appweb.action.ajax.RequestParticipateTrip">
+			<result name="success">/ajax/ajaxsuccessparticipate.jsp</result>
+			<result name="error">/ajax/ajaxerrorpartcipate.jsp</result>
 		</action>
 	</package>
 
