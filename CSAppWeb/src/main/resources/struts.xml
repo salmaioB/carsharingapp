@@ -116,6 +116,12 @@
 		<action name="ResultSearch" class="com.appweb.action.ajax.ResultSearch">
 			<result name="success">/ajax/ajaxresultsearch.jsp</result>
 		</action>
+		<action name="MyPostOffer" class="com.appweb.action.ajax.MyPostOffer">
+			<result name="success">/ajax/ajaxresultsearch.jsp</result>
+		</action>
+		<action name="MyPostAgree" class="com.appweb.action.ajax.MyPostAgree">
+			<result name="success">/ajax/ajaxresultsearch.jsp</result>
+		</action>
 	</package>
 
 </struts>
