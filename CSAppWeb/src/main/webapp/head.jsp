@@ -78,46 +78,53 @@
 						//Initialisation de la carte du profil
 						initializeMapEmpty('divMapProfil');
 			        }
-					// onglet post == ui.index == 3
+					// onglet message== ui.index == 3
 			        if ( ui.index == 3)
 			        {
-				        //Requete ajax pour récuperer les messages boite de reception
-			        	$.ajax({
-			                method: 'post',
-			                url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
-			                success: function(data)
-			                {
-				                 $('#receive').html(data);
-	
-								//Execution des accordions
-				 				$.accordian('#list2 > div', '#item21', {
-									titles:'.title',
-									contents:'.content',
-									showSpeed:150,
-									hideSpeed:250
-								});
-								//Ajoute les évement ajax au message recu
-				 				ajaxSendResponse();
-			                }
-			        	});
-
-					    //Requete ajax pour récuperer les messages boite de reception
-				        $.ajax({
+			        	$('#send').html('<p><img src="/img/ajax-loader.gif" width="320" height="24" /></p>');
+			        	
+    					function ajax()
+    					{		        
+					        //Requete ajax pour récuperer les messages boite de reception
+				        	$.ajax({
 				                method: 'post',
-				                url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
+				                url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
 				                success: function(data)
 				                {
-				                 	$('#send').html(data);
-
+					                 $('#receive').html(data);
+		
 									//Execution des accordions
-					 				$.accordian('#list1 > div', '#item11', {
+					 				$.accordian('#list2 > div', '#item21', {
 										titles:'.title',
 										contents:'.content',
 										showSpeed:150,
 										hideSpeed:250
-									});	    				
-			                	}
-			                  });
+									});
+									//Ajoute les évement ajax au message recu
+					 				ajaxSendResponse();
+				                }
+				        	});
+	
+						    //Requete ajax pour récuperer les messages boite de reception
+					        $.ajax({
+					                method: 'post',
+					                url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
+					                success: function(data)
+					                {
+					                 	$('#send').html(data);
+	
+										//Execution des accordions
+						 				$.accordian('#list1 > div', '#item11', {
+											titles:'.title',
+											contents:'.content',
+											showSpeed:150,
+											hideSpeed:250
+										});	    				
+				                	}
+				                  });//Fin ajax
+	    					}
+    					ajax();
+			        	//$('#send').load(ajax());
 			        }
 		            return true;
 	       		}
@@ -212,6 +219,12 @@
 						//alert("form.submit()");
 						//form.submit();
 						ajaxCheckInAjax();
+					}
+				}
+				);
+				$('#search_form').validate({
+					submitHandler: function(form) {
+						ajaxSearch();
 					}
 				}
 				);
