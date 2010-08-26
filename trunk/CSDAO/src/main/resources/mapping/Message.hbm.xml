@@ -8,6 +8,7 @@
         <id name="id" column="_id_message">
             <generator class="native"/>
         </id>
+        <property name="idOffer" type="integer" column="_id_offer"/>        
         <property name="title" type="string" column="title"/>
         <property name="content" type="string" column="content"/>
         <property name="idCustomerAccount" type="integer" column="_id_customer_account"/>
