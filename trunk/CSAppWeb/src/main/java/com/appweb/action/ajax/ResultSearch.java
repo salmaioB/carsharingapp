@@ -24,7 +24,16 @@ public class ResultSearch extends Action
    private String addressStop;
    private Date datepickerSearch;
    List<OfferWithCustomerAccount> owca;
+   private String divPrintResultat;
    
+	public String getDivPrintResultat() {
+		return divPrintResultat;
+	}
+
+	public void setDivPrintResultat(String divPrintResultat) {
+		this.divPrintResultat = divPrintResultat;
+	}	
+
 	public List<OfferWithCustomerAccount> getOwca() {
 		return owca;
 	}
@@ -73,8 +82,18 @@ public void setOwca(List<OfferWithCustomerAccount> owca) {
 		System.out.println("getAddressStop() : " + getAddressStop());
 		
 		owca = offerDAO.loadSearchOffers(getAddressStart(), getAddressStop(), null);
-		System.out.println("owca.get(0).getAcceptAnimals() : " + owca.get(0).getCustomerAccount().getAcceptAnimals());
-		System.out.println("owca.get(0).getGender() : " + owca.get(0).getCustomerAccount().getGender());
-		return SUCCESS;
+		System.out.println("owca.size() : " + owca.size() );
+		if(owca != null)
+		{
+			if(owca.size() > 0)
+			{
+				System.out.println("owca.get(0).getAcceptAnimals() : " + owca.get(0).getCustomerAccount().getAcceptAnimals());
+				System.out.println("owca.get(0).getGender() : " + owca.get(0).getCustomerAccount().getGender());
+				
+				divPrintResultat = "resultSearch";
+				return SUCCESS;
+			}
+		}
+		return ERROR;
 	}
 }
