@@ -1,3 +1,20 @@
+function ajaxSendMessage()
+{
+	$('#sending').css('display','block');
+	var postData = $("input", '#form_sendMessage').serialize();
+    $.ajax({
+    	method: 'post',
+        url: WEB_ROOT_URL+'CSAppWeb/MessageWriteResponse',
+        data: postData,
+        success: function(data)
+        {
+        	$('#contentSendSearch').val('');
+        	$('#titleSendSearch').val('');
+            $('#sending').css('display','none');
+        }
+   });
+   return false;
+}
 function printTrip(idTrip)
 {
     var postData = null;
@@ -9,7 +26,6 @@ function printTrip(idTrip)
             success: function(data)
             {
                  $('#resultSearch').html(data);
-                 
                  initializeMapParcoursSearch();
             }
               });
@@ -79,6 +95,21 @@ function ajaxCheckInAjax()
               });
     return false;
 }
+function ajaxSearch()
+{
+    var postData = $("input", '#search_form').serialize();
+    
+    $.ajax({
+            method: 'post',
+            url: WEB_ROOT_URL+'CSAppWeb/ResultSearch',
+            data: postData,
+            success: function(data)
+            {
+             $('#resultSearch').html(data);
+ 			initializeMapParcoursSearch();
+            }
+           });
+}
 $(document).ready(function()
 {
 	/*
@@ -99,7 +130,7 @@ $(document).ready(function()
                     return false;
             });
       */
-
+/*
 	$('input.Csearch').click(function()
             {
                     var postData = $("input", '#search_form').serialize();
@@ -116,7 +147,7 @@ $(document).ready(function()
                     
                     return false;
             });
-
+*/
       $('input.checkAddress').click(function()
                 {
                         var postData = $("input", '#checkaddress_form').serialize();

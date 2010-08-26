@@ -12,10 +12,10 @@
 				</td>
 			</tr>
 			<tr style="min-height:75%;">
-				<td style="width:20%; border-width:0px; border-style:solid; ">
+				<td style="width:15%; border-width:0px; border-style:solid; ">
 					<tiles:insertAttribute name="left" />
 				</td>
-				<td  style="min-width:80%; border-width:0px; border-style:solid;">
+				<td  style="min-width:85%; border-width:0px; border-style:solid;">
 					<div id="container" > 
 					<!-- 
 						<table style="width:100%; height:100%;">
