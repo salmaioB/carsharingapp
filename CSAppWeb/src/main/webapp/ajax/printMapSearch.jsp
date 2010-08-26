@@ -174,13 +174,13 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<div id="sending" name="sending" style="background-color:#009ACF; display:none;">Message en cours d envoi</div>
+				<div id="sending" name="sending" style="background-color:#009ACF; display:none;"><s:property value="tr.tr_html(47)"/></div>
 				<form id="form_sendMessage">
 					<input type="text" id="idCustomer" name="idCustomer" style="display:none;" value="<s:property value="idCustomer"/>" />
 					<input type="text" id="titleSendSearch" name="titleSendSearch"/><br />
 					<input id="contentSendSearch" name="contentSendSearch" style="width:400px; height:80px;" />
 					<s:if test="isLoging()" >
-						<input type="button" value="Envoyer" onclick="ajaxSendMessage();"/>
+						<input type="button" value="<s:property value="tr.tr_html(30)"/>" onclick="ajaxSendMessage();"/>
 					</s:if>
 					<s:else>
 						<br />Pas identifier

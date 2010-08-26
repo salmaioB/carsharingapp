@@ -78,6 +78,26 @@
 						//Initialisation de la carte du profil
 						initializeMapEmpty('divMapProfil');
 			        }
+			        //My trip
+			        if ( ui.index == 4)
+			        {
+			        	$.ajax({
+			                method: 'post',
+			                url: WEB_ROOT_URL+'CSAppWeb/MyPostOffer',
+			                success: function(data)
+			                {
+				                 $('#myPostOffer').html(data);
+			                }
+			        	});
+			        	$.ajax({
+			                method: 'post',
+			                url: WEB_ROOT_URL+'CSAppWeb/MyPostAgree',
+			                success: function(data)
+			                {
+				                 $('#myAgreeOffer').html(data);
+			                }
+			        	});
+			        }//Fin de MY Trip
 					// onglet message== ui.index == 3
 			        if ( ui.index == 3)
 			        {
