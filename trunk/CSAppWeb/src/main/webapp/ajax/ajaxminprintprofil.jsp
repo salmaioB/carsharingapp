@@ -3,7 +3,7 @@
 <div class="corner">
 <table style="border:1px solid black;">
 	<tr style="border:1px solid black;">
-		<td style=" font-size: 0.8em; border:1px solid black; ">Information sur le contact</td>
+		<td style=" font-size: 0.8em; border:1px solid black; "><s:property value="tr.tr_html(46)"/></td>
 	</tr>
 	<tr>
 		<td>

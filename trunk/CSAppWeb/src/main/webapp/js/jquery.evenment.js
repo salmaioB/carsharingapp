@@ -46,6 +46,7 @@ function updateReadMessage(idMessage)
 
 function ajaxSendResponse(i)
 {
+	$('#sending'+i).css('display','block');
 	var postData = $("input", '#form_sendResponse'+i).serialize();
     $.ajax({
     	method: 'post',
@@ -53,7 +54,7 @@ function ajaxSendResponse(i)
         data: postData,
         success: function(data)
         {
-        	alert("Message envoye");
+    		$('#sending'+i).css('display','none');
         }
    });
    return false;
