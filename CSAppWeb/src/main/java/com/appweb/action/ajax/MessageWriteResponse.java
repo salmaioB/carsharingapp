@@ -17,7 +17,14 @@ public class MessageWriteResponse extends Action
 	private Integer idCustomer;
 	private String contentSendSearch;
 	private String titleSendSearch;
+	private Integer idOffer;
 	
+	public Integer getIdOffer() {
+		return idOffer;
+	}
+	public void setIdOffer(Integer idOffer) {
+		this.idOffer = idOffer;
+	}
 	public String getContentSendSearch() {
 		return contentSendSearch;
 	}
@@ -87,7 +94,7 @@ public class MessageWriteResponse extends Action
 			message.setDateTimeWrited(new Date());
 			message.setIsRead(0);
 			message.setTitle(titleSendSearch);
-			
+			message.setIdOffer(idOffer);
 			messageDAO.save(message);
 		}
 		return SUCCESS;
