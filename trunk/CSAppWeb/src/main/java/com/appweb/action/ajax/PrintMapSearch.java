@@ -2,13 +2,18 @@ package com.appweb.action.ajax;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import com.appweb.Action;
 
+import cs.dao.dao.CustomerAccountDAO;
 import cs.dao.dao.OfferDAO;
+import cs.dao.dao.RouteDAO;
 import cs.dao.spring.SpringDAO;
 import cs.engine.action.CustomerAccountEngineAction;
 import cs.model.CustomerAccount;
+import cs.model.Offer;
+import cs.model.Route;
 
 public class PrintMapSearch extends Action
 {
@@ -24,6 +29,53 @@ public class PrintMapSearch extends Action
 	private Integer nbPassagerPost;
 	private Date datepickerPost;
 	
+	private String description;
+	
+	private Integer gender;
+	private String firstName;
+	private String lastName;
+	
+	private Integer idCustomer;
+	
+	public Integer getIdCustomer() {
+		return idCustomer;
+	}
+
+	public void setIdCustomer(Integer idCustomer) {
+		this.idCustomer = idCustomer;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Integer getGender() {
+		return gender;
+	}
+
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	private String villepassage1Post;
 	private String villepassage2Post;
 	private String villepassage3Post;
@@ -33,93 +85,144 @@ public class PrintMapSearch extends Action
 	private String villepassage7Post;
 	private String villepassage8Post;
 	
-	private Integer priceTrip1;
-	private Integer priceTrip2;
-	private Integer priceTrip3;
-	private Integer priceTrip4;
-	private Integer priceTrip5;
-	private Integer priceTrip6;
-	private Integer priceTrip7;
-	private Integer priceTrip8;
-	private Integer priceTripStop;
-	private Integer priceTotal;
+	private String priceTrip1;
+	private String priceTrip2;
+	private String priceTrip3;
+	private String priceTrip4;
+	private String priceTrip5;
+	private String priceTrip6;
+	private String priceTrip7;
+	private String priceTrip8;
+	private String priceTripStop;
+	private String priceTotal;
+	
+	private Integer acceptAnimals;
+	private Integer acceptRadio;
+	private Integer acceptSmoker;
+	private Integer acceptToDiscuss;
+	
+	public Integer getAcceptAnimals() {
+		return acceptAnimals;
+	}
+
+	public void setAcceptAnimals(Integer acceptAnimals) {
+		this.acceptAnimals = acceptAnimals;
+	}
+
+	public Integer getAcceptRadio() {
+		return acceptRadio;
+	}
+
+	public void setAcceptRadio(Integer acceptRadio) {
+		this.acceptRadio = acceptRadio;
+	}
+
+	public Integer getAcceptSmoker() {
+		return acceptSmoker;
+	}
+
+	public void setAcceptSmoker(Integer acceptSmoker) {
+		this.acceptSmoker = acceptSmoker;
+	}
+
+	public Integer getAcceptToDiscuss() {
+		return acceptToDiscuss;
+	}
+
+	public void setAcceptToDiscuss(Integer acceptToDiscuss) {
+		this.acceptToDiscuss = acceptToDiscuss;
+	}
+
+	public Integer getAcceptToMakeADetour() {
+		return acceptToMakeADetour;
+	}
+
+	public void setAcceptToMakeADetour(Integer acceptToMakeADetour) {
+		this.acceptToMakeADetour = acceptToMakeADetour;
+	}
+	private Integer acceptToMakeADetour;
 	
 	public PrintMapSearch()
 	{
 		System.out.println("Construct PrintMapSearch");
+		acceptAnimals = 0;
+		acceptRadio = 0;
+		acceptSmoker = 0;
+		acceptToDiscuss = 0;
+		acceptToMakeADetour = 0;
 		
-		priceTrip1 = 0;
-		priceTrip2 = 0;
-		priceTrip3 = 0;
-		priceTrip4 = 0;
-		priceTrip5 = 0;
-		priceTrip6 = 0;
-		priceTrip7 = 0;
-		priceTrip8 = 0;
-		priceTripStop = 0;
-		priceTotal = 0;
+		priceTrip1 = "0";
+		priceTrip2 = "0";
+		priceTrip3 = "0";
+		priceTrip4 = "0";
+		priceTrip5 = "0";
+		priceTrip6 = "0";
+		priceTrip7 = "0";
+		priceTrip8 = "0";
+		priceTripStop = "0";
+		priceTotal = "0";
 	}
 	
-	public Integer getPriceTotal() {
+	public String getPriceTotal() {
 		return priceTotal;
 	}
-	public void setPriceTotal(Integer priceTotal) {
+	public void setPriceTotal(String priceTotal) {
 		if(priceTotal != null) this.priceTotal = priceTotal;
 	}
 	
-	public Integer getPriceTripStop() {
+	public String getPriceTripStop() {
 		return priceTripStop;
 	}
-	public void setPriceTripStop(Integer priceTripStop) {
+	public void setPriceTripStop(String priceTripStop) {
 		if(priceTripStop != null)  this.priceTripStop = priceTripStop;
 	}
-	public Integer getPriceTrip1() {
+	public String getPriceTrip1() {
 		return priceTrip1;
 	}
-	public void setPriceTrip1(Integer priceTrip1) {
+	public void setPriceTrip1(String priceTrip1) {
 		if(priceTrip1 != null)  this.priceTrip1 = priceTrip1;
 	}
-	public Integer getPriceTrip2() {
+	public String getPriceTrip2() {
 		return priceTrip2;
 	}
-	public void setPriceTrip2(Integer priceTrip2) {
+	public void setPriceTrip2(String priceTrip2) {
 		if(priceTrip2 != null)  this.priceTrip2 = priceTrip2;
 	}
-	public Integer getPriceTrip3() {
+	public String getPriceTrip3() {
 		return priceTrip3;
 	}
-	public void setPriceTrip3(Integer priceTrip3) {
+	public void setPriceTrip3(String priceTrip3) {
 		if(priceTrip3 != null)  this.priceTrip3 = priceTrip3;
 	}
-	public Integer getPriceTrip4() {
+	public String getPriceTrip4() {
 		return priceTrip4;
 	}
-	public void setPriceTrip4(Integer priceTrip4) {
+	public void setPriceTrip4(String priceTrip4) {
 		if(priceTrip4 != null)  this.priceTrip4 = priceTrip4;
 	}
-	public Integer getPriceTrip5() {
+	public String getPriceTrip5() {
 		return priceTrip5;
 	}
-	public void setPriceTrip5(Integer priceTrip5) {
+	public void setPriceTrip5(String priceTrip5) {
 		if(priceTrip1 != null)  
 		this.priceTrip5 = priceTrip5;
 	}
-	public Integer getPriceTrip6() {
+	public String getPriceTrip6() {
 		return priceTrip6;
 	}
-	public void setPriceTrip6(Integer priceTrip6) {
+	public void setPriceTrip6(String priceTrip6) {
 		if(priceTrip1 != null)  this.priceTrip6 = priceTrip6;
 	}
-	public Integer getPriceTrip7() {
+	public String getPriceTrip7() {
 		return priceTrip7;
 	}
-	public void setPriceTrip7(Integer priceTrip7) {
+	public void setPriceTrip7(String priceTrip7) {
 		this.priceTrip7 = priceTrip7;
 	}
-	public Integer getPriceTrip8() {
+	public String getPriceTrip8() {
 		return priceTrip8;
 	}
-	public void setPriceTrip8(Integer priceTrip8) {
+	public void setPriceTrip8(String priceTrip8) {
 		if(priceTrip8 != null)  this.priceTrip8 = priceTrip8;
 	}
 
@@ -242,16 +345,97 @@ public class PrintMapSearch extends Action
 	public void setIdTrip(Integer idTrip) {
 		this.idTrip = idTrip;
 	}
-
-
+	
+	public void setDataTrip(Integer id, String startingCity, String startingAddress, String finishingCity, String finishingAddress, String price )
+	{
+		if(id==0){
+			villeStartPost = startingCity;
+			addressStartPost  = startingAddress;
+		}
+		if(id==1 )
+		{
+			villepassage1Post = startingCity;
+			priceTrip1 = price;
+		}
+		if(id==2 )
+		{
+			villepassage2Post = startingCity;
+			priceTrip2 = price;
+		}
+		if(id==3)
+		{
+			villepassage3Post = startingCity;
+			priceTrip3 = price;
+		}
+		if(id==4)
+		{
+			villepassage4Post = startingCity;
+			priceTrip4 = price;
+		}
+		if(id==5 ){
+			villepassage5Post = startingCity;
+			priceTrip5 = price;
+		}
+		if(id==6){
+			villepassage1Post = startingCity;
+			priceTrip6 = price;
+		}
+		if(id==7 ){
+			villepassage1Post = startingCity;
+			priceTrip7 = price;
+		}
+		if(id==8){
+			villepassage8Post = startingCity;
+			priceTrip8 = price;
+		}
+	}
 	public String execute() throws Exception
 	{
 		System.out.println("PrintMapSearch");
+		//Get DAO
 		OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();
-		offerDAO.load(idTrip);
+		CustomerAccountDAO customerAccountDAO = SpringDAO.getSpring().getCustomerAccountDAO();
+		RouteDAO routeDAO = SpringDAO.getSpring().getRouteDAO();
 		
-		//offerDAO.
+		//Offer
+		Offer offer = offerDAO.load(idTrip);
+		setDescription(offer.getDescription());
+		setNbPassagerPost( offer.getNumberOfPlaceRemaining() );
+		setDatepickerPost(offer.getDateStarted());
+		setHour(String.valueOf( offer.getDateStarted().getHours() ) );
+		setMinutes(String.valueOf( offer.getDateStarted().getMinutes() ) );
 		
+		//Customer
+		CustomerAccount customerAccount = customerAccountDAO.load( offer.getIdDriver() );
+		acceptAnimals = customerAccount.getAcceptAnimals();
+		acceptRadio = customerAccount.getAcceptRadio();
+		acceptSmoker = customerAccount.getAcceptSmoker();
+		acceptToDiscuss = customerAccount.getAcceptToDiscuss();
+		acceptToMakeADetour = customerAccount.getAcceptToMakeADetour();
+		gender = customerAccount.getGender();
+		firstName = customerAccount.getFirstName();
+		lastName = customerAccount.getLastName();
+		idCustomer = customerAccount.getId(); 
+		//Routes
+		List<Route> routes = routeDAO.loadRoutes( offer.getId() );
+		System.out.println("routes.size() : " + routes.size());
+		Float priceAll = Float.intBitsToFloat(0);
+		for(int i = 0; i < routes.size() -1 ; i++)
+		{
+			Route route = routes.get(i);
+			System.out.println("route.getStartingAddress() : " + route.getStartingAddress() +" - getFinishingAddress() : "+route.getFinishingAddress());
+			System.out.println("route.getStartingAddress() : " + route.getStartingCity() +" - getFinishingCity() : "+route.getFinishingCity() );
+			System.out.println("route.getPrice() : " + route.getPrice());
+			setDataTrip(i, route.getStartingCity(),route.getStartingAddress(), route.getFinishingCity(), route.getFinishingAddress(), route.getPrice().toString() );
+			priceAll += Float.floatToIntBits( route.getPrice() );
+		}
+		if(routes.get(routes.size()-1)!= null){
+			villeStopPost = routes.get(routes.size()-1).getFinishingCity();
+			addressStopPost  = routes.get(routes.size()-1).getFinishingAddress();
+			priceTripStop = routes.get(routes.size()-1).getPrice().toString();
+			priceAll += Float.floatToIntBits( routes.get(routes.size()-1).getPrice() );
+		}
+		priceTotal = priceAll.toString();
 		System.out.println("idTrip : " + idTrip);
 		return SUCCESS;
 	}
