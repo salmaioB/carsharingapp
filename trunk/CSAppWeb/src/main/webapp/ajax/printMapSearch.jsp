@@ -172,22 +172,36 @@
 				<div id="mapSearch" style="width:600px; height: 400px"></div>
 			</td>
 		</tr>
-		<tr>
-			<td colspan="2">
-				<div id="sending" name="sending" style="background-color:#009ACF; display:none;"><s:property value="tr.tr_html(47)"/></div>
-				<form id="form_sendMessage">
-					<input type="text" id="idCustomer" name="idCustomer" style="display:none;" value="<s:property value="idCustomer"/>" />
-					<input type="text" id="titleSendSearch" name="titleSendSearch"/><br />
-					<input id="contentSendSearch" name="contentSendSearch" style="width:400px; height:80px;" />
+		<s:if test="!isCreatorOffer()" >
+			<tr>
+				<td colspan="2">
+					<div id="sending" name="sending" style="background-color:#009ACF; display:none;"><s:property value="tr.tr_html(47)"/></div>
+					<form id="form_sendMessage">
+						<input type="text" id="idCustomer" name="idCustomer" style="display:none;" value="<s:property value="idCustomer"/>" />
+						<input type="text" id="titleSendSearch" name="titleSendSearch"/><br />
+						<input id="contentSendSearch" name="contentSendSearch" style="width:400px; height:80px;" />
+						<s:if test="isLoging()" >
+							<input type="button" value="<s:property value="tr.tr_html(30)"/>" onclick="ajaxSendMessage();"/>
+						</s:if>
+						<s:else>
+							<br />Pas identifier
+						</s:else>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
 					<s:if test="isLoging()" >
-						<input type="button" value="<s:property value="tr.tr_html(30)"/>" onclick="ajaxSendMessage();"/>
+						<div id="requesting" name="requesting" style="background-color:#009ACF; display:none;">Demande en cours</div>
+						<div id="buttonPartcipipate">
+							<form id="form_participate">
+								<input type="button" onclick="requestParticipate(<s:property value="idTrip"/>)" value="participation au trajet"/>
+							</form>
+						</div>
 					</s:if>
-					<s:else>
-						<br />Pas identifier
-					</s:else>
-				</form>
-			</td>
-		</tr>
+				</td>
+			</tr>
+		</s:if>
 		<tr>
 			<td colspan="3" style="font-size: 0.9em; width:400px;">
 				<div id="road" style="align:center;"></div>

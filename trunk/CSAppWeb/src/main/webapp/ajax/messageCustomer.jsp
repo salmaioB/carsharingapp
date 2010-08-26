@@ -8,9 +8,9 @@
 	</ul>
 	
 	<div id="send" class="body" > 
-	   	send
+	   	<div align="center" id="divWaitingSend" style="display:none;"><img src="img/ajax-loader.gif" width="500"></div>
 	</div> 
 	<div id="receive" class="body">
-		receive
+		<div align="center" id="divWaitingReceive" style="display:none;"><img src="img/ajax-loader.gif" width="500"></div>
 	</div>
 </div>

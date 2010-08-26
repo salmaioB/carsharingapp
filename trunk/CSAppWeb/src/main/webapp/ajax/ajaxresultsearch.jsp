@@ -14,10 +14,10 @@
 					<tr>
 						<td>
 							<s:if test="%{#owca.customerAccount.gender==1}" >
-								<img src="img/icon/icon_customer_man.png" />
+								<img src="img/icon/icon_customer_man.png" title="<s:property value="%{#owca.customerAccount.firstName}" /> "/>
 							</s:if>
 							<s:else>
-								<img src="img/icon/icon_customer_woman.png" />
+								<img src="img/icon/icon_customer_woman.png" title="<s:property value="%{#owca.customerAccount.firstName}" /> "/>
 							</s:else>
 						</td>
 						<td >
@@ -68,13 +68,13 @@
 							</s:elseif>
 							
 							<s:if test="%{#owca.customerAccount.acceptToDiscuss==0}">
-								<img src="img/icon/accept_discuss_red.png" style="width:35px;" />
+								<img src="img/icon/accept_to_discuss_red.png" style="width:35px;" />
 							</s:if>
 							<s:elseif test="%{#owca.customerAccount.acceptToDiscuss==1}">
-								<img src="img/icon/accept_discuss_green.png" style="width:35px;" />
+								<img src="img/icon/accept_to_discuss_green.png" style="width:35px;" />
 							</s:elseif>
 							<s:elseif test="%{#owca.customerAccount.acceptToDiscuss==2}">
-								<img src="img/icon/accept_discuss_yellow.png" style="width:35px;" />
+								<img src="img/icon/accept_to_discuss_yellow.png" style="width:35px;" />
 							</s:elseif>
 							
 							<s:if test="%{#owca.customerAccount.acceptToMakeADetour==0}">
@@ -88,7 +88,7 @@
 							</s:elseif>				
 						</td>
 						<td>
-							<a href="#" onclick="printTrip(<s:property value="%{#owca.id}"/>)"><s:property value="tr.tr_html(45)"/></a>
+							<a href="#" onclick="printTrip(<s:property value="%{#owca.id}"/>,'<s:property value="divPrintResultat"/>')"><s:property value="tr.tr_html(45)"/></a>
 						</td>
 					</tr>
 				</table>
