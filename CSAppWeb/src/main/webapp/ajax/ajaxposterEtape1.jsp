@@ -6,7 +6,7 @@
 		Etape 1
 	</div>
 	<br />
-	<div class="corner" align="center">
+	<div class="corner" align="center" style="font-size: 0.9em;">
 		<form method="post" id="post_form">
 			<table>
 				<tr>
