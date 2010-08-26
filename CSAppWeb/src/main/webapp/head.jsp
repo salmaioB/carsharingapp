@@ -81,12 +81,16 @@
 			        //My trip
 			        if ( ui.index == 4)
 			        {
+		             	$('#divWaitingMyPostOffer').css('display','block');   
+		             	$('#divWaitingMmAgreeOffer').css('display','block'); 
+
 			        	$.ajax({
 			                method: 'post',
 			                url: WEB_ROOT_URL+'CSAppWeb/MyPostOffer',
 			                success: function(data)
 			                {
 				                 $('#myPostOffer').html(data);
+				                 $('#divWaitingMyPostOffer').css('display','none');
 			                }
 			        	});
 			        	$.ajax({
@@ -95,8 +99,10 @@
 			                success: function(data)
 			                {
 				                 $('#myAgreeOffer').html(data);
+				                 $('#divWaitingMmAgreeOffer').css('display','none'); 
 			                }
 			        	});
+
 			        }//Fin de MY Trip
 					// onglet message== ui.index == 3
 			        if ( ui.index == 3)
@@ -104,7 +110,7 @@
 			        	$('#send').html('<p><img src="/img/ajax-loader.gif" width="320" height="24" /></p>');
 			        	
     					function ajax()
-    					{		        
+    					{		  
 					        //Requete ajax pour récuperer les messages boite de reception
 				        	$.ajax({
 				                method: 'post',
@@ -122,6 +128,7 @@
 									});
 									//Ajoute les évement ajax au message recu
 					 				ajaxSendResponse();
+					 				$('#divWaitingReceive').css('display','none');
 				                }
 				        	});
 	
@@ -132,17 +139,19 @@
 					                success: function(data)
 					                {
 					                 	$('#send').html(data);
-	
 										//Execution des accordions
 						 				$.accordian('#list1 > div', '#item11', {
 											titles:'.title',
 											contents:'.content',
 											showSpeed:150,
 											hideSpeed:250
-										});	    				
+										});
+						 				$('#divWaitingSend').css('display','none');
 				                	}
 				                  });//Fin ajax
 	    					}
+						$('#divWaitingSend').css('display','block');
+						$('#divWaitingReceive').css('display','block'); 
     					ajax();
 			        	//$('#send').load(ajax());
 			        }

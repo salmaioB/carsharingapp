@@ -52,13 +52,13 @@
 				</s:elseif>
 				
 				<s:if test="acceptToDiscuss==0">
-					<img src="img/icon/accept_discuss_red.png" style="width:35px;" />
+					<img src="img/icon/accept_to_discuss_red.png" style="width:35px;" />
 				</s:if>
 				<s:elseif test="acceptToDiscuss==1">
-					<img src="img/icon/accept_discuss_green.png" style="width:35px;" />
+					<img src="img/icon/accept_to_discuss_green.png" style="width:35px;" />
 				</s:elseif>
 				<s:elseif test="acceptToDiscuss==2">
-					<img src="img/icon/accept_discuss_yellow.png" style="width:35px;" />
+					<img src="img/icon/accept_to_discuss_yellow.png" style="width:35px;" />
 				</s:elseif>
 				
 				<s:if test="acceptToMakeADetour==0">

@@ -8,9 +8,9 @@
 	</ul>
 	
 	<div id="myPostOffer" class="body" > 
-	   	myPostOffer
+	   	<div align="center" id="divWaitingMyPostOffer" style="display:none;"><img src="img/ajax-loader.gif" width="500"></div>
 	</div> 
 	<div id="myAgreeOffer" class="body">
-		myAgrreOffer
+		<div align="center" id="divWaitingMmAgreeOffer" style="display:none;"><img src="img/ajax-loader.gif" width="500"></div>
 	</div>
 </div>

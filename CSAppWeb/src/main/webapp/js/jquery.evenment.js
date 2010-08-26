@@ -1,3 +1,17 @@
+function requestParticipate(idTrip)
+{
+	$('#requesting').css('display','block');
+    $.ajax({
+    	method: 'get',
+        url: WEB_ROOT_URL+'CSAppWeb/RequestParticipateTrip?idTrip='+idTrip,
+        success: function(data)
+        {
+    		$('#buttonPartcipipate').html(data);
+            $('#requesting').css('display','none');
+        }
+   });
+   return false;
+}
 function ajaxSendMessage()
 {
 	$('#sending').css('display','block');
@@ -15,17 +29,14 @@ function ajaxSendMessage()
    });
    return false;
 }
-function printTrip(idTrip)
+function printTrip(idTrip,divResult)
 {
-    var postData = null;
-    
     $.ajax({
             method: 'get',
             url: WEB_ROOT_URL+'CSAppWeb/PrintMapSearch?idTrip='+idTrip,
-            data: postData,
             success: function(data)
             {
-                 $('#resultSearch').html(data);
+                 $('#'+divResult).html(data);
                  initializeMapParcoursSearch();
             }
               });
