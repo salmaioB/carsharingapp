@@ -61,7 +61,95 @@
 	
 		var mapPostInitialize = false;
 		var mapProfilInitialize = false;
-		$(document).ready( function () { 
+
+		$(document).ready( function () {
+			//Sous menu de mes offres
+			$('#menuTrip').tabs({
+		        select: function(e, ui) {
+		        	//Mes offres poster
+					if ( ui.index == 0 )
+		        	{
+						$('#divWaitingMyPostOffer').css('display','block');
+						$.ajax({
+			                method: 'post',
+			                url: WEB_ROOT_URL+'CSAppWeb/MyPostOffer',
+			                success: function(data)
+			                {
+				                 $('#myPostOffer').html(data);
+				                 $('#divWaitingMyPostOffer').css('display','none');
+			                }
+			        	});
+		        	}
+		        	//Mes offres accepter
+					if ( ui.index == 1 )
+		        	{
+			        	$('#divWaitingMmAgreeOffer').css('display','block'); 
+			        	$.ajax({
+			                method: 'post',
+			                url: WEB_ROOT_URL+'CSAppWeb/MyPostAgree',
+			                success: function(data)
+			                {
+				                 $('#myAgreeOffer').html(data);
+				                 $('#divWaitingMmAgreeOffer').css('display','none'); 
+			                }
+			        	});
+		        	}  
+				}
+			});
+			//Sous menu des messages
+			$('#menuMessages').tabs({
+		        select: function(e, ui) {
+				// onglet message send== ui.index == 0
+		        if ( ui.index == 0)
+		        {
+		        	$('#divWaitingSend').css('display','block');
+		        	 //Requete ajax pour récuperer les messages boite de reception
+			        $.ajax({
+			                method: 'post',
+			                url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
+			                success: function(data)
+			                {
+			                 	$('#send').html(data);		
+								//Execution des accordions
+				 				$.accordian('#list1 > div', '#item11', {
+									titles:'.title',
+									contents:'.content',
+									showSpeed:150,
+									hideSpeed:250
+								});
+				 				$('#divWaitingSend').css('display','none');
+			                }
+		                  });//Fin ajax
+			        }
+		        	//Onglet message receive == ui.index == 0
+			        if ( ui.index == 1)
+			        {
+			        	//Requete ajax pour récuperer les messages boite de reception
+			        	$('#divWaitingReceive').css('display','block'); 
+			        	$.ajax({
+			                method: 'post',
+			                url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
+			                success: function(data)
+			                {
+				                 $('#receive').html(data);
+	
+								//Execution des accordions
+				 				$.accordian('#list2 > div', '#item21', {
+									titles:'.title',
+									contents:'.content',
+									showSpeed:150,
+									hideSpeed:250
+								});
+								//Ajoute les évement ajax au message recu
+				 				ajaxSendResponse();
+				 				$("#divWaitingReceive").css('display','none');
+			                }
+			        	});
+			        }
+		        }
+			});
+
+			//Menu principale
 			$('#container').tabs({
 		        select: function(e, ui) {
 					// onglet post == ui.index == 1
@@ -106,12 +194,13 @@
 			        }//Fin de MY Trip
 					// onglet message== ui.index == 3
 			        if ( ui.index == 3)
-			        {
-			        	$('#send').html('<p><img src="/img/ajax-loader.gif" width="320" height="24" /></p>');
-			        	
+			        {			        	
     					function ajax()
     					{		  
-					        //Requete ajax pour récuperer les messages boite de reception
+    						$('#divWaitingSend').css('display','block');
+    						$('#divWaitingReceive').css('display','block'); 
+
+    						//Requete ajax pour récuperer les messages boite de reception
 				        	$.ajax({
 				                method: 'post',
 				                url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
@@ -128,17 +217,18 @@
 									});
 									//Ajoute les évement ajax au message recu
 					 				ajaxSendResponse();
-					 				$('#divWaitingReceive').css('display','none');
+					 				$("#divWaitingReceive").css('display','none');
 				                }
 				        	});
-	
-						    //Requete ajax pour récuperer les messages boite de reception
+				        	
+    						 //Requete ajax pour récuperer les messages boite de reception
 					        $.ajax({
 					                method: 'post',
 					                url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
 					                success: function(data)
 					                {
-					                 	$('#send').html(data);
+					        			$('#divWaitingSend').css('display','none');
+					                 	$('#send').html(data);		
 										//Execution des accordions
 						 				$.accordian('#list1 > div', '#item11', {
 											titles:'.title',
@@ -146,12 +236,9 @@
 											showSpeed:150,
 											hideSpeed:250
 										});
-						 				$('#divWaitingSend').css('display','none');
 				                	}
 				                  });//Fin ajax
 	    					}
-						$('#divWaitingSend').css('display','block');
-						$('#divWaitingReceive').css('display','block'); 
     					ajax();
 			        	//$('#send').load(ajax());
 			        }

@@ -4,7 +4,6 @@
 int i=0;
 %>
 <div class="demo">
-	<div>Liste message reception</div>
 		<div id="list2" >
 			<s:iterator value="listMessageReceive" id="listMessageReceive" >
 			<%i++; %>
