@@ -30,7 +30,7 @@ public class OffersWS
 	
 	public List<OfferWithCustomerAccount> getSearchOffers(String startingCity, String finishingCity, Integer idCustomerAccount) throws ParseException
 	{	
-		String URL = Define.webServiceRootUrl + "CSAppWeb/OffersWS";
+		String URL = Define.webServiceRootUrl + "CSAppWeb/SearchOffersWithCustomerAccountWS";
 		
 		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
 		
@@ -69,31 +69,4 @@ public class OffersWS
 		 
 		return offers;
 	}
-	
-//	public List<Offer> getCustomerOffers(Integer idCustomerAccount)
-//	{
-//		String URL = Define.webServiceRootUrl + "CSAppWeb/CustomerOffersWS";
-//		
-//		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
-//				
-//		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost) ;
-//		
-//	    List<Offer> offers = new ArrayList<Offer>();
-//
-//	    try
-//		{
-//	    	// Retrieve a jsonArray which contains an offer list
-//			JSONArray jsonArrayListCustomerOffers = jsonObjectReturn.getJSONArray("customerOffers");
-//		 
-//			for(int i=0; i<jsonArrayListCustomerOffers.length(); i++)
-//			{
-//				// Retrieve each offer
-//				JSONObject jsonObjectCustomerOffer = jsonArrayListCustomerOffers.getJSONObject(i);
-//		 
-//				// Create an offer and set all attributes
-//				OfferWithCustomerAccount offer = new OfferWithCustomerAccount(jsonObjectCustomerOffer);
-//				//offers.add(offer);
-//			}
-//		}
-//	}
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cs.model">
+	<class name="CustomerOfferWithMessageAndCustomerAccount" table="offers">
+        <id name="id" column="_id_offer">
+            <generator class="native"/>
+        </id>
+        
+        <component name="Offer" class="Offer">
+         	<property name="startingCity" type="string" column="starting_city"/>
+        	<property name="finishingCity" type="string" column="finishing_city"/>
+        </component>
+
+        <component name="CustomerAccount" class="CustomerAccount">
+         	<property name="firstName" type="string" column="first_name"/>
+        	<property name="lastName" type="string" column="last_name"/>
+        </component>
+                
+        <component name="Message" class="Message">
+        </component>
+	
+	</class>
+</hibernate-mapping>

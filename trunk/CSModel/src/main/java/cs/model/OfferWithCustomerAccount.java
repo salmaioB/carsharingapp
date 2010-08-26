@@ -32,19 +32,7 @@ public class OfferWithCustomerAccount implements Serializable
     public OfferWithCustomerAccount(JSONObject jsonObjectOfferWithCustomerAccount) throws JSONException, ParseException
     {
     	id        	           = jsonObjectOfferWithCustomerAccount.getInt("id");
-//		gender    	           = jsonObjectOfferWithCustomerAccount.getInt("gender");
-//		firstName 	           = jsonObjectOfferWithCustomerAccount.getString("firstName");
-//		lastName               = jsonObjectOfferWithCustomerAccount.getString("lastName");
-//		mobile                 = jsonObjectOfferWithCustomerAccount.getString("mobile");
-//		acceptAnimals          = jsonObjectOfferWithCustomerAccount.getInt("acceptAnimals");
-//		acceptRadio            = jsonObjectOfferWithCustomerAccount.getInt("acceptRadio");
-//		acceptSmoker           = jsonObjectOfferWithCustomerAccount.getInt("acceptSmoker");
-//		acceptToDiscuss        = jsonObjectOfferWithCustomerAccount.getInt("acceptToDiscuss");
-//		acceptToMakeADetour    = jsonObjectOfferWithCustomerAccount.getInt("acceptToMakeADetour");				
-//         
-//		SimpleDateFormat datetimeRegistrationFormatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-//		datetimeRegistration   = datetimeRegistrationFormatter.parse(jsonObjectOfferWithCustomerAccount.getString("datetimeRegistration"));
-        
+    	
     	customerAccount        = new CustomerAccount(jsonObjectOfferWithCustomerAccount.getJSONObject("customerAccount"));
     	
         startingCity 		   = jsonObjectOfferWithCustomerAccount.getString("startingCity");

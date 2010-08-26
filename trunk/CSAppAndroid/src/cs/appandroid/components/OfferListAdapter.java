@@ -17,17 +17,6 @@ public class OfferListAdapter extends ArrayAdapter<OfferWithCustomerAccount>
 	private String startingCity;
 	private String finishingCity;
     private List<OfferWithCustomerAccount> offersWithCustomerAccount;
-	
-//    private ImageView customerGenderImageView;
-//    private TextView customerFullNameTextView;
-//    private TextView customerDriverInfosTextView;
-//    
-//    private TextView offerDateTimeStartedTextView;
-//    private TextView offerNumberOfPlaceRemainingTextView;
-//    private TextView offerPricePerPassengerTextView;
-//
-//    private TextView offerStartingCityTextView;
-//    private TextView offerFinishingCityTextView;
     
     
 	public OfferListAdapter(Context context, int textViewResourceId, List<OfferWithCustomerAccount> offersWithCustomerAccount, String startingCity, String finishingCity)
