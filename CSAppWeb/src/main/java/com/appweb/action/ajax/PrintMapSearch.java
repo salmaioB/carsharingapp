@@ -8,6 +8,7 @@ import com.appweb.Action;
 
 import cs.dao.dao.CustomerAccountDAO;
 import cs.dao.dao.OfferDAO;
+import cs.dao.dao.OffersToCustomerAccountsDAO;
 import cs.dao.dao.RouteDAO;
 import cs.dao.spring.SpringDAO;
 import cs.engine.action.CustomerAccountEngineAction;
@@ -100,6 +101,12 @@ public class PrintMapSearch extends Action
 	private Integer acceptRadio;
 	private Integer acceptSmoker;
 	private Integer acceptToDiscuss;
+	
+	public Boolean isCreatorOffer()
+	{
+		OffersToCustomerAccountsDAO offersToCustomerAccountsDAO = SpringDAO.getSpring().getOffersToCustomerAccountsDAO();
+		return offersToCustomerAccountsDAO.isCreatorOffer(idTrip, getCustomerAccount().getId() );
+	}
 	
 	public Integer getAcceptAnimals() {
 		return acceptAnimals;
@@ -420,7 +427,8 @@ public class PrintMapSearch extends Action
 		List<Route> routes = routeDAO.loadRoutes( offer.getId() );
 		System.out.println("routes.size() : " + routes.size());
 		Float priceAll = Float.intBitsToFloat(0);
-		for(int i = 0; i < routes.size() -1 ; i++)
+		
+		for(int i = 0; i <= routes.size() -1 ; i++)
 		{
 			Route route = routes.get(i);
 			System.out.println("route.getStartingAddress() : " + route.getStartingAddress() +" - getFinishingAddress() : "+route.getFinishingAddress());

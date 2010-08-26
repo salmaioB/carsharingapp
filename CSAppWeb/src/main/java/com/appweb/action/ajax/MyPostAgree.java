@@ -21,7 +21,17 @@ import cs.model.OfferWithCustomerAccount;
 public class MyPostAgree extends Action
 {
    List<OfferWithCustomerAccount> owca;
-   
+   private String divPrintResultat;
+
+
+public String getDivPrintResultat() {
+		return divPrintResultat;
+	}
+
+	public void setDivPrintResultat(String divPrintResultat) {
+		this.divPrintResultat = divPrintResultat;
+	}
+	
 	public List<OfferWithCustomerAccount> getOwca() {
 		return owca;
 	}
@@ -40,8 +50,20 @@ public void setOwca(List<OfferWithCustomerAccount> owca) {
 		OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();
 		
 		owca = offerDAO.loadSearchOffers(null, null, getCustomerAccount().getId() );
-		System.out.println("owca.get(0).getAcceptAnimals() : " + owca.get(0).getCustomerAccount().getAcceptAnimals());
-		System.out.println("owca.get(0).getGender() : " + owca.get(0).getCustomerAccount().getGender());
-		return SUCCESS;
+		if(owca != null)
+		{
+			if(owca.size() >0 )
+			{
+				System.out.println("owca.get(0).getAcceptAnimals() : " + owca.get(0).getCustomerAccount().getAcceptAnimals());
+				System.out.println("owca.get(0).getGender() : " + owca.get(0).getCustomerAccount().getGender());
+				
+				divPrintResultat = "myAgreeOffer";
+				
+				System.out.println("Fin de MyPostAgree");
+				return SUCCESS;
+			}
+		}
+		System.out.println("Fin de MyPostAgree");
+		return ERROR;
 	}
 }
