@@ -84,6 +84,7 @@ public class MessageWithCustomerAccountAction
 		messageSend.setIdCustomerAccount(message.getIdCustomerTransmitter());
 		messageSend.setIdCustomerTransmitter( message.getIdCustomerAccount() );
 		messageSend.setIsRead(0);
+		messageSend.setIdOffer(message.getIdOffer());
 		messageDAO.save(messageSend);
 	}
 	public MessageWithCustomerAccountAction()
