@@ -7,7 +7,7 @@ public class OffersToCustomerAccount
 	private Integer idCustomerAccount;
 	private Integer isDriver;
 	private Integer isOfferCreator;
-	
+
 
 	public Integer getId() {
 		return id;
