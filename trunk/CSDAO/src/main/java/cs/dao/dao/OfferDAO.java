@@ -83,13 +83,11 @@ public class OfferDAO extends DAO
                          ") as routes_min_max ";
 	     }
 	     
-	     //o._id_driver=c._id_customer_account 
-	     
 	     SQLQuery += "WHERE o._id_offer=o_to_r._id_offer " +
          			 "AND o_to_r._id_route=r._id_route " +
 	                 "AND o._id_offer=o_to_c._id_offer " + 
     	 			 "AND o_to_c._id_customer_account=c._id_customer_account " +
-    	 			 "AND o_to_c.is_offer_creator=1 ";
+    	 			 "AND o_to_c.is_offer_creator = 1 ";
 	    	 
     	 if(idCustomerAccount != null)
     		 SQLQuery += "AND c._id_customer_account=" + idCustomerAccount.toString() + " ";
@@ -110,7 +108,7 @@ public class OfferDAO extends DAO
 				         "AND r.route_order <= routes_min_max.route_order_max ";
 	     }
 	     
-	     SQLQuery += "GROUP BY o._id_offer";
+	     SQLQuery += "GROUP BY o._id_offer ";
          
 	     System.out.println(SQLQuery);
 	     
