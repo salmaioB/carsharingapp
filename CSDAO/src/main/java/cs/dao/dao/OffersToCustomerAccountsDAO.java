@@ -1,5 +1,6 @@
 package cs.dao.dao;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import cs.dao.util.HibernateUtil;
@@ -14,6 +15,45 @@ public class OffersToCustomerAccountsDAO extends DAO
 	public OffersToCustomerAccountsDAO()
 	{
 		System.out.println("[Spring] load class:cs.dao.dao.OffersToCustomerAccountsDAO");
+	}
+
+	public Boolean isCreatorOffer(Integer idOffer, Integer idCustomerCreator)
+	{
+	    Session session = HibernateUtil.currentSession();
+	    Integer count = 0;
+	    String hqlQuery = "FROM OffersToCustomerAccount " +
+		    " WHERE idOffer = " + idOffer +
+	        " AND idCustomerAccount = " + idCustomerCreator +
+	        " And isOfferCreator = 1 ";
+	    
+	     System.out.println(hqlQuery);
+	     
+	     Query query = session.createQuery(hqlQuery);
+	     count = query.list().size();
+		HibernateUtil.closeSession();
+		if(count == 0)
+			return false;
+		else
+			return true;
+	}
+	public Boolean isParticipate(Integer idOffer, Integer idCustomer)
+	{
+	    Session session = HibernateUtil.currentSession();
+	    Integer count = 0;
+	    String hqlQuery = "FROM OffersToCustomerAccount " +
+		    " WHERE idOffer = " + idOffer +
+	        " AND idCustomerAccount = " + idCustomer;
+	    
+	     
+	     System.out.println(hqlQuery);
+	     
+	     Query query = session.createQuery(hqlQuery);
+	     count = query.list().size();
+		HibernateUtil.closeSession();
+		if(count == 0)
+			return false;
+		else
+			return true;
 	}
 	
 	public OffersToCustomerAccount load(Integer id)
