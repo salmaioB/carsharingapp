@@ -20,13 +20,52 @@ public class OffersToCustomerAccountsDAO extends DAO
 		System.out.println("[Spring] load class:cs.dao.dao.OffersToCustomerAccountsDAO");
 	}
 
-	public List<CustomerAccount> loadListCustomerParticipateOffer(Integer idOffer)
+	public Boolean isOfferPassenger(Integer idOffer,Integer idCustomer)
+	{
+		Session session = HibernateUtil.currentSession();
+	    String sqlQuery = "Select * " +
+		    	" FROM  offers_to_customer_accounts " +
+			    " WHERE _id_offer = " + idOffer +
+		        " And is_offer_creator = 1 " +
+		        " And _id_customer_account = " + idCustomer.toString() +
+		        " And is_driver = 0";
+		    
+		System.out.println(sqlQuery);
+		     
+		Query query = session.createSQLQuery(sqlQuery).addEntity(OffersToCustomerAccount.class);
+		
+		HibernateUtil.closeSession();
+
+		if(query.list().size() > 0)
+			return true;
+		return false;
+	}
+	public CustomerAccount getCreatorOffer(Integer idOffer)
+	{
+		Session session = HibernateUtil.currentSession();
+	    String sqlQuery = "Select * " +
+		    	" FROM  customer_accounts, offers_to_customer_accounts " +
+			    " WHERE _id_offer = " + idOffer +
+		        " And is_offer_creator = 1 " +
+		        " And customer_accounts._id_customer_account = offers_to_customer_accounts._id_customer_account";
+		    
+		System.out.println(sqlQuery);
+		     
+		Query query = session.createSQLQuery(sqlQuery).addEntity(CustomerAccount.class);
+		CustomerAccount ca = (CustomerAccount) query.list().get(0);
+		
+		HibernateUtil.closeSession();
+
+		return ca;
+	}
+	public List<CustomerAccount> loadListCustomerParticipateOffer(Integer idOffer,Integer idCustomerAccountCurrent)
 	{
 		Session session = HibernateUtil.currentSession();
 	    String sqlQuery = "Select * " +
 		    	" FROM customer_accounts, offers_to_customer_accounts " +
 			    " WHERE _id_offer = " + idOffer +
-		        " And customer_accounts._id_customer_account = offers_to_customer_accounts._id_customer_account"; 
+		        " And customer_accounts._id_customer_account = offers_to_customer_accounts._id_customer_account" +
+		        " And customer_accounts._id_customer_account != " + idCustomerAccountCurrent.toString();
 		    
 		System.out.println(sqlQuery);
 		     
