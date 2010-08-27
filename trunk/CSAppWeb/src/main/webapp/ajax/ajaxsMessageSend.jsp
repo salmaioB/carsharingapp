@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<div id="list1"> 
+<div id="list1" style="font-size:0.9em;"> 
 	<s:iterator value="listMessageSend" id="listMessageSend" >
 	 	<h3>
 	 		<a href="#" 
