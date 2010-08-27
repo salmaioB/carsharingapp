@@ -3,43 +3,24 @@
 
 <div class="body" id="search"> 
    	<s:include value="/ajax/ajaxsearch.jsp" />
-</div> 
-<div class="body" id="post">
-	<s:if test="isLoging()">
+</div>
+<s:if test="isLoging()"> 
+	<div class="body" id="post">
 		<s:include value="/ajax/ajaxposterEtape1.jsp" />
-	</s:if>
- 	<s:else>
-    	<div class="corner" >Non identifié</div>
- 	</s:else>
-</div>
-<div class="body" id="profil">
-	<s:if test="isLoging()">
-		<s:include value="/ajax/ajaxprofil.jsp" />
-	</s:if>
- 	<s:else>
-    	<div class="corner" >Non identifié</div>
- 	</s:else>
-</div> 
-<div class="body" id="message"> 
-	<s:if test="isLoging()">
-		<s:include value="/ajax/messageCustomer.jsp" />
-	</s:if>
- 	<s:else>
-    	<div class="corner" >Non identifié</div>
- 	</s:else>
-</div>
-<div class="body" id="trip">
-	<s:if test="isLoging()">
-		<s:include value="/ajax/mytrip.jsp" />
-	</s:if>
- 	<s:else>
-    	<div class="corner" >Non identifié</div>
- 	</s:else>
-</div>
-<!--        
-Message : <s:property value="message"/> <br />
-Affiche list : <s:property value="tr.tr_html(1)"/>
 
-<a href="http://<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?type=Offer">Offer</a>
-<a href="http://<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?type=CustomerAccounts">CustomerAccounts</a>
--->
+	</div>
+	<div class="body" id="profil">
+		<s:include value="/ajax/ajaxprofil.jsp" />
+	</div>
+	<div class="body" id="message"> 
+		<s:include value="/ajax/messageCustomer.jsp" />
+	</div>
+	<div class="body" id="trip">	
+		<s:include value="/ajax/mytrip.jsp" />
+ 	</div>
+</s:if>
+<s:else>
+	<div class="body" id="registration">	
+		<s:include value="/ajax/ajaxprofil.jsp" />
+ 	</div>
+</s:else>

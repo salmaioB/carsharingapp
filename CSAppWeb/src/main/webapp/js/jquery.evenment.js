@@ -1,3 +1,49 @@
+function validateForm2()
+{
+	$('#post_form_etape_2').validate({
+		submitHandler: function(form) {
+			goToEtape3OfPost();
+		}
+	}
+	);
+}
+function goToEtape2OfPost()
+{
+	var postData = $("input", '#post_form').serialize();
+        
+    $.ajax({
+            method: 'post',
+            url: WEB_ROOT_URL+'CSAppWeb/PostEtape2',
+            data: postData,
+            success: function(data)
+            {
+    			$('#startPost').attr('disabled', true);
+    			$('#stopPost').attr('disabled', true);
+    			$('#nbPassagerPost').attr('disabled', true);
+    			
+                $('#etape1').html(data);
+        		//$(".corner").corner();
+                validateForm2();
+            }
+    });
+}
+function goToEtape3OfPost()
+{
+	var postData = $("input", '#post_form_etape_2').serialize();
+            
+    $.ajax({
+            method: 'post',
+            url: WEB_ROOT_URL+'CSAppWeb/PrintMapPost',
+            data: postData,
+            success: function(data)
+            {
+    			$('#etape1').html(data);
+    			initializeMapParcoursPost();
+    			addEvementAjaxToSaveOffer();
+            }
+	});
+  
+}
 function requestParticipate(idTrip)
 {
 	$('#requesting').css('display','block');
@@ -215,6 +261,7 @@ $(document).ready(function()
                         
                         return false;
                 });
+        /*
         $('input.Etape2Post').click(function()
                 {
                         var postData = $("input", '#post_form').serialize();
@@ -237,27 +284,6 @@ $(document).ready(function()
                         
                         return false;
                 });
-        
-        function createEvent()
-        {
-	        $('input.Etape3Post').click(function()
-	                {
-	                        var postData = $("input", '#post_form').serialize();
-	                        
-	                        $.ajax({
-	                                method: 'post',
-	                                url: WEB_ROOT_URL+'CSAppWeb/PrintMapPost',
-	                                data: postData,
-	                                success: function(data)
-	                                {
-	                                	//$('#postPrintMap').html(data);
-	                        			$('#etape1').html(data);
-	                        			initializeMapParcoursPost();
-	                        			addEvementAjaxToSaveOffer();
-	                                }
-	                                  });
-	                        
-	                        return false;
-	                });
-        }
+        */
+       
 })

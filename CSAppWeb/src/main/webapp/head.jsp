@@ -10,38 +10,46 @@
 	</script>
 	<script type="text/javascript" src="js/jquery-1.4.2.js"></script>
 	
-	<script type="text/javascript" src="js/jquery.ui/jquery.validate.js"></script>
-	
 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.core.js"></script>
+	
 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.widget.js"></script>
 
  	<script type="text/javascript" src="js/jquery.ui/jquery.ui.accordion.js"></script>
- 	
+   
+ 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.tabs.js"></script>
+ 
+ 	<script type="text/javascript" src="js/jquery.ui/jquery.validate.js"></script>
+  	
 	<script type="text/javascript" src="js/jquery.ui/jquery.ui.datepicker.js"></script>
-	<script type="text/javascript" src="js/jquery.ui/jquery.ui.tabs.js"></script>
-	 	
+	
 	<script type="text/javascript" src="js/jquery.corner.js"></script>
 	
-   <script type="text/javascript" src="js/jquery.evenment.js"></script>
+	<script type="text/javascript" src="js/jquery.evenment.js"></script>
 
 	<script type="text/javascript" src="js/googleMapAddressByPosition.js"></script>	
 	<script type="text/javascript" src="js/googlemap.js"></script>
     
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=<s:property value="language"/>"></script>
-
-	<script type="text/javascript" src="js/jquery.time/jquery.ui.all.js"></script>
-	<script type="text/javascript" src="js/jquery.time/jquery.utils.js"></script>
+ 
+  	<script type="text/javascript" src="js/jquery.time/jquery.utils.js"></script>
 	<script type="text/javascript" src="js/jquery.time/jquery.strings.js"></script>
+	
 	<script type="text/javascript" src="js/jquery.time/jquery.anchorHandler.js"></script>
-	<script type="text/javascript" src="js/jquery.time/ui.timepickr.js"></script>
- 
+	  <!-- 
+   	<script type="text/javascript" src="js/jquery.time/jquery.ui.all.js"></script>
+ 	-->
+	<script type="text/javascript" src="js/jquery.time/ui.timepickr.js"></script> 
+ 	
+ 	<!--
  	<script type="text/javascript" src="js/js.accordion.js"></script>
- 
+ 	-->
 	<!--
 	<link type="text/css" href="css/jquery.tabs.css" rel="stylesheet" >
 	-->
 	<link type="text/css" href="css/themes/base/jquery.ui.all.css" rel="stylesheet" >
+	<!-- 
 	<link type="text/css" href="css/css.css" rel="stylesheet" >
+	 -->
 	<link type="text/css" href="css/ui.timepickr.css" rel="stylesheet" >
 	<link type="text/css" href="css/accordion.css" rel="stylesheet">
 	
@@ -58,11 +66,22 @@
 	</style>
 	
 	<script type="text/javascript">
-	
-		var mapPostInitialize = false;
-		var mapProfilInitialize = false;
-
+    	$(function(){
+	      //$('#hours').timepickr();
+	    });
+		$(document).ready( function () { 
+			$('#containerLeft').tabs({ fxFade: true, fxSpeed: 'normal' });
+		} ) ;
+		
 		$(document).ready( function () {
+			$('#menuMessages').tabs({ fxFade: true, fxSpeed: 'normal' });
+			$('#menuTrip').tabs({ fxFade: true, fxSpeed: 'normal' });
+			$(".corner").corner();
+		} ) ;
+	</script>	
+	<script type="text/javascript">
+		$(document).ready( function () {
+			
 			//Sous menu de mes offres
 			$('#menuTrip').tabs({
 		        select: function(e, ui) {
@@ -97,7 +116,8 @@
 				}
 			});
 			//Sous menu des messages
-			$('#menuMessages').tabs({
+			$('#menuMessages').tabs(
+					{
 		        select: function(e, ui) {
 				// onglet message send== ui.index == 0
 		        if ( ui.index == 0)
@@ -110,12 +130,8 @@
 			                success: function(data)
 			                {
 			                 	$('#send').html(data);		
-								//Execution des accordions
-				 				$.accordian('#list1 > div', '#item11', {
-									titles:'.title',
-									contents:'.content',
-									showSpeed:150,
-									hideSpeed:250
+								 $("#list2").accordion({
+										collapsible: true
 								});
 				 				$('#divWaitingSend').css('display','none');
 			                }
@@ -132,14 +148,11 @@
 			                success: function(data)
 			                {
 				                 $('#receive').html(data);
-	
-								//Execution des accordions
-				 				$.accordian('#list2 > div', '#item21', {
-									titles:'.title',
-									contents:'.content',
-									showSpeed:150,
-									hideSpeed:250
+
+				                 $("#list2").accordion({
+										collapsible: true
 								});
+		
 								//Ajoute les évement ajax au message recu
 				 				ajaxSendResponse();
 				 				$("#divWaitingReceive").css('display','none');
@@ -147,27 +160,67 @@
 			        	});
 			        }
 		        }
-			});
+			}
+			);
 
 			//Menu principale
-			$('#container').tabs({
-		        select: function(e, ui) {
-					// onglet post == ui.index == 1
-			        if ( mapPostInitialize == false && ui.index == 1)
-			        {
-			        	mapPostInitialize=true;
-						initializeMapEmpty('divMapStart');
-						initializeMapEmpty('divMapStop');
-			        }
-					// onglet post == ui.index == 3
-			        if ( mapProfilInitialize == false && ui.index == 2)
-			        {
-			        	mapProfilInitialize = true;
-						//Initialisation de la carte du profil
-						initializeMapEmpty('divMapProfil');
-			        }
-			        //My trip
-			        if ( ui.index == 4)
+			$('#container').bind('tabsshow', function(event, ui) {
+				//post d'une offre
+    			if (ui.panel.id == "post") {
+					initializeMapEmpty('divMapStart');
+					initializeMapEmpty('divMapStop');
+    			}
+    			//profil
+    			if (ui.panel.id == "profil") {
+    				initializeMapEmpty('divMapProfil');
+    			}
+    			//profil
+    			if (ui.panel.id == "registration") {
+    				initializeMapEmpty('divMapProfil');
+    			}
+    			//message
+    			if (ui.panel.id == "message") {
+    				$('#divWaitingSend').css('display','block');
+					$('#divWaitingReceive').css('display','block'); 
+
+					//Requete ajax pour récuperer les messages boite de reception
+		        	$.ajax({
+		                method: 'post',
+		                url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
+		                success: function(data)
+		                {
+			                 $('#receive').html(data);
+
+							//Execution des accordions
+						    $("#list2").accordion({
+								collapsible: true
+							});
+							//Ajoute les évement ajax au message recu
+			 				ajaxSendResponse();
+			 				$("#divWaitingReceive").css('display','none');
+		                }
+		        	});//Fin du ajax MessageReceive
+		        	
+					 //Requete ajax pour récuperer les messages boite de reception
+			        $.ajax({
+			                method: 'post',
+			                url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
+			                success: function(data)
+			                {
+			                 	$('#send').html(data);		
+			        			$('#divWaitingSend').css('display','none');
+
+								//Execution des accordions
+							    $("#list1").accordion({
+									collapsible: true
+								});
+								
+		                	}
+		                  });//Fin ajax
+    				}//Fin du panel message
+    				
+    				//My trip
+			        if ( ui.panel.id == "trip")
 			        {
 		             	$('#divWaitingMyPostOffer').css('display','block');   
 		             	$('#divWaitingMmAgreeOffer').css('display','block'); 
@@ -192,71 +245,10 @@
 			        	});
 
 			        }//Fin de MY Trip
-					// onglet message== ui.index == 3
-			        if ( ui.index == 3)
-			        {			        	
-    					function ajax()
-    					{		  
-    						$('#divWaitingSend').css('display','block');
-    						$('#divWaitingReceive').css('display','block'); 
-
-    						//Requete ajax pour récuperer les messages boite de reception
-				        	$.ajax({
-				                method: 'post',
-				                url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
-				                success: function(data)
-				                {
-					                 $('#receive').html(data);
-		
-									//Execution des accordions
-					 				$.accordian('#list2 > div', '#item21', {
-										titles:'.title',
-										contents:'.content',
-										showSpeed:150,
-										hideSpeed:250
-									});
-									//Ajoute les évement ajax au message recu
-					 				ajaxSendResponse();
-					 				$("#divWaitingReceive").css('display','none');
-				                }
-				        	});
-				        	
-    						 //Requete ajax pour récuperer les messages boite de reception
-					        $.ajax({
-					                method: 'post',
-					                url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
-					                success: function(data)
-					                {
-					        			$('#divWaitingSend').css('display','none');
-					                 	$('#send').html(data);		
-										//Execution des accordions
-						 				$.accordian('#list1 > div', '#item11', {
-											titles:'.title',
-											contents:'.content',
-											showSpeed:150,
-											hideSpeed:250
-										});
-				                	}
-				                  });//Fin ajax
-	    					}
-    					ajax();
-			        	//$('#send').load(ajax());
-			        }
-		            return true;
-	       		}
-					
-			});
-		} ) ; 
-		
-		$(document).ready( function () { 
-			$('#containerLeft').tabs({ fxFade: true, fxSpeed: 'normal' });
-		} ) ;
-		
-		$(document).ready( function () {
-			$('#menuMessages').tabs({ fxFade: true, fxSpeed: 'normal' });
-			$('#menuTrip').tabs({ fxFade: true, fxSpeed: 'normal' });
-			$(".corner").corner();
-		} ) ;
+			});//Fin du menu principale
+			$('#container').tabs();
+				
+		});//Fin du olnad
 	</script>
 	<script type="text/javascript">
 		//calendrier
@@ -272,10 +264,6 @@
 											buttonImageOnly: true
 			});
 		});
-	
-	    $(function(){
-	      $('#hours').timepickr();
-	    });
 	</script>
 		<script type="text/javascript">
 			function calculPrice(price1,price2,price3,price4,price5,price6,price7,price8,priceTotal,cityStop)
@@ -344,7 +332,14 @@
 					}
 				}
 				);
-			});		
+				$('#post_form').validate({
+					submitHandler: function(form) {
+						goToEtape2OfPost();
+						
+					}
+				}
+				);
+			});
 	</script>
 	<style type="text/css">
 		label { width: 10em; float: left; }
@@ -353,5 +348,18 @@
 		.submit { margin-left: 12em; }
 		em { font-weight: bold; padding-right: 1em; vertical-align: top; }
 	</style>
-	
+
+	<script type="text/javascript">
+		$(function() {
+			$("#accordion").accordion({
+				collapsible: true
+			});
+		});		
+	</script>
+	<style type="text/css">
+		img {
+			border-width : 0;
+			border : 0;
+		} 
+	</style>
 </head> 

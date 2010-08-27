@@ -203,6 +203,32 @@
 				</td>
 			</tr>
 		</s:if>
+		<s:if test="isLoging()" >
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td style="border:1px solid black; width:500px;">
+								Liste des participants
+							</td>
+						</tr>
+						<s:iterator value="customerAccountPartcipate" id="customerAccountPartcipate">
+							<tr>
+								<td style="font-size: 0.8em; border:1px solid black; width:800px;" >
+									<s:property value="%{#customerAccountPartcipate.firstName}" />
+									<s:property value="%{#customerAccountPartcipate.lastName}" />	
+									<span style="align:right;">
+										<a href="ProfilAction?idCustomerAccount=<s:property value="%{#customerAccountPartcipate.id}" />#profil">
+											<img width="25" src="img/icon/icon_my_profil.png" >
+										</a>
+									</span>
+								</td>
+							</tr>
+						</s:iterator>
+					</table>
+				</td>
+			</tr>
+		</s:if>
 		<tr>
 			<td colspan="3" style="font-size: 0.9em; width:400px;">
 				<div id="road" style="align:center;"></div>

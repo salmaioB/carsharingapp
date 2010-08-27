@@ -14,7 +14,7 @@
 					<tr>
 						<td>
 							<s:if test="%{#owca.customerAccount.gender==1}" >
-								<img src="img/icon/icon_customer_man.png" title="<s:property value="%{#owca.customerAccount.firstName}" /> "/>
+								<img src="img/icon/icon_customer_man.png" title="<s:property value="%{#owca.customerAccount.firstName}" />" />
 							</s:if>
 							<s:else>
 								<img src="img/icon/icon_customer_woman.png" title="<s:property value="%{#owca.customerAccount.firstName}" /> "/>
