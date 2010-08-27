@@ -192,14 +192,19 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<s:if test="isLoging()" >
-						<div id="requesting" name="requesting" style="background-color:#009ACF; display:none;">Demande en cours</div>
-						<div id="buttonPartcipipate">
-							<form id="form_participate">
-								<input type="button" onclick="requestParticipate(<s:property value="idTrip"/>)" value="participation au trajet"/>
-							</form>
-						</div>
+					<s:if test="!getIsOfferPassenger()">
+						<s:if test="isLoging()" >
+							<div id="requesting" name="requesting" style="background-color:#009ACF; display:none;">Demande en cours</div>
+							<div id="buttonPartcipipate">
+								<form id="form_participate">
+									<input type="button" onclick="requestParticipate(<s:property value="idTrip"/>)" value="participation au trajet"/>
+								</form>
+							</div>
+						</s:if>
 					</s:if>
+					<s:else>
+					<span>Cette offre est une offre passager, il n'y a pas d'inscription</span>		
+					</s:else>
 				</td>
 			</tr>
 		</s:if>
