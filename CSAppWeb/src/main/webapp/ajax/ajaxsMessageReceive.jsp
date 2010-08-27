@@ -1,12 +1,13 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<div id="list2"> 
+<div id="list2" style="font-size:0.9em;"> 
 	<s:iterator value="listMessageReceive" id="listMessageReceive" >
 	 	<h3>
 	 		<a href="#" title="<s:property value="%{#listMessageReceive.message.id}" />"
 				<s:if test="%{#listMessageReceive.message.isRead==0}"> 
 				style="font-weight:bold;"
 				</s:if>
+				onClick="updateReadMessage( $(this).attr('title') ); $(this).attr('style','');"
 			>
 
 	    			<s:property value="%{#listMessageReceive.customerAccount.firstName}" />

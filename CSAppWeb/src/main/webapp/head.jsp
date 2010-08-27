@@ -130,8 +130,9 @@
 			                success: function(data)
 			                {
 			                 	$('#send').html(data);		
-								 $("#list2").accordion({
-										collapsible: true
+								 $("#list1").accordion({
+										collapsible: true,
+										active: -1
 								});
 				 				$('#divWaitingSend').css('display','none');
 			                }
@@ -150,7 +151,8 @@
 				                 $('#receive').html(data);
 
 				                 $("#list2").accordion({
-										collapsible: true
+										collapsible: true,
+										active: -1
 								});
 		
 								//Ajoute les évement ajax au message recu
@@ -193,7 +195,8 @@
 
 							//Execution des accordions
 						    $("#list2").accordion({
-								collapsible: true
+								collapsible: true,
+								active:-1
 							});
 							//Ajoute les évement ajax au message recu
 			 				ajaxSendResponse();
@@ -212,7 +215,8 @@
 
 								//Execution des accordions
 							    $("#list1").accordion({
-									collapsible: true
+									collapsible: true,
+									active:2
 								});
 								
 		                	}
@@ -352,7 +356,8 @@
 	<script type="text/javascript">
 		$(function() {
 			$("#accordion").accordion({
-				collapsible: true
+				collapsible: true,
+				active: 0
 			});
 		});		
 	</script>
