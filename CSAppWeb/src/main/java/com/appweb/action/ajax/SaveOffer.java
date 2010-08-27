@@ -283,7 +283,7 @@ public class SaveOffer extends Action
 		
 		System.out.println("after load DAO !");
 		
-		offer.setDateStarted(datepickerPost);
+		offer.setDatetimeStarted(datepickerPost);
 		offer.setIdDriver(getCustomerAccount().getId());
 		offer.setIdOfferType(0);
 		offer.setNumberOfPlaceInitial(getNbPassagerPost());

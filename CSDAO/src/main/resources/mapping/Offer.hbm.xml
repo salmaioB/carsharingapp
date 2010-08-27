@@ -8,14 +8,16 @@
         <id name="id" column="_id_offer">
             <generator class="native"/>
         </id>
-        <property name="idOfferType" type="integer" column="_id_offer_type"/>
-        <property name="idDriver" type="integer" column="_id_driver"/>
-        <property name="title" type="string" column="title"/>
+        <!-- <property name="idOfferType" type="integer" column="_id_offer_type"/> -->
+        <!-- <property name="idDriver" type="integer" column="_id_driver"/> --> 
+        <!-- <property name="title" type="string" column="title"/> -->
         <property name="description" type="string" column="description"/>
+        <property name="startingCity" type="string" column="starting_city"/>
+        <property name="finishingCity" type="string" column="finishing_city"/>
         <property name="numberOfPlaceInitial" type="integer" column="number_of_place_initial"/>
         <property name="numberOfPlaceRemaining" type="integer" column="number_of_place_remaining"/>
         <property name="pricePerPassenger" type="float" column="price_per_passenger"/>
-        <property name="dateStarted" type="timestamp" column="datetime_started"/>
-        <property name="dateEnded" type="timestamp" column="datetime_ended"/>
+        <property name="datetimeStarted" type="timestamp" column="datetime_started"/>
+        <property name="datetimeEnded" type="timestamp" column="datetime_ended"/>
      </class>
 </hibernate-mapping>

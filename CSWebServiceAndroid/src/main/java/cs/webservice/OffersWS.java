@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cs.model.Offer;
 import cs.model.OfferWithCustomerAccount;
 import cs.common.HttpClient;
 import cs.define.Define;
@@ -43,7 +44,7 @@ public class OffersWS
 		if(finishingCity != null)
 			paramsToPost.add(new BasicNameValuePair("finishingCity", finishingCity.toString()));
 		
-		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost) ;
+		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
 	
 	    List<OfferWithCustomerAccount> offers = new ArrayList<OfferWithCustomerAccount>();
 	    
@@ -68,5 +69,28 @@ public class OffersWS
 		}
 		 
 		return offers;
+	}
+	
+	public Offer getOffer(Integer idOffer)
+	{
+		String URL = Define.webServiceRootUrl + "CSAppWeb/OfferWS";
+		
+		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
+		paramsToPost.add(new BasicNameValuePair("idOffer", idOffer.toString()));
+		
+		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
+		
+		Offer offer = null;
+		
+		try
+		{
+			offer = new Offer(jsonObjectReturn.getJSONObject("offer"));
+		}
+		catch(JSONException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return offer;
 	}
 }

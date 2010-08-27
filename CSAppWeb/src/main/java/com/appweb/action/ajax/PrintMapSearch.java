@@ -421,9 +421,9 @@ public class PrintMapSearch extends Action
 		Offer offer = offerDAO.load(idTrip);
 		setDescription(offer.getDescription());
 		setNbPassagerPost( offer.getNumberOfPlaceRemaining() );
-		setDatepickerPost(offer.getDateStarted());
-		setHour(String.valueOf( offer.getDateStarted().getHours() ) );
-		setMinutes(String.valueOf( offer.getDateStarted().getMinutes() ) );
+		setDatepickerPost(offer.getDatetimeStarted());
+		setHour(String.valueOf( offer.getDatetimeStarted().getHours() ) );
+		setMinutes(String.valueOf( offer.getDatetimeStarted().getMinutes() ) );
 		
 		//Customer
 		CustomerAccount customerAccount = customerAccountDAO.load( offer.getIdDriver() );

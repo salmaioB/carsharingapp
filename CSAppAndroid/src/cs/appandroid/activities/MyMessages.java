@@ -5,11 +5,20 @@ import java.util.List;
 
 import cs.appandroid.components.MyMessagesListAdapter;
 import cs.appandroid.controller.IdentificationController;
+import cs.model.CustomerAccount;
 import cs.model.CustomerOfferWithMessageAndCustomerAccount;
+import cs.model.Offer;
+import cs.model.OfferWithCustomerAccount;
+import cs.webservice.CustomerAccountsWS;
 import cs.webservice.CustomerOffersWithMessageAndCustomerAccountWS;
+import cs.webservice.OffersWS;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
 
 
 public class MyMessages extends ListActivity
@@ -45,6 +54,41 @@ public class MyMessages extends ListActivity
 		displayMyMessagesReceivedThread.start();
 		
 		displayMyMessagesReceivedProgressDialog = ProgressDialog.show(MyMessagesGroup.myMessagesGroup, "Patientez ...", "Récupération de vos messages...");
+	}
+	
+	@Override
+    protected void onListItemClick(ListView l, View v, int position, long id)
+	{
+		super.onListItemClick(l, v, position, id);
+		
+		// Retrieve the customer offer with message clicked
+		CustomerOfferWithMessageAndCustomerAccount customerOfferClicked = customerOffersWithMessageAndCustomerAccount.get(position);
+		Integer idOfferSelected = customerOfferClicked.getOffer().getId();
+		
+		Log.v("idOffer", idOfferSelected.toString());
+		
+		// Retrieve the whole offer selected
+		OffersWS offersWS = new OffersWS();
+		Offer offer = offersWS.getOffer(idOfferSelected);
+		
+		// Retrieve the whole customer account selected
+		CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
+		CustomerAccount customerAccount = customerAccountWS.getCustomerAccount(customerOfferClicked.getCustomerAccount().getId());
+		
+		OfferWithCustomerAccount offerWithCustomerAccount = new OfferWithCustomerAccount();
+		offerWithCustomerAccount.setOffer(offer);
+		offerWithCustomerAccount.setCustomerAccount(customerAccount);
+		
+		Intent intentOfferView = new Intent(this, OfferView.class);	
+		intentOfferView.putExtra("offerWithCustomerAccount", offerWithCustomerAccount);
+		
+		// Start the root activity within the group and get its view  
+        View MyOfferView = MyMessagesGroup.myMessagesGroup.getLocalActivityManager().startActivity("My offer view",
+        																			intentOfferView.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+        																			.getDecorView();
+        
+        // Replace the view of this ActivityGroup
+        MyMessagesGroup.myMessagesGroup.replaceView(MyOfferView);
 	}
 	
 	private Runnable returnCustomerOffersWithMessageAndCustomerAccount = new Runnable()

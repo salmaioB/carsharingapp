@@ -1,7 +1,5 @@
 package cs.model;
 
-import java.util.Date;
-
 public class MessageWithCustomerAccount
 {
 	private Message message;

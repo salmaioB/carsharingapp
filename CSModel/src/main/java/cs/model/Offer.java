@@ -1,12 +1,15 @@
 package cs.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Offer
+public class Offer implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private Integer idOfferType;
 	private Integer idDriver;
@@ -17,8 +20,8 @@ public class Offer
 	private Integer numberOfPlaceInitial;
 	private Integer numberOfPlaceRemaining;
 	private Float pricePerPassenger;
-	private Date dateStarted;
-	private Date dateEnded;
+	private Date datetimeStarted;
+	private Date datetimeEnded;
 	
 	public Offer()
 	{
@@ -42,6 +45,12 @@ public class Offer
 		if(!jsonObjectOffer.isNull("description"))
 			description 	 	   = jsonObjectOffer.getString("description");
 		
+		if(!jsonObjectOffer.isNull("startingCity"))
+			startingCity           = jsonObjectOffer.getString("startingCity");
+		
+		if(!jsonObjectOffer.isNull("finishingCity"))
+			finishingCity          = jsonObjectOffer.getString("finishingCity");
+		
 		if(!jsonObjectOffer.isNull("numberOfPlaceInitial"))
 			numberOfPlaceInitial   = jsonObjectOffer.getInt("numberOfPlaceInitial");
 		
@@ -62,10 +71,6 @@ public class Offer
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public void setDateStarted(Date dateStarted) {
-		this.dateStarted = dateStarted;
 	}
 
 	public Integer getIdOfferType() {
@@ -140,19 +145,19 @@ public class Offer
 		this.pricePerPassenger = pricePerPassenger;
 	}
 	
-	public Date getDateStarted() {
-		return dateStarted;
+	public Date getDatetimeStarted() {
+		return datetimeStarted;
 	}
 	
-	public void setStarted(Date dateStarted) {
-		this.dateStarted = dateStarted;
+	public void setDatetimeStarted(Date datetimeStarted) {
+		this.datetimeStarted = datetimeStarted;
 	}
 	
-	public Date getDateEnded() {
-		return dateEnded;
+	public Date getDatetimeEnded() {
+		return datetimeEnded;
 	}
 	
-	public void setDateEnded(Date dateEnded) {
-		this.dateEnded = dateEnded;
+	public void setDatetimeEnded(Date datetimeEnded) {
+		this.datetimeEnded = datetimeEnded;
 	}
 }

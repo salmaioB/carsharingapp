@@ -54,19 +54,19 @@ public class OfferRowView
 			
 			customerOpinionTextView.setText("avis");
 			
-			offerDateTimeStartedTextView.setText(offerWithCustomerAccount.getDatetimeStartedToDisplay());
+			//offerDateTimeStartedTextView.setText(offerWithCustomerAccount.getOffer().getDatetimeStartedToDisplay());
 			
-			switch(offerWithCustomerAccount.getNumberOfPlaceRemaining())
+			switch(offerWithCustomerAccount.getOffer().getNumberOfPlaceRemaining())
 			{
 				case 0:  offerNumberOfPlaceRemainingTextView.setText("complet");
 						 break;
-				case 1:  offerNumberOfPlaceRemainingTextView.setText(offerWithCustomerAccount.getNumberOfPlaceRemaining() + " pl. restante");
+				case 1:  offerNumberOfPlaceRemainingTextView.setText(offerWithCustomerAccount.getOffer().getNumberOfPlaceRemaining() + " pl. restante");
 						 break;
-				default: offerNumberOfPlaceRemainingTextView.setText(offerWithCustomerAccount.getNumberOfPlaceRemaining() + " pl. restantes");
+				default: offerNumberOfPlaceRemainingTextView.setText(offerWithCustomerAccount.getOffer().getNumberOfPlaceRemaining() + " pl. restantes");
 				         break;
 			}
 			
-			offerPricePerPassengerTextView.setText("Prix par pers.: " + offerWithCustomerAccount.getPricePerPassenger().toString() + "€");
+			offerPricePerPassengerTextView.setText("Prix par pers.: " + offerWithCustomerAccount.getOffer().getPricePerPassenger().toString() + "€");
             
 			if(startingCity != null && finishingCity != null)
 			{
@@ -75,8 +75,8 @@ public class OfferRowView
 			}
 			else
 			{
-				offerStartingCityTextView.setText(offerWithCustomerAccount.getStartingCity());
-				offerFinishingCityTextView.setText(offerWithCustomerAccount.getFinishingCity());
+				offerStartingCityTextView.setText(offerWithCustomerAccount.getOffer().getStartingCity());
+				offerFinishingCityTextView.setText(offerWithCustomerAccount.getOffer().getFinishingCity());
 			}
         }
 	}
