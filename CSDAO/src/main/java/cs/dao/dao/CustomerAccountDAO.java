@@ -1,5 +1,6 @@
 package cs.dao.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -100,8 +101,10 @@ public class CustomerAccountDAO extends DAO
 		
 		String SQLQuery = "UPDATE customer_accounts " +
 						  "SET geoloc_longitude=" + Double.toString(longitude) + ", " +
-						  "geoloc_latitude=" + Double.toString(latitude) + " " +
+						  "geoloc_latitude=" + Double.toString(latitude) + ", " +
+						  "datetime_last_connection_android=" + new Date() +
 						  "WHERE _id_customer_account=" + Integer.toString(idCustomerAccount);
+						   
 		
 		System.out.println(SQLQuery);
 		
