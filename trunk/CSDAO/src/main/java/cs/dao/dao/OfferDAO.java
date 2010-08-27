@@ -49,7 +49,7 @@ public class OfferDAO extends DAO
   
 		 session.beginTransaction();
 
-		 session.save(of);
+		 session.saveOrUpdate(of);
 
 		 tx.commit();
 		 HibernateUtil.closeSession();
