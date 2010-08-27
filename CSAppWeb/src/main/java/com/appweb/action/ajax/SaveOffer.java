@@ -17,7 +17,7 @@ public class SaveOffer extends Action
 {
 	private String villeStartPost;
 	private String villeStopPost;
-	private String role;
+	private Integer role;
 	private String minutes;
 	private String hour;
 	private String addressStartPost;
@@ -182,10 +182,10 @@ public class SaveOffer extends Action
 		System.out.println(simpleFormat.format(datepickerPost));	
 		return simpleFormat.format(datepickerPost);
 	}
-	public String getRole() {
+	public Integer getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+	public void setRole(Integer role) {
 		this.role = role;
 	}
 	public String getMinutes() {
@@ -304,7 +304,6 @@ public class SaveOffer extends Action
 		for(int i =0; i < listRoutes.size() -1 ; i++)
 		{
 			Route route = new Route();
-			//route.setIdOffer(offer.getId());
 			route.setStartingCity(listRoutes.get(i)[0]);
 			route.setStartingAddress(listRoutes.get(i)[1]);
 			route.setFinishingAddress(listRoutes.get(i+1)[1]);

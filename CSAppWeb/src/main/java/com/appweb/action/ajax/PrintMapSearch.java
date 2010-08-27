@@ -20,6 +20,8 @@ public class PrintMapSearch extends Action
 {
 	private Integer idTrip;
 
+	private List<CustomerAccount> customerAccountPartcipate;
+	
 	private String villeStartPost;
 	private String villeStopPost;
 	private String role;
@@ -37,6 +39,16 @@ public class PrintMapSearch extends Action
 	private String lastName;
 	
 	private Integer idCustomer;
+	
+	
+	public List<CustomerAccount> getCustomerAccountPartcipate() {
+		return customerAccountPartcipate;
+	}
+
+	public void setCustomerAccountPartcipate(
+			List<CustomerAccount> customerAccountPartcipate) {
+		this.customerAccountPartcipate = customerAccountPartcipate;
+	}
 	
 	public Integer getIdCustomer() {
 		return idCustomer;
@@ -403,6 +415,7 @@ public class PrintMapSearch extends Action
 		OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();
 		CustomerAccountDAO customerAccountDAO = SpringDAO.getSpring().getCustomerAccountDAO();
 		RouteDAO routeDAO = SpringDAO.getSpring().getRouteDAO();
+		OffersToCustomerAccountsDAO offersToCustomerAccountsDAO = SpringDAO.getSpring().getOffersToCustomerAccountsDAO();
 		
 		//Offer
 		Offer offer = offerDAO.load(idTrip);
@@ -423,6 +436,7 @@ public class PrintMapSearch extends Action
 		firstName = customerAccount.getFirstName();
 		lastName = customerAccount.getLastName();
 		idCustomer = customerAccount.getId(); 
+		
 		//Routes
 		List<Route> routes = routeDAO.loadRoutes( offer.getId() );
 		System.out.println("routes.size() : " + routes.size());
@@ -445,6 +459,9 @@ public class PrintMapSearch extends Action
 		}
 		priceTotal = priceAll.toString();
 		System.out.println("idTrip : " + idTrip);
+		
+		//Chargement des participants
+		setCustomerAccountPartcipate( offersToCustomerAccountsDAO.loadListCustomerParticipateOffer(idTrip) );
 		return SUCCESS;
 	}
 }

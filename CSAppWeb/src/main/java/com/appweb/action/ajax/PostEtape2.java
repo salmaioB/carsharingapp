@@ -185,7 +185,7 @@ public class PostEtape2 extends Action
 		System.out.println("addressStopPost : " + addressStopPost);
 		System.out.println("villeStartPost : " + villeStartPost);
 		System.out.println("villeStopPost : " + villeStopPost);
-
+		System.out.println("description : " + description);
 		return SUCCESS;
 	}
 }

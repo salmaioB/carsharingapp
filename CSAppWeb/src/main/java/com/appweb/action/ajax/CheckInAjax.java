@@ -16,8 +16,6 @@ public class CheckInAjax extends Action
 	private String firstName;
 	private String emailAddress;
 	private String address;
-	// pourquoi coutry? 
-	//country c'est le pays, à la limite city ou town non?
 	private String country;
 	private String zipCode;
 	private String phone;
@@ -176,7 +174,7 @@ public class CheckInAjax extends Action
 			System.out.println(country);
 			System.out.println(zipCode);
 			
-			CustomerAccountEngineAction caea = SpringEngine.getSpring().getCustomerAccountEngineAction();//new CustomerAccountEngineAction();
+			CustomerAccountEngineAction caea = SpringEngine.getSpring().getCustomerAccountEngineAction();
 			getCustomerAccount().setAcceptAnimals(getAcceptAnimals());
 			getCustomerAccount().setAcceptRadio(getAcceptRadio());
 			getCustomerAccount().setAcceptSomker(getAcceptSmoker());
@@ -220,7 +218,11 @@ public class CheckInAjax extends Action
 			getCustomerAccount().setAddress(getAddress());
 			getCustomerAccount().setCountry(getCountry());
 			getCustomerAccount().setZipCode(getZipCode());
-			getCustomerAccount().setGender(gender);
+			getCustomerAccount().setGender(getGender());
+			getCustomerAccount().setGeolocLatitude(0.0);
+			getCustomerAccount().setGeolocLongitude(0.0);
+			getCustomerAccount().setCustomerType(0);
+			getCustomerAccount().setIdVehicule(0);
 			
 			CustomerAccount ca = getCustomerAccount();
 
@@ -228,7 +230,7 @@ public class CheckInAjax extends Action
 			System.out.println(ca.getCustomerPassword() );
 			System.out.println(ca.getEmailAddress());
 			
-			CustomerAccountEngineAction caea = new CustomerAccountEngineAction();
+			CustomerAccountEngineAction caea = SpringEngine.getSpring().getCustomerAccountEngineAction();
 			Boolean b = caea.save( ca ) ;
 			if( b )
 				getSession().put("customerId",getCustomerAccount().getId());					

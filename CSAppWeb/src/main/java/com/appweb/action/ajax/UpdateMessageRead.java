@@ -30,16 +30,20 @@ public class UpdateMessageRead extends Action
 		System.out.println("idMessage : "+idMessage);
 		MessageDAO messageDAO = SpringDAO.getSpring().getMessageDAO();
 		Message message = messageDAO.load(idMessage);
-		message.setIsRead(1);
-		
-		System.out.println( "id message :" + message.getId().toString() );
-		
-		System.out.println( "Print message :" + message.toString() );
-		if( messageDAO.save(message) )
-			System.out.println("Enbregistrer");
+		if(message.getIsRead()==0)
+		{
+			message.setIsRead(1);
+			
+			System.out.println( "id message :" + message.getId().toString() );
+			
+			System.out.println( "Print message :" + message.toString() );
+			if( messageDAO.save(message) )
+				System.out.println("Enbregistrer");
+			else
+				System.out.println("Pas enregistrer");
+		}
 		else
-			System.out.println("Pas enregistrer");
-		
+			System.out.println("message deja lu");
 		return SUCCESS;
 	}
 }
