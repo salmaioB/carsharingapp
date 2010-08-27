@@ -20,11 +20,11 @@ public class CheckInAjax extends Action
 	private String zipCode;
 	private String phone;
 	private String mobile;
-	private Boolean acceptAnimals;
-	private Boolean acceptRadio;
-	private Boolean acceptSmoker;
-	private Boolean acceptToDiscuss;
-	private Boolean acceptToMakeADetour;
+	private Integer acceptAnimals;
+	private Integer acceptRadio;
+	private Integer acceptSmoker;
+	private Integer acceptToDiscuss;
+	private Integer acceptToMakeADetour;
 	private Integer gender;
 	
 	public Integer getGender() {
@@ -105,40 +105,39 @@ public class CheckInAjax extends Action
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Boolean getAcceptAnimals() {
-		if(acceptAnimals==null) acceptAnimals =false;
+	public Integer getAcceptAnimals() {
+		if(acceptAnimals==null) acceptAnimals =0;
 		return acceptAnimals;
 	}
-	public void setAcceptAnimals(Boolean acceptAnimals) {
+	public void setAcceptAnimals(Integer acceptAnimals) {
 		this.acceptAnimals = acceptAnimals;
 	}
-	public Boolean getAcceptRadio() {
-		if(acceptRadio==null) acceptRadio= false;
+	public Integer getAcceptRadio() {
+		if(acceptRadio==null) acceptRadio= 0;
 		return acceptRadio;
 	}
-	public void setAcceptRadio(Boolean acceptRadio) {
+	public void setAcceptRadio(Integer acceptRadio) {
 		this.acceptRadio = acceptRadio;
 	}
-	public Boolean getAcceptSmoker() {
-		if(acceptSmoker==null) acceptSmoker=false;
+	public Integer getAcceptSmoker() {
+		if(acceptSmoker==null) acceptSmoker=0;
 		return acceptSmoker;
 	}
-	public void setAcceptSmoker(Boolean acceptSmoker) {
+	public void setAcceptSmoker(Integer acceptSmoker) {
 		this.acceptSmoker = acceptSmoker;
 	}
-	public Boolean getAcceptToDiscuss() {
-		if(acceptToDiscuss==null) acceptToDiscuss=false;
+	public Integer getAcceptToDiscuss() {
+		if(acceptToDiscuss==null) acceptToDiscuss=0;
 		return acceptToDiscuss;
 	}
-	public void setAcceptToDiscuss(Boolean acceptToDiscuss) {
+	public void setAcceptToDiscuss(Integer acceptToDiscuss) {
 		this.acceptToDiscuss = acceptToDiscuss;
 	}
-	public Boolean getAcceptToMakeADetour() {
-		if(acceptToMakeADetour==null) acceptToMakeADetour =false;
+	public Integer getAcceptToMakeADetour() {
 		return acceptToMakeADetour;
 	}
 
-	public void setAcceptToMakeADetour(Boolean acceptToMakeADetour) {
+	public void setAcceptToMakeADetour(Integer acceptToMakeADetour) {
 		this.acceptToMakeADetour = acceptToMakeADetour;
 	}
 
@@ -177,7 +176,7 @@ public class CheckInAjax extends Action
 			CustomerAccountEngineAction caea = SpringEngine.getSpring().getCustomerAccountEngineAction();
 			getCustomerAccount().setAcceptAnimals(getAcceptAnimals());
 			getCustomerAccount().setAcceptRadio(getAcceptRadio());
-			getCustomerAccount().setAcceptSomker(getAcceptSmoker());
+			getCustomerAccount().setAcceptSmoker(getAcceptSmoker());
 			getCustomerAccount().setAcceptToDiscuss(getAcceptToDiscuss());
 			getCustomerAccount().setAcceptToMakeADetour(getAcceptToMakeADetour());
 			getCustomerAccount().setCustomerLogin(getCustomerLogin());
@@ -190,7 +189,7 @@ public class CheckInAjax extends Action
 			getCustomerAccount().setAddress(getAddress());
 			getCustomerAccount().setCountry(getCountry());
 			getCustomerAccount().setZipCode(getZipCode());
-			getCustomerAccount().setGender(gender);
+			getCustomerAccount().setGender(getGender());
 			
 			System.out.println("Ville : " + getCustomerAccount().getCountry());
 			
@@ -205,7 +204,7 @@ public class CheckInAjax extends Action
 
 			getCustomerAccount().setAcceptAnimals(getAcceptAnimals());
 			getCustomerAccount().setAcceptRadio(getAcceptRadio());
-			getCustomerAccount().setAcceptSomker(getAcceptSmoker());
+			getCustomerAccount().setAcceptSmoker(getAcceptSmoker());
 			getCustomerAccount().setAcceptToDiscuss(getAcceptToDiscuss());
 			getCustomerAccount().setAcceptToMakeADetour(getAcceptToMakeADetour());
 			getCustomerAccount().setCustomerLogin(getCustomerLogin());
