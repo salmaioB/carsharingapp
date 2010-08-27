@@ -141,10 +141,30 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(24)"/></span>
 				</td>
 				<td colspan="2">
-					<input type="checkbox" name="acceptAnimals" 
-						<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
-						<s:if test="customerAccountProfil.acceptAnimals==1">checked="checked"</s:if> 
-					/>
+					<span>
+						<input type="radio" name="acceptAnimals" 
+							value="1"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptAnimals==1">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_animals_green.png" width="30"/>
+					</span>
+					<span>
+						<input type="radio" name="acceptAnimals" 
+							value="0"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptAnimals==0">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_animals_red.png" width="30"/>
+					</span>
+					<span>
+						<input type="radio" name="acceptAnimals" 
+							value="2"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptAnimals==2">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_animals_yellow.png" width="30"/>
+					</span>
 				</td>
 			</tr>
 			<tr>
@@ -152,21 +172,60 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(25)"/></span>
 				</td>
 				<td colspan="2">
-					<input type="checkbox" name="acceptRadio" 
-						<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
-						<s:if test="customerAccountProfil.acceptRadio==1">checked="checked"</s:if> 
-					/>
-				</td>
+					<span>
+						<input type="radio" name="acceptRadio" 
+							value="1"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptRadio==1">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_radio_green.png" width="30"/>
+					</span>
+					<span>
+						<input type="radio" name="acceptRadio" 
+							value="1"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptRadio==0">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_radio_red.png" width="30"/>
+					</span>
+					<span>
+						<input type="radio" name="acceptRadio" 
+							value="2"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptRadio==2">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_radio_yellow.png" width="30"/>
+					</span>
 			</tr>
 			<tr>
 				<td>
 					<span style="width: 160px;"><s:property value="tr.tr_html(26)"/></span>
 				</td>
 				<td colspan="2">
-					<input type="checkbox" name="acceptSmoker" 
-						<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
-						<s:if test="customerAccountProfil.acceptSmoker==1">checked="checked"</s:if> 
-					/>
+					<span>
+						<input type="radio" name="acceptSmoker" 
+							value="1"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptSmoker==1">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_smoker_green.png" width="30"/>
+					</span>
+					<span>
+						<input type="radio" name="acceptSmoker"
+							value="0"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptSmoker==0">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_smoker_red.png" width="30"/>
+					</span>
+					<span>
+						<input type="radio" name="acceptSmoker" 
+							value="2"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptSmoker==2">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_smoker_yellow.png" width="30"/>
+					</span>
 				</td>
 			</tr>
 			<tr>
@@ -174,10 +233,30 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(27)"/></span>
 				</td>
 				<td colspan="2">
-					<input type="checkbox" name="acceptToDiscuss" 
-						<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
-						<s:if test="customerAccountProfil.acceptToDiscuss==1">checked="checked"</s:if> 
-					/>
+					<span>
+						<input type="radio" name="acceptToDiscuss" 
+							value="1"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptToDiscuss==1">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_to_discuss_green.png" width="30"/>
+					</span>
+					<span>
+						<input type="radio" name="acceptToDiscuss"
+							value="0"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptToDiscuss==0">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_to_discuss_red.png" width="30"/>
+					</span>
+					<span>
+						<input type="radio" name="acceptToDiscuss" 
+							value="2"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptToDiscuss==2">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_to_discuss_yellow.png" width="30"/>
+					</span>
 				</td>
 			</tr>
 			<tr>
@@ -185,11 +264,30 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(28)"/></span>
 				</td>
 				<td colspan="2">
-					<input type="checkbox" name="acceptToMakeADetour" 
-						<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
-						<s:if test="customerAccountProfil.acceptToMakeADetour==1">checked="checked"</s:if> 
-						<s:if test="getIsCurrentCustomer()">style="disabled:true;"</s:if>
-					/>
+					<span>
+						<input type="radio" name="acceptToMakeADetour" 
+							value="1"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptToMakeADetour==1">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_to_make_a_detour_green.png" width="30"/>
+					</span>
+					<span>
+						<input type="radio" name="acceptToMakeADetour"
+							value="0"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptToMakeADetour==0">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_to_make_a_detour_red.png" width="30"/>
+					</span>
+					<span>
+						<input type="radio" name="acceptToMakeADetour" 
+							value="2"
+							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
+							<s:if test="customerAccountProfil.acceptToMakeADetour==2">checked="checked"</s:if>
+						/>
+						<img src="img/icon/accept_to_make_a_detour_yellow.png" width="30"/>
+					</span>
 				</td>
 			</tr>
 			<s:if test="getIsCurrentCustomer()">
