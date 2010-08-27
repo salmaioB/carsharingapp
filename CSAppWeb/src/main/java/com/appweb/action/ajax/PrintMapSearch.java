@@ -472,7 +472,8 @@ public class PrintMapSearch extends Action
 		System.out.println("idTrip : " + idTrip);
 		
 		//Chargement des participants
-		setCustomerAccountPartcipate( offersToCustomerAccountsDAO.loadListCustomerParticipateOffer(idTrip) );
+		setCustomerAccountPartcipate( offersToCustomerAccountsDAO.loadListCustomerParticipateOffer(idTrip, getCustomerAccount().getId()) );
+		//setCustomerAccountPartcipate( offersToCustomerAccountsDAO.loadListCustomerParticipateOffer(idTrip) );
 		CustomerAccount ca = offersToCustomerAccountsDAO.getCreatorOffer(idTrip);
 		System.out.println("createur de l'offre : " + ca.getCustomerLogin() );
 		setIsOfferPassenger( offersToCustomerAccountsDAO.isOfferPassenger(idTrip,ca.getId()) );
