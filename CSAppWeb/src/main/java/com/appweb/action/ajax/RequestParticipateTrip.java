@@ -11,7 +11,16 @@ import cs.model.OffersToCustomerAccount;
 public class RequestParticipateTrip extends Action
 {
 	private Integer idTrip;
-
+	private String messageError;
+	
+	public String getMessageError()
+	{
+		return messageError;
+	}
+	public void setMessageError(String messageError)
+	{
+		this.messageError = messageError;
+	}
 	public Integer getIdTrip() {
 		return idTrip;
 	}
@@ -45,8 +54,11 @@ public class RequestParticipateTrip extends Action
 				offerDAO.save(offer);
 				offersToCustomerAccountsDAO.save(offerToCustomerAccount);
 				return SUCCESS;
-			}
+			}else
+				messageError = "Vous etes deja inscript au trajet";
 		}
+		else
+			messageError = "Il n'y a plus de place sur ce trajet";
 		System.out.println("Passe par error");
 		return ERROR;
 	}
