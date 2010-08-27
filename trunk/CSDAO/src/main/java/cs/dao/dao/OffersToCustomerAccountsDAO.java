@@ -1,9 +1,12 @@
 package cs.dao.dao;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import cs.dao.util.HibernateUtil;
+import cs.model.CustomerAccount;
 import cs.model.OffersToCustomerAccount;
 import cs.dao.DAO;
 
@@ -17,6 +20,22 @@ public class OffersToCustomerAccountsDAO extends DAO
 		System.out.println("[Spring] load class:cs.dao.dao.OffersToCustomerAccountsDAO");
 	}
 
+	public List<CustomerAccount> loadListCustomerParticipateOffer(Integer idOffer)
+	{
+		Session session = HibernateUtil.currentSession();
+	    String sqlQuery = "Select * " +
+		    	" FROM customer_accounts, offers_to_customer_accounts " +
+			    " WHERE _id_offer = " + idOffer +
+		        " And customer_accounts._id_customer_account = offers_to_customer_accounts._id_customer_account"; 
+		    
+		System.out.println(sqlQuery);
+		     
+		Query query = session.createSQLQuery(sqlQuery).addEntity(CustomerAccount.class);
+		
+		HibernateUtil.closeSession();
+		
+		return query.list();
+	}
 	public Boolean isCreatorOffer(Integer idOffer, Integer idCustomerCreator)
 	{
 	    Session session = HibernateUtil.currentSession();
