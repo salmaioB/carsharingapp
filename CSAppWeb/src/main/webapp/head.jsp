@@ -88,6 +88,9 @@
 		        	//Mes offres poster
 					if ( ui.index == 0 )
 		        	{
+			        	$('#myPostOffer').empty();
+			        	$('#myAgreeOffer').empty();
+			        	
 						$('#divWaitingMyPostOffer').css('display','block');
 						$.ajax({
 			                method: 'post',
@@ -102,6 +105,9 @@
 		        	//Mes offres accepter
 					if ( ui.index == 1 )
 		        	{
+			        	$('#myPostOffer').empty();
+			        	$('#myAgreeOffer').empty();
+
 			        	$('#divWaitingMmAgreeOffer').css('display','block'); 
 			        	$.ajax({
 			                method: 'post',
@@ -216,7 +222,7 @@
 								//Execution des accordions
 							    $("#list1").accordion({
 									collapsible: true,
-									active:2
+									active:-1
 								});
 								
 		                	}
@@ -226,6 +232,8 @@
     				//My trip
 			        if ( ui.panel.id == "trip")
 			        {
+			        	$('#myPostOffer').empty();
+			        	$('#myAgreeOffer').empty();
 		             	$('#divWaitingMyPostOffer').css('display','block');   
 		             	$('#divWaitingMmAgreeOffer').css('display','block'); 
 
