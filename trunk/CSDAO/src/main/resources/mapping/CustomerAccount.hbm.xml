@@ -33,6 +33,7 @@
         <property name="datetimeLastConnection" type="timestamp" column="datetime_last_connection"/>
         <property name="datetimeLastOfferCreated" type="timestamp" column="datetime_last_offer_created"/>
         <property name="datetimeLastCarSharing" type="timestamp" column="datetime_last_car_sharing"/>
+        <property name="datetimeLastConnectionAndroid" type="timestamp" column="datetime_last_connection_android"/>
      </class>
      
 </hibernate-mapping>
