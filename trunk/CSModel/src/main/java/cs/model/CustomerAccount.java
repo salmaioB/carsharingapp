@@ -293,7 +293,7 @@ public class CustomerAccount implements Serializable
 		this.acceptSmoker = acceptSmoker;
 	}
 	
-	public void setAcceptSomker(Boolean acceptSmoker) {
+	public void setAcceptSmoker(Boolean acceptSmoker) {
 		if(acceptSmoker==false) this.acceptSmoker = 0;
 		else this.acceptSmoker = 1;
 	}
