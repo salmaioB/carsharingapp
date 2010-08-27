@@ -72,6 +72,9 @@
         <action name="CheckOutAjax" class="com.appweb.action.ajax.CheckOutAjax">
 			<result name="success" type="tiles">accueil.template</result>
 		</action>
+        <action name="ProfilAction" class="com.appweb.action.ajax.ProfilAction">
+			<result name="success" type="tiles">accueil.template</result>
+		</action>
     </package>
     
     <package name="Ajax" extends="struts-default">
