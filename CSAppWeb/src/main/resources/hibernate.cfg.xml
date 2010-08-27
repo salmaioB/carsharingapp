@@ -21,7 +21,8 @@
 		
 		<mapping resource="mapping/OfferWithCustomerAccount.hbm.xml"/>
 		<mapping resource="mapping/CustomerOfferWithMessageAndCustomerAccount.hbm.xml"/>
-		
+		<mapping resource="mapping/MessageWithCustomerAccount.hbm.xml"/>
+				
 		<mapping resource="mapping/Opinion.hbm.xml"/>		
 		<mapping resource="mapping/Route.hbm.xml"/>
 		<mapping resource="mapping/RoutesToCustomerAccount.hbm.xml"/>

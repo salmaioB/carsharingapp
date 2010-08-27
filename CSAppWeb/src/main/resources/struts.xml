@@ -53,6 +53,12 @@
 			<result type="json"/>
 		</action>
 	</package>
+
+	<package name="OfferMessagesWS" extends="json-default">
+		<action name="OfferMessagesWS" class="cs.webservice.impl.OfferMessagesWS">
+			<result type="json"/>
+		</action>
+	</package>
 	
 	<package name="MessageSaveWS" extends="json-default">
 		<action name="MessageSaveWS" class="cs.webservice.impl.MessageSaveWS">

@@ -95,7 +95,7 @@ public class MessageWriteResponse extends Action
 				message.setIdCustomerAccount(idCustomer);
 				message.setIdCustomerTransmitter(getCustomerAccount().getId());
 				message.setContent(contentSendSearch);
-				message.setDateTimeWrited(new Date());
+				message.setDatetimeWrited(new Date());
 				message.setIsRead(0);
 				message.setTitle(titleSendSearch);
 				message.setIdOffer(idOffer);

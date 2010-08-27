@@ -13,7 +13,7 @@
         <property name="content" type="string" column="content"/>
         <property name="idCustomerAccount" type="integer" column="_id_customer_account"/>
         <property name="isRead" type="integer" column="is_read"/>
-        <property name="dateTimeWrited" type="timestamp" column="dateTime_writed"/>
+        <property name="datetimeWrited" type="timestamp" column="dateTime_writed"/>
         <property name="idCustomerTransmitter" type="integer" column="_id_customer_transmitter"/>
     </class>
 </hibernate-mapping>
