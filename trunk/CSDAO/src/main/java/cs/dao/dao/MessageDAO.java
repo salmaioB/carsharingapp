@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import cs.dao.util.HibernateUtil;
 import cs.model.Message;
+import cs.model.MessageWithCustomerAccount;
 import cs.dao.DAO;
 
 public class MessageDAO extends DAO
@@ -133,8 +134,39 @@ public class MessageDAO extends DAO
 	     
 	     Query query = session.createQuery(SQLQuery);
 	     List<Message> messages = query.list();
+	     
 	     HibernateUtil.closeSession();
 	     
 		 return messages;
+	}
+	
+	/**
+	 * 
+	 */
+	public List<MessageWithCustomerAccount> getOfferMessageForACustomerTransmitter(Integer idOffer, Integer idCustomerAccount)
+	{
+		Session session = HibernateUtil.currentSession();
+		
+		String sqlQuery = "SELECT m._id_message, m.content, m.dateTime_writed, c.first_name, c.last_name " +
+					      "FROM offers o, customer_accounts c, offers_to_customer_accounts o_to_c, messages m " +
+					      "WHERE o._id_offer=o_to_c._id_offer " +
+					      "AND o_to_c._id_customer_account=c._id_customer_account " +
+					      "AND o_to_c.is_offer_creator=1 " +
+						  "AND o._id_offer=m._id_offer " +
+						  "AND m._id_offer=" + idOffer.toString() + " " +
+						  "AND (" +
+						  "m._id_customer_transmitter=c._id_customer_account " +
+					      "OR m._id_customer_transmitter=" + idCustomerAccount.toString() +
+						  ") " +
+						  "ORDER BY m.dateTime_writed";
+		
+		System.out.println(sqlQuery);
+		
+		Query query = session.createSQLQuery(sqlQuery).addEntity(MessageWithCustomerAccount.class);
+		List<MessageWithCustomerAccount> messages = query.list();
+		
+		HibernateUtil.closeSession();
+		
+		return messages;
 	}
 }

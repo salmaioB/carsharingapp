@@ -13,7 +13,7 @@ public class Message
 	private String content;
 	private Integer idCustomerAccount;
 	private Integer isRead;
-	private Date dateTimeWrited;
+	private Date datetimeWrited;
 	private Integer idCustomerTransmitter;
 	
 	
@@ -95,12 +95,12 @@ public class Message
 		this.isRead = isRead;
 	}
 	
-	public Date getDateTimeWrited() {
-		return dateTimeWrited;
+	public Date getDatetimeWrited() {
+		return datetimeWrited;
 	}
 	
-	public void setDateTimeWrited(Date dateTimeWrited) {
-		this.dateTimeWrited = dateTimeWrited;
+	public void setDatetimeWrited(Date datetimeWrited) {
+		this.datetimeWrited = datetimeWrited;
 	}
 	
 	public Integer getIdCustomerTransmitter() {
@@ -113,6 +113,6 @@ public class Message
 	
 	public String toString()
 	{
-		return getId() + '/' + getTitle() + '/' + getContent() + '/' + getIdCustomerAccount() + ' ' + getIdCustomerTransmitter() +' ' + getDateTimeWrited() + ' ' +getIsRead();
+		return getId() + '/' + getTitle() + '/' + getContent() + '/' + getIdCustomerAccount() + ' ' + getIdCustomerTransmitter() +' ' + getDatetimeWrited() + ' ' +getIsRead();
 	}
 }

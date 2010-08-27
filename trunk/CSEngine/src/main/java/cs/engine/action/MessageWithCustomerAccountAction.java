@@ -17,15 +17,18 @@ public class MessageWithCustomerAccountAction
 	private MessageDAO messageDAO;
 	private CustomerAccountDAO customerAccountDAO;
 	
+	
 	public MessageDAO getMessageDAO() {
 		return messageDAO;
 	}
+	
 	public void setMessageDAO(MessageDAO messageDAO) {
 		this.messageDAO = messageDAO;
 	}
 	public CustomerAccountDAO getCustomerAccountDAO() {
 		return customerAccountDAO;
 	}
+	
 	public void setCustomerAccountDAO(CustomerAccountDAO customerAccountDAO) {
 		this.customerAccountDAO = customerAccountDAO;
 	}
@@ -80,7 +83,7 @@ public class MessageWithCustomerAccountAction
 		Message messageSend = new Message();
 		messageSend.setContent(content);
 		messageSend.setTitle(title);
-		messageSend.setDateTimeWrited(new Date());
+		messageSend.setDatetimeWrited(new Date());
 		messageSend.setIdCustomerAccount(message.getIdCustomerTransmitter());
 		messageSend.setIdCustomerTransmitter( message.getIdCustomerAccount() );
 		messageSend.setIsRead(0);
