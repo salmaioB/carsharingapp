@@ -34,11 +34,22 @@ public class PrintMapSearch extends Action
 	
 	private String description;
 	
+	private Boolean isOfferPassenger;
+	
 	private Integer gender;
 	private String firstName;
 	private String lastName;
 	
 	private Integer idCustomer;
+	
+	public Boolean getIsOfferPassenger()
+	{
+		return isOfferPassenger;
+	}
+	public void setIsOfferPassenger(Boolean isOfferPassenger)
+	{
+		this.isOfferPassenger = isOfferPassenger;
+	}
 	
 	
 	public List<CustomerAccount> getCustomerAccountPartcipate() {
@@ -421,9 +432,9 @@ public class PrintMapSearch extends Action
 		Offer offer = offerDAO.load(idTrip);
 		setDescription(offer.getDescription());
 		setNbPassagerPost( offer.getNumberOfPlaceRemaining() );
-		setDatepickerPost(offer.getDatetimeStarted());
-		setHour(String.valueOf( offer.getDatetimeStarted().getHours() ) );
-		setMinutes(String.valueOf( offer.getDatetimeStarted().getMinutes() ) );
+		setDatepickerPost(offer.getDateStarted());
+		setHour(String.valueOf( offer.getDateStarted().getHours() ) );
+		setMinutes(String.valueOf( offer.getDateStarted().getMinutes() ) );
 		
 		//Customer
 		CustomerAccount customerAccount = customerAccountDAO.load( offer.getIdDriver() );
@@ -462,6 +473,10 @@ public class PrintMapSearch extends Action
 		
 		//Chargement des participants
 		setCustomerAccountPartcipate( offersToCustomerAccountsDAO.loadListCustomerParticipateOffer(idTrip) );
+		CustomerAccount ca = offersToCustomerAccountsDAO.getCreatorOffer(idTrip);
+		System.out.println("createur de l'offre : " + ca.getCustomerLogin() );
+		setIsOfferPassenger( offersToCustomerAccountsDAO.isOfferPassenger(idTrip,ca.getId()) );
+		
 		return SUCCESS;
 	}
 }
