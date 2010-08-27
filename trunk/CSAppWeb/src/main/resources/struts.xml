@@ -3,7 +3,7 @@
        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
        "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<!-- WebService JSON -->
+	<!-- CustomerAccount webservice -->
 	<package name="CustomerAccountsWS" extends="json-default">
 		<action name="CustomerAccountsWS" class="cs.webservice.impl.CustomerAccountsWS">
 			<result type="json"/>
@@ -28,6 +28,13 @@
 		</action>
 	</package>
 	
+	<!-- Offers webservice -->
+	<package name="OfferWS" extends="json-default">
+		<action name="OfferWS" class="cs.webservice.impl.OfferWS">
+			<result type="json"/>
+		</action>
+	</package>
+	
 	<package name="SearchOffersWithCustomerAccountWS" extends="json-default">
 		<action name="SearchOffersWithCustomerAccountWS" class="cs.webservice.impl.SearchOffersWithCustomerAccountWS">
 			<result type="json"/>
@@ -40,6 +47,7 @@
 		</action>
 	</package>
 
+	<!-- Messages webservice -->
 	<package name="CustomerOffersWithMessageAndCustomerAccountWS" extends="json-default">
 		<action name="CustomerOffersWithMessageAndCustomerAccountWS" class="cs.webservice.impl.CustomerOffersWithMessageAndCustomerAccountWS">
 			<result type="json"/>

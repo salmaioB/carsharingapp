@@ -20,8 +20,19 @@ public class OfferRowWithMessageAndCustomerAccountView
 		routeFullNameTextview			    = (TextView)offerRowWithMessageAndCustomerAccountView.findViewById(R.id.route_full_name_textview);
 		customerTransmitterFullNameTextview = (TextView)offerRowWithMessageAndCustomerAccountView.findViewById(R.id.customer_transmitter_full_name_textview);
 		
-		customerTransmitterGenderImageview.setImageResource(R.drawable.icon_customer_man);
-		routeFullNameTextview.setText("azeazeze");
-		customerTransmitterFullNameTextview.setText("azeazeaze");
+		if(customerOfferWithMessageAndCustomerAccount.getCustomerAccount().getGender() == 0)
+			customerTransmitterGenderImageview.setImageResource(R.drawable.icon_customer_woman);
+		else if(customerOfferWithMessageAndCustomerAccount.getCustomerAccount().getGender() == 1)
+			customerTransmitterGenderImageview.setImageResource(R.drawable.icon_customer_man);
+		
+		String routeFullName = "Trajet de " + customerOfferWithMessageAndCustomerAccount.getOffer().getStartingCity() +
+							   " à " +customerOfferWithMessageAndCustomerAccount.getOffer().getFinishingCity();
+		
+		routeFullNameTextview.setText(routeFullName);
+		
+		String customerTransmitterFullName = customerOfferWithMessageAndCustomerAccount.getCustomerAccount().getFirstName() + " " +
+		                                     customerOfferWithMessageAndCustomerAccount.getCustomerAccount().getLastName().substring(0, 1);
+		
+		customerTransmitterFullNameTextview.setText(customerTransmitterFullName);
 	}
 }
