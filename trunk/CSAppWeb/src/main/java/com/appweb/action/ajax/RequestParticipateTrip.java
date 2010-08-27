@@ -1,11 +1,5 @@
 package com.appweb.action.ajax;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import com.appweb.Action;
 
 import cs.dao.dao.OfferDAO;
@@ -13,12 +7,11 @@ import cs.dao.dao.OffersToCustomerAccountsDAO;
 import cs.dao.spring.SpringDAO;
 import cs.model.Offer;
 import cs.model.OffersToCustomerAccount;
-import cs.model.Route;
 
 public class RequestParticipateTrip extends Action
 {
 	private Integer idTrip;
-	
+
 	public Integer getIdTrip() {
 		return idTrip;
 	}
@@ -38,13 +31,22 @@ public class RequestParticipateTrip extends Action
 		offerToCustomerAccount.setIsOfferCreator(0);
 		offerToCustomerAccount.setIdOffer(idTrip);
 		
-		if(!offersToCustomerAccountsDAO.isParticipate(idTrip, getCustomerAccount().getId() ) )
-		{
-			System.out.println("passe par successs");
-			offersToCustomerAccountsDAO.save(offerToCustomerAccount);
-			return SUCCESS;
-		}
+		OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();
+		Offer offer = offerDAO.load(idTrip);
 		
+		Integer remain = offer.getNumberOfPlaceRemaining();
+		remain--;
+		if(remain >= 0)
+		{
+			if(!offersToCustomerAccountsDAO.isParticipate(idTrip, getCustomerAccount().getId() ) )
+			{
+				System.out.println("passe par successs");
+				offer.setNumberOfPlaceRemaining(remain);
+				offerDAO.save(offer);
+				offersToCustomerAccountsDAO.save(offerToCustomerAccount);
+				return SUCCESS;
+			}
+		}
 		System.out.println("Passe par error");
 		return ERROR;
 	}

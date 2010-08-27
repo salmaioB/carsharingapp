@@ -87,15 +87,20 @@ public class MessageWriteResponse extends Action
 			System.out.println("idCustomer : " + idCustomer);
 			System.out.println("contentSendSearch : " + contentSendSearch);
 			System.out.println("titleSendSearch : " + titleSendSearch);
-			Message message = new Message();
-			message.setIdCustomerAccount(idCustomer);
-			message.setIdCustomerTransmitter(getCustomerAccount().getId());
-			message.setContent(contentSendSearch);
-			message.setDateTimeWrited(new Date());
-			message.setIsRead(0);
-			message.setTitle(titleSendSearch);
-			message.setIdOffer(idOffer);
-			messageDAO.save(message);
+			
+			//Si le destinataires est differnts de null
+			if(idCustomer != null)
+			{
+				Message message = new Message();
+				message.setIdCustomerAccount(idCustomer);
+				message.setIdCustomerTransmitter(getCustomerAccount().getId());
+				message.setContent(contentSendSearch);
+				message.setDateTimeWrited(new Date());
+				message.setIsRead(0);
+				message.setTitle(titleSendSearch);
+				message.setIdOffer(idOffer);
+				messageDAO.save(message);
+			}
 		}
 		return SUCCESS;
 	}
