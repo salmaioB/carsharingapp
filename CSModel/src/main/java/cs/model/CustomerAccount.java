@@ -38,8 +38,16 @@ public class CustomerAccount implements Serializable
 	private Date datetimeLastConnection;
 	private Date datetimeLastOfferCreated;
 	private Date datetimeLastCarSharing;
-
+	private Date datetimeLastConnectionAndroid;
 	
+	public Date getDatetimeLastConnectionAndroid() {
+		return datetimeLastConnectionAndroid;
+	}
+
+	public void setDatetimeLastConnectionAndroid(Date datetimeLastConnectionAndroid) {
+		this.datetimeLastConnectionAndroid = datetimeLastConnectionAndroid;
+	}
+
 	public CustomerAccount()
 	{
 		
