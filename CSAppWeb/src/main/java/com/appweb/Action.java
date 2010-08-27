@@ -24,7 +24,21 @@ public class Action extends ActionSupport
 	private CustomerAccount customerAccount;
 	private Integer nbMessageNotRead;
 	private String language;
+	private CustomerAccount customerAccountProfil;
+	private Boolean isCurrentCustomer;
 	
+	public Boolean getIsCurrentCustomer() {
+		return isCurrentCustomer;
+	}
+	public void setIsCurrentCustomer(Boolean isCurrentCustomer) {
+		this.isCurrentCustomer = isCurrentCustomer;
+	}
+	public CustomerAccount getCustomerAccountProfil() {
+		return customerAccountProfil;
+	}
+	public void setCustomerAccountProfil(CustomerAccount customerAccountProfil) {
+		this.customerAccountProfil = customerAccountProfil;
+	}
 	public String getLanguage() {
 		if(langage.equals("")) language = "fr";
 		return language;
@@ -74,6 +88,8 @@ public class Action extends ActionSupport
 	public Action()
 	{
 		super();
+		isCurrentCustomer = true;
+		
 		//Récupère les variables de sessions et paramètre
 		session = ActionContext.getContext().getSession();
 		parameters = ActionContext.getContext(). getParameters();
@@ -111,8 +127,13 @@ public class Action extends ActionSupport
 		//Si pas de session déclaré ou si nouveau langugage définit
 		if( parameters.get("username") != null && parameters.get("password") != null )
 		{
-			CustomerAccountEngineAction customerAccountEngine = SpringEngine.getSpring().getCustomerAccountEngineAction();//new  CustomerAccountEngineAction();
-			setCustomerAccount(customerAccountEngine.identification(((String[])parameters.get("username"))[0] ,((String[])parameters.get("password"))[0]  ));
+			CustomerAccountEngineAction customerAccountEngine = SpringEngine.getSpring().getCustomerAccountEngineAction();
+			setCustomerAccount(
+					customerAccountEngine.identification(
+							((String[])parameters.get("username"))[0] ,
+							((String[])parameters.get("password"))[0]  
+					)
+			);
 			System.out.println("getCustomerAccount().getCustomerLogin() : " + getCustomerAccount().getCustomerLogin()  );
 			if(getCustomerAccount() != null)
 			{
@@ -126,20 +147,19 @@ public class Action extends ActionSupport
 		{
 			if(getSession().get("customerId") != "")
 			{
-				CustomerAccountDAO cadao = SpringDAO.getSpring().getCustomerAccountDAO();//new CustomerAccountDAO();
+				CustomerAccountDAO cadao = SpringDAO.getSpring().getCustomerAccountDAO();
 				customerAccount = cadao.load((Integer)getSession().get("customerId"));
 				customerAccount.setDatetimeLastConnection(new Date());
 				cadao.save(customerAccount);
-				System.out.println("customerAccount.getCp() : " +  customerAccount.getZipCode() );
-				System.out.println("customerAccount.getAcceptAnimals() : " +  customerAccount.getAcceptAnimals() );
+				//Set le profil a afficher par defaut
+				setCustomerAccountProfil(customerAccount);
 			}
 	    }
 	
 		if(isLoging() )
 		{	
 			//Gestion des messages
-			MessageDAO messageDAO = SpringDAO.getSpring().getMessageDAO();//new MessageDAO();
-			//messageDAO.load(1);
+			MessageDAO messageDAO = SpringDAO.getSpring().getMessageDAO();
 			setNbMessageNotRead(messageDAO.nbMessageNotRead(customerAccount.getId() ) );
 		}
 	}
