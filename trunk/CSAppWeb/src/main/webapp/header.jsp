@@ -3,7 +3,7 @@
 
 <span style="float:left;">
 	<a href="<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil">
-		<img src="http://static.comuto.com/static/images/logo_covoituragefr.gif" />
+		<img src="img/icon/icon_logo.png" height="70" />
 	</a>
 </span>
 

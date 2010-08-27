@@ -9,6 +9,22 @@
 	<table>
 		<tr>
 			<td>
+				<span style="width: 160px;">role</span>
+			</td>
+			<td>
+				<input value="<s:property value="role" />" readonly="readonly" id="role" name="role" style="display:none;" />
+				<input value="
+					<s:if test="role==0">
+						<s:property value="tr.tr_html(40)"/>
+					</s:if>
+					<s:else>
+						<s:property value="tr.tr_html(39)"/>
+					</s:else>
+				" readonly="readonly" />
+			</td>
+		</tr>
+		<tr>
+			<td>
 				<span style="width: 160px;">Date</span>
 			</td>
 			<td>
@@ -36,7 +52,7 @@
 				<span style="width: 160px;">description</span>
 			</td>
 			<td>
-				<textarea readonly="readonly" id="description" name="description" style="width:350px; height:100px;"  ><s:property value="description"/></textarea>
+				<input readonly="readonly" id="description" name="description" style="width:350px; height:100px;"  value="<s:property value="description" />" />
 			</td>
 		</tr>
 		<tr>

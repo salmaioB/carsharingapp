@@ -14,8 +14,24 @@
 						<s:property value="tr.tr_html(17)"/>
 					</td>
 					<td>
-						<span style="width:100px;"><s:property value="tr.tr_html(39)"/></span><input type="radio" id="role" name="role" value="1"><br />
-						<span style="width:100px;"><s:property value="tr.tr_html(40)"/></span><input type="radio" id="role" name="role" value="2"> 
+						<table>
+							<tr>
+								<td>
+									<span style="width:100px;"><s:property value="tr.tr_html(39)"/></span>
+								</td>
+								<td>
+									<input class="required" type="radio" id="role" name="role" value="1">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span style="width:100px;"><s:property value="tr.tr_html(40)"/></span>
+								</td>
+								<td>
+									<input class="required" type="radio" id="role" name="role" value="0"> 
+								</td>
+							</tr>
+						</table>
 					</td>
 				</tr>
 				<tr>
@@ -23,7 +39,7 @@
 						<span style="width: 160px;">Date</span>
 					</td>
 					<td>
-						<input readonly="readonly" type="text" name="datepickerPost" id="datepickerPost" />
+						<input class="required" readonly="readonly" type="text" name="datepickerPost" id="datepickerPost" />
 					</td>
 				</tr>
 				<tr style="height:120px;">
@@ -36,10 +52,34 @@
 				</tr>
 				<tr>
 					<td>
-						<span style="width: 160px;"><s:property value="tr.tr_html(15)"/> </span> 
-						<br /> <s:property value="tr.tr_html(12)"/> : <input id="addressStartPost" name="addressStartPost" class="" size="20" />
-						<br /> <s:property value="tr.tr_html(11)"/> : <input id="villeStartPost" name="villeStartPost" class="" size="20" />
-						<br /> <input type="button" class="PostSearchStart" value="<s:property value="tr.tr_html(14)"/>" onclick="initinitializePositionByAdress('villeStartPost','addressStartPost','divMapStart');"/>
+						<table>
+							<tr>
+								<td colspan="2">
+									<span style="width: 160px;"><s:property value="tr.tr_html(15)"/> </span> 
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<s:property value="tr.tr_html(12)"/>
+								</td>
+								<td>
+									<input id="addressStartPost" name="addressStartPost" class="" size="20" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<s:property value="tr.tr_html(11)"/>
+								</td>
+								<td>
+									<input class="required" id="villeStartPost" name="villeStartPost" class="" size="20" />
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<input type="button" class="PostSearchStart" value="<s:property value="tr.tr_html(14)"/>" onclick="initinitializePositionByAdress('villeStartPost','addressStartPost','divMapStart');"/>
+								</td>
+							</tr> 
+						</table>
 					</td>
 					<td>
 						<div id="divMapStart" style="width: 300px; height: 200px"></div>
@@ -47,10 +87,34 @@
 				</tr>
 				<tr>
 					<td>
-						<span style="width: 160px;"><s:property value="tr.tr_html(16)"/> </span>
-						<br /> <s:property value="tr.tr_html(12)"/> : <input id="addressStopPost" name="addressStopPost" size="20"/>
-						<br /> <s:property value="tr.tr_html(11)"/> : <input id="villeStopPost" name="villeStopPost" class="" size="20" />
-						<br /> <input type="button" class="PostSearchStop" value="<s:property value="tr.tr_html(14)"/>" onclick="initinitializePositionByAdress('villeStopPost','addressStopPost','divMapStop');"/>
+						<table>
+							<tr>
+								<td colspan="2">
+									<span style="width: 160px;"><s:property value="tr.tr_html(16)"/> </span> 
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<s:property value="tr.tr_html(12)"/>
+								</td>
+								<td>
+									<input id="addressStopPost" name="addressStopPost" size="20"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<s:property value="tr.tr_html(11)"/>
+								</td>
+								<td>
+									<input class="required" id="villeStopPost" name="villeStopPost" class="" size="20" />
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<input type="button" class="PostSearchStop" value="<s:property value="tr.tr_html(14)"/>" onclick="initinitializePositionByAdress('villeStopPost','addressStopPost','divMapStop');"/>
+								</td>
+							</tr> 
+						</table>
 					</td>
 					<td>
 						<div id="divMapStop" style="width: 300px; height: 200px"></div>
@@ -61,7 +125,7 @@
 						<span style="width: 160px;"><s:property value="tr.tr_html(13)"/></span>
 					</td>
 					<td>
-						<input id="nbPassagerPost" name="nbPassagerPost" size="4" />
+						<input class="required" id="nbPassagerPost" name="nbPassagerPost" size="4" />
 					</td>
 				</tr>
 				<tr>
@@ -69,7 +133,7 @@
 						<span style="width: 160px;">description</span>
 					</td>
 					<td>
-						<textarea id="description" name="description" tyle="width:350px; height:100px;"  ></textarea>
+						<input id="description" name="description" style="width:350px; height:100px;"  />
 					</td>
 				</tr>
 				<tr>
