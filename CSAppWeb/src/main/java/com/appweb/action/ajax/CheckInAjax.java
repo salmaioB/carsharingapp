@@ -202,6 +202,7 @@ public class CheckInAjax extends Action
 		{
 			System.out.println("user not logger : " + customerLogin);
 
+			
 			getCustomerAccount().setAcceptAnimals(getAcceptAnimals());
 			getCustomerAccount().setAcceptRadio(getAcceptRadio());
 			getCustomerAccount().setAcceptSmoker(getAcceptSmoker());
@@ -230,14 +231,18 @@ public class CheckInAjax extends Action
 			System.out.println(ca.getEmailAddress());
 			
 			CustomerAccountEngineAction caea = SpringEngine.getSpring().getCustomerAccountEngineAction();
-			Boolean b = caea.save( ca ) ;
-			if( b )
+			//Si le login et password pas utilisé
+			if( caea.identification(ca.getCustomerLogin(), ca.getCustomerPassword()) ==null )
 			{
-				getSession().put("customerId",getCustomerAccount().getId());					
-				super.initConstructor();
+				Boolean b = caea.save( ca ) ;
+				if( b )
+				{
+					getSession().put("customerId",getCustomerAccount().getId());					
+					super.initConstructor();
+				}
 			}
-			else
-				System.out.println("ERROR : Subscription new customer" + b);
+
+			System.out.println("ERROR : Subscription new customer" );
 		}
 		return SUCCESS;
 	}
