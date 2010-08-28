@@ -199,7 +199,7 @@
 	</script>
 	<s:if test="isLoging()">
 		<script type="text/javascript">
-			//countNumberOfMessageNotRead();
+			countNumberOfMessageNotRead();
 		</script>
 	</s:if>
 	<style type="text/css">
