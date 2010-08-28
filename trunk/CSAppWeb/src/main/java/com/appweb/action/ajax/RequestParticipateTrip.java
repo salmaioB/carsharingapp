@@ -45,20 +45,25 @@ public class RequestParticipateTrip extends Action
 		
 		Integer remain = offer.getNumberOfPlaceRemaining();
 		remain--;
-		if(remain >= 0)
+		if(getCustomerAccount().getId()!=null)
 		{
-			if(!offersToCustomerAccountsDAO.isParticipate(idTrip, getCustomerAccount().getId() ) )
+			if(remain >= 0)
 			{
-				System.out.println("passe par successs");
-				offer.setNumberOfPlaceRemaining(remain);
-				offerDAO.save(offer);
-				offersToCustomerAccountsDAO.save(offerToCustomerAccount);
-				return SUCCESS;
-			}else
-				messageError = "Vous etes deja inscript au trajet";
-		}
-		else
-			messageError = "Il n'y a plus de place sur ce trajet";
+				if(!offersToCustomerAccountsDAO.isParticipate(idTrip, getCustomerAccount().getId() ) )
+				{
+					System.out.println("passe par successs");
+					offer.setNumberOfPlaceRemaining(remain);
+					offerDAO.save(offer);
+					offersToCustomerAccountsDAO.save(offerToCustomerAccount);
+					return SUCCESS;
+				}else
+					messageError = "Vous etes deja inscript au trajet";
+			}else{
+				messageError = "Il n'y a plus de place sur ce trajet";
+			}
+		}else
+			messageError = "Vous devez vous identifier";
+
 		System.out.println("Passe par error");
 		return ERROR;
 	}
