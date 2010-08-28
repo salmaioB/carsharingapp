@@ -331,7 +331,7 @@ public class SaveOffer extends Action
 		System.out.println("after iterator");
 
 		System.out.println("start to call DAO for saveOfferWithRoutes ");
-		offerDAO.saveOfferWithRoutes(offer, routes);
+		offerDAO.saveOfferWithRoutes(offer, routes, getCustomerAccount().getId(), getRole());
 		
 		//jointure avec l'utilisateur créant l'offre
 		OffersToCustomerAccount offerToCustomerAccount = new OffersToCustomerAccount();

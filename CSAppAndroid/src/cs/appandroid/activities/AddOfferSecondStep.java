@@ -154,13 +154,16 @@ public class AddOfferSecondStep extends Activity implements OnClickListener
            public void run()
            {
         	   addOfferProgressDialog.dismiss();
-   			
+   			   
+        	   intentAddOfferSummary.putExtra("offer", offer);
+        	   intentAddOfferSummary.putExtra("route", route);
+        	   
    			   // Start the root activity within the group and get its view  
    			   addOfferSummaryView = AddOfferGroup.addOfferGroup.getLocalActivityManager().startActivity("Add offer summary",
    					   												 					  intentAddOfferSummary.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
    					   												 					  .getDecorView();
    			   
-	   	       // Replace the view of this ActivityGroup  
+	   	       // Replace the view of this ActivityGroup
 	   	       replaceView(addOfferSummaryView);
            }
         });

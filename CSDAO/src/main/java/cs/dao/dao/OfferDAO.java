@@ -12,6 +12,7 @@ import cs.dao.util.HibernateUtil;
 import cs.model.Offer;
 import cs.model.OfferWithCustomerAccount;
 import cs.model.CustomerOfferWithMessageAndCustomerAccount;
+import cs.model.OffersToCustomerAccount;
 import cs.model.OffersToRoute;
 import cs.model.Route;
 import cs.dao.DAO;
@@ -217,7 +218,7 @@ public class OfferDAO extends DAO
 	 * Function to save an offer
 	 * with his routes
 	 */
-	public Boolean saveOfferWithRoutes(Offer offer, List<Route> routes)
+	public Boolean saveOfferWithRoutes(Offer offer, List<Route> routes, Integer idCustomerAccount, Integer isDriver)
 	{
 		// Save an offer
 		save(offer);
@@ -252,6 +253,16 @@ public class OfferDAO extends DAO
 			
 			offersToRoutesDAO.save(offersToRoute);
 		}
+		
+		// Save the offer and the customer into correspondence table (offers_to_customer_accounts)
+		OffersToCustomerAccount offersToCustomerAccount = new OffersToCustomerAccount();
+		offersToCustomerAccount.setIdOffer(offer.getId());
+		offersToCustomerAccount.setIdCustomerAccount(idCustomerAccount);
+		offersToCustomerAccount.setIsDriver(isDriver);
+		offersToCustomerAccount.setIsOfferCreator(1);
+		
+		OffersToCustomerAccountsDAO offersToCustomerAccountsDAO = new OffersToCustomerAccountsDAO();
+		offersToCustomerAccountsDAO.save(offersToCustomerAccount);
 		
 		return true;
 	}
