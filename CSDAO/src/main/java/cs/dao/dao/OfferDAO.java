@@ -138,8 +138,8 @@ public class OfferDAO extends DAO
                          " AND o_to_r1._id_route = r1._id_route " + 
                          " AND " +
                          " (" + 
-                         "  r1.starting_city = '" + startingCity.toString() + "' " +
-                         "  OR r1.finishing_city = '" + finishingCity.toString() + "' " + 
+                         "  r1.starting_city LIKE '%" + startingCity.toString() + "%' " +
+                         "  OR r1.finishing_city LIKE '%" + finishingCity.toString() + "%' " + 
                          " )" + 
                          " GROUP BY o1._id_offer " +
                          ") as routes_min_max ";
@@ -162,8 +162,8 @@ public class OfferDAO extends DAO
          			 	 " routes_min_max.route_order_min != routes_min_max.route_order_max " +
          			 	 " OR " +
          			 	 " (" +
-         			 	 "  r.starting_city = '" + startingCity.toString() + "' " +
-         			 	 "  AND r.finishing_city = '" + finishingCity.toString() + "'" +
+         			 	 "  r.starting_city LIKE '%" + startingCity.toString() + "%' " +
+         			 	 "  AND r.finishing_city LIKE '%" + finishingCity.toString() + "%'" +
          			 	 " )" +
          			 	 ") " +
 				         "AND r.route_order >= routes_min_max.route_order_min " +
