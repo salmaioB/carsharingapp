@@ -1,3 +1,77 @@
+function loadMyTripAgree()
+{
+	$('#myPostOffer').empty();
+	$('#myAgreeOffer').empty();
+
+	$('#divWaitingMmAgreeOffer').css('display','block'); 
+	$.ajax({
+        method: 'post',
+        url: WEB_ROOT_URL+'CSAppWeb/MyPostAgree',
+        success: function(data)
+        {
+             $('#myAgreeOffer').html(data);
+             $('#divWaitingMmAgreeOffer').css('display','none'); 
+        }
+	});
+}
+function loadMyTripPost()
+{
+	$('#myPostOffer').empty();
+	$('#myAgreeOffer').empty();
+	
+	$('#divWaitingMyPostOffer').css('display','block');
+	$.ajax({
+        method: 'post',
+        url: WEB_ROOT_URL+'CSAppWeb/MyPostOffer',
+        success: function(data)
+        {
+             $('#myPostOffer').html(data);
+             $('#divWaitingMyPostOffer').css('display','none');
+        }
+	});
+}
+function loadMessageReceive()
+{
+ 	//Requete ajax pour récuperer les messages boite de reception
+	$('#divWaitingReceive').css('display','block'); 
+	$('#receive').empty();
+	$.ajax({
+        method: 'post',
+        url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
+        success: function(data)
+        {
+             $('#receive').html(data);
+
+             $("#list2").accordion({
+					collapsible: true,
+					active: -1
+			});
+
+			//Ajoute les évement ajax au message recu
+				ajaxSendResponse();
+				$("#divWaitingReceive").css('display','none');
+        }
+	});
+}
+function loadMessageSend()
+{
+	$('#divWaitingSend').css('display','block');
+	$('#send').empty();
+	//Requete ajax pour récuperer les messages boite de reception
+    $.ajax({
+            method: 'post',
+            url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
+            success: function(data)
+            {
+             	$('#send').html(data);		
+				 $("#list1").accordion({
+						collapsible: true,
+						active: -1
+				});
+ 				$('#divWaitingSend').css('display','none');
+            }
+          });//Fin ajax
+}
 function validateForm2()
 {
 	$('#post_form_etape_2').validate({

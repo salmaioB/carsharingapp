@@ -36,7 +36,10 @@
 	<script type="text/javascript" src="js/jquery.time/jquery.strings.js"></script>
 	
 	<script type="text/javascript" src="js/jquery.time/jquery.anchorHandler.js"></script>
-	  <!-- 
+
+	<script type="text/javascript" src="js/jquery.time/js.function.job.js"></script>
+
+  <!-- 
    	<script type="text/javascript" src="js/jquery.time/jquery.ui.all.js"></script>
  	-->
 	<script type="text/javascript" src="js/jquery.time/ui.timepickr.js"></script> 
@@ -89,89 +92,30 @@
 		        	//Mes offres poster
 					if ( ui.index == 0 )
 		        	{
-			        	$('#myPostOffer').empty();
-			        	$('#myAgreeOffer').empty();
-			        	
-						$('#divWaitingMyPostOffer').css('display','block');
-						$.ajax({
-			                method: 'post',
-			                url: WEB_ROOT_URL+'CSAppWeb/MyPostOffer',
-			                success: function(data)
-			                {
-				                 $('#myPostOffer').html(data);
-				                 $('#divWaitingMyPostOffer').css('display','none');
-			                }
-			        	});
+						loadMyTripPost();
 		        	}
 		        	//Mes offres accepter
 					if ( ui.index == 1 )
 		        	{
-			        	$('#myPostOffer').empty();
-			        	$('#myAgreeOffer').empty();
-
-			        	$('#divWaitingMmAgreeOffer').css('display','block'); 
-			        	$.ajax({
-			                method: 'post',
-			                url: WEB_ROOT_URL+'CSAppWeb/MyPostAgree',
-			                success: function(data)
-			                {
-				                 $('#myAgreeOffer').html(data);
-				                 $('#divWaitingMmAgreeOffer').css('display','none'); 
-			                }
-			        	});
+						loadMyTripAgree();
 		        	}  
 				}
 			});
 			//Sous menu des messages
 			$('#menuMessages').tabs({
 		        select: function(e, ui) {
-				// onglet message send== ui.index == 0
-		        if ( ui.index == 0)
-		        {
-		        	$('#divWaitingSend').css('display','block');
-		        	$('#send').empty();
-		        	//Requete ajax pour récuperer les messages boite de reception
-			        $.ajax({
-			                method: 'post',
-			                url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
-			                success: function(data)
-			                {
-			                 	$('#send').html(data);		
-								 $("#list1").accordion({
-										collapsible: true,
-										active: -1
-								});
-				 				$('#divWaitingSend').css('display','none');
-			                }
-		                  });//Fin ajax
-			        }
-		        	//Onglet message receive == ui.index == 0
-			        if ( ui.index == 1)
+					// onglet message send== ui.index == 0
+			        if ( ui.index == 0)
 			        {
-			        	//Requete ajax pour récuperer les messages boite de reception
-			        	$('#divWaitingReceive').css('display','block'); 
-			        	$('#receive').empty();
-			        	$.ajax({
-			                method: 'post',
-			                url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
-			                success: function(data)
-			                {
-				                 $('#receive').html(data);
-
-				                 $("#list2").accordion({
-										collapsible: true,
-										active: -1
-								});
-		
-								//Ajoute les évement ajax au message recu
-				 				ajaxSendResponse();
-				 				$("#divWaitingReceive").css('display','none');
-			                }
-			        	});
-			        }
-		        }
-			}
-			);
+			        	loadMessageSend();    
+				    }
+			       //Onglet message receive == ui.index == 0
+				   if ( ui.index == 1)
+				   {
+				   		loadMessageReceive();
+				   }
+		     	}
+			});
 
 			//Menu principale
 			$('#container').bind('tabsshow', function(event, ui) {
@@ -188,78 +132,21 @@
     			if (ui.panel.id == "registration") {
     				initializeMapEmpty('divMapProfil');
     			}
+    			
     			//message
-    			if (ui.panel.id == "message") {
-					$('#send').empty();
-					$('#receive').empty();
-    				$('#divWaitingSend').css('display','block');
-					$('#divWaitingReceive').css('display','block'); 
-					//Requete ajax pour récuperer les messages boite de reception
-		        	$.ajax({
-		                method: 'post',
-		                url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
-		                success: function(data)
-		                {
-			                 $('#receive').html(data);
-
-							//Execution des accordions
-						    $("#list2").accordion({
-								collapsible: true,
-								active:-1
-							});
-							//Ajoute les évement ajax au message recu
-			 				ajaxSendResponse();
-			 				$("#divWaitingReceive").css('display','none');
-		                }
-		        	});//Fin du ajax MessageReceive
-		        	
-					 //Requete ajax pour récuperer les messages boite de reception
-			        $.ajax({
-			                method: 'post',
-			                url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
-			                success: function(data)
-			                {
-			                 	$('#send').html(data);		
-			        			$('#divWaitingSend').css('display','none');
-
-								//Execution des accordions
-							    $("#list1").accordion({
-									collapsible: true,
-									active:-1
-								});
-								
-		                	}
-		                  });//Fin ajax
-    				}//Fin du panel message
+    			if (ui.panel.id == "message") 
+        		{
+					loadMessageReceive();
+		        	loadMessageSend();
+    			}//Fin du panel message
     				
-    				//My trip
-			        if ( ui.panel.id == "trip")
-			        {
-			        	$('#myPostOffer').empty();
-			        	$('#myAgreeOffer').empty();
-		             	$('#divWaitingMyPostOffer').css('display','block');   
-		             	$('#divWaitingMmAgreeOffer').css('display','block'); 
-
-			        	$.ajax({
-			                method: 'post',
-			                url: WEB_ROOT_URL+'CSAppWeb/MyPostOffer',
-			                success: function(data)
-			                {
-				                 $('#myPostOffer').html(data);
-				                 $('#divWaitingMyPostOffer').css('display','none');
-			                }
-			        	});
-			        	$.ajax({
-			                method: 'post',
-			                url: WEB_ROOT_URL+'CSAppWeb/MyPostAgree',
-			                success: function(data)
-			                {
-				                 $('#myAgreeOffer').html(data);
-				                 $('#divWaitingMmAgreeOffer').css('display','none'); 
-			                }
-			        	});
-
-			        }//Fin de MY Trip
+    			//My trip
+			    if ( ui.panel.id == "trip")
+			    {
+				    loadMyTripAgree();
+				    loadMyTripPost();
+				    
+			     }//Fin de MY Trip
 			});//Fin du menu principale
 			$('#container').tabs();
 				
@@ -280,56 +167,6 @@
 			});
 		});
 	</script>
-		<script type="text/javascript">
-			function calculPrice(price1,price2,price3,price4,price5,price6,price7,price8,priceTotal,cityStop)
-			{
-				var price = 0;
-				//alert($("#"+price1).val());
-				if($("#"+price1).val() != "") {
-					$("#"+price2).attr("disabled", false);
-					price += parseFloat($("#"+price1).val());
-				}
-
-				if($("#"+price2).val() != "") {
-					$("#"+price3).attr("disabled", false);
-					price += parseFloat($("#"+price2).val());
-				}
-				
-				if($("#"+price3).val() != ""){
-					 $("#"+price4).attr("disabled", false);
-					 price += parseFloat($("#"+price3).val());
-				}
-				
-				if($("#"+price4).val() != ""){
-					 $("#"+price5).attr("disabled", false);
-					 price += parseFloat($("#"+price4).val());
-				}
-					 
-				if($("#"+price5).val() != ""){
-					 $("#"+price6).attr("disabled", false);
-					 price += parseFloat($("#"+price5).val());
-				}
-
-				if($("#"+price6).val() != ""){
-					 $("#"+price7).attr("disabled", false);
-					 price += parseFloat($("#"+price6).val());
-				}
-
-				if($("#"+price7).val() != ""){
-					 $("#"+price8).attr("disabled", false);
-					 price += parseFloat($("#"+price7).val());
-				}
-
-				if($("#"+price8).val() != ""){
-					 price += parseFloat($("#"+price8).val());
-				}
-				if($("#"+cityStop).val() != ""){
-					 price += parseFloat($("#"+cityStop).val());
-				}
-				
-				$("#"+priceTotal).val( price );
-			}
-		</script>
 		<script type="text/javascript">
 			function countNumberOfMessageNotRead()
 			{
@@ -368,15 +205,6 @@
 		.submit { margin-left: 12em; }
 		em { font-weight: bold; padding-right: 1em; vertical-align: top; }
 	</style>
-
-	<script type="text/javascript">
-		$(function() {
-			$("#accordion").accordion({
-				collapsible: true,
-				active: 0
-			});
-		});		
-	</script>
 	<style type="text/css">
 		img {
 			border-width : 0;
