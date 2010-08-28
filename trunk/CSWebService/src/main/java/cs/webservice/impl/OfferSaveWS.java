@@ -75,10 +75,6 @@ public class OfferSaveWS extends ActionSupport
 	public String execute() throws Exception
  	{
 		Offer offer = new Offer();
-		
-		offer.setIdOfferType(idOfferType);
-	    offer.setIdDriver(idDriver);
-		offer.setTitle("");
 		offer.setDescription("");
 		offer.setNumberOfPlaceInitial(numberOfPassengers);
 		offer.setNumberOfPlaceRemaining(numberOfPassengers);
@@ -96,7 +92,7 @@ public class OfferSaveWS extends ActionSupport
 		List<Route> routes = new ArrayList<Route>();
 		routes.add(route);
 		
-		OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();//new OfferDAO();
+		OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();
 		offerDAO.saveOfferWithRoutes(offer, routes);
 		
 	 	return SUCCESS;
