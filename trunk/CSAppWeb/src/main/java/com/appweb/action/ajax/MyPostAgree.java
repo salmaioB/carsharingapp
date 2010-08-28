@@ -49,7 +49,7 @@ public void setOwca(List<OfferWithCustomerAccount> owca) {
 		System.out.println("execute MyPostAgree");
 		OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();
 		
-		owca = offerDAO.loadSearchOffers(null, null, getCustomerAccount().getId() );
+		owca = offerDAO.loadSearchOffersToParticipate( getCustomerAccount().getId() );
 		if(owca != null)
 		{
 			if(owca.size() >0 )
@@ -62,6 +62,7 @@ public void setOwca(List<OfferWithCustomerAccount> owca) {
 				System.out.println("Fin de MyPostAgree");
 				return SUCCESS;
 			}
+			System.out.println("owca.size() == 0");
 		}
 		System.out.println("Fin de MyPostAgree");
 		return ERROR;
