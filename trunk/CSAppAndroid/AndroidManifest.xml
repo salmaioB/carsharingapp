@@ -12,19 +12,20 @@
             </intent-filter>
         </activity>
 
-	    <activity android:name="AddOffer" android:enabled="true"></activity>
+	    <activity android:name="cs.appandroid.activitiesgroup.AddOfferGroup"></activity>
 		<activity android:name="MyMessages"></activity>
 		<activity android:name="DisplayOffers"></activity>
-		<activity android:name="SearchOffersGroup"></activity>
+		<activity android:name="cs.appandroid.activitiesgroup.SearchOffersGroup"></activity>
 		<activity android:name="Identification"></activity>
 		<activity android:name="MyProfile"></activity>
 		<activity android:name="MyRoutes"></activity>
-		
-	<activity android:name="OfferView"></activity>
-<activity android:name="SendOfferMessage"></activity>
-<activity android:name="MyRoutesGroup"></activity>
-<activity android:name="MyMessagesGroup"></activity>
-<activity android:name="OfferMessagesView"></activity>
+		<activity android:name="OfferView"></activity>
+		<activity android:name="SendOfferMessage"></activity>
+		<activity android:name="cs.appandroid.activitiesgroup.MyRoutesGroup"></activity>
+		<activity android:name="cs.appandroid.activitiesgroup.MyMessagesGroup"></activity>
+		<activity android:name="OfferMessagesView"></activity>
+	<activity android:name="AddOfferSecondStep"></activity>
+<activity android:name="AddOfferSummary"></activity>
 </application>
 
     <uses-sdk android:minSdkVersion="6" />

@@ -1,5 +1,7 @@
 package cs.appandroid.activities;
 
+import cs.appandroid.activitiesgroup.AddOfferGroup;
+import cs.appandroid.activitiesgroup.SearchOffersGroup;
 import cs.appandroid.components.HomeMenuAdapter;
 import cs.appandroid.components.MyCustomGridView;
 import android.app.Activity;
@@ -32,7 +34,7 @@ public class OldCSAppAndroid extends Activity
 	       case 0: Intent intent = new Intent(OldCSAppAndroid.this, SearchOffersGroup.class);
 	       		   startActivity(intent);
 	       		   break;
-	       case 1: Intent intent2 = new Intent(OldCSAppAndroid.this, AddOffer.class);
+	       case 1: Intent intent2 = new Intent(OldCSAppAndroid.this, AddOfferGroup.class);
 		           startActivity(intent2);
 		           break;
 	       case 3: Intent intent3 = new Intent(OldCSAppAndroid.this, MyMessages.class);

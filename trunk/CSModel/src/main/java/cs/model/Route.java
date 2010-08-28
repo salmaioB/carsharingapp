@@ -1,6 +1,8 @@
 package cs.model;
 
-public class Route
+import java.io.Serializable;
+
+public class Route implements Serializable
 {
 	private Integer id;
 	private Integer idOffer;	
