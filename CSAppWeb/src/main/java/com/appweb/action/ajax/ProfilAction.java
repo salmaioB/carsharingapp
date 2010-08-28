@@ -12,8 +12,15 @@ import cs.model.CustomerAccount;
 public class ProfilAction extends AccueilAction
 {
 	private Integer idCustomerAccount;
+	private Integer idOffer;
 	
-    public Integer getIdCustomerAccount() {
+    public Integer getIdOffer() {
+		return idOffer;
+	}
+	public void setIdOffer(Integer idOffer) {
+		this.idOffer = idOffer;
+	}
+	public Integer getIdCustomerAccount() {
 		return idCustomerAccount;
 	}
 	public void setIdCustomerAccount(Integer idCustomerAccount) {

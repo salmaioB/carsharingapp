@@ -51,7 +51,10 @@ public class PrintMapSearch extends Action
 		this.isOfferPassenger = isOfferPassenger;
 	}
 	
-	
+	public Boolean isLoging()
+	{
+		return super.isLoging();
+	}
 	public List<CustomerAccount> getCustomerAccountPartcipate() {
 		return customerAccountPartcipate;
 	}
@@ -381,42 +384,42 @@ public class PrintMapSearch extends Action
 		if(id==0){
 			villeStartPost = startingCity;
 			addressStartPost  = startingAddress;
+			priceTrip1 = price;
 		}
 		if(id==1 )
 		{
 			villepassage1Post = startingCity;
-			priceTrip1 = price;
+			priceTrip2 = price;	
 		}
 		if(id==2 )
 		{
 			villepassage2Post = startingCity;
-			priceTrip2 = price;
+			priceTrip3 = price;
 		}
 		if(id==3)
 		{
 			villepassage3Post = startingCity;
-			priceTrip3 = price;
+			priceTrip4 = price;	
 		}
 		if(id==4)
 		{
 			villepassage4Post = startingCity;
-			priceTrip4 = price;
+			priceTrip5 = price;
 		}
 		if(id==5 ){
 			villepassage5Post = startingCity;
-			priceTrip5 = price;
+			priceTrip6 = price;	
 		}
 		if(id==6){
-			villepassage1Post = startingCity;
-			priceTrip6 = price;
-		}
-		if(id==7 ){
-			villepassage1Post = startingCity;
+			villepassage6Post = startingCity;
 			priceTrip7 = price;
 		}
-		if(id==8){
-			villepassage8Post = startingCity;
+		if(id==7 ){
+			villepassage7Post = startingCity;
 			priceTrip8 = price;
+		}
+		if(id==8){
+			villepassage8Post = startingCity;	
 		}
 	}
 	public String execute() throws Exception
@@ -435,9 +438,11 @@ public class PrintMapSearch extends Action
 		setDatepickerPost(offer.getDatetimeStarted());
 		setHour(String.valueOf( offer.getDatetimeStarted().getHours() ) );
 		setMinutes(String.valueOf( offer.getDatetimeStarted().getMinutes() ) );
-		
+		offersToCustomerAccountsDAO.getCreatorOffer(idTrip);
+	
 		//Customer
-		CustomerAccount customerAccount = customerAccountDAO.load( offer.getIdDriver() );
+		CustomerAccount customerAccount = customerAccountDAO.load( offersToCustomerAccountsDAO.getCreatorOffer(idTrip).getId()  );
+	
 		acceptAnimals = customerAccount.getAcceptAnimals();
 		acceptRadio = customerAccount.getAcceptRadio();
 		acceptSmoker = customerAccount.getAcceptSmoker();
@@ -450,8 +455,9 @@ public class PrintMapSearch extends Action
 		
 		//Routes
 		List<Route> routes = routeDAO.loadRoutes( offer.getId() );
+
 		System.out.println("routes.size() : " + routes.size());
-		Float priceAll = Float.intBitsToFloat(0);
+		Float priceAll = 0f;
 		
 		for(int i = 0; i <= routes.size() -1 ; i++)
 		{
@@ -459,25 +465,35 @@ public class PrintMapSearch extends Action
 			System.out.println("route.getStartingAddress() : " + route.getStartingAddress() +" - getFinishingAddress() : "+route.getFinishingAddress());
 			System.out.println("route.getStartingAddress() : " + route.getStartingCity() +" - getFinishingCity() : "+route.getFinishingCity() );
 			System.out.println("route.getPrice() : " + route.getPrice());
+			priceAll += route.getPrice();
 			setDataTrip(i, route.getStartingCity(),route.getStartingAddress(), route.getFinishingCity(), route.getFinishingAddress(), route.getPrice().toString() );
-			priceAll += Float.floatToIntBits( route.getPrice() );
 		}
-		if(routes.get(routes.size()-1)!= null){
+		System.out.println("priceAll FIN --:" + priceAll);
+
+		if(routes.get(routes.size()-1)!= null)
+		{
 			villeStopPost = routes.get(routes.size()-1).getFinishingCity();
 			addressStopPost  = routes.get(routes.size()-1).getFinishingAddress();
 			priceTripStop = routes.get(routes.size()-1).getPrice().toString();
-			priceAll += Float.floatToIntBits( routes.get(routes.size()-1).getPrice() );
+			System.out.println("priceTripStop : " + priceTripStop);
+			priceAll += routes.get(routes.size()-1).getPrice();
 		}
+		System.out.println("priceAll FIN:" + priceAll);
+
 		priceTotal = priceAll.toString();
 		System.out.println("idTrip : " + idTrip);
+		if( getCustomerAccount().getId() != null)
+		{	
+			//Chargement des participants
+			setCustomerAccountPartcipate( offersToCustomerAccountsDAO.loadListCustomerParticipateOffer(idTrip,getCustomerAccount().getId() ) );
+		}
 		
-		//Chargement des participants
-		setCustomerAccountPartcipate( offersToCustomerAccountsDAO.loadListCustomerParticipateOffer(idTrip, getCustomerAccount().getId()) );
 		//setCustomerAccountPartcipate( offersToCustomerAccountsDAO.loadListCustomerParticipateOffer(idTrip) );
 		CustomerAccount ca = offersToCustomerAccountsDAO.getCreatorOffer(idTrip);
 		System.out.println("createur de l'offre : " + ca.getCustomerLogin() );
 		setIsOfferPassenger( offersToCustomerAccountsDAO.isOfferPassenger(idTrip,ca.getId()) );
 		
+		System.out.println("FINNNNNNNNNNN");
 		return SUCCESS;
 	}
 }
