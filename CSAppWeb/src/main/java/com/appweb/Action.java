@@ -85,9 +85,8 @@ public class Action extends ActionSupport
 		this.tr = tr;
 	}
 
-	public Action()
+	public void initConstructor()
 	{
-		super();
 		isCurrentCustomer = true;
 		
 		//Récupère les variables de sessions et paramètre
@@ -162,6 +161,11 @@ public class Action extends ActionSupport
 			MessageDAO messageDAO = SpringDAO.getSpring().getMessageDAO();
 			setNbMessageNotRead(messageDAO.nbMessageNotRead(getCustomerAccount().getId() ) );
 		}
+	}
+	public Action()
+	{
+		super();
+		initConstructor();
 	}
 	public Map getSession() {
 		return session;
