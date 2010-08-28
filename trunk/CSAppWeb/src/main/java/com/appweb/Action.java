@@ -52,9 +52,9 @@ public class Action extends ActionSupport
 	public void setNbMessageNotRead(Integer nbMessageNotRead) {
 		this.nbMessageNotRead = nbMessageNotRead;
 	}
-	public boolean isLoging()
+	public Boolean isLoging()
 	{
-		if(customerAccount == null)
+		if(getCustomerAccount().getId() == null)
 			return false;
 		return true;
 	}
@@ -152,7 +152,7 @@ public class Action extends ActionSupport
 				customerAccount.setDatetimeLastConnection(new Date());
 				cadao.save(customerAccount);
 				//Set le profil a afficher par defaut
-				setCustomerAccountProfil(customerAccount);
+				setCustomerAccountProfil( getCustomerAccount() );
 			}
 	    }
 	
@@ -160,7 +160,7 @@ public class Action extends ActionSupport
 		{	
 			//Gestion des messages
 			MessageDAO messageDAO = SpringDAO.getSpring().getMessageDAO();
-			setNbMessageNotRead(messageDAO.nbMessageNotRead(customerAccount.getId() ) );
+			setNbMessageNotRead(messageDAO.nbMessageNotRead(getCustomerAccount().getId() ) );
 		}
 	}
 	public Map getSession() {
