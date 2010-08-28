@@ -6,7 +6,7 @@ $(document).ready(function()
                         
                         $.ajax({
                                 method: 'post',
-                                url: WEB_ROOT_URL+'CSAppWeb/CheckAddress',
+                                url: '/CSAppWeb/CheckAddress',
                                 data: postData,
                                 success: function(data)
                                 {
@@ -23,7 +23,7 @@ $(document).ready(function()
                         
                         $.ajax({
                                 method: 'post',
-                                url: WEB_ROOT_URL+'CSAppWeb/PrintPositionAndroid',
+                                url: '/CSAppWeb/PrintPositionAndroid',
                                 data: postData,
                                 success: function(data)
                                 {
