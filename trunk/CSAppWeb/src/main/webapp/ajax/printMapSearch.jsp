@@ -35,7 +35,7 @@
 				<span style="width: 160px;">description</span>
 			</td>
 			<td colspan="2">
-				<textarea readonly="readonly" id="description" name="description" style="width:350px; height:100px;"  ><s:property value="description"/></textarea>
+				<textarea readonly="readonly" id="description" name="description" style="width:248px; height:100px;"  ><s:property value="description"/></textarea>
 			</td>
 		</tr>
 		<tr>
@@ -161,7 +161,7 @@
 		</tr>
 		<tr>
 			<td>
-				Prix total
+				<s:property value="tr.tr_html(48)"/>
 			</td>
 			<td align="left">
 				<input value="<s:property value="priceTotal" />" name="priceTotal" id="priceTotal"  size="3" readonly="readonly" />
@@ -185,7 +185,7 @@
 							<input type="button" value="<s:property value="tr.tr_html(30)"/>" onclick="ajaxSendMessage();"/>
 						</s:if>
 						<s:else>
-							<br />Pas identifier
+							<br /><s:property value="tr.tr_html(53)"/>
 						</s:else>
 					</form>
 				</td>
@@ -194,7 +194,7 @@
 				<td colspan="2">
 					<s:if test="!getIsOfferPassenger()">
 						<s:if test="isLoging()" >
-							<div id="requesting" name="requesting" style="background-color:#009ACF; display:none;">Demande en cours</div>
+							<div id="requesting" name="requesting" style="background-color:#009ACF; display:none;"><s:property value="tr.tr_html(54)"/></div>
 							<div id="buttonPartcipipate">
 								<form id="form_participate">
 									<input type="button" onclick="requestParticipate(<s:property value="idTrip"/>)" value="participation au trajet"/>
@@ -203,7 +203,7 @@
 						</s:if>
 					</s:if>
 					<s:else>
-					<span>Cette offre est une offre passager, il n'y a pas d'inscription</span>		
+						<span><s:property value="tr.tr_html(55)"/></span>		
 					</s:else>
 				</td>
 			</tr>
@@ -214,7 +214,7 @@
 					<table>
 						<tr>
 							<td style="border:1px solid black; width:500px;">
-								Liste des participants
+								<s:property value="tr.tr_html(56)"/>
 							</td>
 						</tr>
 						<s:iterator value="customerAccountPartcipate" id="customerAccountPartcipate">
@@ -223,7 +223,7 @@
 									<s:property value="%{#customerAccountPartcipate.firstName}" />
 									<s:property value="%{#customerAccountPartcipate.lastName}" />	
 									<span style="align:right;">
-										<a href="ProfilAction?idCustomerAccount=<s:property value="%{#customerAccountPartcipate.id}" />#profil">
+										<a href="ProfilAction?idOffer=<s:property value="idTrip"/>&idCustomerAccount=<s:property value="%{#customerAccountPartcipate.id}" />#profil">
 											<img width="25" src="img/icon/icon_my_profil.png" >
 										</a>
 									</span>

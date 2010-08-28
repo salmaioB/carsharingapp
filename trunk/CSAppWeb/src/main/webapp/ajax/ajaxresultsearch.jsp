@@ -6,7 +6,7 @@
 <table cellpadding="3" cellspacing="3">
 	<s:iterator value="owca" id="owca">
 		<tr style="height:10px; font-size: 0.7em; " >
-			<td style="border:1px solid black; width:500px;" colspan="2"><span><s:property value="tr.tr_html(8)"/> : <span style="color:blue;"><s:property value="%{#owca.startingCity}" /></span></span> <span><s:property value="tr.tr_html(9)"/> : <span style="color:blue;"><s:property value="%{#owca.finishingCity}" /></span></span></td>
+			<td style="border:1px solid black; width:500px;" colspan="2"><span><s:property value="tr.tr_html(8)"/> : <span style="color:blue;"><s:property value="%{#owca.offer.startingCity}" /></span></span> <span><s:property value="tr.tr_html(9)"/> : <span style="color:blue;"><s:property value="%{#owca.offer.finishingCity}" /></span></span></td>
 		</tr>
 		<tr style="border:1px solid black;">
 			<td style="font-size: 0.8em; border:1px solid black; width:800px;">
@@ -22,14 +22,14 @@
 						</td>
 						<td >
 							<div style="font-size: 1.2em; color:blue;">
-								<s:property value="%{#owca.pricePerPassenger}" /> 
+								<s:property value="%{#owca.offer.pricePerPassenger}" /> 
 							</div>
 							<span style="font-size: 0.8em; color:blue;">
 								euros par passager
 							</span>
 						</td>
 						<td style="font-size: 1.2em; color:gray;">
-							<s:property value="%{#owca.numberOfPlaceRemaining}" /> pl.
+							<s:property value="%{#owca.offer.numberOfPlaceRemaining}" /> pl.
 						</td>
 						<td>
 							<span style="font-size: 0.8em; color:gray;">

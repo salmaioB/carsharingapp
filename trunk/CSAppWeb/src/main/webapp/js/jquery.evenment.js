@@ -58,6 +58,25 @@ function requestParticipate(idTrip)
    });
    return false;
 }
+function ajaxSendMessageCustomer(nameCustomer)
+{
+	$('#sending'+nameCustomer).css('display','block');
+	alert('#form_sendMessage'+nameCustomer);
+	var postData = $("input", '#form_sendMessage'+nameCustomer).serialize();
+    alert(postData);
+	$.ajax({
+    	method: 'post',
+        url: WEB_ROOT_URL+'CSAppWeb/MessageWriteResponse',
+        data: postData,
+        success: function(data)
+        {
+        	$('#content'+nameCustomer).val('');
+        	$('#title'+nameCustomer).val('');
+            $('#sending'+nameCustomer).css('display','none');
+        }
+   });
+   return false;
+}
 function ajaxSendMessage()
 {
 	$('#sending').css('display','block');
@@ -91,6 +110,7 @@ function printTrip(idTrip,divResult)
 }
 function updateReadMessage(idMessage)
     {          
+		//Décremente le nombre de message lu
         $.ajax({
                 method: 'get',
                 url: WEB_ROOT_URL+'CSAppWeb/UpdateMessageRead?idMessage='+idMessage,
@@ -98,9 +118,26 @@ function updateReadMessage(idMessage)
                 {
                  }
                 });
+        if( parseInt($('#numberOfMessageNotRead').text() )  > 0)
+        {
+        	$('#numberOfMessageNotRead').html(
+        			parseInt(
+        					$('#numberOfMessageNotRead').html()
+        					) - 1);
+        }
         return false;
     }
-
+function ajaxNumberOfMessageNotRead()
+{
+	$.ajax({
+	    method: 'get',
+	    url: WEB_ROOT_URL+'CSAppWeb/GetNumberOfMessageReadNotRead',
+	    success: function(data)
+	    {
+			$('#numberOfMessageNotRead').text(data);
+	     }
+	    });
+}
 function ajaxSendResponse(i)
 {
 	$('#sending'+i).css('display','block');
@@ -168,122 +205,3 @@ function ajaxSearch()
             }
            });
 }
-$(document).ready(function()
-{
-	/*
-    $('input.checkin').click(function()
-            {
-                    var postData = $("input", '#checkaddress_form').serialize();
-                    $.ajax({
-                            method: 'post',
-                            url: WEB_ROOT_URL+'CSAppWeb/CheckInAjax',
-                            data: postData,
-                            success: function(data)
-                            {
-                    			alert("Profil enregistre");
-                    			//Si success redection vers le profil
-                    			document.location.href=WEB_ROOT_URL+'CSAppWeb/Accueil#profil';
-                            }
-                              });
-                    return false;
-            });
-      */
-/*
-	$('input.Csearch').click(function()
-            {
-                    var postData = $("input", '#search_form').serialize();
-                    
-                    $.ajax({
-                            method: 'post',
-                            url: WEB_ROOT_URL+'CSAppWeb/ResultSearch',
-                            data: postData,
-                            success: function(data)
-                            {
-                             $('#resultSearch').html(data);
-                            }
-                              });
-                    
-                    return false;
-            });
-*/
-      $('input.checkAddress').click(function()
-                {
-                        var postData = $("input", '#checkaddress_form').serialize();
-                        
-                        $.ajax({
-                                method: 'post',
-                                url: WEB_ROOT_URL+'CSAppWeb/CheckAddress',
-                                data: postData,
-                                success: function(data)
-                                {
-                                 $('#divProfilMapAnddroid').html(data);
-                                 initinitializePositionByAdress("ville","address","divProfilMapAnddroid");
-                                }
-                                  });
-                        
-                        return false;
-                });
-      	/*
-        $('input.Csearch').click(function()
-                {
-                        var postData = $("input", '#search_form').serialize();
-                        
-                        $.ajax({
-                                method: 'post',
-                                url: WEB_ROOT_URL+'CSAppWeb/PrintMapSearch',
-                                data: postData,
-                                success: function(data)
-                                {
-	                                 $('#search').html(data);
-	                                 
-	                                 initializeMapParcoursSearch();
-                                }
-                                  });
-                        
-                        return false;
-                });
-        */
-        $('input.testAddress').click(function()
-                {
-                        var postData = $("input", '#checkaddress_form').serialize();
-                        
-                        $.ajax({
-                                method: 'post',
-                                url: WEB_ROOT_URL+'CSAppWeb/PrintPositionAndroid',
-                                data: postData,
-                                success: function(data)
-                                {
-		                            $('#divProfilMapAnddroid').html(data);
-		                            
-		                            initializePosition();
-                                }
-                                  });
-                        
-                        return false;
-                });
-        /*
-        $('input.Etape2Post').click(function()
-                {
-                        var postData = $("input", '#post_form').serialize();
-                        
-                        $.ajax({
-                                method: 'post',
-                                url: WEB_ROOT_URL+'CSAppWeb/PostEtape2',
-                                data: postData,
-                                success: function(data)
-                                {
-                        			$('#startPost').attr('disabled', true);
-                        			$('#stopPost').attr('disabled', true);
-                        			$('#nbPassagerPost').attr('disabled', true);
-                        			
-		                            $('#etape1').html(data);
-		                    		//$(".corner").corner();
-		                            createEvent();
-                                }
-                               });
-                        
-                        return false;
-                });
-        */
-       
-})

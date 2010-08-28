@@ -6,7 +6,7 @@
 
 	<span >
 		<s:property value="tr.tr_html(2)"/> <s:property value="customerAccount.customerLogin"/>
-	(<s:property value="nbMessageNotRead"/>)
+	(<span id="numberOfMessageNotRead"><s:property value="nbMessageNotRead"/></span>)
 	</span>
 	<input type="submit" class="checkout" value="<s:property value="tr.tr_html(4)"/>"/>		     
 </form>
