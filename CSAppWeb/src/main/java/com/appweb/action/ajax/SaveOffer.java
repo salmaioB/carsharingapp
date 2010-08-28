@@ -334,14 +334,14 @@ public class SaveOffer extends Action
 		offerDAO.saveOfferWithRoutes(offer, routes, getCustomerAccount().getId(), getRole());
 		
 		//jointure avec l'utilisateur créant l'offre
-		OffersToCustomerAccount offerToCustomerAccount = new OffersToCustomerAccount();
-		
-		offerToCustomerAccount.setIdCustomerAccount(getCustomerAccount().getId());
-		offerToCustomerAccount.setIdOffer(offer.getId());
-		offerToCustomerAccount.setIsDriver(getRole() );
-		offerToCustomerAccount.setIsOfferCreator(1);
-		
-		offersToCustomerAccountsDAO.save(offerToCustomerAccount);
+//		OffersToCustomerAccount offerToCustomerAccount = new OffersToCustomerAccount();
+//		
+//		offerToCustomerAccount.setIdCustomerAccount(getCustomerAccount().getId());
+//		offerToCustomerAccount.setIdOffer(offer.getId());
+//		offerToCustomerAccount.setIsDriver(getRole() );
+//		offerToCustomerAccount.setIsOfferCreator(1);
+//		
+//		offersToCustomerAccountsDAO.save(offerToCustomerAccount);
 		System.out.println("finish to call DAO for saveOfferWithRoutes ");
 		
 		return SUCCESS;

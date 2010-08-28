@@ -1,6 +1,7 @@
 package cs.appandroid.activities;
 
 import cs.appandroid.activitiesgroup.AddOfferGroup;
+import cs.appandroid.controller.IdentificationController;
 import cs.model.Offer;
 import cs.model.Route;
 import cs.webservice.OfferSaveWS;
@@ -139,8 +140,10 @@ public class AddOfferSecondStep extends Activity implements OnClickListener
 	
 	public void addOfferProcess()
 	{
+		Integer idCustomerAccount = IdentificationController.getUserLoggedId(getBaseContext());
+		
 		OfferSaveWS offerSaveWS = new OfferSaveWS();
-		offerSaveWS.saveOfferWithRoutes(offer, route);
+		offerSaveWS.saveOfferWithRoutes(offer, route, idCustomerAccount, 1);
 		
 		addOfferProcessUpdateUI();
 	}

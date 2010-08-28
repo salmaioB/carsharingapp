@@ -15,29 +15,30 @@ public class OfferSaveWS extends ActionSupport
 {
 	private static final long serialVersionUID = 1L;
 	
-	private Integer idOfferType;
-	private Integer idDriver;
+	private Integer idCustomerAccount;
+	private Integer isDriver;
+	
 	private Integer numberOfPassengers;
 	private float pricePerPassenger;
 	
 	private String startingCity;
 	private String finishingCity;
 	
-		
-	public Integer getIdOfferType() {
-		return idOfferType;
-	}
-
-	public void setIdOfferType(Integer idOfferType) {
-		this.idOfferType = idOfferType;
-	}
 	
-	public Integer getIdDriver() {
-		return idDriver;
+	public Integer getIdCustomerAccount() {
+		return idCustomerAccount;
 	}
 
-	public void setIdDriver(Integer idDriver) {
-		this.idDriver = idDriver;
+	public void setIdCustomerAccount(Integer idCustomerAccount) {
+		this.idCustomerAccount = idCustomerAccount;
+	}
+
+	public Integer getIsDriver() {
+		return isDriver;
+	}
+
+	public void setIsDriver(Integer isDriver) {
+		this.isDriver = isDriver;
 	}
 	
 	public Integer getNumberOfPassengers() {
@@ -96,7 +97,7 @@ public class OfferSaveWS extends ActionSupport
 		routes.add(route);
 		
 		OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();
-		offerDAO.saveOfferWithRoutes(offer, routes);
+		offerDAO.saveOfferWithRoutes(offer, routes, idCustomerAccount, isDriver);
 		
 	 	return SUCCESS;
  	}
