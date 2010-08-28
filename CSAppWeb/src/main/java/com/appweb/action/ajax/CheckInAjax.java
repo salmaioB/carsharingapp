@@ -28,6 +28,7 @@ public class CheckInAjax extends Action
 	private Integer gender;
 	
 	public Integer getGender() {
+		if(gender == null) gender = 1;
 		return gender;
 	}
 	public void setGender(Integer gender) {
