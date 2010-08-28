@@ -152,7 +152,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptAnimals==1">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_animals_green.png" width="30"/>
+						<img src="img/icon/accept_animals_green.png" width="30" title="<s:property value="tr.tr_html(24)"/>" />
 					</span>
 					<span>
 						<input type="radio" name="acceptAnimals" 
@@ -160,7 +160,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptAnimals==0">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_animals_red.png" width="30"/>
+						<img src="img/icon/accept_animals_red.png" width="30" title="<s:property value="tr.tr_html(24)"/>" />
 					</span>
 					<span>
 						<input type="radio" name="acceptAnimals" 
@@ -168,7 +168,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptAnimals==2">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_animals_yellow.png" width="30"/>
+						<img src="img/icon/accept_animals_yellow.png" width="30" title="<s:property value="tr.tr_html(24)"/>" />
 					</span>
 				</td>
 			</tr>
@@ -183,7 +183,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptRadio==1">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_radio_green.png" width="30"/>
+						<img src="img/icon/accept_radio_green.png" width="30" title="<s:property value="tr.tr_html(25)"/>" />
 					</span>
 					<span>
 						<input type="radio" name="acceptRadio" 
@@ -191,7 +191,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptRadio==0">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_radio_red.png" width="30"/>
+						<img src="img/icon/accept_radio_red.png" width="30" title="<s:property value="tr.tr_html(25)"/>" />
 					</span>
 					<span>
 						<input type="radio" name="acceptRadio" 
@@ -199,7 +199,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptRadio==2">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_radio_yellow.png" width="30"/>
+						<img src="img/icon/accept_radio_yellow.png" width="30" title="<s:property value="tr.tr_html(25)"/>" />
 					</span>
 			</tr>
 			<tr>
@@ -213,7 +213,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptSmoker==1">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_smoker_green.png" width="30"/>
+						<img src="img/icon/accept_smoker_green.png" width="30" title="<s:property value="tr.tr_html(26)"/>" />
 					</span>
 					<span>
 						<input type="radio" name="acceptSmoker"
@@ -221,7 +221,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptSmoker==0">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_smoker_red.png" width="30"/>
+						<img src="img/icon/accept_smoker_red.png" width="30" title="<s:property value="tr.tr_html(26)"/>" />
 					</span>
 					<span>
 						<input type="radio" name="acceptSmoker" 
@@ -229,7 +229,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptSmoker==2">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_smoker_yellow.png" width="30"/>
+						<img src="img/icon/accept_smoker_yellow.png" width="30" title="<s:property value="tr.tr_html(26)"/>"/>
 					</span>
 				</td>
 			</tr>
@@ -244,7 +244,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptToDiscuss==1">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_to_discuss_green.png" width="30"/>
+						<img src="img/icon/accept_to_discuss_green.png" width="30" title="<s:property value="tr.tr_html(27)"/>" />
 					</span>
 					<span>
 						<input type="radio" name="acceptToDiscuss"
@@ -252,7 +252,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptToDiscuss==0">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_to_discuss_red.png" width="30"/>
+						<img src="img/icon/accept_to_discuss_red.png" width="30" title="<s:property value="tr.tr_html(27)"/>"/>
 					</span>
 					<span>
 						<input type="radio" name="acceptToDiscuss" 
@@ -260,7 +260,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptToDiscuss==2">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_to_discuss_yellow.png" width="30"/>
+						<img src="img/icon/accept_to_discuss_yellow.png" width="30" title="<s:property value="tr.tr_html(27)"/>"/>
 					</span>
 				</td>
 			</tr>
@@ -275,7 +275,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptToMakeADetour==1">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_to_make_a_detour_green.png" width="30"/>
+						<img src="img/icon/accept_to_make_a_detour_green.png" width="30" title="<s:property value="tr.tr_html(28)"/>" />
 					</span>
 					<span>
 						<input type="radio" name="acceptToMakeADetour"
@@ -283,7 +283,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptToMakeADetour==0">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_to_make_a_detour_red.png" width="30"/>
+						<img src="img/icon/accept_to_make_a_detour_red.png" width="30" title="<s:property value="tr.tr_html(28)"/>" />
 					</span>
 					<span>
 						<input type="radio" name="acceptToMakeADetour" 
@@ -291,7 +291,7 @@
 							<s:if test="!getIsCurrentCustomer()">readonly="readonly"</s:if>
 							<s:if test="customerAccountProfil.acceptToMakeADetour==2">checked="checked"</s:if>
 						/>
-						<img src="img/icon/accept_to_make_a_detour_yellow.png" width="30"/>
+						<img src="img/icon/accept_to_make_a_detour_yellow.png" width="30" title="<s:property value="tr.tr_html(28)"/>" />
 					</span>
 				</td>
 			</tr>

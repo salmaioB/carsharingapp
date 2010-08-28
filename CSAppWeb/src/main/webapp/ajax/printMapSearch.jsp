@@ -163,7 +163,7 @@
 			<td>
 				<s:property value="tr.tr_html(48)"/>
 			</td>
-			<td align="left">
+			<td colspan="2" align="left">
 				<input value="<s:property value="priceTotal" />" name="priceTotal" id="priceTotal"  size="3" readonly="readonly" />
 			</td>
 		</tr>
@@ -174,7 +174,7 @@
 		</tr>
 		<s:if test="!isCreatorOffer()" >
 			<tr>
-				<td colspan="2">
+				<td colspan="3">
 					<div id="sending" name="sending" style="background-color:#009ACF; display:none;"><s:property value="tr.tr_html(47)"/></div>
 					<form id="form_sendMessage">
 						<input type="text" id="idOffer" name="idOffer" style="display:none;" value="<s:property value="idTrip"/>" />
@@ -191,7 +191,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td colspan="3">
 					<s:if test="!getIsOfferPassenger()">
 						<s:if test="isLoging()" >
 							<div id="requesting" name="requesting" style="background-color:#009ACF; display:none;"><s:property value="tr.tr_html(54)"/></div>
@@ -210,7 +210,7 @@
 		</s:if>
 		<s:if test="isLoging()" >
 			<tr>
-				<td>
+				<td colspan="3">
 					<table>
 						<tr>
 							<td style="border:1px solid black; width:500px;">

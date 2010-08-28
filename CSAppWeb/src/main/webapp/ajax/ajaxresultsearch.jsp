@@ -38,53 +38,53 @@
 						</td>
 						<td style=" width:500px; align:right; " >
 							<s:if test="%{#owca.customerAccount.acceptAnimals==0}">
-								<img src="img/icon/accept_animals_red.png" style="width:35px;" />
+								<img src="img/icon/accept_animals_red.png" style="width:35px;" title="<s:property value="tr.tr_html(24)"/>"/>
 							</s:if>
 							<s:elseif test="%{#owca.customerAccount.acceptAnimals==1}">
-								<img src="img/icon/accept_animals_green.png" style="width:35px;" />
+								<img src="img/icon/accept_animals_green.png" style="width:35px;" title="<s:property value="tr.tr_html(24)"/>"/>
 							</s:elseif>
 							<s:elseif test="%{#owca.customerAccount.acceptAnimals==2}">
-								<img src="img/icon/accept_animals_yellow.png" style="width:35px;" />
+								<img src="img/icon/accept_animals_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(24)"/>" />
 							</s:elseif>
 												
 							<s:if test="%{#owca.customerAccount.acceptRadio==0}">
-								<img src="img/icon/accept_radio_red.png" style="width:35px;" />
+								<img src="img/icon/accept_radio_red.png" style="width:35px;" title="<s:property value="tr.tr_html(25)"/>"/>
 							</s:if>
 							<s:elseif test="%{#owca.customerAccount.acceptRadio==1}">
-								<img src="img/icon/accept_radio_green.png" style="width:35px;" />
+								<img src="img/icon/accept_radio_green.png" style="width:35px;" title="<s:property value="tr.tr_html(25)"/>"/>
 							</s:elseif>
 							<s:elseif test="%{#owca.customerAccount.acceptRadio==2}">
-								<img src="img/icon/accept_radio_yellow.png" style="width:35px;" />
+								<img src="img/icon/accept_radio_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(25)"/>"/>
 							</s:elseif>
 							
 							<s:if test="%{#owca.customerAccount.acceptSmoker==0}">
-								<img src="img/icon/accept_smoker_red.png" style="width:35px;" />
+								<img src="img/icon/accept_smoker_red.png" style="width:35px;" title="<s:property value="tr.tr_html(26)"/>" />
 							</s:if>
 							<s:elseif test="%{#owca.customerAccount.acceptSmoker==1}">
-								<img src="img/icon/accept_smoker_green.png" style="width:35px;" />
+								<img src="img/icon/accept_smoker_green.png" style="width:35px;" title="<s:property value="tr.tr_html(26)"/>"/>
 							</s:elseif>
 							<s:elseif test="%{#owca.customerAccount.acceptSmoker==2}">
-								<img src="img/icon/accept_smoker_yellow.png" style="width:35px;" />
+								<img src="img/icon/accept_smoker_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(26)"/>"/>
 							</s:elseif>
 							
 							<s:if test="%{#owca.customerAccount.acceptToDiscuss==0}">
-								<img src="img/icon/accept_to_discuss_red.png" style="width:35px;" />
+								<img src="img/icon/accept_to_discuss_red.png" style="width:35px;" title="<s:property value="tr.tr_html(27)"/>" />
 							</s:if>
 							<s:elseif test="%{#owca.customerAccount.acceptToDiscuss==1}">
-								<img src="img/icon/accept_to_discuss_green.png" style="width:35px;" />
+								<img src="img/icon/accept_to_discuss_green.png" style="width:35px;" title="<s:property value="tr.tr_html(27)"/>"/>
 							</s:elseif>
 							<s:elseif test="%{#owca.customerAccount.acceptToDiscuss==2}">
-								<img src="img/icon/accept_to_discuss_yellow.png" style="width:35px;" />
+								<img src="img/icon/accept_to_discuss_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(27)"/>"/>
 							</s:elseif>
 							
 							<s:if test="%{#owca.customerAccount.acceptToMakeADetour==0}">
-								<img src="img/icon/accept_to_make_a_detour_red.png" style="width:35px;" />
+								<img src="img/icon/accept_to_make_a_detour_red.png" style="width:35px;" title="<s:property value="tr.tr_html(28)"/>" />
 							</s:if>
 							<s:elseif test="%{#owca.customerAccount.acceptToMakeADetour==1}">
-								<img src="img/icon/accept_to_make_a_detour_green.png" style="width:35px;" />
+								<img src="img/icon/accept_to_make_a_detour_green.png" style="width:35px;" title="<s:property value="tr.tr_html(28)"/>"/>
 							</s:elseif>
 							<s:elseif test="%{#owca.customerAccount.acceptToMakeADetour==2}">
-								<img src="img/icon/accept_to_make_a_detour_yellow.png" style="width:35px;" />
+								<img src="img/icon/accept_to_make_a_detour_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(28)"/>" />
 							</s:elseif>				
 						</td>
 						<td>
