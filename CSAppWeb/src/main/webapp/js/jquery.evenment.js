@@ -2,6 +2,7 @@ function loadMyTripAgree()
 {
 	$('#myPostOffer').empty();
 	$('#myAgreeOffer').empty();
+	$('#resultSearch').empty();
 
 	$('#divWaitingMmAgreeOffer').css('display','block'); 
 	$.ajax({
@@ -18,6 +19,7 @@ function loadMyTripPost()
 {
 	$('#myPostOffer').empty();
 	$('#myAgreeOffer').empty();
+	$('#resultSearch').empty();
 	
 	$('#divWaitingMyPostOffer').css('display','block');
 	$.ajax({
@@ -263,8 +265,9 @@ function ajaxCheckInAjax()
 }
 function ajaxSearch()
 {
+	$('#myPostOffer').empty();
+	$('#myAgreeOffer').empty();
     var postData = $("input", '#search_form').serialize();
-    
     $.ajax({
             method: 'post',
             url: WEB_ROOT_URL+'CSAppWeb/ResultSearch',
