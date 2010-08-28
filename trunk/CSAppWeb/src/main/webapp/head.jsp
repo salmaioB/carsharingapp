@@ -37,7 +37,7 @@
 	
 	<script type="text/javascript" src="js/jquery.time/jquery.anchorHandler.js"></script>
 
-	<script type="text/javascript" src="js/jquery.time/js.function.job.js"></script>
+	<script type="text/javascript" src="js/js.function.job.js"></script>
 
   <!-- 
    	<script type="text/javascript" src="js/jquery.time/jquery.ui.all.js"></script>
@@ -170,7 +170,7 @@
 		<script type="text/javascript">
 			function countNumberOfMessageNotRead()
 			{
-				setTimeout("countNumberOfMessageNotRead()",5000);
+				setTimeout("countNumberOfMessageNotRead()",15000);
 				ajaxNumberOfMessageNotRead();
 			}
 			//Exécution du controle des formulaires
@@ -195,9 +195,13 @@
 						
 					}
 				});
-				countNumberOfMessageNotRead();
 			});
 	</script>
+	<s:if test="isLoging()">
+		<script type="text/javascript">
+			//countNumberOfMessageNotRead();
+		</script>
+	</s:if>
 	<style type="text/css">
 		label { width: 10em; float: left; }
 		label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }

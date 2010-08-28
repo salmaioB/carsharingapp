@@ -27,7 +27,7 @@
 			<form id="form_sendResponse<s:property value="%{#listMessageReceive.message.id}" />">
 				<input id="idMessage" name="idMessage" style="display:none;" type="text" value="<s:property value="%{#listMessageReceive.message.id}" />" />
 				<input name="content" id="content" style="width:90%; height:100px;" />
-				<input type="button" value="envoyer" class="sendResponse" onclick="ajaxSendResponse(<s:property value="%{#listMessageReceive.message.id}" />)"/>
+				<input type="button" value="<s:property value="tr.tr_html(30)"/>" class="sendResponse" onclick="ajaxSendResponse(<s:property value="%{#listMessageReceive.message.id}" />)"/>
 			</form>
 		</div>
 	</s:iterator>
