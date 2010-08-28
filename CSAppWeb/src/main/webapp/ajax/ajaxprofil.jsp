@@ -1,7 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <div class="corner">
-	<form method="post" id="checkaddress_form" name="checkaddress_form">
+	<s:if test="isLoging">
+		<form method="post" id="checkaddress_form" name="checkaddress_form">
+	</s:if>
+	<s:else>
+		<form method="post" action="CheckIn">
+	</s:else>
 		<table>	
 				<tr>
 					<s:if test="getIsCurrentCustomer()">
@@ -297,6 +302,13 @@
 					</td>
 				</tr>
 			</s:if>
+			<s:if test="isLoging">
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="<s:property value="tr.tr_html(36)"/>" />
+					</td>
+				</tr>
+			</s:if>
 		</table>
 	</form>
 	<s:if test="!getIsCurrentCustomer()">
@@ -316,7 +328,7 @@
 						<input 	name="contentSendSearch" 
 									id="content<s:property value="customerAccountProfil.lastName" />" 
 									style="width:100%; height:100px;" />
-						<input type="button" value="envoyer" onclick="ajaxSendMessageCustomer('<s:property value="customerAccountProfil.lastName" />');"/>
+						<input type="button" value="<s:property value="tr.tr_html(30)"/>" onclick="ajaxSendMessageCustomer('<s:property value="customerAccountProfil.lastName" />');"/>
 					</form>
 				</td>
 			</tr>

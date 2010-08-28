@@ -135,9 +135,8 @@ function requestParticipate(idTrip)
 function ajaxSendMessageCustomer(nameCustomer)
 {
 	$('#sending'+nameCustomer).css('display','block');
-	alert('#form_sendMessage'+nameCustomer);
 	var postData = $("input", '#form_sendMessage'+nameCustomer).serialize();
-    alert(postData);
+
 	$.ajax({
     	method: 'post',
         url: WEB_ROOT_URL+'CSAppWeb/MessageWriteResponse',
@@ -232,9 +231,7 @@ function addEvementAjaxToSaveOffer()
 {
 	$('input.saveOffer').click(function()
 	        {
-				alert("saveOffer");
 	                var postData = $("input", '#saveOffer_form').serialize();
-	                alert(postData);
 	                $.ajax({
 	                        method: 'post',
 	                        url: WEB_ROOT_URL+'CSAppWeb/SaveOffer',
