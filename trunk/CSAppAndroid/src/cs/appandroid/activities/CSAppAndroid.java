@@ -70,7 +70,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 			{				
 				// Send params to show the identification screen
 				myProfileIntent.putExtra("identification", true);
-				tabHost.setCurrentTab(3);				
+				tabHost.setCurrentTab(4);				
 			}
 		}
 	}
@@ -96,7 +96,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    		
 	    		if(tabId == "myprofile")
 	    		{					
-					//tabHost.setCurrentTab(4);
+					tabHost.setCurrentTab(4);
 	    			
 	    			connectionButton.setText("Déconnexion");
 	    			connectionButton.setVisibility(View.VISIBLE);
