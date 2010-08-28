@@ -14,7 +14,8 @@ public class OfferMessagesWS extends ActionSupport
 	private static final long serialVersionUID = 1L;
 	
 	private Integer idOffer;
-	private Integer idCustomerAccount;
+	private Integer idCustomerTransmitter;
+	private Integer idCurrentCustomerAccount;
 	private List<MessageWithCustomerAccount> messagesWithCustomerAccount;
 	
 	
@@ -26,12 +27,20 @@ public class OfferMessagesWS extends ActionSupport
 		this.idOffer = idOffer;
 	}
 	
-	public Integer getIdCustomerAccount() {
-		return idCustomerAccount;
+	public Integer getIdCustomerTransmitter() {
+		return idCustomerTransmitter;
+	}
+
+	public void setIdCustomerTransmitter(Integer idCustomerTransmitter) {
+		this.idCustomerTransmitter = idCustomerTransmitter;
 	}
 	
-	public void setIdCustomerAccount(Integer idCustomerAccount) {
-		this.idCustomerAccount = idCustomerAccount;
+	public Integer getIdCurrentCustomerAccount() {
+		return idCurrentCustomerAccount;
+	}
+	
+	public void setIdCurrentCustomerAccount(Integer idCurrentCustomerAccount) {
+		this.idCurrentCustomerAccount = idCurrentCustomerAccount;
 	}
 	
 	public List<MessageWithCustomerAccount> getMessagesWithCustomerAccount() {
@@ -46,7 +55,7 @@ public class OfferMessagesWS extends ActionSupport
 	public String execute() throws Exception
  	{
 		MessageDAO messageDAO = new MessageDAO();
-		messagesWithCustomerAccount = messageDAO.getOfferMessageForACustomerTransmitter(idOffer, idCustomerAccount);
+		messagesWithCustomerAccount = messageDAO.getOfferMessageForACustomerTransmitter(idOffer, idCustomerTransmitter, idCurrentCustomerAccount);
 		
 		return SUCCESS;
  	}
