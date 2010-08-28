@@ -25,6 +25,7 @@
 	<script type="text/javascript" src="js/jquery.corner.js"></script>
 	
 	<script type="text/javascript" src="js/jquery.evenment.js"></script>
+	<script type="text/javascript" src="js/jquery.evenment.onload.js"></script>
 
 	<script type="text/javascript" src="js/googleMapAddressByPosition.js"></script>	
 	<script type="text/javascript" src="js/googlemap.js"></script>
@@ -122,14 +123,14 @@
 				}
 			});
 			//Sous menu des messages
-			$('#menuMessages').tabs(
-					{
+			$('#menuMessages').tabs({
 		        select: function(e, ui) {
 				// onglet message send== ui.index == 0
 		        if ( ui.index == 0)
 		        {
 		        	$('#divWaitingSend').css('display','block');
-		        	 //Requete ajax pour récuperer les messages boite de reception
+		        	$('#send').empty();
+		        	//Requete ajax pour récuperer les messages boite de reception
 			        $.ajax({
 			                method: 'post',
 			                url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
@@ -149,6 +150,7 @@
 			        {
 			        	//Requete ajax pour récuperer les messages boite de reception
 			        	$('#divWaitingReceive').css('display','block'); 
+			        	$('#receive').empty();
 			        	$.ajax({
 			                method: 'post',
 			                url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
@@ -188,9 +190,10 @@
     			}
     			//message
     			if (ui.panel.id == "message") {
+					$('#send').empty();
+					$('#receive').empty();
     				$('#divWaitingSend').css('display','block');
 					$('#divWaitingReceive').css('display','block'); 
-
 					//Requete ajax pour récuperer les messages boite de reception
 		        	$.ajax({
 		                method: 'post',
@@ -328,6 +331,11 @@
 			}
 		</script>
 		<script type="text/javascript">
+			function countNumberOfMessageNotRead()
+			{
+				setTimeout("countNumberOfMessageNotRead()",5000);
+				ajaxNumberOfMessageNotRead();
+			}
 			//Exécution du controle des formulaires
 			$(document).ready(function(){
 				$('#checkaddress_form').validate({
@@ -349,8 +357,8 @@
 						goToEtape2OfPost();
 						
 					}
-				}
-				);
+				});
+				countNumberOfMessageNotRead();
 			});
 	</script>
 	<style type="text/css">

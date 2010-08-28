@@ -299,4 +299,27 @@
 			</s:if>
 		</table>
 	</form>
+	<s:if test="!getIsCurrentCustomer()">
+		<table>
+			<tr>
+				<td colspan="2">
+					<div id="sending<s:property value="customerAccountProfil.lastName" />"
+					 	name="sending<s:property value="customerAccountProfil.lastName" />" 
+					 	style="background-color:#009ACF; display:none;">
+						<s:property value="tr.tr_html(47)"/>
+					</div>
+					<form method="post" id="form_sendMessage<s:property value="customerAccountProfil.lastName" />">
+						<input type="text" id="idOffer" name="idOffer" style="display:none;" value="<s:property value="idOffer"/>" />
+						<input type="text" id="idCustomer" name="idCustomer" style="display:none;" value="<s:property value="customerAccountProfil.id"/>" />
+						<input type="text" 	id="title<s:property value="customerAccountProfil.lastName" />" 
+											name="titleSendSearch"/><br />
+						<input 	name="contentSendSearch" 
+									id="content<s:property value="customerAccountProfil.lastName" />" 
+									style="width:100%; height:100px;" />
+						<input type="button" value="envoyer" onclick="ajaxSendMessageCustomer('<s:property value="customerAccountProfil.lastName" />');"/>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</s:if>
 </div>

@@ -18,14 +18,15 @@
 
 		<div class="content" >
 			<s:property value="%{#listMessageReceive.message.content}" /><br />
+			<div style="color:blue; border: 1px blue solid; width:90%;">Votre reponse</div>
 			<div id="sending<s:property value="%{#listMessageReceive.message.id}" />"
 				 name="sending<s:property value="%{#listMessageReceive.message.id}" />" 
 				 style="background-color:#009ACF; display:none;">
-				Message en cours d envoi
+				<s:property value="tr.tr_html(47)"/>
 			</div>
 			<form id="form_sendResponse<s:property value="%{#listMessageReceive.message.id}" />">
 				<input id="idMessage" name="idMessage" style="display:none;" type="text" value="<s:property value="%{#listMessageReceive.message.id}" />" />
-				<textarea name="content" id="content" style="width:90%; height:100px;"></textarea>
+				<input name="content" id="content" style="width:90%; height:100px;" />
 				<input type="button" value="envoyer" class="sendResponse" onclick="ajaxSendResponse(<s:property value="%{#listMessageReceive.message.id}" />)"/>
 			</form>
 		</div>

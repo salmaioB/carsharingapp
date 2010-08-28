@@ -177,7 +177,7 @@
 		</tr>
 		<tr>
 			<td>
-				Prix total
+				<s:property value="tr.tr_html(48)"/>
 			</td>
 			<td align="left">
 				<input value="<s:property value="priceTotal" />" name="priceTotal" id="priceTotal"  size="3" readonly="readonly" />

@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <div>
-	Vous ne pouvez obtenir la position du telephone andrdoid!
-	Cause : Les données date de plus +1h.
+	<s:property value="tr.tr_html(57)"/>
+	<br />
+	<s:property value="tr.tr_html(58)"/>
 </div>
