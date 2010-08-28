@@ -170,7 +170,7 @@ public class AddOffer extends Activity implements OnClickListener
 			{
 				offer.setPricePerPassenger(offer.getPricePerPassenger()+1);
 			    
-				pricePerPassengerTextView.setText(offer.getPricePerPassenger() + "€");
+				pricePerPassengerTextView.setText(offer.getPricePerPassenger() + "ï¿½");
 			}
 		}
 		else if(v == decrementPricePerPassengerButton)
@@ -179,7 +179,7 @@ public class AddOffer extends Activity implements OnClickListener
 			{
 				offer.setPricePerPassenger(offer.getPricePerPassenger()-1);
 			
-				pricePerPassengerTextView.setText(offer.getPricePerPassenger() + "€");
+				pricePerPassengerTextView.setText(offer.getPricePerPassenger() + "ï¿½");
 			}
 		}
 		else if(v == proposeOfferButton)
@@ -257,8 +257,8 @@ public class AddOffer extends Activity implements OnClickListener
 		
 		String dateRoute        = addOfferFirstScreen.getString("dateRoute");
 		
-		startingAddressSummaryTextView.setText("Départ: " + route.getStartingCity());
-		finishingAddressSummaryTextView.setText("Arrivée: " + route.getFinishingCity());
+		startingAddressSummaryTextView.setText("Dï¿½part: " + route.getStartingCity());
+		finishingAddressSummaryTextView.setText("Arrivï¿½e: " + route.getFinishingCity());
 		dateRouteSummaryTextView.setText("Date: " + dateRoute);
 		numberOfPassengersSummaryTextView.setText(offer.getNumberOfPlaceInitial() + " places restantes");
 		
@@ -266,7 +266,7 @@ public class AddOffer extends Activity implements OnClickListener
 		decrementPricePerPassengerButton.setOnClickListener(this);
 		
 		pricePerPassengerTextView        = (TextView)findViewById(R.id.price_per_passenger_textview);
-		pricePerPassengerTextView.setText(offer.getPricePerPassenger() + "€");
+		pricePerPassengerTextView.setText(offer.getPricePerPassenger() + "ï¿½");
 		
 		incrementPricePerPassengerButton = (Button)findViewById(R.id.increment_price_per_passenger_button);	
 		incrementPricePerPassengerButton.setOnClickListener(this);
@@ -314,7 +314,8 @@ public class AddOffer extends Activity implements OnClickListener
 	public void addOfferProcess()
 	{
 		// Set an idDriver to the offer
-		offer.setIdDriver(IdentificationController.getUserLoggedId(getBaseContext()));
+		//DELETE FOR useless
+		//offer.setIdDriver(IdentificationController.getUserLoggedId(getBaseContext()));
 		
 		OfferSaveWS offerSaveWS = new OfferSaveWS();
 		offerSaveWS.saveOfferWithRoutes(offer, route);
