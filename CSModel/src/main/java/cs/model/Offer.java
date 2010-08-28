@@ -11,9 +11,6 @@ public class Offer implements Serializable
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	private Integer idOfferType;
-	private Integer idDriver;
-	private String title;
 	private String description;
 	private String startingCity;
 	private String finishingCity;
@@ -32,15 +29,6 @@ public class Offer implements Serializable
 	{
 		if(!jsonObjectOffer.isNull("id"))
 			id          		   = jsonObjectOffer.getInt("id");
-		
-		if(!jsonObjectOffer.isNull("idOfferType"))
-			idOfferType 		   = jsonObjectOffer.getInt("idOfferType");
-		
-		if(!jsonObjectOffer.isNull("idDriver"))
-			idDriver    		   = jsonObjectOffer.getInt("idDriver");
-		
-		if(!jsonObjectOffer.isNull("title"))
-			title       		   = jsonObjectOffer.getString("title");
 		
 		if(!jsonObjectOffer.isNull("description"))
 			description 	 	   = jsonObjectOffer.getString("description");
@@ -71,30 +59,6 @@ public class Offer implements Serializable
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getIdOfferType() {
-		return idOfferType;
-	}
-	
-	public void setIdOfferType(Integer idOfferType) {
-		this.idOfferType = idOfferType;
-	}
-	
-	public Integer getIdDriver() {
-		return idDriver;
-	}
-	
-	public void setIdDriver(Integer idDriver) {
-		this.idDriver = idDriver;
-	}
-	
-	public String getTitle() {
-		return title;
-	}
-	
-	public void setTitle(String title) {
-		this.title = title;
 	}
 	
 	public String getDescription() {
