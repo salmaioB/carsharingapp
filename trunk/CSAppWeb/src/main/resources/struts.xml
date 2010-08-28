@@ -67,13 +67,6 @@
 	</package>
 
 	<!-- File 's Accueil -->
-	<!--
-	<package name="Accueil" namespace="/" extends="struts-default">
-        <action name="Accueil" class="com.appweb.AccueilAction">
-            <result>/accueil.jsp</result>
-        </action>
-    </package>
-    -->
     <package name="Accueil" extends="struts-default">
 		<result-types>
 	        <!-- Défini le type de résultat qui renvoie vers une définition Tiles -->
@@ -88,6 +81,10 @@
 		</action>
         <action name="ProfilAction" class="com.appweb.action.ajax.ProfilAction">
 			<result name="success" type="tiles">accueil.template</result>
+		</action>
+		<action name="CheckIn" class="com.appweb.action.ajax.CheckInAjax">
+			<result name="success" type="tiles">accueil.template</result>
+			<result name="error" type="tiles">accueil.template</result>
 		</action>
     </package>
     
