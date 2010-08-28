@@ -2,22 +2,21 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <span style="float:left;">
-	<a href="<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil">
+	<a href=" /CSAppWeb/Accueil">
 		<img src="img/icon/icon_logo.png" height="70" />
 	</a>
 </span>
-
 
 <span style="float:right;">
 	<table>
 		<tr>
 			<td>
-				<a href="<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?langage=fr">
+				<a href="/CSAppWeb/Accueil?langage=fr">
 					<img src="img/flag_FR.jpg" height="60px;"/>
 				</a>
 			</td>
 			<td>
-				<a href="<%=cs.define.Define.webRootUrl%>CSAppWeb/Accueil?langage=en">
+				<a href="/CSAppWeb/Accueil?langage=en">
 					<img src="img/flag_UK.jpg" height="60px;"/>
 				</a>
 			</td>

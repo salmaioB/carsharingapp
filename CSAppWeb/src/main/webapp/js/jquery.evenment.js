@@ -7,7 +7,7 @@ function loadMyTripAgree()
 	$('#divWaitingMmAgreeOffer').css('display','block'); 
 	$.ajax({
         method: 'post',
-        url: WEB_ROOT_URL+'CSAppWeb/MyPostAgree',
+        url: '/CSAppWeb/MyPostAgree',
         success: function(data)
         {
              $('#myAgreeOffer').html(data);
@@ -24,7 +24,7 @@ function loadMyTripPost()
 	$('#divWaitingMyPostOffer').css('display','block');
 	$.ajax({
         method: 'post',
-        url: WEB_ROOT_URL+'CSAppWeb/MyPostOffer',
+        url: '/CSAppWeb/MyPostOffer',
         success: function(data)
         {
              $('#myPostOffer').html(data);
@@ -39,7 +39,7 @@ function loadMessageReceive()
 	$('#receive').empty();
 	$.ajax({
         method: 'post',
-        url: WEB_ROOT_URL+'CSAppWeb/MessageReceive',
+        url: '/CSAppWeb/MessageReceive',
         success: function(data)
         {
              $('#receive').html(data);
@@ -62,7 +62,7 @@ function loadMessageSend()
 	//Requete ajax pour récuperer les messages boite de reception
     $.ajax({
             method: 'post',
-            url: WEB_ROOT_URL+'CSAppWeb/MessageSend',
+            url: '/CSAppWeb/MessageSend',
             success: function(data)
             {
              	$('#send').html(data);		
@@ -89,7 +89,7 @@ function goToEtape2OfPost()
         
     $.ajax({
             method: 'post',
-            url: WEB_ROOT_URL+'CSAppWeb/PostEtape2',
+            url: '/CSAppWeb/PostEtape2',
             data: postData,
             success: function(data)
             {
@@ -109,7 +109,7 @@ function goToEtape3OfPost()
             
     $.ajax({
             method: 'post',
-            url: WEB_ROOT_URL+'CSAppWeb/PrintMapPost',
+            url: '/CSAppWeb/PrintMapPost',
             data: postData,
             success: function(data)
             {
@@ -125,7 +125,7 @@ function requestParticipate(idTrip)
 	$('#requesting').css('display','block');
     $.ajax({
     	method: 'get',
-        url: WEB_ROOT_URL+'CSAppWeb/RequestParticipateTrip?idTrip='+idTrip,
+        url: '/CSAppWeb/RequestParticipateTrip?idTrip='+idTrip,
         success: function(data)
         {
     		$('#buttonPartcipipate').html(data);
@@ -141,7 +141,7 @@ function ajaxSendMessageCustomer(nameCustomer)
 
 	$.ajax({
     	method: 'post',
-        url: WEB_ROOT_URL+'CSAppWeb/MessageWriteResponse',
+        url: '/CSAppWeb/MessageWriteResponse',
         data: postData,
         success: function(data)
         {
@@ -158,7 +158,7 @@ function ajaxSendMessage()
 	var postData = $("input", '#form_sendMessage').serialize();
     $.ajax({
     	method: 'post',
-        url: WEB_ROOT_URL+'CSAppWeb/MessageWriteResponse',
+        url: '/CSAppWeb/MessageWriteResponse',
         data: postData,
         success: function(data)
         {
@@ -173,7 +173,7 @@ function printTrip(idTrip,divResult)
 {
     $.ajax({
             method: 'get',
-            url: WEB_ROOT_URL+'CSAppWeb/PrintMapSearch?idTrip='+idTrip,
+            url: '/CSAppWeb/PrintMapSearch?idTrip='+idTrip,
             success: function(data)
             {
                  $('#'+divResult).html(data);
@@ -188,7 +188,7 @@ function updateReadMessage(idMessage)
 		//Décremente le nombre de message lu
         $.ajax({
                 method: 'get',
-                url: WEB_ROOT_URL+'CSAppWeb/UpdateMessageRead?idMessage='+idMessage,
+                url: '/CSAppWeb/UpdateMessageRead?idMessage='+idMessage,
                 success: function(data)
                 {
                  }
@@ -206,7 +206,7 @@ function ajaxNumberOfMessageNotRead()
 {
 	$.ajax({
 	    method: 'get',
-	    url: WEB_ROOT_URL+'CSAppWeb/GetNumberOfMessageReadNotRead',
+	    url: '/CSAppWeb/GetNumberOfMessageReadNotRead',
 	    success: function(data)
 	    {
 			$('#numberOfMessageNotRead').text(data);
@@ -219,7 +219,7 @@ function ajaxSendResponse(i)
 	var postData = $("input", '#form_sendResponse'+i).serialize();
     $.ajax({
     	method: 'post',
-        url: WEB_ROOT_URL+'CSAppWeb/MessageWriteResponse',
+        url: '/CSAppWeb/MessageWriteResponse',
         data: postData,
         success: function(data)
         {
@@ -236,7 +236,7 @@ function addEvementAjaxToSaveOffer()
 	                var postData = $("input", '#saveOffer_form').serialize();
 	                $.ajax({
 	                        method: 'post',
-	                        url: WEB_ROOT_URL+'CSAppWeb/SaveOffer',
+	                        url: '/CSAppWeb/SaveOffer',
 	                        data: postData,
 	                        success: function(data)
 	                        {
@@ -252,13 +252,13 @@ function ajaxCheckInAjax()
 	var postData = $("input", '#checkaddress_form').serialize();
     $.ajax({
             method: 'post',
-            url: WEB_ROOT_URL+'CSAppWeb/CheckInAjax',
+            url: '/CSAppWeb/CheckInAjax',
             data: postData,
             success: function(data)
             {
     			alert("Profil enregistre");
     			//Si success redection vers le profil
-    			document.location.href=WEB_ROOT_URL+'CSAppWeb/Accueil#profil';
+    			document.location.href='/CSAppWeb/Accueil#profil';
             }
               });
     return false;
@@ -270,7 +270,7 @@ function ajaxSearch()
     var postData = $("input", '#search_form').serialize();
     $.ajax({
             method: 'post',
-            url: WEB_ROOT_URL+'CSAppWeb/ResultSearch',
+            url: '/CSAppWeb/ResultSearch',
             data: postData,
             success: function(data)
             {

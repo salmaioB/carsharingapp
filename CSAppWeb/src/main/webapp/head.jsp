@@ -157,12 +157,12 @@
 		$(function() {
 			$("#datepickerPost").datepicker({	minDate: new Date(),
 											showOn: 'button',
-											buttonImage: WEB_ROOT_URL +'CSAppWeb/img/calendar.gif',
+											buttonImage: '/CSAppWeb/img/calendar.gif',
 											buttonImageOnly: true
 			});
 			$("#datepickerSearch").datepicker({	minDate: new Date(),
 											showOn: 'button',
-											buttonImage: WEB_ROOT_URL +'CSAppWeb/img/calendar.gif',
+											buttonImage: '/CSAppWeb/img/calendar.gif',
 											buttonImageOnly: true
 			});
 		});
