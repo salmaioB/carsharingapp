@@ -1,12 +1,20 @@
 package cs.appandroid.activities;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import cs.appandroid.controller.IdentificationController;
 import cs.appandroid.view.OfferRowView;
+import cs.model.MessageWithCustomerAccount;
 import cs.model.OfferWithCustomerAccount;
+import cs.webservice.OfferMessagesWS;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TableLayout.LayoutParams;
 
@@ -55,10 +64,13 @@ public class OfferView extends Activity implements OnClickListener
         	startingCity  = offerViewExtras.getString("startingCity");
         	finishingCity = offerViewExtras.getString("finishingCity");
         }
-        
+                
 	    LinearLayout offerViewLayout = new LinearLayout(this);
 	    offerViewLayout.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 	    offerViewLayout.setOrientation(LinearLayout.VERTICAL);
+	    
+        ScrollView scrollView = new ScrollView(this);
+        scrollView.addView(offerViewLayout);
 	    
 	    // Display the route TextView
 	    TextView theRouteTextView = new TextView(this);
@@ -95,7 +107,45 @@ public class OfferView extends Activity implements OnClickListener
         // Add the selected offer view into the main view
         offerViewLayout.addView(customerView);
         
-        setContentView(offerViewLayout);
+        if(offerViewExtras.containsKey("displayMessages"))
+		{
+        	Integer idOffer			         = offerWithCustomerAccount.getOffer().getId();
+        	Integer idCustomerTransmitter 	 = offerWithCustomerAccount.getCustomerAccount().getId();
+        	Integer idCurrentCustomerAccount = IdentificationController.getUserLoggedId(getBaseContext());
+        	
+        	OfferMessagesWS offerMessagesWS = new OfferMessagesWS();
+        	List<MessageWithCustomerAccount> messagesWithCustomerAccount = offerMessagesWS.getOfferMessages(idOffer, idCustomerTransmitter, idCurrentCustomerAccount);
+        	
+        	Iterator<MessageWithCustomerAccount> iteratorMessagesWithCustomerAccount = messagesWithCustomerAccount.iterator();
+    		while(iteratorMessagesWithCustomerAccount.hasNext())
+    		{
+    			MessageWithCustomerAccount messageWithCustomerAccount = iteratorMessagesWithCustomerAccount.next();
+    			Log.v("test", messageWithCustomerAccount.getCustomerAccount().getFirstName());
+    			
+    			LinearLayout messageViewLayout = new LinearLayout(this);
+    			messageViewLayout.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+    		    
+    			String userFullNameStr = messageWithCustomerAccount.getCustomerAccount().getFirstName() + " " + messageWithCustomerAccount.getCustomerAccount().getLastName().substring(0, 1);
+    			TextView messageUserFullNameTextView = new TextView(this);
+    			messageUserFullNameTextView.setText(userFullNameStr);
+    			messageViewLayout.addView(messageUserFullNameTextView);
+    			
+    			//String messageDatetimeWritedStr = messageWithCustomerAccount.getMessage().getDatetimeWrited().toString();
+    			TextView messageDatetimeWritedTextView = new TextView(this);
+    			messageDatetimeWritedTextView.setGravity(Gravity.RIGHT);
+    			messageDatetimeWritedTextView.setText("azeze");
+    			messageViewLayout.addView(messageDatetimeWritedTextView);
+    			
+    			offerViewLayout.addView(messageViewLayout);
+    			
+    			TextView messageContentTextView = new TextView(this);
+    			messageContentTextView.setText(messageWithCustomerAccount.getMessage().getContent());
+   
+    			offerViewLayout.addView(messageContentTextView);
+    		}
+		}
+        
+        setContentView(scrollView);
 	}
 
 	@Override

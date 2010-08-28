@@ -81,6 +81,7 @@ public class MyMessages extends ListActivity
 		
 		Intent intentOfferView = new Intent(this, OfferView.class);	
 		intentOfferView.putExtra("offerWithCustomerAccount", offerWithCustomerAccount);
+		intentOfferView.putExtra("displayMessages", true);
 		
 		// Start the root activity within the group and get its view  
         View MyOfferView = MyMessagesGroup.myMessagesGroup.getLocalActivityManager().startActivity("My offer view",

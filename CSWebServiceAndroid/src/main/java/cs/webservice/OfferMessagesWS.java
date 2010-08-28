@@ -29,13 +29,14 @@ public class OfferMessagesWS
 		HttpClient.constructHeader(jsonObjectSend);
 	}
 	
-    public List<MessageWithCustomerAccount> getOfferMessages(Integer idOffer, Integer idCustomerAccount)
+    public List<MessageWithCustomerAccount> getOfferMessages(Integer idOffer, Integer idCustomerTransmitter, Integer idCurrentCustomerAccount)
     {
     	String URL = Define.webServiceRootUrl + "CSAppWeb/OfferMessagesWS";
     	
     	List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
     	paramsToPost.add(new BasicNameValuePair("idOffer", idOffer.toString()));    	
-    	paramsToPost.add(new BasicNameValuePair("idCustomerAccount", idCustomerAccount.toString()));
+    	paramsToPost.add(new BasicNameValuePair("idCustomerTransmitter", idCustomerTransmitter.toString()));
+    	paramsToPost.add(new BasicNameValuePair("idCurrentCustomerAccount", idCurrentCustomerAccount.toString()));
     	
     	JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
     	

@@ -1,8 +1,11 @@
 package cs.appandroid.activities;
 
+import java.util.ArrayList;
+
 import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,10 +16,12 @@ public class SearchOffersGroup extends ActivityGroup implements OnClickListener
 	private EditText startingCityEditText;
 	private EditText finishingCityEditText;
 	private Button validateSearch;
-	    
+	
     private View displayOffersView;
 	
     public static SearchOffersGroup searchOffersGroup;
+    
+    private ArrayList<View> history;
     
     
 	@Override
@@ -30,6 +35,8 @@ public class SearchOffersGroup extends ActivityGroup implements OnClickListener
 	    
 	    validateSearch           = (Button)findViewById(R.id.validate_search);
 	    validateSearch.setOnClickListener(this);
+	    
+	    history = new ArrayList<View>();
 	}
 	
 	@Override
@@ -53,11 +60,32 @@ public class SearchOffersGroup extends ActivityGroup implements OnClickListener
 		}
 	}
 	
+    @Override  
+    public void onBackPressed()
+    {  
+        SearchOffersGroup.searchOffersGroup.back();  
+        return;  
+    }
+	
 	public void replaceView(View v)
 	{  
         // Adds the old one to history  
-		//history.add(v);  
+		history.add(v);  
         // Changes this Groups View to the new View.  
 		setContentView(v);
 	}
+	
+	public void back()
+	{  
+        if(history.size() > 0)
+        {
+            history.remove(history.size()-1);
+            
+            if(history.size() > 1)
+             setContentView(history.get(history.size()-1));
+            else
+             setContentView(R.layout.searchoffers);
+        }
+        else finish();
+    }
 }
