@@ -3,6 +3,7 @@ package cs.appandroid.activities;
 import java.util.ArrayList;
 import java.util.List;
 
+import cs.appandroid.activitiesgroup.MyMessagesGroup;
 import cs.appandroid.components.MyMessagesListAdapter;
 import cs.appandroid.controller.IdentificationController;
 import cs.model.CustomerAccount;

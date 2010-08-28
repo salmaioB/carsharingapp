@@ -1,14 +1,15 @@
-package cs.appandroid.activities;
+package cs.appandroid.activitiesgroup;
 
+import cs.appandroid.activities.MyRoutes;
 import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 
-public class MyMessagesGroup extends ActivityGroup
+public class MyRoutesGroup extends ActivityGroup
 {
-	public static MyMessagesGroup myMessagesGroup;
+	public static MyRoutesGroup myRoutesGroup;
 	
 	
 	@Override
@@ -16,17 +17,17 @@ public class MyMessagesGroup extends ActivityGroup
 	{
 	    super.onCreate(savedInstanceState);
 	    
-	    myMessagesGroup = this;
+	    myRoutesGroup = this;
 	    
-	    Intent intentMyMessagesView = new Intent(this, MyMessages.class);
+	    Intent intentMyRoutesView = new Intent(this, MyRoutes.class);
 	    
 	    // Start the root activity within the group and get its view
-	    View MyMessagesView = getLocalActivityManager().startActivity("My messages view",
-	    											   intentMyMessagesView.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-	    											   .getDecorView();
+	    View MyRoutesView = getLocalActivityManager().startActivity("My routes view",
+	    											 intentMyRoutesView.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+	    											 .getDecorView();
 	    
 	    // Replace the view of this ActivityGroup
-	    replaceView(MyMessagesView);
+	    replaceView(MyRoutesView);
 	}
 	
 	public void replaceView(View v)

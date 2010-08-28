@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import cs.appandroid.activitiesgroup.SearchOffersGroup;
 import cs.appandroid.controller.IdentificationController;
 import cs.appandroid.view.OfferRowView;
 import cs.model.MessageWithCustomerAccount;

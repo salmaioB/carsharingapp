@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cs.appandroid.activitiesgroup.SearchOffersGroup;
 import cs.appandroid.components.OfferListAdapter;
 import cs.model.OfferWithCustomerAccount;
 import cs.webservice.OffersWS;

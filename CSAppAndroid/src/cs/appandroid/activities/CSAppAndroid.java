@@ -2,6 +2,10 @@ package cs.appandroid.activities;
 
 import java.util.Timer;
 
+import cs.appandroid.activitiesgroup.AddOfferGroup;
+import cs.appandroid.activitiesgroup.MyMessagesGroup;
+import cs.appandroid.activitiesgroup.MyRoutesGroup;
+import cs.appandroid.activitiesgroup.SearchOffersGroup;
 import cs.appandroid.controller.IdentificationController;
 import cs.appandroid.utilities.GeolocalizationTimerTask;
 import android.app.TabActivity;
@@ -191,7 +195,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    tabHost.addTab(spec);
 	    
 	    // Create an Intent to launch an offer activity for the tab
-	    addOfferIntent = new Intent().setClass(this, AddOffer.class);
+	    addOfferIntent = new Intent().setClass(this, AddOfferGroup.class);
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
 	    spec = tabHost.newTabSpec("addoffer").setIndicator("",
