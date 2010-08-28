@@ -30,8 +30,9 @@ public class OfferSaveWS
 	public void saveOfferWithRoutes(Offer offer, Route route)
 	{
 		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
-		paramsToPost.add(new BasicNameValuePair("idOfferType", String.valueOf(0)));		 
-		paramsToPost.add(new BasicNameValuePair("idDriver", offer.getIdDriver().toString()));
+		paramsToPost.add(new BasicNameValuePair("idOfferType", String.valueOf(0)));		
+		//Delete for useless
+		//paramsToPost.add(new BasicNameValuePair("idDriver", offer.getIdDriver().toString()));
 		paramsToPost.add(new BasicNameValuePair("numberOfPassengers", offer.getNumberOfPlaceInitial().toString()));
 		paramsToPost.add(new BasicNameValuePair("pricePerPassenger", offer.getPricePerPassenger().toString()));
 
