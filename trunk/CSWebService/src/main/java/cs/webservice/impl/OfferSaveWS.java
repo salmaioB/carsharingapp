@@ -76,6 +76,8 @@ public class OfferSaveWS extends ActionSupport
  	{
 		Offer offer = new Offer();
 		offer.setDescription("");
+		offer.setStartingCity(startingCity);
+		offer.setFinishingCity(finishingCity);
 		offer.setNumberOfPlaceInitial(numberOfPassengers);
 		offer.setNumberOfPlaceRemaining(numberOfPassengers);
 		offer.setPricePerPassenger(pricePerPassenger);
@@ -85,6 +87,7 @@ public class OfferSaveWS extends ActionSupport
 		route.setStartingCity(startingCity);
 		route.setFinishingAddress("");
 		route.setFinishingCity(finishingCity);
+		route.setRouteOrder(1);
 		route.setPrice(0f);
 		route.setConversionRateToEuro(0f);
 		route.setCurrencyCode("");

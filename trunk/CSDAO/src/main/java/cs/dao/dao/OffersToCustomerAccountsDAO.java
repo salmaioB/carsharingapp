@@ -61,11 +61,11 @@ public class OffersToCustomerAccountsDAO extends DAO
 	public List<CustomerAccount> loadListCustomerParticipateOffer(Integer idOffer,Integer idCustomerAccountCurrent)
 	{
 		Session session = HibernateUtil.currentSession();
-	    String sqlQuery = "Select * " +
-		    	" FROM customer_accounts, offers_to_customer_accounts " +
-			    " WHERE _id_offer = " + idOffer +
-		        " And customer_accounts._id_customer_account = offers_to_customer_accounts._id_customer_account" +
-		        " And customer_accounts._id_customer_account != " + idCustomerAccountCurrent.toString();
+	    String sqlQuery = "SELECT * " +
+					      " FROM customer_accounts, offers_to_customer_accounts " +
+						  " WHERE _id_offer = " + idOffer +
+					      " And customer_accounts._id_customer_account = offers_to_customer_accounts._id_customer_account" +
+					      " And customer_accounts._id_customer_account != " + idCustomerAccountCurrent.toString();
 		    
 		System.out.println(sqlQuery);
 		     
