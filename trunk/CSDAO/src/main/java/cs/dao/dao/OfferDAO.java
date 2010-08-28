@@ -85,6 +85,42 @@ public class OfferDAO extends DAO
 	 * Function to search offers
 	 * with starting address and finishing address
 	 */
+	public List<OfferWithCustomerAccount> loadSearchOffersToParticipate(Integer idCustomerAccount)
+	{
+	     Session session = HibernateUtil.currentSession();
+	     
+	     String SQLQuery = "SELECT o._id_offer, o.starting_city, o.finishing_city, c._id_customer_account, c.gender, c.last_name, c.first_name, c.mobile, c.accept_animals, c.accept_radio, c.accept_smoker, c.accept_to_discuss, c.accept_to_make_a_detour, c.datetime_registration, sum(r.price) as price_per_passenger, o.number_of_place_remaining, o.datetime_started " +
+                           "FROM offers o, routes r, offers_to_routes o_to_r, customer_accounts c, offers_to_customer_accounts o_to_c ";
+	     
+	     SQLQuery += "WHERE o._id_offer=o_to_r._id_offer " +
+         			 "AND o_to_r._id_route=r._id_route " +
+	                 "AND o._id_offer=o_to_c._id_offer " + 
+    	 			 "AND o_to_c._id_customer_account=c._id_customer_account " +
+    	 			 "AND o_to_c.is_offer_creator = 1 ";
+	    	 
+    	 if(idCustomerAccount != null)
+    	 {    
+    		 SQLQuery += "AND o_to_c._id_offer IN ( "+
+					" SELECT _id_offer " +
+					" FROM offers_to_customer_accounts " +
+					" WHERE offers_to_customer_accounts._id_customer_account = " + idCustomerAccount.toString() +
+					" AND offers_to_customer_accounts.is_offer_creator = 0 " +
+					" ) ";
+    	 } 
+	     SQLQuery += "GROUP BY o._id_offer ";
+	     
+	     Query query = session.createSQLQuery(SQLQuery).addEntity(OfferWithCustomerAccount.class);
+	     List<OfferWithCustomerAccount> offersWithCustomerAccount = query.list();
+		 
+	     HibernateUtil.closeSession();
+	     
+		 return offersWithCustomerAccount;
+	}
+	
+	/**
+	 * Function to search offers
+	 * with starting address and finishing address
+	 */
 	public List<OfferWithCustomerAccount> loadSearchOffers(String startingCity, String finishingCity, Integer idCustomerAccount)
 	{
 	     Session session = HibernateUtil.currentSession();
