@@ -16,6 +16,7 @@ public class PrintMapPost extends Action
 	private Integer nbPassagerPost;
 	private Date datepickerPost;
 	
+	private String description;
 	private String villepassage1Post;
 	private String villepassage2Post;
 	private String villepassage3Post;
@@ -50,6 +51,13 @@ public class PrintMapPost extends Action
 		priceTotal = 0;
 	}
 	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public Integer getPriceTotal() {
 		return priceTotal;
 	}

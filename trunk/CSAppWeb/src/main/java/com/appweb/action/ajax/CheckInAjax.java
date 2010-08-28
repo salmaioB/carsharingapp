@@ -232,7 +232,10 @@ public class CheckInAjax extends Action
 			CustomerAccountEngineAction caea = SpringEngine.getSpring().getCustomerAccountEngineAction();
 			Boolean b = caea.save( ca ) ;
 			if( b )
+			{
 				getSession().put("customerId",getCustomerAccount().getId());					
+				super.initConstructor();
+			}
 			else
 				System.out.println("ERROR : Subscription new customer" + b);
 		}

@@ -9,8 +9,10 @@ import java.util.List;
 import com.appweb.Action;
 
 import cs.dao.dao.OfferDAO;
+import cs.dao.dao.OffersToCustomerAccountsDAO;
 import cs.dao.spring.SpringDAO;
 import cs.model.Offer;
+import cs.model.OffersToCustomerAccount;
 import cs.model.Route;
 
 public class SaveOffer extends Action
@@ -67,36 +69,42 @@ public class SaveOffer extends Action
 	}
 	
 	public Integer getPriceTripStop() {
+		if(priceTripStop==null) priceTripStop=0;
 		return priceTripStop;
 	}
 	public void setPriceTripStop(Integer priceTripStop) {
 		if(priceTripStop != null)  this.priceTripStop = priceTripStop;
 	}
 	public Integer getPriceTrip1() {
+		if(priceTrip1==null) priceTrip1 = 0;
 		return priceTrip1;
 	}
 	public void setPriceTrip1(Integer priceTrip1) {
 		if(priceTrip1 != null)  this.priceTrip1 = priceTrip1;
 	}
 	public Integer getPriceTrip2() {
+		if(priceTrip2==null) priceTrip2=0;
 		return priceTrip2;
 	}
 	public void setPriceTrip2(Integer priceTrip2) {
 		if(priceTrip2 != null)  this.priceTrip2 = priceTrip2;
 	}
 	public Integer getPriceTrip3() {
+		if(priceTrip3==null) priceTrip3 = 0;
 		return priceTrip3;
 	}
 	public void setPriceTrip3(Integer priceTrip3) {
 		if(priceTrip3 != null)  this.priceTrip3 = priceTrip3;
 	}
 	public Integer getPriceTrip4() {
+		if(priceTrip4==null) priceTrip4=0;
 		return priceTrip4;
 	}
 	public void setPriceTrip4(Integer priceTrip4) {
 		if(priceTrip4 != null)  this.priceTrip4 = priceTrip4;
 	}
 	public Integer getPriceTrip5() {
+		if(priceTrip5==null) priceTrip5 =0;
 		return priceTrip5;
 	}
 	public void setPriceTrip5(Integer priceTrip5) {
@@ -104,18 +112,21 @@ public class SaveOffer extends Action
 		this.priceTrip5 = priceTrip5;
 	}
 	public Integer getPriceTrip6() {
+		if(priceTrip6==null) priceTrip6=0;
 		return priceTrip6;
 	}
 	public void setPriceTrip6(Integer priceTrip6) {
 		if(priceTrip1 != null)  this.priceTrip6 = priceTrip6;
 	}
 	public Integer getPriceTrip7() {
+		if(priceTrip7==null) priceTrip7= 0;
 		return priceTrip7;
 	}
 	public void setPriceTrip7(Integer priceTrip7) {
 		this.priceTrip7 = priceTrip7;
 	}
 	public Integer getPriceTrip8() {
+		if(priceTrip8==null) priceTrip8=0;
 		return priceTrip8;
 	}
 	public void setPriceTrip8(Integer priceTrip8) {
@@ -201,6 +212,7 @@ public class SaveOffer extends Action
 		this.hour = hour;
 	}
 	public String getAddressStartPost() {
+		if(addressStartPost == null )addressStartPost="";
 		return addressStartPost;
 	}
 	public void setAddressStartPost(String addressStartPost) {
@@ -270,27 +282,26 @@ public class SaveOffer extends Action
 	}
 	public Integer calculPriceTotal()
 	{
-		return getPriceTrip1() + getPriceTrip2() + getPriceTrip3() + getPriceTrip4() + getPriceTrip5() + getPriceTrip6() + getPriceTrip7() + getPriceTrip8() + getPriceTripStop();
+		return  getPriceTrip1() + getPriceTrip2() + getPriceTrip3() + getPriceTrip4() + getPriceTrip5() + getPriceTrip6() + getPriceTrip7() + getPriceTrip8() + getPriceTripStop();
 	}
 	public String execute() throws Exception
 	{
 		System.out.println("Save Offer");
 		System.out.println("getVilleStartPost() : " + getVilleStartPost() );
 		priceTotal = calculPriceTotal();
-		System.out.println("after calcul !");
+		
 		Offer offer = new Offer();
 		OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();
-		
+		OffersToCustomerAccountsDAO offersToCustomerAccountsDAO = SpringDAO.getSpring().getOffersToCustomerAccountsDAO();
 		System.out.println("after load DAO !");
 		
 		offer.setDatetimeStarted(datepickerPost);
-		offer.setIdDriver(getCustomerAccount().getId());
-		offer.setIdOfferType(0);
 		offer.setNumberOfPlaceInitial(getNbPassagerPost());
-		offer.setTitle("");
 		offer.setPricePerPassenger(Float.intBitsToFloat( getPriceTotal() ));
 		offer.setNumberOfPlaceRemaining(getNbPassagerPost());
 		offer.setDescription(getDescription());
+		offer.setStartingCity(villeStartPost);
+		offer.setFinishingCity(villeStopPost);
 		
 		System.out.println("after set offer !");
 		
@@ -321,6 +332,16 @@ public class SaveOffer extends Action
 
 		System.out.println("start to call DAO for saveOfferWithRoutes ");
 		offerDAO.saveOfferWithRoutes(offer, routes);
+		
+		//jointure avec l'utilisateur créant l'offre
+		OffersToCustomerAccount offerToCustomerAccount = new OffersToCustomerAccount();
+		
+		offerToCustomerAccount.setIdCustomerAccount(getCustomerAccount().getId());
+		offerToCustomerAccount.setIdOffer(offer.getId());
+		offerToCustomerAccount.setIsDriver(getRole() );
+		offerToCustomerAccount.setIsOfferCreator(1);
+		
+		offersToCustomerAccountsDAO.save(offerToCustomerAccount);
 		System.out.println("finish to call DAO for saveOfferWithRoutes ");
 		
 		return SUCCESS;
