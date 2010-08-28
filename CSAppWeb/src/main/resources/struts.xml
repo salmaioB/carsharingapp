@@ -147,6 +147,9 @@
 			<result name="success">/ajax/ajaxsuccessparticipate.jsp</result>
 			<result name="error">/ajax/ajaxerrorpartcipate.jsp</result>
 		</action>
+		<action name="GetNumberOfMessageReadNotRead" class="com.appweb.action.ajax.GetNumberOfMessageReadNotRead">
+			<result name="success">/ajax/ajaxNumberOfMessageNotRead.jsp</result>
+		</action>
 	</package>
 
 </struts>
