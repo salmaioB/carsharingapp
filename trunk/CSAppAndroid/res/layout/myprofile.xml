@@ -20,10 +20,10 @@
 			<TextView android:id="@+id/user_preferences_textview"
 			          android:text="Mes préfèrences"/>
 		</TableRow>
-		<TableRow>
+		<!--<TableRow>
 			<TextView android:id="@+id/user_vehicles_textview"
 			          android:text="Mon véhicule"/>
-		</TableRow><!--
+		</TableRow>--><!--
 		<TableRow>
 			<TextView android:id="@+id/user_my_alerts_textview"
 			          android:text="Mes alertes"/>
@@ -32,10 +32,10 @@
 			<TextView android:id="@+id/user_password_textview"
 					  android:text="Mon mot de passe"/>
 		</TableRow>
-		<TableRow>
+		<!--<TableRow>
 			<TextView android:id="@+id/user_opinion_textview"
 					  android:text="Mes avis"/>
-		</TableRow>
+		</TableRow>-->
 	</TableLayout>
 	
 </LinearLayout>

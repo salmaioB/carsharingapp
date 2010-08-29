@@ -11,8 +11,6 @@ import org.json.JSONObject;
 
 import cs.common.HttpClient;
 import cs.define.Define;
-import cs.model.CustomerOfferWithMessageAndCustomerAccount;
-import cs.model.Message;
 import cs.model.MessageWithCustomerAccount;
 
 

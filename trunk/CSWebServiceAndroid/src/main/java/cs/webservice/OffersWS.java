@@ -71,7 +71,7 @@ public class OffersWS
 		return offers;
 	}
 	
-	public Offer getOffer(Integer idOffer)
+	public OfferWithCustomerAccount getOffer(Integer idOffer) throws ParseException
 	{
 		String URL = Define.webServiceRootUrl + "CSAppWeb/OfferWS";
 		
@@ -80,17 +80,17 @@ public class OffersWS
 		
 		JSONObject jsonObjectReturn = HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
 		
-		Offer offer = null;
+		OfferWithCustomerAccount offerWithCustomerAccount = null;
 		
 		try
 		{
-			offer = new Offer(jsonObjectReturn.getJSONObject("offer"));
+			offerWithCustomerAccount = new OfferWithCustomerAccount(jsonObjectReturn.getJSONObject("offerWithCustomerAccount"));
 		}
 		catch(JSONException e)
 		{
 			e.printStackTrace();
 		}
 		
-		return offer;
+		return offerWithCustomerAccount;
 	}
 }

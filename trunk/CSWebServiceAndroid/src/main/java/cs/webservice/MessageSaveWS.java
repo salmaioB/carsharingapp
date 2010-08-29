@@ -32,13 +32,11 @@ public class MessageSaveWS
 		List<NameValuePair> paramsToPost = new ArrayList<NameValuePair>();
 		paramsToPost.add(new BasicNameValuePair("title", message.getTitle()));
 		paramsToPost.add(new BasicNameValuePair("content", message.getContent()));
+		paramsToPost.add(new BasicNameValuePair("idOffer", message.getIdOffer().toString()));
 		paramsToPost.add(new BasicNameValuePair("idCustomerAccount", message.getIdCustomerAccount().toString()));
 		paramsToPost.add(new BasicNameValuePair("idCustomerTransmitter", message.getIdCustomerTransmitter().toString()));		
 		paramsToPost.add(new BasicNameValuePair("isRead", message.getIsRead().toString()));
 		
-//		Log.v("date", message.getDateTimeWrited().toString());
-//		
-//		paramsToPost.add(new BasicNameValuePair("datetimeWrited", message.getDateTimeWrited().toString()));		
 		
 		// Send the HTTP request
 		HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);

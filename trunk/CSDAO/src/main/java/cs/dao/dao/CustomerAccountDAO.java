@@ -192,12 +192,12 @@ public class CustomerAccountDAO extends DAO
     		CustomerAccount customerAccount = (CustomerAccount)customerAccountList.get(0);
     		
     		customerAccount.setCustomerPassword(newPassword);
-    		session.save(customerAccount);
-    	   
+    		save(customerAccount);
+    	    
     		saveCustomerNewPasswordStatus = 1;
     	}
     	else saveCustomerNewPasswordStatus = 2;
-
+    	
     	return saveCustomerNewPasswordStatus;
     }
 }

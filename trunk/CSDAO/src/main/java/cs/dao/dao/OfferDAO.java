@@ -61,25 +61,29 @@ public class OfferDAO extends DAO
 	/**
 	 * Function to load an offer
 	 */
-	public Offer getOffer(Integer idOffer)
+	public OfferWithCustomerAccount getOffer(Integer idOffer)
 	{
 		Session session = HibernateUtil.currentSession();
 		
-		String sqlQuery = "SELECT o._id_offer, o.description, o.starting_city, o.finishing_city, o.number_of_place_initial, o.number_of_place_remaining, sum(r.price) as price_per_passenger, o.datetime_started, o.datetime_ended " +
-        				  "FROM offers o, routes r, offers_to_routes o_to_r " +
+		String sqlQuery = "SELECT c._id_customer_account, c.gender, c.last_name, c.first_name, c.mobile, c.accept_animals, c.accept_radio, c.accept_smoker, c.accept_to_discuss, c.accept_to_make_a_detour, c.datetime_registration, " +
+		                  "o._id_offer, o.description, o.starting_city, o.finishing_city, o.number_of_place_initial, o.number_of_place_remaining, sum(r.price) as price_per_passenger, o.datetime_started, o.datetime_ended " +
+        				  "FROM offers o, routes r, offers_to_routes o_to_r, customer_accounts c, offers_to_customer_accounts o_to_c " +
         				  "WHERE o._id_offer=o_to_r._id_offer " +
         				  "AND o_to_r._id_route=r._id_route " +
         		          "AND o._id_offer=" + idOffer.toString() + " " +
+        		          "AND o._id_offer=o_to_c._id_offer " +
+        		          "AND o_to_c._id_customer_account=c._id_customer_account " +
+        		          "AND o_to_c.is_offer_creator=1 " +
         				  "GROUP BY o._id_offer";
 		
 		System.out.println(sqlQuery);
 		
-		Query query = session.createSQLQuery(sqlQuery).addEntity(Offer.class);
-		List<Offer> offer = query.list();
+		Query query = session.createSQLQuery(sqlQuery).addEntity(OfferWithCustomerAccount.class);
+		List<OfferWithCustomerAccount> offerWithCustomerAccount = query.list();
 		
 		HibernateUtil.closeSession();
 		
-		return (Offer)offer.get(0);
+		return (OfferWithCustomerAccount)offerWithCustomerAccount.get(0);
 	}
 	
 	/**
