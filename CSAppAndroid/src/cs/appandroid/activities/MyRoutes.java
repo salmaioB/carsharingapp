@@ -65,8 +65,9 @@ public class MyRoutes extends ListActivity
 		
 		OfferWithCustomerAccount offerWithCustomerAccount = (OfferWithCustomerAccount)getListAdapter().getItem(position);
 		
-		Intent intentOfferView = new Intent(this, OfferView.class);	
+		Intent intentOfferView = new Intent(this, OfferView.class);
 		intentOfferView.putExtra("offerWithCustomerAccount", offerWithCustomerAccount);
+		intentOfferView.putExtra("myOffers", true);
 		
 		// Start the root activity within the group and get its view  
         View MyOfferView = MyRoutesGroup.myRoutesGroup.getLocalActivityManager().startActivity("My offer view",

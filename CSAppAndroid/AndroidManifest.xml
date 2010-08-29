@@ -23,9 +23,12 @@
 		<activity android:name="SendOfferMessage"></activity>
 		<activity android:name="cs.appandroid.activitiesgroup.MyRoutesGroup"></activity>
 		<activity android:name="cs.appandroid.activitiesgroup.MyMessagesGroup"></activity>
-		<activity android:name="OfferMessagesView"></activity>
-	<activity android:name="AddOfferSecondStep"></activity>
-<activity android:name="AddOfferSummary"></activity>
+		<activity android:name="AddOfferSecondStep"></activity>
+		<activity android:name="AddOfferSummary"></activity>
+		<activity android:name="cs.appandroid.activitiesgroup.MyProfileGroup"></activity>
+		<activity android:name="UserGeneralInfos"></activity>
+<activity android:name="UserPreferences"></activity>
+<activity android:name="UserPassword"></activity>
 </application>
 
     <uses-sdk android:minSdkVersion="6" />

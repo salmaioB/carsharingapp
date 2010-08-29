@@ -1,5 +1,6 @@
 package cs.appandroid.activities;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,22 +67,28 @@ public class MyMessages extends ListActivity
 		CustomerOfferWithMessageAndCustomerAccount customerOfferClicked = customerOffersWithMessageAndCustomerAccount.get(position);
 		Integer idOfferSelected = customerOfferClicked.getOffer().getId();
 		
-		Log.v("idOffer", idOfferSelected.toString());
-		
 		// Retrieve the whole offer selected
-		OffersWS offersWS = new OffersWS();
-		Offer offer = offersWS.getOffer(idOfferSelected);
+		OfferWithCustomerAccount offerWithCustomerAccount = null;
+		
+		OffersWS offersWS = new OffersWS();		
+		try {
+			offerWithCustomerAccount = offersWS.getOffer(idOfferSelected);
+		}
+		catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 		// Retrieve the whole customer account selected
 		CustomerAccountsWS customerAccountWS = new CustomerAccountsWS();
 		CustomerAccount customerAccount = customerAccountWS.getCustomerAccount(customerOfferClicked.getCustomerAccount().getId());
 		
-		OfferWithCustomerAccount offerWithCustomerAccount = new OfferWithCustomerAccount();
-		offerWithCustomerAccount.setOffer(offer);
-		offerWithCustomerAccount.setCustomerAccount(customerAccount);
+//		OfferWithCustomerAccount offerWithCustomerAccount = new OfferWithCustomerAccount();
+//		offerWithCustomerAccount.setOffer(offer);
+//		offerWithCustomerAccount.setCustomerAccount(customerAccount);
 		
 		Intent intentOfferView = new Intent(this, OfferView.class);	
 		intentOfferView.putExtra("offerWithCustomerAccount", offerWithCustomerAccount);
+		intentOfferView.putExtra("customerAccountTransmitter", customerAccount);
 		intentOfferView.putExtra("displayMessages", true);
 		
 		// Start the root activity within the group and get its view  

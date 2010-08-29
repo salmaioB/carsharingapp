@@ -108,35 +108,35 @@ public class AddOfferSecondStep extends Activity implements OnClickListener
 		}
 	}
 	
-   @Override  
-    public void onBackPressed()
-    {
-        AddOfferGroup.addOfferGroup.back();        
-        return;  
-    }
-	
-	public void replaceView(View v)
-	{  
-        // Adds the old one to history  
-		AddOfferGroup.addOfferGroup.historyAddOfferGroup.add(v);
-		
-        // Changes this Groups View to the new View.	
-		setContentView(v);
-	}
-	
-	public void back()
-	{  
-        if(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size() > 0)
-        {
-        	AddOfferGroup.addOfferGroup.historyAddOfferGroup.remove(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size()-1);
-            
-            if(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size() > 0)
-            	setContentView(AddOfferGroup.addOfferGroup.historyAddOfferGroup.get(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size()-1));
-            else
-            	AddOfferGroup.addOfferGroup.onResume();
-        }
-        else finish();
-    }
+//   @Override  
+//    public void onBackPressed()
+//    {
+//        AddOfferGroup.addOfferGroup.back();        
+//        return;  
+//    }
+//	
+//	public void replaceView(View v)
+//	{  
+//        // Adds the old one to history  
+//		AddOfferGroup.addOfferGroup.historyAddOfferGroup.add(v);
+//		
+//        // Changes this Groups View to the new View.	
+//		setContentView(v);
+//	}
+//	
+//	public void back()
+//	{  
+//        if(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size() > 0)
+//        {
+//        	AddOfferGroup.addOfferGroup.historyAddOfferGroup.remove(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size()-1);
+//            
+//            if(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size() > 0)
+//            	setContentView(AddOfferGroup.addOfferGroup.historyAddOfferGroup.get(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size()-1));
+//            else
+//            	AddOfferGroup.addOfferGroup.onResume();
+//        }
+//        else finish();
+//    }
 	
 	public void addOfferProcess()
 	{
@@ -167,7 +167,7 @@ public class AddOfferSecondStep extends Activity implements OnClickListener
    					   												 					  .getDecorView();
    			   
 	   	       // Replace the view of this ActivityGroup
-	   	       replaceView(addOfferSummaryView);
+	   	       AddOfferGroup.addOfferGroup.replaceView(addOfferSummaryView);
            }
         });
 	}

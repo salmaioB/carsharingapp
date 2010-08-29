@@ -1,12 +1,14 @@
 package cs.appandroid.activities;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import cs.appandroid.activitiesgroup.MyMessagesGroup;
+import cs.appandroid.activitiesgroup.MyRoutesGroup;
 import cs.appandroid.activitiesgroup.SearchOffersGroup;
 import cs.appandroid.controller.IdentificationController;
 import cs.appandroid.view.OfferRowView;
+import cs.model.CustomerAccount;
 import cs.model.MessageWithCustomerAccount;
 import cs.model.OfferWithCustomerAccount;
 import cs.webservice.OfferMessagesWS;
@@ -43,10 +45,12 @@ public class OfferView extends Activity implements OnClickListener
 	private Button customerMobileButton;
 	private Button customerSendAMessageButton;
 	
-	OfferWithCustomerAccount offerWithCustomerAccount;
+	private OfferWithCustomerAccount offerWithCustomerAccount;
 	private String startingCity;
 	private String finishingCity;
 	private String customerMobile;
+	
+	private Bundle offerViewExtras;
 	
 	
 	@Override
@@ -55,7 +59,7 @@ public class OfferView extends Activity implements OnClickListener
 	    super.onCreate(savedInstanceState);
 	    
 	    // Retrieve offer data
-        Bundle offerViewExtras = getIntent().getExtras();
+        offerViewExtras = getIntent().getExtras();
         
         if(offerViewExtras.containsKey("offerWithCustomerAccount"))
         	offerWithCustomerAccount = (OfferWithCustomerAccount)offerViewExtras.getSerializable("offerWithCustomerAccount");	    
@@ -101,7 +105,15 @@ public class OfferView extends Activity implements OnClickListener
         View customerView = customerViewLayoutInflater.inflate(R.layout.customerview, null);
         
 	    getCustomerViewComponents(customerView);
-        displayCustomerView(customerView, offerWithCustomerAccount);
+        
+	    CustomerAccount customerAccountTransmitter = null;
+	    
+	    if(offerViewExtras.containsKey("customerAccountTransmitter"))
+	    {
+	    	customerAccountTransmitter = (CustomerAccount)offerViewExtras.getSerializable("customerAccountTransmitter");
+	    	displayCustomerView(customerView, customerAccountTransmitter);
+	    }
+	    else displayCustomerView(customerView, offerWithCustomerAccount.getCustomerAccount());
         
         customerView.setPadding(0, 20, 0, 0);
         
@@ -110,8 +122,9 @@ public class OfferView extends Activity implements OnClickListener
         
         if(offerViewExtras.containsKey("displayMessages"))
 		{
-        	Integer idOffer			         = offerWithCustomerAccount.getOffer().getId();
-        	Integer idCustomerTransmitter 	 = offerWithCustomerAccount.getCustomerAccount().getId();
+        	
+        	Integer idOffer			         = offerWithCustomerAccount.getId();
+        	Integer idCustomerTransmitter 	 = customerAccountTransmitter.getId();
         	Integer idCurrentCustomerAccount = IdentificationController.getUserLoggedId(getBaseContext());
         	
         	OfferMessagesWS offerMessagesWS = new OfferMessagesWS();
@@ -164,12 +177,24 @@ public class OfferView extends Activity implements OnClickListener
 			intentSendOfferMessageView.putExtra("startingCity", startingCity);
 			intentSendOfferMessageView.putExtra("finishingCity", finishingCity);
 			
-			View sendOfferMessageView = SearchOffersGroup.searchOffersGroup.getLocalActivityManager()
-														   				   .startActivity("Send message offer view",
-														   				   intentSendOfferMessageView.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))  
-														   				   .getDecorView(); 
+			if(!offerViewExtras.containsKey("displayMessages"))
+			{
+				View sendOfferMessageView = SearchOffersGroup.searchOffersGroup.getLocalActivityManager()
+																			   .startActivity("Send message offer view",
+														   				       intentSendOfferMessageView.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))  
+														   				       .getDecorView(); 
 			
-			SearchOffersGroup.searchOffersGroup.replaceView(sendOfferMessageView);
+				SearchOffersGroup.searchOffersGroup.replaceView(sendOfferMessageView);
+			}
+			else
+			{
+				View sendOfferMessageView = MyMessagesGroup.myMessagesGroup.getLocalActivityManager()
+				   													       .startActivity("Send message offer view",
+																	       intentSendOfferMessageView.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))  
+																	       .getDecorView(); 
+
+				MyMessagesGroup.myMessagesGroup.replaceView(sendOfferMessageView);
+			}
 		}
 	}
 	
@@ -190,13 +215,13 @@ public class OfferView extends Activity implements OnClickListener
 		customerSendAMessageButton			 = (Button)customerView.findViewById(R.id.customer_send_a_message_button);
 	}
 	
-	public void displayCustomerView(View customerView, OfferWithCustomerAccount offerWithCustomerAccount)
+	public void displayCustomerView(View customerView, CustomerAccount customerAccount)
 	{
 		if(offerWithCustomerAccount != null)
 		{
-			customerMobile = offerWithCustomerAccount.getCustomerAccount().getMobile();
+			customerMobile = customerAccount.getMobile();
 			
-			customerFullNameTextView.setText("Nom: " + offerWithCustomerAccount.getCustomerAccount().getFirstName() + " " + offerWithCustomerAccount.getCustomerAccount().getLastName());
+			customerFullNameTextView.setText("Nom: " + customerAccount.getFirstName() + " " + customerAccount.getLastName());
 			//customerDateRegistrationTextView.setText("Inscription: " + offerWithCustomerAccount.getCustomerAccount().getDatetimeRegistrationToDisplay());
 
 			customerAcceptAnimalsImageView.setImageResource(R.drawable.accept_animals_green);
@@ -205,8 +230,11 @@ public class OfferView extends Activity implements OnClickListener
 			customerAcceptToDiscussImageView.setImageResource(R.drawable.accept_to_discuss_green);
 			customerAcceptToMakeADetourImageView.setImageResource(R.drawable.accept_to_make_a_detour_red);
 			
-			customerMobileButton.setText(offerWithCustomerAccount.getCustomerAccount().getMobile());
+			customerMobileButton.setText(customerAccount.getMobile());
 			customerMobileButton.setOnClickListener(this);
+			
+			if(offerViewExtras.containsKey("myOffers"))
+				customerSendAMessageButton.setVisibility(View.INVISIBLE);
 			
 			customerSendAMessageButton.setOnClickListener(this);
 		}

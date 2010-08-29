@@ -4,6 +4,7 @@ import java.util.Timer;
 
 import cs.appandroid.activitiesgroup.AddOfferGroup;
 import cs.appandroid.activitiesgroup.MyMessagesGroup;
+import cs.appandroid.activitiesgroup.MyProfileGroup;
 import cs.appandroid.activitiesgroup.MyRoutesGroup;
 import cs.appandroid.activitiesgroup.SearchOffersGroup;
 import cs.appandroid.controller.IdentificationController;
@@ -223,7 +224,7 @@ public class CSAppAndroid extends TabActivity implements OnClickListener, OnTabC
 	    
 	    // Specific intent declare like an attribute
 	    // To send params to MyProfile activity
-	    myProfileIntent = new Intent().setClass(this, MyProfile.class);
+	    myProfileIntent = new Intent().setClass(this, MyProfileGroup.class);
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
 	    spec = tabHost.newTabSpec("myprofile").setIndicator("",

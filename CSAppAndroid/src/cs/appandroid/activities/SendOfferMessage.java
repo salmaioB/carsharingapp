@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.TableLayout.LayoutParams;
 
 
@@ -22,6 +23,8 @@ public class SendOfferMessage extends Activity implements OnClickListener
 {
 	private EditText messageEditText;
 	private Button sendAMessageButton;
+	
+	TextView sendOfferMessageInfo;
 	
 	private OfferWithCustomerAccount offerWithCustomerAccount;
 	private String startingCity;
@@ -58,6 +61,10 @@ public class SendOfferMessage extends Activity implements OnClickListener
         // Add the selected offer view into the main view
         sendOfferMessageViewLayout.addView(offerView);
         
+        // Display the send offer message info
+        sendOfferMessageInfo = new TextView(this);
+        sendOfferMessageViewLayout.addView(sendOfferMessageInfo);
+        
         // Display the message EditText
         messageEditText = new EditText(this);
         messageEditText.setGravity(Gravity.TOP);
@@ -68,7 +75,7 @@ public class SendOfferMessage extends Activity implements OnClickListener
         
         // Display the button to send a message 
         sendAMessageButton = new Button(this);
-        sendAMessageButton.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, Gravity.RIGHT));
+        //sendAMessageButton.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, Gravity.RIGHT));
         sendAMessageButton.setText("Envoyer");
         sendAMessageButton.setOnClickListener(this);
         
@@ -83,15 +90,19 @@ public class SendOfferMessage extends Activity implements OnClickListener
 	public void onClick(View v)
 	{
 		if(v == sendAMessageButton)
-		{
+		{			
 			Message message = new Message();
 			message.setContent(messageEditText.getText().toString());
+			message.setIdOffer(offerWithCustomerAccount.getId());
 			message.setIdCustomerAccount(offerWithCustomerAccount.getCustomerAccount().getId());
 			message.setIdCustomerTransmitter(IdentificationController.getUserLoggedId(getBaseContext()));
 			message.setIsRead(0);
 			
 			MessageSaveWS messageSaveWS = new MessageSaveWS();
 			messageSaveWS.saveMessage(message);
+			
+			sendOfferMessageInfo.setText("Message envoyé");
+			messageEditText.setText("");
 		}
 	}
 }

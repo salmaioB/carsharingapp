@@ -121,8 +121,7 @@ public class CustomerAccountEngineAction
 		{
 			return caBean.saveCustomerNewPassword(idCustomerAccount, currentPassword, newPassword);
 		}
-		else
-			System.out.println("ERROR : bean null");
+		else System.out.println("ERROR : bean null");
 		return null;
 	}
 }

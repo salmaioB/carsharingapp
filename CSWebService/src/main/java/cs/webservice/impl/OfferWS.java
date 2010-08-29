@@ -4,13 +4,14 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import cs.dao.dao.OfferDAO;
 import cs.model.Offer;
+import cs.model.OfferWithCustomerAccount;
 
 public class OfferWS extends ActionSupport
 {
 	private static final long serialVersionUID = 1L;
 
 	private Integer idOffer;
-	private Offer offer;
+	private OfferWithCustomerAccount offerWithCustomerAccount;
 
 	
 	public Integer getIdOffer() {
@@ -21,18 +22,18 @@ public class OfferWS extends ActionSupport
 		this.idOffer = idOffer;
 	}
 	
-	public Offer getOffer() {
-		return offer;
+	public OfferWithCustomerAccount getOfferWithCustomerAccount() {
+		return offerWithCustomerAccount;
 	}
 
-	public void setOffer(Offer offer) {
-		this.offer = offer;
+	public void setOfferWithCustomerAccount(OfferWithCustomerAccount offerWithCustomerAccount) {
+		this.offerWithCustomerAccount = offerWithCustomerAccount;
 	}
 	
 	public String execute() throws Exception
  	{
 		OfferDAO offerDAO = new OfferDAO();
-		offer = offerDAO.getOffer(idOffer);
+		offerWithCustomerAccount = offerDAO.getOffer(idOffer);
 		
 		return SUCCESS;
  	}

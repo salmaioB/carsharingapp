@@ -12,6 +12,7 @@ public class MessageSaveWS extends ActionSupport
 	
 	private String title;
 	private String content;
+	private Integer idOffer;
 	private Integer idCustomerAccount;
 	private Integer idCustomerTransmitter;
 	private Integer isRead;
@@ -29,6 +30,14 @@ public class MessageSaveWS extends ActionSupport
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public Integer getIdOffer() {
+		return idOffer;
+	}
+	
+	public void setIdOffer(Integer idOffer) {
+		this.idOffer = idOffer;
 	}
 	
 	public Integer getIdCustomerAccount() {
@@ -69,6 +78,7 @@ public class MessageSaveWS extends ActionSupport
 		Message message = new Message();
 		message.setTitle(title);
 		message.setContent(content);
+		message.setIdOffer(idOffer);
 		message.setIdCustomerAccount(idCustomerAccount);
 		message.setIdCustomerTransmitter(idCustomerTransmitter);
 		message.setIsRead(isRead);
