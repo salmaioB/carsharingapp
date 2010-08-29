@@ -134,6 +134,7 @@ public class PostEtape2 extends Action
 		this.datepickerPost = datepickerPost;
 	}
 	public String getHours() {
+		if(hours == null) hours = "";
 		return hours;
 	}
 	public void setHours(String hours) {
@@ -151,6 +152,7 @@ public class PostEtape2 extends Action
 		this.minutes = minutes;
 	}
 	public String getHour() {
+		if(hour == null) hour = "";
 		return hour;
 	}
 	public void setHour(String hour) {
