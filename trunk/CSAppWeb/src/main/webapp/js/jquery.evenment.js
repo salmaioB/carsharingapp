@@ -83,6 +83,30 @@ function validateForm2()
 	}
 	);
 }
+function goToEtape1OfPost()
+{       
+    $.ajax({
+            method: 'get',
+            url: '/CSAppWeb/PostEtape1',
+            success: function(data)
+            {
+                $('#etape1').html(data);
+    			$("#datepickerPost").datepicker({	minDate: new Date(),
+					showOn: 'button',
+					buttonImage: '/CSAppWeb/img/calendar.gif',
+					buttonImageOnly: true
+    			});
+				$('#post_form').validate({
+					submitHandler: function(form) {
+						goToEtape2OfPost();
+						
+					}
+				});
+				initializeMapEmpty('divMapStart');
+				initializeMapEmpty('divMapStop');
+            }
+    });
+}
 function goToEtape2OfPost()
 {
 	var postData = $("input", '#post_form').serialize();
@@ -241,6 +265,7 @@ function addEvementAjaxToSaveOffer()
 	                        success: function(data)
 	                        {
 	                			alert("offre enregistre");
+	                			goToEtape1OfPost();
 	                        }
 	                          });
 	                return false;

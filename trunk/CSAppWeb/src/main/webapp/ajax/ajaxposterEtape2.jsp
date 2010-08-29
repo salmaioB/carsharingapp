@@ -76,7 +76,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(32)"/></span>
 				</td>
 				<td>
-					<input value="<s:property value="villeStartPost" />" id="villeStartPost" name="villeStartPost" class="" size="20"/>
+					<input readonly="readonly" value="<s:property value="villeStartPost" />" id="villeStartPost" name="villeStartPost" class="" size="20"/> <s:property value="tr.tr_html(61)"/>
 				</td>
 			</tr>
 			<tr>
@@ -84,8 +84,8 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(34)"/> 1</span>
 				</td>
 				<td>
-					<input id="villepassage1Post" name="villepassage1Post" class="" size="20"/>
-					<input id="priceTrip1" name="priceTrip1" size="3" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
+					<input onchange="activeInput('villepassage1Post','villepassage2Post','priceTrip1');" id="villepassage1Post" name="villepassage1Post" class="" size="20"/>
+					<input disabled="disabled" id="priceTrip1" name="priceTrip1" size="3" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
 			<tr>
@@ -93,7 +93,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(34)"/> 2</span>
 				</td>
 				<td>
-					<input id="villepassage2Post" name="villepassage2Post" class="" size="20"/>
+					<input onchange="activeInput('villepassage2Post','villepassage3Post','priceTrip2');" disabled="disabled" id="villepassage2Post" name="villepassage2Post" class="" size="20"/>
 					<input id="priceTrip2" name="priceTrip2" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
@@ -102,7 +102,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(34)"/> 3</span>
 				</td>
 				<td>
-					<input id="villepassage3Post" name="villepassage3Post" class="" size="20"/>
+					<input onchange="activeInput('villepassage3Post','villepassage4Post','priceTrip3');" disabled="disabled" id="villepassage3Post" name="villepassage3Post" class="" size="20"/>
 					<input id="priceTrip3" name="priceTrip3" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
@@ -111,7 +111,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(34)"/> 4</span>
 				</td>
 				<td>
-					<input id="villepassage4Post" name="villepassage4Post" class="" size="20"/>
+					<input onchange="activeInput('villepassage4Post','villepassage5Post','priceTrip4');" disabled="disabled" id="villepassage4Post" name="villepassage4Post" class="" size="20"/>
 					<input id="priceTrip4" name="priceTrip4" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
@@ -120,7 +120,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(34)"/> 5</span>
 				</td>
 				<td>
-					<input id="villepassage5Post" name="villepassage5Post" class="" size="20"/>
+					<input onchange="activeInput('villepassage5Post','villepassage6Post','priceTrip5');" disabled="disabled" id="villepassage5Post" name="villepassage5Post" class="" size="20"/>
 					<input id="priceTrip5" name="priceTrip5" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
@@ -129,7 +129,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(34)"/> 6</span>
 				</td>
 				<td>
-					<input id="villepassage6Post" name="villepassage6Post" class="" size="20"/>
+					<input onchange="activeInput('villepassage6Post','villepassage7Post','priceTrip6');" disabled="disabled" id="villepassage6Post" name="villepassage6Post" class="" size="20"/>
 					<input id="priceTrip6" name="priceTrip6" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				<td>
 			</tr>
@@ -138,7 +138,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(34)"/> 7</span>
 				</td>
 				<td>
-					<input id="villepassage7Post" name="villepassage7Post" class="" size="20"/>
+					<input onchange="activeInput('villepassage7Post','villepassage8Post','priceTrip7');" disabled="disabled" id="villepassage7Post" name="villepassage7Post" class="" size="20"/>
 					<input id="priceTrip7" name="priceTrip7" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
@@ -147,7 +147,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(34)"/> 8</span>
 				</td>
 				<td>
-					<input id="villepassage8Post" name="villepassage8Post" class="" size="20"/>
+					<input onchange="activeInput('villepassage8Post','villepassage8Post','priceTrip8');" disabled="disabled" id="villepassage8Post" name="villepassage8Post" class="" size="20"/>
 					<input id="priceTrip8" name="priceTrip8" size="3" disabled="disabled" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
@@ -156,7 +156,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(33)"/></span>
 				</td>
 				<td>
-					<input value="<s:property value="villeStopPost" />"  id="villeStopPost" name="villeStopPost" class="" size="20"/>
+					<input readonly="readonly" value="<s:property value="villeStopPost" />"  id="villeStopPost" name="villeStopPost" class="" size="20"/>
 					<input class="required" id="priceTripStop" name="priceTripStop" size="3" onchange="calculPrice('priceTrip1','priceTrip2','priceTrip3','priceTrip4','priceTrip5','priceTrip6','priceTrip7','priceTrip8','priceTotal','priceTripStop');">
 				</td>
 			</tr>
