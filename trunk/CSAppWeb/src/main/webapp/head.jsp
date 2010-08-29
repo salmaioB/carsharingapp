@@ -39,21 +39,21 @@
 -->
 	<script type="text/javascript" src="js/js.function.job.js"></script>
 
-  <!-- 
+<!-- 
    	<script type="text/javascript" src="js/jquery.time/jquery.ui.all.js"></script>
- 	-->
+ 
 	<script type="text/javascript" src="js/jquery.time/ui.timepickr.js"></script> 
- 	
- 	<!--
+ -->
+ <!--
  	<script type="text/javascript" src="js/js.accordion.js"></script>
- 	-->
-	<!--
+ -->
+<!--
 	<link type="text/css" href="css/jquery.tabs.css" rel="stylesheet" >
-	-->
+-->
 	<link type="text/css" href="css/themes/base/jquery.ui.all.css" rel="stylesheet" >
-	<!-- 
+<!-- 
 	<link type="text/css" href="css/css.css" rel="stylesheet" >
-	 -->
+ -->
 	<link type="text/css" href="css/ui.timepickr.css" rel="stylesheet" >
 	<link type="text/css" href="css/accordion.css" rel="stylesheet">
 	
