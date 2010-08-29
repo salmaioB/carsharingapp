@@ -47,7 +47,7 @@
 						<s:property value="tr.tr_html(10)"/>
 					</td>
 					<td>
-						<input name="hours" id="hours" type="text" value="08:30" />
+						<input type="text" value="08:30" />
 					</td>
 				</tr>
 				<tr>

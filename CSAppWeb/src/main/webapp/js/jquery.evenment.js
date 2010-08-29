@@ -264,7 +264,7 @@ function addEvementAjaxToSaveOffer()
 	                        data: postData,
 	                        success: function(data)
 	                        {
-	                			alert("offre enregistre");
+	                			alert("offre enregistrée");
 	                			goToEtape1OfPost();
 	                        }
 	                          });
@@ -281,7 +281,7 @@ function ajaxCheckInAjax()
             data: postData,
             success: function(data)
             {
-    			alert("Profil enregistre");
+    			alert("Profil enregistré");
     			//Si success redection vers le profil
     			document.location.href='/CSAppWeb/Accueil#profil';
             }
