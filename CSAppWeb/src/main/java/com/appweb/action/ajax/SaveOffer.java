@@ -200,12 +200,14 @@ public class SaveOffer extends Action
 		this.role = role;
 	}
 	public String getMinutes() {
+		if(minutes==null) minutes = "0";
 		return minutes;
 	}
 	public void setMinutes(String minutes) {
 		this.minutes = minutes;
 	}
 	public String getHour() {
+		if(hour==null) hour = "0";
 		return hour;
 	}
 	public void setHour(String hour) {
@@ -294,14 +296,18 @@ public class SaveOffer extends Action
 		OfferDAO offerDAO = SpringDAO.getSpring().getOfferDAO();
 		OffersToCustomerAccountsDAO offersToCustomerAccountsDAO = SpringDAO.getSpring().getOffersToCustomerAccountsDAO();
 		System.out.println("after load DAO !");
-		
+
 		offer.setDatetimeStarted(datepickerPost);
+		
+		offer.getDatetimeStarted().setMinutes( Integer.valueOf(getMinutes()) );
+		offer.getDatetimeStarted().setHours( Integer.valueOf(getHour()) );
+		
 		offer.setNumberOfPlaceInitial(getNbPassagerPost());
 		offer.setPricePerPassenger(Float.intBitsToFloat( getPriceTotal() ));
 		offer.setNumberOfPlaceRemaining(getNbPassagerPost());
 		offer.setDescription(getDescription());
-		offer.setStartingCity(villeStartPost);
-		offer.setFinishingCity(villeStopPost);
+		offer.setStartingCity(getVilleStartPost());
+		offer.setFinishingCity(getVilleStopPost());
 		
 		System.out.println("after set offer !");
 		
