@@ -242,6 +242,7 @@ public class PrintMapPost extends Action
 	{
 		System.out.println("PrintMapPost");
 		System.out.println("villepassage1Post : " + villepassage1Post);
+		System.out.println( "villeStopPost" + villeStopPost);
 		priceTotal = calculPriceTotal();
 		System.out.println("priceTotal : " + priceTotal);
 		return SUCCESS;
