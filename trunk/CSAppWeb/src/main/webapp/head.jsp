@@ -70,9 +70,6 @@
 	</style>
 	
 	<script type="text/javascript">
-    	$(function(){
-	      //$('#hours').timepickr();
-	    });
 		$(document).ready( function () { 
 			$('#containerLeft').tabs({ fxFade: true, fxSpeed: 'normal' });
 		} ) ;
@@ -197,10 +194,10 @@
 				);
 				$('#post_form').validate({
 					submitHandler: function(form) {
-						goToEtape2OfPost();
-						
+						goToEtape2OfPost();		
 					}
-				});
+				}
+				);
 			});
 	</script>
 	<s:if test="isLoging()">
