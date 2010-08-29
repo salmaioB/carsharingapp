@@ -22,53 +22,53 @@
 	<tr>
 		<td>
 			<s:if test="acceptAnimals==0">
-				<img src="img/icon/accept_animals_red.png" style="width:35px;" title="<s:property value="tr.tr_html(24)"/>"  />
+				<img src="img/icon/accept_animals_red.png" style="width:35px;" title="<s:property value="tr.tr_html(63)"/>"  />
 			</s:if>
 			<s:elseif test="acceptAnimals==1">
 					<img src="img/icon/accept_animals_green.png" style="width:35px;" title="<s:property value="tr.tr_html(24)"/>"  />
 				</s:elseif>
 				<s:elseif test="acceptAnimals==2">
-					<img src="img/icon/accept_animals_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(24)"/>"  />
+					<img src="img/icon/accept_animals_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(62)"/>"  />
 				</s:elseif>
 												
 				<s:if test="acceptRadio==0">
-					<img src="img/icon/accept_radio_red.png" style="width:35px;"  title="<s:property value="tr.tr_html(25)"/>" />
+					<img src="img/icon/accept_radio_red.png" style="width:35px;"  title="<s:property value="tr.tr_html(64)"/>" />
 				</s:if>
 				<s:elseif test="acceptRadio==1">
 					<img src="img/icon/accept_radio_green.png" style="width:35px;"  title="<s:property value="tr.tr_html(25)"/>"  />
 				</s:elseif>
 				<s:elseif test="acceptRadio==2">
-					<img src="img/icon/accept_radio_yellow.png" style="width:35px;"  title="<s:property value="tr.tr_html(25)"/>" />
+					<img src="img/icon/accept_radio_yellow.png" style="width:35px;"  title="<s:property value="tr.tr_html(62)"/>" />
 				</s:elseif>
 				
 				<s:if test="acceptSmoker==0">
-					<img src="img/icon/accept_smoker_red.png" style="width:35px;" title="<s:property value="tr.tr_html(26)"/>"  />
+					<img src="img/icon/accept_smoker_red.png" style="width:35px;" title="<s:property value="tr.tr_html(65)"/>"  />
 				</s:if>
 				<s:elseif test="acceptSmoker==1">
 					<img src="img/icon/accept_smoker_green.png" style="width:35px;" title="<s:property value="tr.tr_html(26)"/>"  />
 				</s:elseif>
 				<s:elseif test="acceptSmoker==2">
-					<img src="img/icon/accept_smoker_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(26)"/>"  />
+					<img src="img/icon/accept_smoker_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(62)"/>"  />
 				</s:elseif>
 				
 				<s:if test="acceptToDiscuss==0">
-					<img src="img/icon/accept_to_discuss_red.png" style="width:35px;" title="<s:property value="tr.tr_html(27)"/>" />
+					<img src="img/icon/accept_to_discuss_red.png" style="width:35px;" title="<s:property value="tr.tr_html(66)"/>" />
 				</s:if>
 				<s:elseif test="acceptToDiscuss==1">
 					<img src="img/icon/accept_to_discuss_green.png" style="width:35px;" title="<s:property value="tr.tr_html(27)"/>" />
 				</s:elseif>
 				<s:elseif test="acceptToDiscuss==2">
-					<img src="img/icon/accept_to_discuss_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(27)"/>" />
+					<img src="img/icon/accept_to_discuss_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(62)"/>" />
 				</s:elseif>
 				
 				<s:if test="acceptToMakeADetour==0">
-					<img src="img/icon/accept_to_make_a_detour_red.png" style="width:35px;" title="<s:property value="tr.tr_html(28)"/>" />
+					<img src="img/icon/accept_to_make_a_detour_red.png" style="width:35px;" title="<s:property value="tr.tr_html(67)"/>" />
 				</s:if>
 				<s:elseif test="acceptToMakeADetour==1">
 					<img src="img/icon/accept_to_make_a_detour_green.png" style="width:35px;" title="<s:property value="tr.tr_html(28)"/>" />
 				</s:elseif>
 				<s:elseif test="acceptToMakeADetour==2">
-					<img src="img/icon/accept_to_make_a_detour_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(28)"/>" />
+					<img src="img/icon/accept_to_make_a_detour_yellow.png" style="width:35px;" title="<s:property value="tr.tr_html(62)"/>" />
 				</s:elseif>	
 			</td>
 		</tr>

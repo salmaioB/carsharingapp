@@ -31,12 +31,12 @@
 	<script type="text/javascript" src="js/googlemap.js"></script>
     
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=<s:property value="language"/>"></script>
- 
+ <!--
   	<script type="text/javascript" src="js/jquery.time/jquery.utils.js"></script>
 	<script type="text/javascript" src="js/jquery.time/jquery.strings.js"></script>
 	
 	<script type="text/javascript" src="js/jquery.time/jquery.anchorHandler.js"></script>
-
+-->
 	<script type="text/javascript" src="js/js.function.job.js"></script>
 
   <!-- 
