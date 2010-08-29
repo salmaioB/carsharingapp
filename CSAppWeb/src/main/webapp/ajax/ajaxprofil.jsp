@@ -5,7 +5,7 @@
 		<form method="post" id="checkaddress_form" name="checkaddress_form">
 	</s:if>
 	<s:else>
-		<form method="post" action="CheckIn">
+		<form method="post" id="register_form" action="CheckIn">
 	</s:else>
 		<table>	
 				<tr>

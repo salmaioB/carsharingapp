@@ -175,10 +175,16 @@
 			}
 			//Exécution du controle des formulaires
 			$(document).ready(function(){
+
+				$('#register_form').validate({
+					submitHandler: function(form) {
+						form.submit();
+					}
+				}
+				);
+				
 				$('#checkaddress_form').validate({
 					submitHandler: function(form) {
-						//alert("form.submit()");
-						//form.submit();
 						ajaxCheckInAjax();
 					}
 				}
