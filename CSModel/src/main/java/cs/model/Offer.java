@@ -1,7 +1,9 @@
 package cs.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -113,6 +115,28 @@ public class Offer implements Serializable
 		return datetimeStarted;
 	}
 	
+    /**
+     * Ugly part
+     * TODO: return a date object
+     */
+//    public String getDatetimeStarted()
+//    {
+//    	SimpleDateFormat simpleFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+//    	
+//    	return simpleFormat.format(datetimeStarted);
+//    }
+    
+    /**
+     * Ugly part
+     * TO BE DELETED
+     */
+    public String getDatetimeStartedToDisplay()
+    {
+    	SimpleDateFormat simpleFormat = new SimpleDateFormat("EEE dd MMM - HH:mm", new Locale("fr"));
+    	
+    	return simpleFormat.format(datetimeStarted);
+    }
+    
 	public void setDatetimeStarted(Date datetimeStarted) {
 		this.datetimeStarted = datetimeStarted;
 	}

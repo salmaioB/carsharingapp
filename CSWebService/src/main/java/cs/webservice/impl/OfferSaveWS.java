@@ -18,6 +18,8 @@ public class OfferSaveWS extends ActionSupport
 	private Integer idCustomerAccount;
 	private Integer isDriver;
 	
+	private String description;
+
 	private Integer numberOfPassengers;
 	private float pricePerPassenger;
 	
@@ -39,6 +41,14 @@ public class OfferSaveWS extends ActionSupport
 
 	public void setIsDriver(Integer isDriver) {
 		this.isDriver = isDriver;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	public Integer getNumberOfPassengers() {
@@ -76,7 +86,7 @@ public class OfferSaveWS extends ActionSupport
 	public String execute() throws Exception
  	{
 		Offer offer = new Offer();
-		offer.setDescription("");
+		offer.setDescription(description);
 		offer.setStartingCity(startingCity);
 		offer.setFinishingCity(finishingCity);
 		offer.setNumberOfPlaceInitial(numberOfPassengers);

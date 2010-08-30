@@ -1,36 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			  android:layout_width="wrap_content"
+			  android:layout_width="fill_parent"
 			  android:layout_height="wrap_content"
 			  android:orientation="vertical">
-  
+  	
 	<TextView android:id="@+id/added_offer_summary_textview"
   	  		  android:layout_width="wrap_content"
   			  android:layout_height="wrap_content"
   			  android:text="Vous avez proposé le voyage suivant:"/>
   		
-	<TableLayout android:layout_width="wrap_content"
+	<TableLayout android:layout_width="fill_parent"
   			  	 android:layout_height="wrap_content"
+  			  	 android:stretchColumns="*"
   			  	 android:paddingTop="8dp">
 		<TableRow>
 	 		<TextView android:id="@+id/user_name_textview"/>
 	     	<TextView android:id="@+id/offer_date_and_time_textview"/>
 	 	</TableRow>
-		<TableRow>
-	 		<TextView android:id="@+id/offer_opinion_textview"/>
-	     	<TextView android:id="@+id/number_of_passengers_summary_step_textview"/>
+		<TableRow android:layout_width="fill_parent"
+  			  	  android:layout_height="wrap_content">
+	 		<TextView android:id="@+id/offer_opinion_textview"
+	 				  android:layout_width="wrap_content"
+	     	          android:layout_height="wrap_content"/>
+	     	<TextView android:id="@+id/number_of_passengers_summary_step_textview"
+	     			  android:layout_width="wrap_content"
+	     	          android:layout_height="wrap_content"
+	 				  android:layout_gravity="right"/>
 	 	</TableRow>
-	 	<TableRow>
-	 		<TextView android:id="@+id/route_summary_textview"/>
-	     	<TextView android:id="@+id/price_per_passenger_summary_textview"/>
+	 	<TableRow android:layout_width="fill_parent"
+  			  	  android:layout_height="wrap_content">
+	 		<TextView android:id="@+id/route_summary_textview"
+	 		          android:layout_width="wrap_content"
+	     	          android:layout_height="wrap_content"/>
+	     	<TextView android:id="@+id/price_per_passenger_summary_textview"
+	     	          android:layout_width="wrap_content"
+	     	          android:layout_height="wrap_content"
+	     			  android:layout_gravity="right"/>
 	 	</TableRow>
   	</TableLayout>
   	
-	<Button android:id="@+id/_button"
+  	<!--
+	<Button android:id="@+id/display_added_offer_button"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+		    android:layout_marginTop="10dp"
+			android:layout_gravity="center_horizontal"
 			android:text="Voir ce trajet"/>
-
+     -->
+    
+    <!--
 	<Button android:id="@+id/publish_return_trip_button"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
@@ -40,5 +58,6 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="Voir les trajets similaires"/>
+	 -->
    
 </LinearLayout>

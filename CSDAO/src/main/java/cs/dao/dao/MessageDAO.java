@@ -147,27 +147,16 @@ public class MessageDAO extends DAO
 	{
 		Session session = HibernateUtil.currentSession();
 		
-//		String sqlQuery = "SELECT m._id_message, m.content, m.dateTime_writed, c.first_name, c.last_name " +
-//					      "FROM offers o, customer_accounts c, offers_to_customer_accounts o_to_c, messages m " +
-//					      "WHERE o._id_offer=o_to_c._id_offer " +
-//					      "AND o_to_c._id_customer_account=c._id_customer_account " +
-//					      "AND o_to_c.is_offer_creator=1 " +
-//						  "AND o._id_offer=m._id_offer " +
-//						  "AND m._id_offer=" + idOffer.toString() + " " +
-//						  "AND (" +
-//						  "m._id_customer_transmitter=c._id_customer_account " +
-//					      "OR m._id_customer_transmitter=" + idCustomerAccount.toString() +
-//						  ") " +
-//						  "ORDER BY m.dateTime_writed";
-		
 		String sqlQuery = "SELECT m._id_message, m.content, m.dateTime_writed, c.first_name, c.last_name " +
 						  "FROM messages m, customer_accounts c " +
 						  "WHERE m._id_customer_transmitter = c._id_customer_account " +
-						  "AND m._id_offer=1 " +
-						  "AND( " + 
-						  "m._id_customer_transmitter=" + idCurrentCustomerAccount.toString() + " " +
-						  "OR m._id_customer_transmitter=" + idCustomerTransmitter.toString() + " " +
-						  ") " +
+						  "AND m._id_offer=" + idOffer.toString() + " " +
+						  "AND (" + 
+						  "m._id_customer_transmitter=" + idCustomerTransmitter.toString() + " " +
+						  "OR ( " +
+						  "m._id_customer_account = " + idCustomerTransmitter.toString() + " " +
+						  "AND m._id_customer_transmitter=" + idCurrentCustomerAccount.toString() + " " +
+						  ")) " +
 						  "ORDER BY m.dateTime_writed";
 		
 		System.out.println(sqlQuery);

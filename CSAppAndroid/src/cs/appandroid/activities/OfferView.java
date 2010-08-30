@@ -147,7 +147,7 @@ public class OfferView extends Activity implements OnClickListener
     			//String messageDatetimeWritedStr = messageWithCustomerAccount.getMessage().getDatetimeWrited().toString();
     			TextView messageDatetimeWritedTextView = new TextView(this);
     			messageDatetimeWritedTextView.setGravity(Gravity.RIGHT);
-    			messageDatetimeWritedTextView.setText("azeze");
+    			//messageDatetimeWritedTextView.setText("azeze");
     			messageViewLayout.addView(messageDatetimeWritedTextView);
     			
     			offerViewLayout.addView(messageViewLayout);

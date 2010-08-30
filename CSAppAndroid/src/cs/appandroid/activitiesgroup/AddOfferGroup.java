@@ -64,9 +64,6 @@ public class AddOfferGroup extends ActivityGroup implements OnClickListener
 	    
 	    // Default number of passengers
 	    offer.setNumberOfPlaceInitial(3);
-	    
-	    //Default price per passenger
-	    offer.setPricePerPassenger(8f);
 
 	    route = new Route();
 	    
