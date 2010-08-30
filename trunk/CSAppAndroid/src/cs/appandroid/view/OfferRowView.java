@@ -52,7 +52,7 @@ public class OfferRowView
 			String lastName = offerWithCustomerAccount.getCustomerAccount().getLastName().substring(0,1);
 			customerFullNameTextView.setText(offerWithCustomerAccount.getCustomerAccount().getFirstName() + " " + lastName + ".");
 			
-			customerOpinionTextView.setText("avis");
+			customerOpinionTextView.setText("pas d'avis");
 			
 			//offerDateTimeStartedTextView.setText(offerWithCustomerAccount.getOffer().getDatetimeStartedToDisplay());
 			

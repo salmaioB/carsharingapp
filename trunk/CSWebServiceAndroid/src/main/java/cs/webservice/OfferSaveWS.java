@@ -34,6 +34,7 @@ public class OfferSaveWS
 		paramsToPost.add(new BasicNameValuePair("idCustomerAccount", idCustomerAccount.toString()));
 		paramsToPost.add(new BasicNameValuePair("isDriver", isDriver.toString()));
 		
+		paramsToPost.add(new BasicNameValuePair("description", offer.getDescription()));
 		paramsToPost.add(new BasicNameValuePair("numberOfPassengers", offer.getNumberOfPlaceInitial().toString()));
 		paramsToPost.add(new BasicNameValuePair("pricePerPassenger", offer.getPricePerPassenger().toString()));
 
@@ -41,7 +42,7 @@ public class OfferSaveWS
 		paramsToPost.add(new BasicNameValuePair("finishingCity", route.getFinishingCity().toString()));		
 		//paramsToPost.add(new BasicNameValuePair("price", route.getPrice().toString()));
 		
-		// Send the http request
+		// Send the HTTP request
 		HttpClient.SendHttpPost(URL, jsonObjectSend, paramsToPost);
 	}
 }

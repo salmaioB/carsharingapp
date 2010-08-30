@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -24,6 +25,7 @@ public class AddOfferSecondStep extends Activity implements OnClickListener
 	private Button decrementPricePerPassengerButton;
 	private TextView pricePerPassengerTextView;
 	private Button incrementPricePerPassengerButton;
+	private EditText descriptionEditText;
 	private Button proposeOfferButton;
 	
 	private Runnable addOfferProcess;
@@ -54,6 +56,9 @@ public class AddOfferSecondStep extends Activity implements OnClickListener
 		if(addOfferSecondStepExtras.containsKey("route"))
 			route = (Route)addOfferSecondStepExtras.getSerializable("route");
 	    
+		//Default price per passenger
+	    offer.setPricePerPassenger(8f);
+		
 	    displayAddOfferSecondStep();
 	    
 	    intentAddOfferSummary = new Intent(this, AddOfferSummary.class);
@@ -79,10 +84,12 @@ public class AddOfferSecondStep extends Activity implements OnClickListener
 		decrementPricePerPassengerButton.setOnClickListener(this);
 		
 		pricePerPassengerTextView        = (TextView)findViewById(R.id.price_per_passenger_textview);
-		pricePerPassengerTextView.setText(offer.getPricePerPassenger() + "€");
+		pricePerPassengerTextView.setText(offer.getPricePerPassenger().intValue() + " €");
 		
 		incrementPricePerPassengerButton = (Button)findViewById(R.id.increment_price_per_passenger_button);	
 		incrementPricePerPassengerButton.setOnClickListener(this);
+		
+		descriptionEditText              = (EditText)findViewById(R.id.description_edittext);
 		
 		proposeOfferButton = (Button)findViewById(R.id.propose_offer_button);
 		proposeOfferButton.setOnClickListener(this);
@@ -106,41 +113,28 @@ public class AddOfferSecondStep extends Activity implements OnClickListener
 		    
 		    addOfferProgressDialog = ProgressDialog.show(AddOfferGroup.addOfferGroup, "Please wait...", "Publication de votre offre ...", true);
 		}
+		else if(v == incrementPricePerPassengerButton)
+		{
+			if(offer.getPricePerPassenger() != 15)
+            {
+				offer.setPricePerPassenger(offer.getPricePerPassenger()+1);
+				pricePerPassengerTextView.setText(offer.getPricePerPassenger().intValue() + " €");
+            }
+		}
+		else if(v == decrementPricePerPassengerButton)
+        {       
+                if(offer.getPricePerPassenger() != 1)
+                {
+                	offer.setPricePerPassenger(offer.getPricePerPassenger()-1);
+                	pricePerPassengerTextView.setText(offer.getPricePerPassenger().intValue() + " €");
+                }
+        }
 	}
-	
-//   @Override  
-//    public void onBackPressed()
-//    {
-//        AddOfferGroup.addOfferGroup.back();        
-//        return;  
-//    }
-//	
-//	public void replaceView(View v)
-//	{  
-//        // Adds the old one to history  
-//		AddOfferGroup.addOfferGroup.historyAddOfferGroup.add(v);
-//		
-//        // Changes this Groups View to the new View.	
-//		setContentView(v);
-//	}
-//	
-//	public void back()
-//	{  
-//        if(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size() > 0)
-//        {
-//        	AddOfferGroup.addOfferGroup.historyAddOfferGroup.remove(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size()-1);
-//            
-//            if(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size() > 0)
-//            	setContentView(AddOfferGroup.addOfferGroup.historyAddOfferGroup.get(AddOfferGroup.addOfferGroup.historyAddOfferGroup.size()-1));
-//            else
-//            	AddOfferGroup.addOfferGroup.onResume();
-//        }
-//        else finish();
-//    }
 	
 	public void addOfferProcess()
 	{
 		Integer idCustomerAccount = IdentificationController.getUserLoggedId(getBaseContext());
+		offer.setDescription(descriptionEditText.getText().toString());
 		
 		OfferSaveWS offerSaveWS = new OfferSaveWS();
 		offerSaveWS.saveOfferWithRoutes(offer, route, idCustomerAccount, 1);
