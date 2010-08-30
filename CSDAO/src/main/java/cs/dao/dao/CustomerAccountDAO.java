@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import cs.dao.spring.SpringDAO;
 import cs.dao.util.HibernateUtil;
 import cs.model.CustomerAccount;
 import cs.dao.DAO;
@@ -97,9 +98,17 @@ public class CustomerAccountDAO extends DAO
 	
 	public void saveCustomerLocation(Integer idCustomerAccount, double longitude, double latitude)
 	{
-		Session session = HibernateUtil.currentSession();
-		Transaction transaction = session.beginTransaction();
+		// Session session = HibernateUtil.currentSession();
+		//Transaction transaction = session.beginTransaction();
 		
+		CustomerAccountDAO customerAccountDAO = SpringDAO.getSpring().getCustomerAccountDAO();
+		CustomerAccount customerAccount = customerAccountDAO.load( idCustomerAccount );
+		customerAccount.setDatetimeLastConnectionAndroid(new Date());
+		customerAccount.setGeolocLatitude(latitude);
+		customerAccount.setGeolocLongitude(longitude);
+		customerAccountDAO.save(customerAccount);
+		
+		/*
 		SimpleDateFormat simpleFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 		
 		String SQLQuery = "UPDATE customer_accounts " +
@@ -117,6 +126,7 @@ public class CustomerAccountDAO extends DAO
 		transaction.commit();
 		
 		HibernateUtil.closeSession();
+		*/
 	}
 	
 	public void saveCustomerGeneralsInfos(Integer idCustomerAccount, String lastName, String firstName, String emailAddress, String mobile)
