@@ -1,5 +1,6 @@
 package cs.dao.dao;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -99,10 +100,12 @@ public class CustomerAccountDAO extends DAO
 		Session session = HibernateUtil.currentSession();
 		Transaction transaction = session.beginTransaction();
 		
+		SimpleDateFormat simpleFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		
 		String SQLQuery = "UPDATE customer_accounts " +
 						  "SET geoloc_longitude=" + Double.toString(longitude) + ", " +
 						  "geoloc_latitude=" + Double.toString(latitude) + ", " +
-						  "datetime_last_connection_android=" + new Date() +
+						  "datetime_last_connection_android=" + simpleFormat.format(new Date()) + " " +
 						  "WHERE _id_customer_account=" + Integer.toString(idCustomerAccount);
 						   
 		
