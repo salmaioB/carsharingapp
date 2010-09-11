@@ -14,7 +14,16 @@ public class PostEtape2 extends Action
 	private String addressStopPost;
 	private Integer nbPassagerPost;
 	private String hours;
-	private java.util.Date datepickerPost;
+	private java.util.Date datepickerPostt;
+	private String datepickerPostDate;
+	public String getDatepickerPostDate() {
+		return datepickerPostDate;
+	}
+	public void setDatepickerPostDate(String datepickerPostDate) {
+		this.datepickerPostDate = datepickerPostDate;
+	}
+
+
 	private String minutes;
 	private String hour;
 	private String role;
@@ -123,15 +132,13 @@ public class PostEtape2 extends Action
 		this.nbPassagerPost = nbPassagerPost;
 	}
 
-	public String getDatepickerPost() {
+	public String getDatepickerPostt() {
 		SimpleDateFormat  simpleFormat = new SimpleDateFormat("MM/dd/yyyy");
-		System.out.println(simpleFormat.format(datepickerPost));	
-		return simpleFormat.format(datepickerPost);
-		//return DateFormat.getDateInstance( DateFormat.MEDIUM ).format( datepickerPost ) ;
-		//return datepickerPost;
+		System.out.println(simpleFormat.format(datepickerPostt));	
+		return simpleFormat.format(datepickerPostt);
 	}
-	public void setDatepickerPost(java.util.Date datepickerPost) {
-		this.datepickerPost = datepickerPost;
+	public void setDatepickerPostt(java.util.Date datepickerPostt) {
+		this.datepickerPostt = datepickerPostt;
 	}
 	public String getHours() {
 		if(hours == null) hours = "";
@@ -181,7 +188,7 @@ public class PostEtape2 extends Action
 	{
 		System.out.println("Check PostEtape2");
 		System.out.println("hours : " + hours);
-		System.out.println("datepickerPost : " + datepickerPost);
+		System.out.println("datepickerPostt : " + datepickerPostt);
 		System.out.println("role : " + role);
 		System.out.println("addressStartPost : " + addressStartPost);
 		System.out.println("addressStopPost : " + addressStopPost);

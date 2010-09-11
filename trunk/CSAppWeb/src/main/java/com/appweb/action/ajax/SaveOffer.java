@@ -25,8 +25,21 @@ public class SaveOffer extends Action
 	private String addressStartPost;
 	private String addressStopPost;
 	private Integer nbPassagerPost;
-	private Date datepickerPost;
+	private Date datepickerPostt;
+	private String datepickerPostDate;
 	
+	public String getDatepickerPostDate() {
+		return datepickerPostDate;
+	}
+	public void setDatepickerPostDate(String _datepickerPostDate) {
+		SimpleDateFormat  simpleFormat = new SimpleDateFormat("MM/dd/yyyy");
+		try {
+			datepickerPostt = simpleFormat.parse(_datepickerPostDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}	
+		this.datepickerPostDate = _datepickerPostDate;
+	}
 	private String villepassage1Post;
 	private String villepassage2Post;
 	private String villepassage3Post;
@@ -188,10 +201,10 @@ public class SaveOffer extends Action
 	public void setVillepassage8Post(String villepassage8Post) {
 		this.villepassage8Post = villepassage8Post;
 	}
-	public String getDatepickerPost() {
+	public String getDatepickerPostt() {
 		SimpleDateFormat  simpleFormat = new SimpleDateFormat("MM/dd/yyyy");
-		System.out.println(simpleFormat.format(datepickerPost));	
-		return simpleFormat.format(datepickerPost);
+		System.out.println(simpleFormat.format(datepickerPostt));	
+		return simpleFormat.format(datepickerPostt);
 	}
 	public Integer getRole() {
 		return role;
@@ -234,13 +247,13 @@ public class SaveOffer extends Action
 	public void setNbPassagerPost(Integer nbPassagerPost) {
 		this.nbPassagerPost = nbPassagerPost;
 	}
-	public void setDatepickerPost(java.util.Date datepickerPost) {
-		this.datepickerPost = datepickerPost;
+	public void setDatepickerPostt(java.util.Date datepickerPostt) {
+		this.datepickerPostt = datepickerPostt;
 	}
-	public void setDatepickerPost(String datepickerPost) {
+	public void setDatepickerPostt(String datepickerPostt) {
 		SimpleDateFormat  simpleFormat = new SimpleDateFormat("MM/dd/yyyy");
 		try {
-			this.datepickerPost = simpleFormat.parse(datepickerPost);
+			this.datepickerPostt = simpleFormat.parse(datepickerPostt);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}	
@@ -297,7 +310,7 @@ public class SaveOffer extends Action
 		OffersToCustomerAccountsDAO offersToCustomerAccountsDAO = SpringDAO.getSpring().getOffersToCustomerAccountsDAO();
 		System.out.println("after load DAO !");
 
-		offer.setDatetimeStarted(datepickerPost);
+		offer.setDatetimeStarted(datepickerPostt);
 		
 		offer.getDatetimeStarted().setMinutes( Integer.valueOf(getMinutes()) );
 		offer.getDatetimeStarted().setHours( Integer.valueOf(getHour()) );
