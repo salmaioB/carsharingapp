@@ -1,5 +1,6 @@
 package com.appweb.action.ajax;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.appweb.Action;
@@ -14,8 +15,24 @@ public class PrintMapPost extends Action
 	private String addressStartPost;
 	private String addressStopPost;
 	private Integer nbPassagerPost;
-	private Date datepickerPost;
+	private Date datepickerPostt;
+	private String datepickerPostDate;
 	
+	public String getDatepickerPostDate() {
+		return datepickerPostDate;
+	}
+
+	public void setDatepickerPostDate(String datepickerPostDate) {
+		SimpleDateFormat  simpleFormat = new SimpleDateFormat("MM/dd/yyyy");
+		try {
+			datepickerPostt = simpleFormat.parse(datepickerPostDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		this.datepickerPostDate = datepickerPostDate;
+	}
 	private String description;
 	private String villepassage1Post;
 	private String villepassage2Post;
@@ -177,10 +194,10 @@ public class PrintMapPost extends Action
 	public void setVillepassage8Post(String villepassage8Post) {
 		this.villepassage8Post = villepassage8Post;
 	}
-	public String getDatepickerPost() {
+	public String getDatepickerPostt() {
 		SimpleDateFormat  simpleFormat = new SimpleDateFormat("MM/dd/yyyy");
-		System.out.println(simpleFormat.format(datepickerPost));	
-		return simpleFormat.format(datepickerPost);
+		System.out.println(simpleFormat.format(datepickerPostt));	
+		return simpleFormat.format(datepickerPostt);
 	}
 	public String getRole() {
 		return role;
@@ -218,8 +235,8 @@ public class PrintMapPost extends Action
 	public void setNbPassagerPost(Integer nbPassagerPost) {
 		this.nbPassagerPost = nbPassagerPost;
 	}
-	public void setDatepickerPost(java.util.Date datepickerPost) {
-		this.datepickerPost = datepickerPost;
+	public void setDatepickerPostt(java.util.Date datepickerPostt) {
+		this.datepickerPostt = datepickerPostt;
 	}
 	public String getVilleStartPost() {
 		return villeStartPost;

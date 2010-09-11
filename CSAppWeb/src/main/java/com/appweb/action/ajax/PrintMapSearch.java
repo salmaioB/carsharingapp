@@ -30,7 +30,7 @@ public class PrintMapSearch extends Action
 	private String addressStartPost;
 	private String addressStopPost;
 	private Integer nbPassagerPost;
-	private Date datepickerPost;
+	private Date datepickerPostt;
 	
 	private String description;
 	
@@ -315,10 +315,10 @@ public class PrintMapSearch extends Action
 	public void setVillepassage8Post(String villepassage8Post) {
 		this.villepassage8Post = villepassage8Post;
 	}
-	public String getDatepickerPost() {
+	public String getDatepickerPostt() {
 		SimpleDateFormat  simpleFormat = new SimpleDateFormat("MM/dd/yyyy");
-		System.out.println(simpleFormat.format(datepickerPost));	
-		return simpleFormat.format(datepickerPost);
+		System.out.println(simpleFormat.format(datepickerPostt));	
+		return simpleFormat.format(datepickerPostt);
 	}
 	public String getRole() {
 		return role;
@@ -356,8 +356,8 @@ public class PrintMapSearch extends Action
 	public void setNbPassagerPost(Integer nbPassagerPost) {
 		this.nbPassagerPost = nbPassagerPost;
 	}
-	public void setDatepickerPost(java.util.Date datepickerPost) {
-		this.datepickerPost = datepickerPost;
+	public void setDatepickerPostt(java.util.Date datepickerPostt) {
+		this.datepickerPostt = datepickerPostt;
 	}
 	public String getVilleStartPost() {
 		return villeStartPost;
@@ -435,7 +435,7 @@ public class PrintMapSearch extends Action
 		Offer offer = offerDAO.load(idTrip);
 		setDescription(offer.getDescription());
 		setNbPassagerPost( offer.getNumberOfPlaceRemaining() );
-		setDatepickerPost(offer.getDatetimeStarted());
+		setDatepickerPostt(offer.getDatetimeStarted());
 		setHour(String.valueOf( offer.getDatetimeStarted().getHours() ) );
 		setMinutes(String.valueOf( offer.getDatetimeStarted().getMinutes() ) );
 		offersToCustomerAccountsDAO.getCreatorOffer(idTrip);
