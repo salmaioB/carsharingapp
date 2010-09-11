@@ -91,7 +91,7 @@ function goToEtape1OfPost()
             success: function(data)
             {
                 $('#etape1').html(data);
-    			$("#datepickerPost").datepicker({	minDate: new Date(),
+    			$("#datepickerPostt").datepicker({	minDate: new Date(),
 					showOn: 'button',
 					buttonImage: '/CSAppWeb/img/calendar.gif',
 					buttonImageOnly: true

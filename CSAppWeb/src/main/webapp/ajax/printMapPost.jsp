@@ -28,7 +28,7 @@
 				<span style="width: 160px;">Date</span>
 			</td>
 			<td>
-				<input value="<s:property value="datepickerPost" />" readonly="readonly" id="datepickerPost" name="datepickerPost" class="" size="20"/>
+				<input value="<s:property value="datepickerPostt" />" readonly="readonly" id="datepickerPostDate" name="datepickerPostDate" class="" size="20"/>
 			</td>
 		</tr>
 		<tr>
