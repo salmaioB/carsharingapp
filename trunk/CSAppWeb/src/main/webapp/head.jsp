@@ -152,7 +152,7 @@
 	<script type="text/javascript">
 		//calendrier
 		$(function() {
-			$("#datepickerPost").datepicker({	minDate: new Date(),
+			$("#datepickerPostt").datepicker({	minDate: new Date(),
 											showOn: 'button',
 											buttonImage: '/CSAppWeb/img/calendar.gif',
 											buttonImageOnly: true
@@ -161,6 +161,11 @@
 											showOn: 'button',
 											buttonImage: '/CSAppWeb/img/calendar.gif',
 											buttonImageOnly: true
+			});
+			$("#datepickerPostDate").datepicker({	minDate: new Date(),
+				showOn: 'button',
+				buttonImage: '/CSAppWeb/img/calendar.gif',
+				buttonImageOnly: true
 			});
 		});
 	</script>
@@ -174,30 +179,41 @@
 			$(document).ready(function(){
 
 				$('#register_form').validate({
-					submitHandler: function(form) {
+					success: function(form) {
 						form.submit();
 					}
 				}
 				);
 				
 				$('#checkaddress_form').validate({
-					submitHandler: function(form) {
+					success: function(form) {
 						ajaxCheckInAjax();
 					}
 				}
 				);
 				$('#search_form').validate({
-					submitHandler: function(form) {
+					success: function(form) {
 						ajaxSearch();
 					}
 				}
 				);
+				var isError = true;
+				
 				$('#post_form').validate({
+				    invalidHandler: function(form, validator) {
+				      var errors = validator.numberOfInvalids();
+				      //alert("errors : " + errors);
+				      isError = true;
+				    },
 					submitHandler: function(form) {
-						goToEtape2OfPost();		
+						//goToEtape2OfPost();
+						isError = false;	
 					}
-				}
-				);
+				});
+				$('.Etape2Post').click(function() {
+					if(isError==false) { goToEtape2OfPost(); isError = true; }
+				});
+				
 			});
 	</script>
 	<s:if test="isLoging()">

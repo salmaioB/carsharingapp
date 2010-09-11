@@ -39,7 +39,7 @@
 						<span style="width: 160px;">Date</span>
 					</td>
 					<td>
-						<input class="required" readonly="readonly" type="text" name="datepickerPost" id="datepickerPost" />
+						<input class="required" readonly="readonly" type="text" name="datepickerPostDate" id="datepickerPostDate" />
 					</td>
 				</tr>
 				<tr style="height:120px;">
