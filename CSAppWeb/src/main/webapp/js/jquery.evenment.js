@@ -281,7 +281,7 @@ function ajaxCheckInAjax()
             data: postData,
             success: function(data)
             {
-    			alert("Profil enregistré");
+    			alert("Profil enregistree");
     			//Si success redection vers le profil
     			document.location.href='/CSAppWeb/Accueil#profil';
             }
