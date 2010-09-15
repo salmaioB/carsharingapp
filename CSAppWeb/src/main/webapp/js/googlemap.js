@@ -242,8 +242,8 @@ function printPoint(gMap,lat,lon) {
 		initializeMapParcours(Vstart,Vstop,map);
 	}
 	function initializeMapParcoursSearch() {
-		var Vstart = $('#cityStopSearch').val() +' '+ $('#addressStartSearch').val();
-		var Vstop = $('#cityStartSearch').val() +' '+ $('#addressStopSearch').val();
+		var Vstart = $('#cityStartSearch').val()  +' '+ $('#addressStartSearch').val();
+		var Vstop =  $('#cityStopSearch').val() +' '+ $('#addressStopSearch').val();
 		var divMap = document.getElementById("mapSearch");
 		
 		initializeMapParcours(Vstart,Vstop,divMap);
