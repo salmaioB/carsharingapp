@@ -35,8 +35,8 @@
 						</s:if>
 						<s:else>
 							<s:property value="tr.tr_html(39)"/>
-						</s:else>
-					" readonly="readonly" />
+						</s:else>"
+						 readonly="readonly" />
 				</td>
 			</tr>
 			<tr>
@@ -44,7 +44,7 @@
 					<span style="width: 160px;"><s:property value="tr.tr_html(13)"/></span>
 				</td>
 				<td>
-					<input readonly="readonly" value="<s:property value="nbPassagerPost" />" readonly="readonly" id="nbPassagerPost" name="nbPassagerPost" class="" size="2" />
+					<input value="<s:property value="nbPassagerPost" />" readonly="readonly" id="nbPassagerPost" name="nbPassagerPost" class="" size="2" />
 				</td>
 			</tr>
 			<tr>
