@@ -179,20 +179,20 @@
 			$(document).ready(function(){
 
 				$('#register_form').validate({
-					success: function(form) {
+					submitHandler: function(form) {
 						form.submit();
 					}
 				}
 				);
 				
 				$('#checkaddress_form').validate({
-					success: function(form) {
+					submitHandler: function(form) {
 						ajaxCheckInAjax();
 					}
 				}
 				);
 				$('#search_form').validate({
-					success: function(form) {
+					submitHandler: function(form) {
 						ajaxSearch();
 					}
 				}
