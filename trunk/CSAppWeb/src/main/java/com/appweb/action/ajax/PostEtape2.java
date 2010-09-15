@@ -108,6 +108,7 @@ public class PostEtape2 extends Action
 		this.priceTrip8 = priceTrip8;
 	}
 	public String getRole() {
+		if(role.equals("") ) role = "0";
 		return role;
 	}
 	public void setRole(String role) {

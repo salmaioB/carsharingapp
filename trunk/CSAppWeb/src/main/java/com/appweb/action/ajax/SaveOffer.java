@@ -207,6 +207,7 @@ public class SaveOffer extends Action
 		return simpleFormat.format(datepickerPostt);
 	}
 	public Integer getRole() {
+		if(role == null) role = 1; 
 		return role;
 	}
 	public void setRole(Integer role) {
